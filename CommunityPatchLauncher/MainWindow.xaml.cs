@@ -20,6 +20,9 @@ namespace CommunityPatchLauncher
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Create a new main window
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
