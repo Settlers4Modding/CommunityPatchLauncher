@@ -1,10 +1,24 @@
-﻿using System;
+﻿using CommunityPatchLauncherFramework.Settings.Container;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CommunityPatchLauncherFramework.Settings.Reader
 {
-    class XmlSettingReader
+    /// <summary>
+    /// Read settings files in xml format
+    /// </summary>
+    public class XmlSettingReader : ISettingReader
     {
+        /// <inheritdoc/>
+        public HashSet<SettingPair> GetAllSettings()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc/>
+        public SettingPair LoadSetting(string key, string connectionString)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
