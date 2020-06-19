@@ -1,4 +1,8 @@
-﻿using System;
+﻿using CommunityPatchLauncher.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Container;
+using CommunityPatchLauncherFramework.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Manager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
