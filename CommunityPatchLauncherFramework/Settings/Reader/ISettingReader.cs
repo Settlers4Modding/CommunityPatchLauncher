@@ -6,7 +6,7 @@ namespace CommunityPatchLauncherFramework.Settings.Reader
     /// <summary>
     /// This interface will define a settings reader
     /// </summary>
-    public interface ISettingsReader
+    public interface ISettingReader
     {
         /// <summary>
         /// Load a specific value from a given connection string

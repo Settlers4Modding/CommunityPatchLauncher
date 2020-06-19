@@ -7,17 +7,17 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
     /// <summary>
     /// A class to load and save application settings
     /// </summary>
-    public class SettingsManager
+    public class SettingManager
     {
         /// <summary>
         /// Settings reader to use
         /// </summary>
-        private readonly ISettingsReader reader;
+        private readonly ISettingReader reader;
 
         /// <summary>
         /// Settings writer to use
         /// </summary>
-        private readonly ISettingsWriter writer;
+        private readonly ISettingWriter writer;
 
         /// <summary>
         /// The default settings path to use for loading
@@ -29,7 +29,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// </summary>
         /// <param name="reader">The reader to use</param>
         /// <param name="writer">The writer to use</param>
-        public SettingsManager(ISettingsReader reader, ISettingsWriter writer)
+        public SettingManager(ISettingReader reader, ISettingWriter writer)
             : this(reader, writer, string.Empty)
         {
 
@@ -41,7 +41,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// <param name="reader">The reader to use</param>
         /// <param name="writer">The writer to use</param>
         /// <param name="defaultSettingsPath">The path to use as default setting path</param>
-        public SettingsManager(ISettingsReader reader, ISettingsWriter writer, string defaultSettingsPath)
+        public SettingManager(ISettingReader reader, ISettingWriter writer, string defaultSettingsPath)
         {
             this.reader = reader;
             this.writer = writer;

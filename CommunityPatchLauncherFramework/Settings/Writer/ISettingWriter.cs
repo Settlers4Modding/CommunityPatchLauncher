@@ -5,7 +5,7 @@ namespace CommunityPatchLauncherFramework.Settings.Writer
     /// <summary>
     /// This interface will define a setting writer which will save a given value
     /// </summary>
-    public interface ISettingsWriter
+    public interface ISettingWriter
     {
         /// <summary>
         /// Write a new setting to the setting file
