@@ -40,7 +40,7 @@ namespace CommunityPatchLauncherFramework.Settings.Container
         public HashSet<SettingPair> GetSettingPairs()
         {
             HashSet<SettingPair> settingPairs = new HashSet<SettingPair>();
-            foreach(SerializeableSettingsPair pair in Settings)
+            foreach (SerializeableSettingsPair pair in Settings)
             {
                 settingPairs.Add(pair.GetSettingPair());
             }

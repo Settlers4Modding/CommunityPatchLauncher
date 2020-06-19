@@ -21,7 +21,7 @@ namespace CommunityPatchLauncherFramework.Settings.Container
         /// Get the type of the value
         /// </summary>
         public string ValueType;
-        
+
         /// <summary>
         /// Create an empty instance of this class
         /// </summary>

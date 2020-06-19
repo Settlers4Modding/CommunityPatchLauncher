@@ -47,7 +47,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
             this.reader = reader;
             this.writer = writer;
             this.settingsPath = settingsPath;
-            
+
             settingsLoaded = false;
             Reload();
         }
