@@ -12,7 +12,7 @@ namespace CommunityPatchLauncherFramework.Settings.Reader
     public class XmlSettingReader : ISettingReader
     {
         /// <inheritdoc/>
-        public HashSet<SettingPair> GetAllSettings(string connectionString)
+        public HashSet<SettingPair> LoadSettings(string connectionString)
         {
             if (!File.Exists(connectionString))
             {
@@ -37,12 +37,6 @@ namespace CommunityPatchLauncherFramework.Settings.Reader
 
             }
             return data == null ? default : data.GetSettingPairs();
-        }
-
-        /// <inheritdoc/>
-        public SettingPair LoadSetting(string key, string connectionString)
-        {
-            throw new NotImplementedException();
         }
     }
 }

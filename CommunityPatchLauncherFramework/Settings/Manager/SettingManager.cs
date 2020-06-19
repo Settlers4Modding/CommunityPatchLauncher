@@ -93,7 +93,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// </summary>
         public void Reload()
         {
-            settings = reader.GetAllSettings(settingsPath);
+            settings = reader.LoadSettings(settingsPath);
             settingsLoaded = true;
         }
 
