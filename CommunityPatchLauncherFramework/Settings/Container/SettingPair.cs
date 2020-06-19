@@ -11,11 +11,12 @@ namespace CommunityPatchLauncherFramework.Settings.Container
         /// The key of the setting pair
         /// </summary>
         public string Key { get; }
-        
+
         /// <summary>
         /// The value of the setting pair
         /// </summary>
-        public object Value { get; }
+        public object Value => value;
+        private object value;
 
         /// <summary>
         /// Get the type of the value
@@ -41,7 +42,7 @@ namespace CommunityPatchLauncherFramework.Settings.Container
         public SettingPair(string key, object value, Type type)
         {
             Key = key;
-            Value = value;
+            this.value = value;
             ValueType = type;
         }
 
@@ -50,10 +51,26 @@ namespace CommunityPatchLauncherFramework.Settings.Container
         /// </summary>
         /// <typeparam name="T">The type of the value to get</typeparam>
         /// <returns></returns>
-        public T getValue<T>()
+        public T GetValue<T>()
         {
             Type type = typeof(T);
             return type == ValueType ? (T)Convert.ChangeType(Value, type) : default(T);
+        }
+
+        /// <summary>
+        /// Change the vlaue of the setting pair
+        /// </summary>
+        /// <param name="value">The new value to use</param>
+        /// <returns>True if changing was successful</returns>
+        public bool ChangeValue(object value)
+        {
+            if (value.GetType() != ValueType)
+            {
+                return false;
+            }
+
+            this.value = value;
+            return true;
         }
     }
 }

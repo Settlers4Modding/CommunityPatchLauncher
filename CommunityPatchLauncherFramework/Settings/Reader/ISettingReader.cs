@@ -20,6 +20,6 @@ namespace CommunityPatchLauncherFramework.Settings.Reader
         /// Load all the settings from the file
         /// </summary>
         /// <returns>All the settings in the file</returns>
-        HashSet<SettingPair> GetAllSettings();
+        HashSet<SettingPair> GetAllSettings(string connectionString);
     }
 }

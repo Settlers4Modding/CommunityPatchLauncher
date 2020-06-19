@@ -1,6 +1,8 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Container;
 using CommunityPatchLauncherFramework.Settings.Reader;
 using CommunityPatchLauncherFramework.Settings.Writer;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CommunityPatchLauncherFramework.Settings.Manager
 {
@@ -22,18 +24,17 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// <summary>
         /// The default settings path to use for loading
         /// </summary>
-        private readonly string defaultSettingsPath;
+        private readonly string settingsPath;
 
         /// <summary>
-        /// Create a new instance of this class
+        /// All the settings in the manager
         /// </summary>
-        /// <param name="reader">The reader to use</param>
-        /// <param name="writer">The writer to use</param>
-        public SettingManager(ISettingReader reader, ISettingWriter writer)
-            : this(reader, writer, string.Empty)
-        {
+        private HashSet<SettingPair> settings;
 
-        }
+        /// <summary>
+        /// Setting are loaded already
+        /// </summary>
+        private bool settingsLoaded;
 
         /// <summary>
         /// Create a new instance of this class
@@ -41,11 +42,14 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// <param name="reader">The reader to use</param>
         /// <param name="writer">The writer to use</param>
         /// <param name="defaultSettingsPath">The path to use as default setting path</param>
-        public SettingManager(ISettingReader reader, ISettingWriter writer, string defaultSettingsPath)
+        public SettingManager(ISettingReader reader, ISettingWriter writer, string settingsPath)
         {
             this.reader = reader;
             this.writer = writer;
-            this.defaultSettingsPath = defaultSettingsPath;
+            this.settingsPath = settingsPath;
+            
+            settingsLoaded = false;
+            Reload();
         }
 
         /// <summary>
@@ -55,18 +59,12 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// <returns></returns>
         public SettingPair GetValue(string key)
         {
-            return GetValue(key, defaultSettingsPath);
-        }
+            if (!settingsLoaded)
+            {
+                Reload();
+            }
 
-        /// <summary>
-        /// Get a setting from a given setting path
-        /// </summary>
-        /// <param name="key">The key of the setting to load</param>
-        /// <param name="connectionString">The connection string to use</param>
-        /// <returns></returns>
-        public SettingPair GetValue(string key, string connectionString)
-        {
-            return reader.LoadSetting(key, connectionString);
+            return settings.Where(o => o.Key == key).FirstOrDefault();
         }
 
         /// <summary>
@@ -75,21 +73,38 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// <param name="key">The key of the setting to use</param>
         /// <param name="value">The value to use for the setting</param>
         /// <returns>True if writing was successful</returns>
-        public bool WriteValue(string key, object value)
+        public void AddValue(string key, object value)
         {
-            return WriteValue(key, value, defaultSettingsPath);
+            if (settings == null)
+            {
+                settings = new HashSet<SettingPair>();
+            }
+            SettingPair loadedValue = GetValue(key);
+            if (loadedValue == null)
+            {
+                settings.Add(new SettingPair(key, value));
+                return;
+            }
+            loadedValue.ChangeValue(value);
         }
 
         /// <summary>
-        /// Write a value to the setting file
+        /// Reload all the settings
         /// </summary>
-        /// <param name="key">The key of the setting to use</param>
-        /// <param name="value">The value to use for the setting</param>
-        /// <param name="connectionString">The connection string to use</param>
-        /// <returns>True if writing was successful</returns>
-        public bool WriteValue(string key, object value, string connectionString)
+        public void Reload()
         {
-            return writer.WriteSetting(key, value, connectionString);
+            settings = reader.GetAllSettings(settingsPath);
+            settingsLoaded = true;
+        }
+
+        /// <summary>
+        /// Save the cached settings
+        /// </summary>
+        /// <returns>True if saving was successful</returns>
+        public bool SaveSettings()
+        {
+            settingsLoaded = false;
+            return writer.WriteSettings(settings, settingsPath);
         }
     }
 }

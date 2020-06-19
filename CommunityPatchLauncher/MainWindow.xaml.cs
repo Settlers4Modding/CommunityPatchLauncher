@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CommunityPatchLauncherFramework.Settings.Container;
+using CommunityPatchLauncherFramework.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Manager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +29,14 @@ namespace CommunityPatchLauncher
         public MainWindow()
         {
             InitializeComponent();
+
+            XmlSettingFactory xmlSettingFactory = new XmlSettingFactory();
+            SettingManager manager = xmlSettingFactory.GetSettingsManager();
+            SettingPair pair = manager.GetValue("test");
+            int test = pair.GetValue<int>();
+
+            manager.AddValue("test", test);
+            manager.SaveSettings();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Container;
+using System.Collections.Generic;
 
 namespace CommunityPatchLauncherFramework.Settings.Writer
 {
@@ -10,18 +11,9 @@ namespace CommunityPatchLauncherFramework.Settings.Writer
         /// <summary>
         /// Write a new setting to the setting file
         /// </summary>
-        /// <param name="key">The key of the setting to load</param>
-        /// <param name="value">The value of the setting to write</param>
+        /// <param name="settings">The settings to write</param>
         /// <param name="connectionString">The connection string to use</param>
         /// <returns>True if saving was successful</returns>
-        bool WriteSetting(string key, object value, string connectionString);
-
-        /// <summary>
-        /// Write a new setting to the setting file
-        /// </summary>
-        /// <param name="settingPair">The setting pair to write</param>
-        /// <param name="connectionString">The connection string to use</param>
-        /// <returns>True if saving was successful</returns>
-        bool WriteSetting(SettingPair settingPair, string connectionString);
+        bool WriteSettings(HashSet<SettingPair> settings, string connectionString);
     }
 }
