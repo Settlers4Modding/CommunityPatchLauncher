@@ -36,8 +36,31 @@ namespace CommunityPatchLauncher.Windows
             settingManagerCommand.Executed += SettingManagerCommand_Executed;
             settingManagerCommand.Execute(null);
             InitializeComponent();
+
+            CB_LanguageSelector.SelectionChanged += CB_LanguageSelector_SelectionChanged;
         }
 
+        /// <summary>
+        /// Language selection did change
+        /// </summary>
+        /// <param name="sender">Sender of the event</param>
+        /// <param name="e">Data of the event</param>
+        private void CB_LanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox box)
+            {
+                if (box.SelectedItem is ComboBoxItem item)
+                {
+                    
+                }
+            }
+        }
+
+        /// <summary>
+        /// Was the setting command executed
+        /// </summary>
+        /// <param name="sender">Sender of the event</param>
+        /// <param name="e">The event arugments</param>
         private void SettingManagerCommand_Executed(object sender, EventArguments.DataCommandEventArg e)
         {
             settingManager = e.GetData<SettingManager>();
@@ -45,14 +68,29 @@ namespace CommunityPatchLauncher.Windows
             {
                 return;
             }
-            SettingPair language = settingManager.GetValue("language");
-            if (language == null)
+            IDataCommand languageCommand = new GetCurrentLanguageCommand();
+            languageCommand.Executed += (command, data) =>
             {
-                return;
-            }
-            
-            ICommand changeLanguage = new SwitchGuiLanguage();
-            changeLanguage.Execute(language.GetValue<string>());
+                string language = data.GetData<string>();
+                if (language == string.Empty)
+                {
+                    return;
+                }
+
+                ICommand changeLanguage = new SwitchGuiLanguage();
+                changeLanguage.Execute(language);
+            };
+            languageCommand.Execute(settingManager);
+        }
+
+        private void SwitchLanguage()
+        {
+            SwitchLanguage(false);
+        }
+
+        private void SwitchLanguage(bool restart)
+        {
+
         }
     }
 }
