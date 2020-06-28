@@ -42,7 +42,7 @@ namespace CommunityPatchLauncher.EventArguments
         public virtual T GetData<T>()
         {
             Type type = typeof(T);
-            return type == data.GetType() ? (T)Convert.ChangeType(data, type) : default(T);
+            return data != null && type == data.GetType() ? (T)Convert.ChangeType(data, type) : default(T);
         }
 
     }
