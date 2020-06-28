@@ -1,10 +1,5 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Container;
 using CommunityPatchLauncherFramework.Settings.Manager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommunityPatchLauncher.Commands
 {

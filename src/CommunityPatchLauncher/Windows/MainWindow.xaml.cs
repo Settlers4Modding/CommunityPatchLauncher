@@ -1,22 +1,8 @@
 ﻿using CommunityPatchLauncher.Commands;
-using CommunityPatchLauncher.Settings.Factories;
-using CommunityPatchLauncherFramework.Settings.Container;
-using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CommunityPatchLauncher.Windows
 {
@@ -37,7 +23,31 @@ namespace CommunityPatchLauncher.Windows
             settingManagerCommand.Execute(null);
             InitializeComponent();
 
+            SetCurrentLanguage();
             CB_LanguageSelector.SelectionChanged += CB_LanguageSelector_SelectionChanged;
+        }
+
+        /// <summary>
+        /// Set the current window language
+        /// </summary>
+        private void SetCurrentLanguage()
+        {
+            IDataCommand languageCommand = new GetCurrentLanguageCommand();
+            languageCommand.Executed += (command, data) =>
+            {
+                string language = data.GetData<string>();
+
+                for (int i = 0; i < CB_LanguageSelector.Items.Count; i++)
+                {
+                    ComboBoxItem boxItem = CB_LanguageSelector.Items[i] as ComboBoxItem;
+                    if (boxItem.Tag.ToString() == language)
+                    {
+                        CB_LanguageSelector.SelectedIndex = i;
+                        break;
+                    }
+                }
+            };
+            languageCommand.Execute(settingManager);
         }
 
         /// <summary>
@@ -51,7 +61,9 @@ namespace CommunityPatchLauncher.Windows
             {
                 if (box.SelectedItem is ComboBoxItem item)
                 {
-                    
+                    settingManager?.AddValue("language", item.Tag.ToString());
+                    settingManager.SaveSettings();
+                    SwitchLanguage(true);
                 }
             }
         }
@@ -68,29 +80,41 @@ namespace CommunityPatchLauncher.Windows
             {
                 return;
             }
+            SwitchLanguage();
+        }
+
+        /// <summary>
+        /// Switch the language of this window
+        /// </summary>
+        private void SwitchLanguage()
+        {
+            SwitchLanguage(false);
+        }
+
+        /// <summary>
+        /// Switch the language of this window
+        /// </summary>
+        /// <param name="refresh">Should the gui get a refresh</param>
+        private void SwitchLanguage(bool refresh)
+        {
             IDataCommand languageCommand = new GetCurrentLanguageCommand();
             languageCommand.Executed += (command, data) =>
             {
                 string language = data.GetData<string>();
-                if (language == string.Empty)
+                if (language == null)
                 {
                     return;
                 }
 
                 ICommand changeLanguage = new SwitchGuiLanguage();
                 changeLanguage.Execute(language);
+                if (refresh)
+                {
+                    ICommand refreshUiCommand = new RefreshGuiLanguageCommand();
+                    refreshUiCommand.Execute(this);
+                }
             };
             languageCommand.Execute(settingManager);
-        }
-
-        private void SwitchLanguage()
-        {
-            SwitchLanguage(false);
-        }
-
-        private void SwitchLanguage(bool restart)
-        {
-
         }
     }
 }

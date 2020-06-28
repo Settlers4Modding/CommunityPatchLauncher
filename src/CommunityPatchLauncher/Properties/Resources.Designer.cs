@@ -61,20 +61,74 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to German.
+        /// </summary>
+        public static string Default_LanguageDe {
+            get {
+                return ResourceManager.GetString("Default_LanguageDe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string Default_LanguageEn {
+            get {
+                return ResourceManager.GetString("Default_LanguageEn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language:.
         /// </summary>
-        public static string MainWindow_LangaugeLabel {
+        public static string Default_LanguageLabel {
             get {
-                return ResourceManager.GetString("MainWindow_LangaugeLabel", resourceCulture);
+                return ResourceManager.GetString("Default_LanguageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string Default_Ok {
+            get {
+                return ResourceManager.GetString("Default_Ok", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Community Patch Launcher.
         /// </summary>
-        public static string MainWindow_WindowTitle {
+        public static string MainWindow_Title {
             get {
-                return ResourceManager.GetString("MainWindow_WindowTitle", resourceCulture);
+                return ResourceManager.GetString("MainWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I did read the aggrement.
+        /// </summary>
+        public static string WelcomeWindow_Agree {
+            get {
+                return ResourceManager.GetString("WelcomeWindow_Agree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agreement.
+        /// </summary>
+        public static string WelcomeWindow_TextBox {
+            get {
+                return ResourceManager.GetString("WelcomeWindow_TextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        public static string WelcomeWindow_Title {
+            get {
+                return ResourceManager.GetString("WelcomeWindow_Title", resourceCulture);
             }
         }
     }

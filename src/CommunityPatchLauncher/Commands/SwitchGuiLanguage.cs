@@ -15,7 +15,7 @@ namespace CommunityPatchLauncher.Commands
         /// <inheritdoc/>
         public bool CanExecute(object parameter)
         {
-            return parameter.GetType() == typeof(string);
+            return parameter != null && parameter.GetType() == typeof(string);
         }
 
         /// <inheritdoc/>

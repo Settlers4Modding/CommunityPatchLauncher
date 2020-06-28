@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:CommunityPatchLauncher"
         xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.MainWindow_WindowTitle}" Height="450" Width="800">
+        Title="{x:Static p:Resources.MainWindow_Title}" Height="450" Width="800">
     <Grid>
         <StackPanel VerticalAlignment="Top" Orientation="Horizontal" MaxHeight="30">
-            <Label Content="{x:Static p:Resources.MainWindow_LangaugeLabel}"></Label>
-            <ComboBox Name="CB_LanguageSelector" MinWidth="200">
-                <ComboBoxItem Content="German" Tag="de-DE"></ComboBoxItem>
-                <ComboBoxItem Content="English" Tag="en-EN"></ComboBoxItem>
+            <Label Content="{x:Static p:Resources.Default_LanguageLabel}"></Label>
+            <ComboBox Margin="5" Name="CB_LanguageSelector" MinWidth="200">
+                <ComboBoxItem Content="{x:Static p:Resources.Default_LanguageDe}" Tag="de-DE"></ComboBoxItem>
+                <ComboBoxItem Content="{x:Static p:Resources.Default_LanguageEn}" Tag="en-EN"></ComboBoxItem>
             </ComboBox>
         </StackPanel>
     </Grid>

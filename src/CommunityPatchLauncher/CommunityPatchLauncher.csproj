@@ -61,6 +61,7 @@
     <Compile Include="Commands\GetCurrentLanguageCommand.cs" />
     <Compile Include="Commands\GetSettingManagerCommand.cs" />
     <Compile Include="Commands\IDataCommand.cs" />
+    <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
@@ -71,6 +72,9 @@
     </Compile>
     <Compile Include="Settings\Factories\WpfPropertySettingManagerFactory.cs" />
     <Compile Include="Settings\Reader\WpfPropertyReader.cs" />
+    <Compile Include="Windows\WelcomeWindow.xaml.cs">
+      <DependentUpon>WelcomeWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -83,6 +87,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\WelcomeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
