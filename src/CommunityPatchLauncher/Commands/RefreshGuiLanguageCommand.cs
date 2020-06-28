@@ -25,6 +25,8 @@ namespace CommunityPatchLauncher.Commands
             {
                 Window window = parameter as Window;
                 Window newWindow = Activator.CreateInstance(window.GetType()) as Window;
+                newWindow.Left = window.Left;
+                newWindow.Top = window.Top;
                 newWindow.Show();
                 window.Close();
             }
