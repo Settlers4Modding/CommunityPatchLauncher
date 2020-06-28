@@ -1,0 +1,43 @@
+﻿<Window x:Class="CommunityPatchLauncher.Windows.WelcomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CommunityPatchLauncher.Windows"
+        xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.WelcomeWindow_Title}" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="{x:Static p:Resources.WelcomeWindow_TextBox}"></Label>
+            <StackPanel Grid.Column="2" VerticalAlignment="Top" Orientation="Horizontal" MaxHeight="30">
+                <Label Width="Auto" VerticalAlignment="Stretch"></Label>
+                <Label HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Static p:Resources.Default_LanguageLabel}"></Label>
+                <ComboBox HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Name="CB_LanguageSelector" MinWidth="200">
+                    <ComboBoxItem Content="{x:Static p:Resources.Default_LanguageDe}" Tag="de-DE"></ComboBoxItem>
+                    <ComboBoxItem Content="{x:Static p:Resources.Default_LanguageEn}" Tag="en-EN" IsSelected="True"></ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+        <TextBox Grid.Row="1"></TextBox>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <CheckBox Margin="5" Name="CB_Agree" VerticalAlignment="Center" Grid.Column="0" Content="{x:Static p:Resources.WelcomeWindow_Agree}"></CheckBox>
+            <Button Name="B_Ok" Margin="5" IsEnabled="{Binding ElementName=CB_Agree, Path=IsChecked}" VerticalAlignment="Center" Grid.Column="2" MaxHeight="23" Content="{x:Static p:Resources.Default_Ok}"></Button>
+        </Grid>
+    </Grid>
+</Window>

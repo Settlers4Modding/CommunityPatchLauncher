@@ -64,7 +64,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
                 Reload();
             }
 
-            return settings.Where(o => o.Key == key).FirstOrDefault();
+            return settings?.Where(o => o.Key == key).FirstOrDefault();
         }
 
         /// <summary>
