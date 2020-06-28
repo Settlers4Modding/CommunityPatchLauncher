@@ -9,6 +9,7 @@ namespace CommunityPatchLauncher.Commands
     /// </summary>
     internal class RefreshGuiLanguageCommand : ICommand
     {
+        /// <inheritdoc/>
         public event EventHandler CanExecuteChanged;
 
         /// <inheritdoc/>

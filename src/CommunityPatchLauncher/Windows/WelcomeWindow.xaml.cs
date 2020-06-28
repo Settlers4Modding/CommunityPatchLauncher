@@ -13,6 +13,9 @@ namespace CommunityPatchLauncher.Windows
     /// </summary>
     public partial class WelcomeWindow : Window
     {
+        /// <summary>
+        /// The setting manager to use
+        /// </summary>
         private SettingManager settingManager;
 
         /// <summary>

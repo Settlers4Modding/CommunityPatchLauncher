@@ -10,6 +10,7 @@ namespace CommunityPatchLauncher.Commands
     /// </summary>
     internal class RestartApplicationCommand : ICommand
     {
+        /// <inheritdoc/>
         public event EventHandler CanExecuteChanged;
 
         /// <inheritdoc/>

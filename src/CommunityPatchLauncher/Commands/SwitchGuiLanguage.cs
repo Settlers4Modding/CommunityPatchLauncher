@@ -10,6 +10,7 @@ namespace CommunityPatchLauncher.Commands
     /// </summary>
     internal class SwitchGuiLanguage : ICommand
     {
+        /// <inheritdoc/>
         public event EventHandler CanExecuteChanged;
 
         /// <inheritdoc/>

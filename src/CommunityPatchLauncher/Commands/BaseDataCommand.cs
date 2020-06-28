@@ -3,6 +3,9 @@ using System;
 
 namespace CommunityPatchLauncher.Commands
 {
+    /// <summary>
+    /// This class is a abstract base class which will implement the base functions
+    /// </summary>
     internal abstract class BaseDataCommand : IDataCommand
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace CommunityPatchLauncher.Commands
         /// <inheritdoc/>
         public abstract void Execute(object parameter);
 
+        /// <summary>
+        /// Was the execution successful
+        /// </summary>
         protected virtual void ExecutionDone()
         {
             EventHandler<DataCommandEventArg> handler = Executed;
