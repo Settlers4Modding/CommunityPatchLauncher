@@ -58,8 +58,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\BaseDataCommand.cs" />
+    <Compile Include="Commands\GetCurrentLanguageCommand.cs" />
     <Compile Include="Commands\GetSettingManagerCommand.cs" />
     <Compile Include="Commands\IDataCommand.cs" />
+    <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
     <Compile Include="Properties\Resources.de-DE.Designer.cs">
