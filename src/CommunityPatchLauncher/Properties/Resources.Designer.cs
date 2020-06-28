@@ -61,7 +61,16 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ENG.
+        ///   Looks up a localized string similar to Language:.
+        /// </summary>
+        public static string MainWindow_LangaugeLabel {
+            get {
+                return ResourceManager.GetString("MainWindow_LangaugeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Community Patch Launcher.
         /// </summary>
         public static string MainWindow_WindowTitle {
             get {
