@@ -74,7 +74,10 @@ namespace CommunityPatchLauncher.Windows
             IDocumentManagerFactory factory = new DocumentManagerFactory();
             DocumentManager documentManager = factory.GetDocumentManager("en-EN", new MarkdownConvertStrategy());
             ComboBoxItem item = CB_LanguageSelector.SelectedItem as ComboBoxItem;
-            WB_Agreement.NavigateToString(documentManager.ReadConvertedDocument(item.Tag.ToString(), "Agreement.md"));
+            string html = "<head><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'></head><body>";
+            html += documentManager.ReadConvertedDocument(item.Tag.ToString(), "Agreement.md");
+            html += "</body>";
+            WB_Agreement.NavigateToString(html);
         }
 
         /// <summary>
