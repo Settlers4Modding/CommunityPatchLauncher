@@ -29,7 +29,7 @@
                 </ComboBox>
             </StackPanel>
         </Grid>
-        <TextBox Grid.Row="1"></TextBox>
+        <WebBrowser Name="WB_Agreement" Grid.Row="1"></WebBrowser>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"></ColumnDefinition>

@@ -1,7 +1,12 @@
 ﻿using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Factories;
+using CommunityPatchLauncherFramework.Documentation.Factory;
+using CommunityPatchLauncherFramework.Documentation.Manager;
+using CommunityPatchLauncherFramework.Documentation.Strategy;
 using CommunityPatchLauncherFramework.Settings.Container;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Globalization;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -61,6 +66,15 @@ namespace CommunityPatchLauncher.Windows
                 }
             };
             B_Ok.Click += B_Ok_Click;
+            FillAgreement();
+        }
+
+        private void FillAgreement()
+        {
+            IDocumentManagerFactory factory = new DocumentManagerFactory();
+            DocumentManager documentManager = factory.GetDocumentManager("en-EN", new MarkdownConvertStrategy());
+            ComboBoxItem item = CB_LanguageSelector.SelectedItem as ComboBoxItem;
+            WB_Agreement.NavigateToString(documentManager.ReadConvertedDocument(item.Tag.ToString(), "Agreement.md"));
         }
 
         /// <summary>
