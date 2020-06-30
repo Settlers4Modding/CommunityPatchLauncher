@@ -80,7 +80,7 @@
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
-    <Compile Include="Documentation\Strategy\MarkdownConvertStrategy.cs" />
+    <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
     <Compile Include="Factories\DocumentManagerFactory.cs" />
     <Compile Include="Properties\Resources.de-DE.Designer.cs">
