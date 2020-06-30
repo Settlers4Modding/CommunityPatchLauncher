@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CommunityPatchLauncherFramework.Documentation.Strategy
+﻿namespace CommunityPatchLauncherFramework.Documentation.Strategy
 {
     /// <summary>
     /// Interface to define strategy to convert document format

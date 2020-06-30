@@ -1,5 +1,4 @@
-﻿using CommunityPatchLauncher.Commands;
-using CommunityPatchLauncherFramework.Documentation.Factory;
+﻿using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
 using System.IO;
