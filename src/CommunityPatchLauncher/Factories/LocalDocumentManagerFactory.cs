@@ -10,7 +10,7 @@ namespace CommunityPatchLauncher.Factories
     /// <summary>
     /// Create a document manager ready to use
     /// </summary>
-    public class DocumentManagerFactory : IDocumentManagerFactory
+    public class LocalDocumentManagerFactory : IDocumentManagerFactory
     {
         /// <summary>
         /// The directory this assembly is in
@@ -20,7 +20,7 @@ namespace CommunityPatchLauncher.Factories
         /// <summary>
         /// Create a new instance of this factory
         /// </summary>
-        public DocumentManagerFactory()
+        public LocalDocumentManagerFactory()
         {
             FileInfo fileInfo = new FileInfo(Assembly.GetExecutingAssembly().Location);
             assemblyPath = fileInfo.DirectoryName + "\\docs";
@@ -29,7 +29,11 @@ namespace CommunityPatchLauncher.Factories
         /// <inheritdoc/>
         public DocumentManager GetDocumentManager(string fallbackLanguage, IDocumentConvertStrategy convertStrategy)
         {
-            return new DocumentManager(assemblyPath, fallbackLanguage, convertStrategy);
+            return new DocumentManager(
+                assemblyPath,
+                fallbackLanguage,
+                convertStrategy,
+                new LocalDocumentConnectorStrategy());
         }
     }
 }

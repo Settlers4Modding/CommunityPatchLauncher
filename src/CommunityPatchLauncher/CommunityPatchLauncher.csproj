@@ -82,7 +82,7 @@
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
-    <Compile Include="Factories\DocumentManagerFactory.cs" />
+    <Compile Include="Factories\LocalDocumentManagerFactory.cs" />
     <Compile Include="Properties\Resources.de-DE.Designer.cs">
       <DependentUpon>Resources.de-DE.resx</DependentUpon>
       <AutoGen>True</AutoGen>

@@ -9,37 +9,35 @@ namespace CommunityPatchLauncherFramework.Documentation.Manager
 {
     public class DocumentManager
     {
-        private readonly string fallbackLanguage;
         private readonly IDocumentConvertStrategy documentConvertStrategy;
+        private readonly IDocumentConnectorStrategy connectorStrategy;
+        private readonly string basePath;
 
-        private readonly string folder;
-
-        public DocumentManager(string folder, string fallbackLanguage, IDocumentConvertStrategy documentConvertStrategy)
+        public DocumentManager(
+            string basePath,
+            string fallbackLanguage,
+            IDocumentConvertStrategy documentConvertStrategy,
+            IDocumentConnectorStrategy connectorStrategy)
         {
-            this.folder = folder.Last() == '\\' ? folder : folder + "\\";
-            this.fallbackLanguage = fallbackLanguage;
+            this.basePath = basePath.Last() == '\\' ? basePath : basePath + "\\";
             this.documentConvertStrategy = documentConvertStrategy;
+            this.connectorStrategy = connectorStrategy;
+            this.connectorStrategy.SetFallbackLanguage(fallbackLanguage);
         }
 
         public string ReadDocument(string language, string document)
         {
-            string path = folder + language;
-            if (!Directory.Exists(path))
-            {
-                path = folder + fallbackLanguage;
-            }
-            path += "\\" + document; ;
-            if (!File.Exists(path))
-            {
-                return string.Empty;
-            }
-
-            return File.ReadAllText(path);
+            return connectorStrategy?.ReadDocument(basePath, language, document);
         }
 
         public string ReadConvertedDocument(string language, string document)
         {
-            return documentConvertStrategy?.GetConverted(ReadDocument(language, document));
+            return ReadConvertedDocument(language, document, documentConvertStrategy);
+        }
+
+        public string ReadConvertedDocument(string language, string document, IDocumentConvertStrategy convertStrategy)
+        {
+            return convertStrategy?.GetConverted(ReadDocument(language, document));
         }
     }
 }

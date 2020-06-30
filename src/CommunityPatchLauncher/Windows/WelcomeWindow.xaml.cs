@@ -6,7 +6,6 @@ using CommunityPatchLauncherFramework.Documentation.Strategy;
 using CommunityPatchLauncherFramework.Settings.Container;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Globalization;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -69,9 +68,12 @@ namespace CommunityPatchLauncher.Windows
             FillAgreement();
         }
 
+        /// <summary>
+        /// This method will fill the agreement website with the proper data
+        /// </summary>
         private void FillAgreement()
         {
-            IDocumentManagerFactory factory = new DocumentManagerFactory();
+            IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
             DocumentManager documentManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
             ComboBoxItem item = CB_LanguageSelector.SelectedItem as ComboBoxItem;
             WB_Agreement.NavigateToString(documentManager.ReadConvertedDocument(item.Tag.ToString(), "Agreement.md"));
