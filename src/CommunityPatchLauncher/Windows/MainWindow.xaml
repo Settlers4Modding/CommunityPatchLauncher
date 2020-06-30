@@ -7,13 +7,35 @@
         xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.MainWindow_Title}" Height="450" Width="800">
-    <Grid>
-        <StackPanel VerticalAlignment="Top" Orientation="Horizontal" MaxHeight="30">
-            <Label Content="{x:Static p:Resources.Default_LanguageLabel}"></Label>
-            <ComboBox Margin="5" Name="CB_LanguageSelector" MinWidth="200">
-                <ComboBoxItem Content="{x:Static p:Resources.Default_LanguageDe}" Tag="de-DE"></ComboBoxItem>
-                <ComboBoxItem Content="{x:Static p:Resources.Default_LanguageEn}" Tag="en-EN"></ComboBoxItem>
-            </ComboBox>
+
+  <TabControl Margin="5 5 5 0" VerticalAlignment="Top">
+    <TabItem>
+      <TabItem.Header>
+        <StackPanel Orientation="Horizontal">
+          <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+          <TextBlock>Play</TextBlock>
         </StackPanel>
-    </Grid>
+      </TabItem.Header>
+      <StackPanel Orientation="Horizontal">
+        <TextBlock>Enter some text:</TextBlock>
+        <TextBox Name="textBox1" Width="50"/>
+      </StackPanel>
+    </TabItem>
+
+    <TabItem>
+      <TabItem.Header>
+        <StackPanel Orientation="Horizontal">
+          <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+          <TextBlock>News</TextBlock>
+        </StackPanel>
+      </TabItem.Header>
+      <StackPanel Orientation="Horizontal">
+        <TextBlock>Enter some text:</TextBlock>
+        <TextBox Name="textBox2" Width="50"/>
+      </StackPanel>
+    </TabItem>
+
+
+  </TabControl>
+
 </Window>
