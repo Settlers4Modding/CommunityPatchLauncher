@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CommunityPatchLauncher.Windows
+namespace CommunityPatchLauncher.UserControls
 {
     /// <summary>
     /// Interaction logic for PlayUserControl.xaml
