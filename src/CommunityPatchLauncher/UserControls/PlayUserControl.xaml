@@ -20,55 +20,58 @@
         <Image Source="/Graphics/Capture.PNG"  Stretch="Fill"  Grid.ColumnSpan="3" Grid.RowSpan="2"/>
 
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="10">
-        <ComboBox Name="GameCombobox" VerticalAlignment="Center" Margin="0, 0, 0, 10">
-            
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Versions}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <ComboBox Name="VersionCombobox" VerticalAlignment="Center">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Versions}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+            <ComboBox Name="GameCombobox" VerticalAlignment="Center" Margin="0, 0, 0, 10">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Versions}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Name="VersionCombobox" VerticalAlignment="Center">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Versions}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
         <Grid  Grid.Column="0" Grid.Row="1" Margin="5" HorizontalAlignment="Center">
             <Grid.Resources>
                 <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Margin" Value="1" />
+                    <Setter Property="Margin" Value="0,0,0,1" />
                     <Setter Property="HorizontalAlignment" Value="Center"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
                     <Setter Property="Foreground" Value="White" />
                 </Style>
-                <Style TargetType="{x:Type CheckBox}">
-                    <Setter Property="Margin" Value="1" />
+                <Style TargetType="{x:Type RadioButton}">
+                    <Setter Property="Margin" Value="0,0,0,1" />
                     <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="GroupName" Value="Speed"/>
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="17*"/>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="46*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <CheckBox Grid.Column="0" Grid.Row="0"/>
-            <CheckBox Grid.Column="0" Grid.Row="1"/>
-            <CheckBox Grid.Column="0" Grid.Row="2"/>
-            <CheckBox Grid.Column="0" Grid.Row="3"/>
+            <RadioButton IsChecked="True" Grid.Column="0" Grid.Row="0"/>
+            <RadioButton Grid.Column="0" Grid.Row="1"/>
+            <RadioButton Grid.Column="0" Grid.Row="2"/>
+            <RadioButton Grid.Column="0" Grid.Row="3"/>
 
-            <TextBlock Grid.Column="1" Grid.Row="0">Normal Speed</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="1">Normal Speed</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="2">Normal Speed</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="3">Normal Speed</TextBlock>
-            
+            <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" >Normal Speed</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" >Normal Speed</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" >Normal Speed</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" >Normal Speed</TextBlock>
+
         </Grid>
         <Button Grid.Column="3" Grid.Row="2" Height="Auto" Margin="15, 15, 15, 15">Start</Button>
 
