@@ -90,9 +90,39 @@
     </Compile>
     <Compile Include="Settings\Factories\WpfPropertySettingManagerFactory.cs" />
     <Compile Include="Settings\Reader\WpfPropertyReader.cs" />
+    <Compile Include="UserControls\ConfigurationUserControl.xaml.cs" />
+    <Compile Include="UserControls\MapsUserControl.xaml.cs" />
+    <Compile Include="UserControls\MatchmakingUserControl.xaml.cs" />
+    <Compile Include="UserControls\NewsUserControl.xaml.cs" />
+    <Compile Include="UserControls\PlayUserControl.xaml.cs" />
+    <Compile Include="UserControls\RankedUserControl.xaml.cs" />
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserControls\ConfigurationUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MapsUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MatchmakingUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\NewsUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PlayUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\RankedUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,6 +176,9 @@
       <Project>{846f883f-2c63-480f-9272-27f596b6b08c}</Project>
       <Name>CommunityPatchLauncherFramework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Capture.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
