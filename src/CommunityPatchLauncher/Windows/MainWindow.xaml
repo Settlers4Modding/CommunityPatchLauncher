@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommunityPatchLauncher"
-        xmlns:uC="clr-namespace:CommunityPatchLauncher.UserControls"
         xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.MainWindow_Title}" Height="450" Width="800">
