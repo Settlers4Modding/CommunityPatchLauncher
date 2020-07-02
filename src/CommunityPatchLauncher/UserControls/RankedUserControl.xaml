@@ -21,28 +21,33 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="OneStackpanel" Background="White" >
-            <TextBlock TextWrapping="Wrap" Text="1v1:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
-            <TextBlock TextWrapping="Wrap" Text="6000 Elo" FontWeight="Bold" FontSize="15" Margin="12, 0, 0, 0"/>
-            <Button Content="Play" Margin="10, 15" />
-        </StackPanel>
+        <Border BorderBrush="Black" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="1" BorderThickness="2" Margin="4">
+            <StackPanel Orientation="Vertical" Name="OneStackpanel">
+                <TextBlock TextWrapping="Wrap" Text="1v1:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
+                <TextBlock TextWrapping="Wrap" Text="6000 Elo" FontWeight="Bold" FontSize="15" Margin="12, 0, 0, 0"/>
+                <Button Content="Play" Margin="10, 15" />
+            </StackPanel>
+        </Border>
 
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Name="TwoStackPanel" Background="White" >
-            <TextBlock TextWrapping="Wrap" Text="2v2:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
-            <TextBlock TextWrapping="Wrap" Text="6000 Elo" FontWeight="Bold" FontSize="15" Margin="12, 0, 0, 0"/>
-            <Button Content="Play" Margin="10, 15" />
-        </StackPanel>
+        <Border BorderBrush="Black" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" CornerRadius="1" BorderThickness="2" Margin="4">
+            <StackPanel Orientation="Vertical"  Name="TwoStackPanel">
+                <TextBlock TextWrapping="Wrap" Text="2v2:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
+                <TextBlock TextWrapping="Wrap" Text="6000 Elo" FontWeight="Bold" FontSize="15" Margin="12, 0, 0, 0"/>
+                <Button Content="Play" Margin="10, 15" />
+            </StackPanel>
+        </Border>
+        <Border BorderBrush="Black" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" CornerRadius="1" BorderThickness="2" Margin="4">
+            <StackPanel Orientation="Vertical" Name="ThreeStackPanel" >
+                <TextBlock TextWrapping="Wrap" Text="3v3:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
+                <TextBlock TextWrapping="Wrap" Text="6000 Elo" FontWeight="Bold" FontSize="15" Margin="12, 0, 0, 0"/>
+                <Button Content="Play" Margin="10, 15" />
+            </StackPanel>
+        </Border>
 
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Name="ThreeStackPanel" Background="White" >
-            <TextBlock TextWrapping="Wrap" Text="3v3:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
-            <TextBlock TextWrapping="Wrap" Text="6000 Elo" FontWeight="Bold" FontSize="15" Margin="12, 0, 0, 0"/>
-            <Button Content="Play" Margin="10, 15" />
-        </StackPanel>
+        
 
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="RankStackPanel" Background="White" >
-            <TextBlock TextWrapping="Wrap" Text="1v1:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
-            <TextBlock TextWrapping="Wrap" Text="6000 Elo" FontWeight="Bold" FontSize="15" Margin="12, 0, 0, 0"/>
-            <Button Content="Play" Margin="10, 15" />
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Name="PartyStackPanel">
+            <TextBlock TextWrapping="Wrap" Text="Party:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
         </StackPanel>
 
 
