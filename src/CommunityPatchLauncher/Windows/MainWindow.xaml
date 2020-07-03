@@ -10,40 +10,67 @@
         Title="{x:Static p:Resources.MainWindow_Title}" Height="450" Width="800" MinHeight="450" MinWidth="800">
 
     <TabControl Margin="5 5 5 0" VerticalAlignment="Top">
-    <TabItem>
-      <TabItem.Header>
-        <StackPanel Orientation="Horizontal">
-          <Ellipse Width="10" Height="10" Fill="DarkGray"/>
-          <TextBlock>Play</TextBlock>
-        </StackPanel>
-      </TabItem.Header>
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>Play</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
             <uC:PlayUserControl Height="{Binding RelativeSource={RelativeSource FindAncestor, 
     AncestorType={x:Type TabItem}},Path=ActualWidth}"></uC:PlayUserControl>
-    </TabItem>
+        </TabItem>
 
-    <TabItem>
-      <TabItem.Header>
-        <StackPanel Orientation="Horizontal">
-          <Ellipse Width="10" Height="10" Fill="DarkGray"/>
-          <TextBlock>News</TextBlock>
-        </StackPanel>
-      </TabItem.Header>
-            <StackPanel Orientation="Horizontal" >
-               
-            </StackPanel>
-    </TabItem>
         <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>News</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:NewsUserControl></uC:NewsUserControl>
+
+        </TabItem>
+        
+        <TabItem >
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>Maps</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:MapsUserControl MinHeight="430" MinWidth="700"/>
+        </TabItem>
+
+        <TabItem >
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>Multiplayer</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:MatchmakingUserControl MinHeight="430" MinWidth="700"/>
+        </TabItem>
+
+        <TabItem >
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <Ellipse Width="10" Height="10" Fill="DarkGray"/>
                     <TextBlock>Ranked</TextBlock>
                 </StackPanel>
             </TabItem.Header>
-            <uC:RankedUserControl Margin="0,0,0.4,0" MinHeight="300"/>
+            <uC:RankedUserControl MinHeight="400" MinWidth="700"/>
         </TabItem>
 
-
+        <TabItem >
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>Settings</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:ConfigurationUserControl MinHeight="430" MinWidth="700"/>
+        </TabItem>
     </TabControl>
- 
-
+    
 </Window>
