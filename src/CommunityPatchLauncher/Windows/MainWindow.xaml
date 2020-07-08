@@ -7,7 +7,7 @@
         xmlns:uC="clr-namespace:CommunityPatchLauncher.UserControls"
         xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.MainWindow_Title}" Height="450" Width="800" MinHeight="450" MinWidth="800">
+        Title="{x:Static p:Resources.MainWindow_Title}" Height="480" Width="800" MinHeight="480" MinWidth="800">
 
     <TabControl Margin="5 5 5 0" VerticalAlignment="Top">
         <TabItem>
@@ -17,8 +17,7 @@
                     <TextBlock>Play</TextBlock>
                 </StackPanel>
             </TabItem.Header>
-            <uC:PlayUserControl Height="{Binding RelativeSource={RelativeSource FindAncestor, 
-    AncestorType={x:Type TabItem}},Path=ActualWidth}"></uC:PlayUserControl>
+            <uC:PlayUserControl MinHeight="410" MinWidth="700"></uC:PlayUserControl>
         </TabItem>
 
         <TabItem>
@@ -28,7 +27,7 @@
                     <TextBlock>News</TextBlock>
                 </StackPanel>
             </TabItem.Header>
-            <uC:NewsUserControl></uC:NewsUserControl>
+            <uC:NewsUserControl MinHeight="410" MinWidth="700"/>
 
         </TabItem>
         
@@ -39,7 +38,7 @@
                     <TextBlock>Maps</TextBlock>
                 </StackPanel>
             </TabItem.Header>
-            <uC:MapsUserControl MinHeight="430" MinWidth="700"/>
+            <uC:MapsUserControl MinHeight="410" MinWidth="700"/>
         </TabItem>
 
         <TabItem >
@@ -49,7 +48,7 @@
                     <TextBlock>Multiplayer</TextBlock>
                 </StackPanel>
             </TabItem.Header>
-            <uC:MatchmakingUserControl MinHeight="430" MinWidth="700"/>
+            <uC:MatchmakingUserControl MinHeight="410" MinWidth="700"/>
         </TabItem>
 
         <TabItem >
@@ -59,7 +58,7 @@
                     <TextBlock>Ranked</TextBlock>
                 </StackPanel>
             </TabItem.Header>
-            <uC:RankedUserControl MinHeight="400" MinWidth="700"/>
+            <uC:RankedUserControl MinHeight="410" MinWidth="700"/>
         </TabItem>
 
         <TabItem >
@@ -69,7 +68,7 @@
                     <TextBlock>Settings</TextBlock>
                 </StackPanel>
             </TabItem.Header>
-            <uC:ConfigurationUserControl MinHeight="430" MinWidth="700"/>
+            <uC:ConfigurationUserControl MinHeight="410" MinWidth="700"/>
         </TabItem>
     </TabControl>
     

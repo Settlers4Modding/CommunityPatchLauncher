@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -44,11 +43,19 @@
             </StackPanel>
         </Border>
 
-        
 
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Name="PartyStackPanel">
-            <TextBlock TextWrapping="Wrap" Text="Party:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
-        </StackPanel>
+
+        <Border BorderBrush="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" CornerRadius="1" BorderThickness="2" Margin="4">
+            <StackPanel Orientation="Vertical" Name="PartyStackPanel">
+                <TextBlock TextWrapping="Wrap" Text="Party:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="Black" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" CornerRadius="1" BorderThickness="2" Margin="4">
+            <StackPanel Orientation="Vertical" Name="CurentGamesStackPanel">
+                <TextBlock TextWrapping="Wrap" Text="Ongoing Games:" FontWeight="Bold" FontSize="20" Margin="8, 0, 0, 0"/>
+            </StackPanel>
+        </Border>
 
 
 
