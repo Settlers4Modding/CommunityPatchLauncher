@@ -1,4 +1,4 @@
-﻿using CommunityPatchLauncherFramework.TaskPipeline.Task;
+﻿using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
 using System.Collections.Generic;
 
 namespace CommunityPatchLauncherFramework.TaskPipeline.Factory

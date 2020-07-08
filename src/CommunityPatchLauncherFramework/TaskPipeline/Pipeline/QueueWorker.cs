@@ -1,6 +1,6 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Manager;
 using CommunityPatchLauncherFramework.TaskPipeline.Factory;
-using CommunityPatchLauncherFramework.TaskPipeline.Task;
+using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

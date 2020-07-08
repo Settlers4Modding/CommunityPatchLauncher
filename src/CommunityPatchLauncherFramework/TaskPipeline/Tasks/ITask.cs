@@ -1,6 +1,6 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Manager;
 
-namespace CommunityPatchLauncherFramework.TaskPipeline.Task
+namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
 {
     /// <summary>
     /// This interface will define a task to run

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CommunityPatchLauncherFramework.TaskPipeline.Task
+namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
 {
     public interface IProgressTask : ITask
     {

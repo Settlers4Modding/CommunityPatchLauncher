@@ -1,6 +1,6 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Manager;
 
-namespace CommunityPatchLauncherFramework.TaskPipeline.Task
+namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
 {
     /// <summary>
     /// This abstract class will help you to create tasks on your own
