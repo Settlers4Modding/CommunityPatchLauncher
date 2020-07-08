@@ -104,10 +104,9 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Pipeline
         /// <returns>True if the task execution was successful</returns>
         public async Task<bool> AsyncExecuteTasks(List<ITask> tasks)
         {
-            return await new Task<bool>(() =>
-            {
-                return ExecuteTasks(tasks);
-            });
+            Task<bool> runner = new Task<bool>(() => ExecuteTasks(tasks));
+            runner.Start();
+            return await runner;
         }
     }
 }
