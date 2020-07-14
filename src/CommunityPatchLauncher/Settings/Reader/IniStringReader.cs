@@ -2,17 +2,22 @@
 using CommunityPatchLauncherFramework.Settings.Reader;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace CommunityPatchLauncher.Settings.Reader
 {
-    class IniStringReader : ISettingReader
+    /// <summary>
+    /// This class will interpret the connection string as a ini file, do not try to load a file from the disc
+    /// Do not use this class with the settings manager!
+    /// </summary>
+    internal class IniStringReader : ISettingReader
     {
+        /// <summary>
+        /// Regex to find the scope in the ini file
+        /// </summary>
         private const string SCOPE_REGEX = "\\[[a-zA-Z0-9]+\\]";
 
+        /// <inheritdoc/>
         public HashSet<SettingPair> LoadSettings(string connectionString)
         {
             HashSet<SettingPair> returnSettings = new HashSet<SettingPair>();
