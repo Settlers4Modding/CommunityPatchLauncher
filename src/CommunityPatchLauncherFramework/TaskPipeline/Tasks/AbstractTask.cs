@@ -1,7 +1,6 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Container;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
 {

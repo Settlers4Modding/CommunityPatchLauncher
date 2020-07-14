@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Transactions;
-
-namespace CommunityPatchLauncherFramework.TaskPipeline.EventData
+﻿namespace CommunityPatchLauncherFramework.TaskPipeline.EventData
 {
     public class WorkerSetTaskDone : TaskDone
     {
