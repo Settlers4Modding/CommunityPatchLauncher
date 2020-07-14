@@ -8,7 +8,7 @@ namespace CommunityPatchLauncher.Settings.Reader
     /// <summary>
     /// This class will read the wpf setting file
     /// </summary>
-    class WpfPropertyReader : ISettingReader
+    internal class WpfPropertyReader : ISettingReader
     {
         /// <inheritdoc/>
         public HashSet<SettingPair> LoadSettings(string connectionString)
