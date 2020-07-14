@@ -89,7 +89,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Settings\Factories\WpfPropertySettingManagerFactory.cs" />
+    <Compile Include="Settings\Reader\IniStringReader.cs" />
     <Compile Include="Settings\Reader\WpfPropertyReader.cs" />
+    <Compile Include="Tasks\DownloadCommunityPatchTask.cs" />
+    <Compile Include="Tasks\DownloadFileTask.cs" />
+    <Compile Include="Tasks\DownloadVersionInformation.cs" />
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
@@ -147,6 +151,7 @@
       <Name>CommunityPatchLauncherFramework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
