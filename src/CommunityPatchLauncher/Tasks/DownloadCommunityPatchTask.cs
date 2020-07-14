@@ -31,10 +31,10 @@ namespace CommunityPatchLauncher.Tasks
 
             if ( localVersion > remoteVersion)
             {
-                settings.Add(new SettingPair("UpToData", true));
+                settings.Add(new SettingPair("UpToDate", true));
                 return true;
             }
-            settings.Add(new SettingPair("UpToData", false));
+            settings.Add(new SettingPair("UpToDate", false));
 
             SettingPair remoteUrl = Settings.Where((obj) => obj.Key == communityPatchType + "/" + "URI").First();
             if (remoteUrl == null)
