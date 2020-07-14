@@ -9,6 +9,9 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
     /// </summary>
     public interface ITask
     {
+        /// <summary>
+        /// Settings and data of the previous tasks
+        /// </summary>
         HashSet<SettingPair> Settings { get; }
 
         /// <summary>
