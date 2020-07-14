@@ -22,5 +22,17 @@ namespace CommunityPatchLauncher.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/LitzeYT/Settlers4Patch/master/Version.ini")]
+        public string VersionInformation {
+            get {
+                return ((string)(this["VersionInformation"]));
+            }
+            set {
+                this["VersionInformation"] = value;
+            }
+        }
     }
 }

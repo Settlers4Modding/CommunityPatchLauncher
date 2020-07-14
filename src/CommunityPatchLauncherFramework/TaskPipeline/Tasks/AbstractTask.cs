@@ -1,4 +1,6 @@
-﻿using CommunityPatchLauncherFramework.Settings.Manager;
+﻿using CommunityPatchLauncherFramework.Settings.Container;
+using CommunityPatchLauncherFramework.Settings.Manager;
+using System.Collections.Generic;
 
 namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
 {
@@ -15,6 +17,9 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         /// </summary>
         protected readonly bool abortOnError;
 
+        public HashSet<SettingPair> Settings => settings;
+        protected HashSet<SettingPair> settings;
+
         /// <summary>
         /// The current setting manager
         /// </summary>
@@ -29,9 +34,10 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         }
 
         /// <inheritdoc/>
-        public virtual void Init(SettingManager settingManager)
+        public virtual void Init(SettingManager settingManager, HashSet<SettingPair> settings)
         {
-            
+            this.settingManager = settingManager;
+            this.settings = settings;
         }
 
         /// <inheritdoc/>

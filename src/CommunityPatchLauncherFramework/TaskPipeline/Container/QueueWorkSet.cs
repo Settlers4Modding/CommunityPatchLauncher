@@ -1,4 +1,5 @@
-﻿using CommunityPatchLauncherFramework.Settings.Manager;
+﻿using CommunityPatchLauncherFramework.Settings.Container;
+using CommunityPatchLauncherFramework.Settings.Manager;
 using CommunityPatchLauncherFramework.TaskPipeline.EventData;
 using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
 using System;
@@ -13,7 +14,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Container
         /// <summary>
         /// This event will tell us if there is a progress change
         /// </summary>
-       public  event EventHandler<TaskProgressChanged> ProgressChanged;
+        public event EventHandler<TaskProgressChanged> ProgressChanged;
 
         /// <summary>
         /// This event will be fired if the task is complete
@@ -23,17 +24,21 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Container
         public uint Id { get; }
 
         int totalWorkLoad;
+        int alreadyDoneWorkload;
         private readonly SettingManager settingManager;
+        private HashSet<SettingPair> taskSettings;
 
         public QueueWorkSet(SettingManager settingManager, uint id)
         {
             Id = id;
             this.settingManager = settingManager;
+            taskSettings = new HashSet<SettingPair>();
         }
 
         public void Init()
         {
             totalWorkLoad = 0;
+            taskSettings.Clear();
         }
 
         public bool ExecuteTask(List<ITask> tasks)
@@ -42,7 +47,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Container
             totalWorkLoad = getCompleteWorkLoad(tasks);
             foreach (ITask task in tasks)
             {
-                task.Init(settingManager);
+                task.Init(settingManager, taskSettings);
                 if (task is IProgressTask progressTask)
                 {
                     progressTask.ProgressChanged += ProgressTask_ProgressChanged; ;
@@ -53,6 +58,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Container
                 {
                     break;
                 }
+                taskSettings = task.Settings;
             }
 
             return lastTaskState;
@@ -61,13 +67,18 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Container
         private void ProgressTask_TaskComplete(object sender, TaskDone e)
         {
             EventHandler<WorkerSetTaskDone> handler = TaskComplete;
-            handler?.Invoke(this, new WorkerSetTaskDone(e, sender));
+            alreadyDoneWorkload += e.TotalWorkload;
+            if (alreadyDoneWorkload == totalWorkLoad)
+            {
+                handler?.Invoke(this, new WorkerSetTaskDone(totalWorkLoad, sender));
+            }
+            ProgressTask_ProgressChanged(sender, new TaskProgressChanged(totalWorkLoad, alreadyDoneWorkload));
         }
 
         private void ProgressTask_ProgressChanged(object sender, TaskProgressChanged e)
         {
             EventHandler<TaskProgressChanged> handler = ProgressChanged;
-            handler?.Invoke(sender, e);
+            handler?.Invoke(sender, new TaskProgressChanged(totalWorkLoad, alreadyDoneWorkload + e.CurrentWorkload));
         }
 
         /// <summary>

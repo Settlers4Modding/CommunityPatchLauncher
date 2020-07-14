@@ -1,4 +1,6 @@
-﻿using CommunityPatchLauncherFramework.Settings.Manager;
+﻿using CommunityPatchLauncherFramework.Settings.Container;
+using CommunityPatchLauncherFramework.Settings.Manager;
+using System.Collections.Generic;
 
 namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
 {
@@ -7,6 +9,8 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
     /// </summary>
     public interface ITask
     {
+        HashSet<SettingPair> Settings { get; }
+
         /// <summary>
         /// The task worker should abort if there was an error
         /// </summary>
@@ -16,7 +20,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         /// Set the settings manager
         /// </summary>
         /// <param name="settingManager">The settings manager to use</param>
-        void Init(SettingManager settingManager);
+        void Init(SettingManager settingManager, HashSet<SettingPair> taskSettings);
 
         /// <summary>
         /// Execute this task
