@@ -1,8 +1,10 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Manager;
+using CommunityPatchLauncherFramework.TaskPipeline.Container;
+using CommunityPatchLauncherFramework.TaskPipeline.EventData;
 using CommunityPatchLauncherFramework.TaskPipeline.Factory;
 using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CommunityPatchLauncherFramework.TaskPipeline.Pipeline
@@ -13,9 +15,34 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Pipeline
     public class QueueWorker
     {
         /// <summary>
+        /// Object used to check if any list is locked
+        /// </summary>
+        private object listLock;
+
+        /// <summary>
+        /// Event if the progress has changed
+        /// </summary>
+        public event EventHandler<TaskProgressChanged> ProgressChanged;
+
+        /// <summary>
         /// The setting manager to use
         /// </summary>
         private readonly SettingManager settingManager;
+
+        /// <summary>
+        /// Next id to use for a workset
+        /// </summary>
+        private uint nextSetId;
+
+        /// <summary>
+        /// All the active work sets,
+        /// </summary>
+        private List<QueueWorkSet> activeSet;
+
+        /// <summary>
+        /// Pool with ready to use work sets
+        /// </summary>
+        private Queue<QueueWorkSet> workSetPool;
 
         /// <summary>
         /// Create a new instance of this task planner
@@ -23,6 +50,11 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Pipeline
         /// <param name="settingManager"></param>
         public QueueWorker(SettingManager settingManager)
         {
+            nextSetId = 0;
+            activeSet = new List<QueueWorkSet>();
+            workSetPool = new Queue<QueueWorkSet>();
+            listLock = new object();
+
             this.settingManager = settingManager;
         }
 
@@ -43,49 +75,57 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Pipeline
         /// <returns>True if the task execution was successful</returns>
         public bool ExecuteTasks(List<ITask> tasks)
         {
-            bool lastTaskState = true;
-            foreach (ITask task in tasks)
+            QueueWorkSet queueWorkSet = null;
+            lock (listLock)
             {
-                task.Init(settingManager);
-                lastTaskState = task.Execute(lastTaskState);
-                if (lastTaskState == false && task.AbortOnError)
+                if (workSetPool.Count != 0)
                 {
-                    break;
+                    queueWorkSet = workSetPool.Dequeue();
+                }
+                queueWorkSet = queueWorkSet ?? new QueueWorkSet(settingManager, nextSetId++);
+                queueWorkSet.Init();
+                queueWorkSet.TaskComplete += QueueWorkSet_TaskComplete;
+                queueWorkSet.ProgressChanged += QueueWorkSet_ProgressChanged;
+                activeSet.Add(queueWorkSet);
+            }
+
+            queueWorkSet.ExecuteTask(tasks);
+            
+
+            return true;
+        }
+
+        /// <summary>
+        /// This method will forward the change event
+        /// </summary>
+        /// <param name="sender">The sender of the event</param>
+        /// <param name="e">The event data</param>
+        private void QueueWorkSet_ProgressChanged(object sender, TaskProgressChanged e)
+        {
+            EventHandler<TaskProgressChanged> handler = ProgressChanged;
+            handler?.Invoke(sender, e);
+        }
+
+        /// <summary>
+        /// This method will forward the task complete event
+        /// </summary>
+        /// <param name="sender">The sender of the event</param>
+        /// <param name="e">The event data</param>
+        private void QueueWorkSet_TaskComplete(object sender, WorkerSetTaskDone e)
+        {
+            if (sender is QueueWorkSet workSet)
+            {
+                lock (listLock)
+                {
+                    activeSet.RemoveAll((obj) => obj.Id == workSet.Id);
+                    workSetPool.Enqueue(workSet);
+                    workSet.ProgressChanged -= QueueWorkSet_ProgressChanged;
+                    workSet.TaskComplete -= QueueWorkSet_TaskComplete;
+
+                    QueueWorkSet_ProgressChanged(e.senderTask, new TaskProgressChanged(e.TotalWorkload, e.TotalWorkload));
                 }
             }
-
-            return lastTaskState;
         }
-
-        /// <summary>
-        /// Get the complete work load of the tasks to do
-        /// </summary>
-        /// <param name="tasks">All the tasks to checks</param>
-        /// <returns>The total workload to do</returns>
-        private int getCompleteWorkLoad(List<ITask> tasks)
-        {
-            List<ITask> progressTasks = tasks.FindAll((task) => {
-                return task is IProgressTask;
-            });
-
-            return getCompleteWorkLoad(progressTasks.Cast<IProgressTask>().ToList());
-        }
-
-        /// <summary>
-        /// Get the complete work load of the tasks to do
-        /// </summary>
-        /// <param name="tasks">All the tasks to checks</param>
-        /// <returns>The total workload to do</returns>
-        private int getCompleteWorkLoad(List<IProgressTask> tasks)
-        {
-            int returnValue = 0;
-            foreach (IProgressTask task in tasks)
-            {
-                returnValue += task.GetStepCount();
-            }
-            return returnValue;
-        }
-
 
         /// <summary>
         /// This will create the tasks in the factory and run them async
