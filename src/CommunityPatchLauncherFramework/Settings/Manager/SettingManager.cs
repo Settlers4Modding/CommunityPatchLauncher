@@ -68,6 +68,18 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         }
 
         /// <summary>
+        /// This will directly get you the value from a setting pair
+        /// </summary>
+        /// <typeparam name="T">The type to load</typeparam>
+        /// <param name="key">The key to search for</param>
+        /// <returns>The requested setting</returns>
+        public T GetValue<T>(string key)
+        {
+            SettingPair pair = GetValue(key);
+            return pair == null ? default : pair.GetValue<T>();
+        }
+
+        /// <summary>
         /// Write a value to the setting file using the default connection string
         /// </summary>
         /// <param name="key">The key of the setting to use</param>
