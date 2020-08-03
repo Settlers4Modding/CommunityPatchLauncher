@@ -64,17 +64,6 @@ namespace CommunityPatchLauncher.Tasks
         /// <inheritdoc>
         public bool Execute(bool previousTaskState)
         {
-            SettingPair upToDate = Settings.Where((obj) => obj.Key == "UpToDate").First();
-            if (upToDate == null)
-            {
-                TaskDone();
-                return false;
-            }
-            if (upToDate.GetValue<bool>())
-            {
-                TaskDone();
-                return true;
-            }
             SettingPair filePath = Settings.Where((obj) => obj.Key == "PatchInstaller").First();
 
             if (filePath == null)
