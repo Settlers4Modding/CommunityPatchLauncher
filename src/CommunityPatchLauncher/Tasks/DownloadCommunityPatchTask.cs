@@ -60,7 +60,7 @@ namespace CommunityPatchLauncher.Tasks
 
         private string getDownloadPath()
         {
-            string downloadFolder = settingManager.GetValue<string>("downloadFolder");
+            string downloadFolder = settingManager.GetValue<string>("DownloadFolder");
             if (downloadFolder == null || downloadFolder == "" || !Directory.Exists(downloadFolder))
             {
                 FileInfo file = new FileInfo(settingManager.SettingFilePath);
@@ -70,7 +70,7 @@ namespace CommunityPatchLauncher.Tasks
                 {
                     Directory.CreateDirectory(downloadFolder);
                 }
-                settingManager.AddValue("downloadFolder", downloadFolder);
+                settingManager.AddValue("DownloadFolder", downloadFolder);
             }
 
             return downloadFolder;

@@ -87,8 +87,8 @@ namespace CommunityPatchLauncher.Windows
         private void B_Ok_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedLanguage = CB_LanguageSelector.SelectedItem as ComboBoxItem;
-            settingManager.AddValue("language", selectedLanguage.Tag.ToString());
-            settingManager.AddValue("welcomeShown", CB_Agree.IsChecked);
+            settingManager.AddValue("Language", selectedLanguage.Tag.ToString());
+            settingManager.AddValue("WelcomeShown", CB_Agree.IsChecked);
             settingManager.SaveSettings();
             ShowIfNeeded();
         }
@@ -102,7 +102,7 @@ namespace CommunityPatchLauncher.Windows
             {
                 return;
             }
-            SettingPair showWelcome = settingManager.GetValue("welcomeShown");
+            SettingPair showWelcome = settingManager.GetValue("WelcomeShown");
             bool welcomeShown = showWelcome != null && showWelcome.GetValue<bool>();
             if (welcomeShown)
             {
