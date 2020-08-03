@@ -5,13 +5,24 @@ using System.Net;
 
 namespace CommunityPatchLauncher.Tasks
 {
-    
+    /// <summary>
+    /// Download and parse the version information
+    /// </summary>
     public class DownloadVersionInformation : DownloadFileTask
     {
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="url">The url to download the information from</param>
         public DownloadVersionInformation(string url) : base(url)
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="previousTaskState"></param>
+        /// <returns></returns>
         public override bool Execute(bool previousTaskState)
         {
             MemoryStream dataStream = DownloadToMemory();

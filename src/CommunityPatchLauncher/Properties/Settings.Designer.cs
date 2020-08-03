@@ -34,5 +34,65 @@ namespace CommunityPatchLauncher.Properties {
                 this["VersionInformation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public byte Normal {
+            get {
+                return ((byte)(this["Normal"]));
+            }
+            set {
+                this["Normal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public byte Fast {
+            get {
+                return ((byte)(this["Fast"]));
+            }
+            set {
+                this["Fast"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public byte Faster {
+            get {
+                return ((byte)(this["Faster"]));
+            }
+            set {
+                this["Faster"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public byte Testing {
+            get {
+                return ((byte)(this["Testing"]));
+            }
+            set {
+                this["Testing"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1124076")]
+        public long PatchPosition {
+            get {
+                return ((long)(this["PatchPosition"]));
+            }
+            set {
+                this["PatchPosition"] = value;
+            }
+        }
     }
 }
