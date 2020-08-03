@@ -16,7 +16,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         /// <summary>
         /// The private readonly abort error bool
         /// </summary>
-        protected readonly bool abortOnError;
+        protected bool abortOnError;
 
         /// <inheritdoc/>
         public HashSet<SettingPair> Settings => settings;
