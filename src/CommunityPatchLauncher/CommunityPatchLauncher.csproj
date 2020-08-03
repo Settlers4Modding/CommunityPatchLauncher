@@ -101,6 +101,7 @@
     <Compile Include="Tasks\DownloadCommunityPatchTask.cs" />
     <Compile Include="Tasks\DownloadFileTask.cs" />
     <Compile Include="Tasks\DownloadVersionInformation.cs" />
+    <Compile Include="Tasks\StartGameTask.cs" />
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>

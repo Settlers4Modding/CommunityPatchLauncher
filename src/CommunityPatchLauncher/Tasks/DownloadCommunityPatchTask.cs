@@ -17,23 +17,18 @@ namespace CommunityPatchLauncher.Tasks
         public override bool Execute(bool previousTaskState)
         {
             string patchVersion = communityPatchType + "/" + "Version";
-            SettingPair version = Settings.Where((obj) => obj.Key == patchVersion).First();
+            string version = GetSetting<string>(patchVersion);
             if (version == null)
             {
                 return false;
             }
-            Version remoteVersion = new Version(version.GetValue<string>());
+            Version remoteVersion = new Version(version);
             string localPatchVersion = settingManager.GetValue<string>(patchVersion) ?? "0.0.0.0";
             Version localVersion = new Version(localPatchVersion);
 
 
 
-            SettingPair remoteUrl = Settings.Where((obj) => obj.Key == communityPatchType + "/" + "URI").First();
-            if (remoteUrl == null)
-            {
-                return false;
-            }
-            string downloadPath = remoteUrl.GetValue<string>();
+            string downloadPath = GetSetting<string>(communityPatchType + "/" + "URI");
             if (downloadPath == null)
             {
                 return false;
@@ -45,7 +40,7 @@ namespace CommunityPatchLauncher.Tasks
 
             settings.Add(new SettingPair("PatchInstaller", targetFileName));
             settingManager.AddValue(patchVersion, remoteVersion.ToString());
-            if (localVersion < remoteVersion)
+            if (!File.Exists(targetFileName) || localVersion < remoteVersion)
             {
                 if (File.Exists(targetFileName))
                 {
@@ -53,7 +48,7 @@ namespace CommunityPatchLauncher.Tasks
                 }
                 DownloadFile(targetFileName);
             }
-            DownloadDone();
+            TaskDone();
             settingManager.SaveSettings();
             return true;
         }

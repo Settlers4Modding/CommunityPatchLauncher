@@ -1,19 +1,14 @@
-﻿using CommunityPatchLauncherFramework.TaskPipeline.EventData;
-using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
+﻿using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
 using System;
 using System.Net;
 
 namespace CommunityPatchLauncher.Tasks
 {
-    public class DownloadFileTask : AbstractTask, IProgressTask
+    public class DownloadFileTask : ProgressAbstractTask
     {
         protected Uri url;
-        private readonly int totalWorkload;
 
         private int lastStep;
-
-        public event EventHandler<TaskProgressChanged> ProgressChanged;
-        public event EventHandler<TaskDone> TaskComplete;
 
         public DownloadFileTask()
         {
@@ -55,15 +50,9 @@ namespace CommunityPatchLauncher.Tasks
         public override bool Execute(bool previousTaskState)
         {
             DownloadFile(url, @"C:\Users\Xanat\AppData\Local\Temp\testload.txt");
-            DownloadDone();
+            TaskDone();
 
             return true;
-        }
-
-        protected void DownloadDone()
-        {
-            EventHandler<TaskDone> handler = TaskComplete;
-            handler?.Invoke(this, new TaskDone(totalWorkload));
         }
 
         protected void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -74,14 +63,8 @@ namespace CommunityPatchLauncher.Tasks
             {
                 return;
             }
-            EventHandler<TaskProgressChanged> handler = ProgressChanged;
-            handler?.Invoke(this, new TaskProgressChanged(totalWorkload, writeablePercentage));
+            ProgressHasChanged(writeablePercentage);
             lastStep = writeablePercentage;
-        }
-
-        public int GetStepCount()
-        {
-            return totalWorkload;
         }
     }
 }

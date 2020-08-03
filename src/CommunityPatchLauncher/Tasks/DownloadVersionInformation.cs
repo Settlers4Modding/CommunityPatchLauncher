@@ -1,14 +1,11 @@
 ﻿using CommunityPatchLauncher.Settings.Reader;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommunityPatchLauncher.Tasks
 {
+    
     public class DownloadVersionInformation : DownloadFileTask
     {
         public DownloadVersionInformation(string url) : base(url)
@@ -30,7 +27,7 @@ namespace CommunityPatchLauncher.Tasks
             dataStream = null;
             IniStringReader iniReader = new IniStringReader();
             settings = iniReader.LoadSettings(content);
-            DownloadDone();
+            TaskDone();
             return true;
         }
 
