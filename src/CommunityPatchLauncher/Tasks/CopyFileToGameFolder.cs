@@ -1,11 +1,7 @@
 ﻿using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommunityPatchLauncher.Tasks
 {
@@ -15,7 +11,7 @@ namespace CommunityPatchLauncher.Tasks
         {
             string extractPath = GetSetting<string>("ExtractPath");
             string targetFolder = settingManager.GetValue<string>("GameFolder");
-            if (targetFolder == null || extractPath == null)
+            if (targetFolder == null || extractPath == null || !File.Exists(extractPath + "S4_Main.exe"))
             {
                 TaskDone();
                 return false;
