@@ -51,7 +51,7 @@ namespace CommunityPatchLauncher.Tasks
                 string targetFileName = GetDownloadPath() + "\\" + patch + extension;
                 settings.Add(new SettingPair("PatchInstaller", targetFileName));
                 settingManager.AddValue(GetPatchVersion(patch), remoteVersion.ToString());
-                
+
                 if (!File.Exists(targetFileName) || localVersion < remoteVersion)
                 {
                     if (File.Exists(targetFileName))

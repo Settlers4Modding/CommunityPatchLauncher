@@ -27,7 +27,7 @@ namespace CommunityPatchLauncher.Tasks
                 return false;
             }
             string unzipFolder = Path.GetTempPath() + Guid.NewGuid() + "\\";
-            
+
             using (ZipArchive archive = new ZipArchive(new FileStream(zipFilePath, FileMode.Open), ZipArchiveMode.Read))
             {
                 int filesToUnzip = archive.Entries.Count;

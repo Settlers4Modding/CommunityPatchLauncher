@@ -18,7 +18,7 @@ namespace CommunityPatchLauncher.Commands
         public override void Execute(object parameter)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            
+
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
