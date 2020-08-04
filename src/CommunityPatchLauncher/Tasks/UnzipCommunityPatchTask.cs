@@ -18,7 +18,7 @@ namespace CommunityPatchLauncher.Tasks
             if (filePath == null)
             {
                 TaskDone();
-                return true;
+                return false;
             }
             string zipFilePath = filePath;
             if (!File.Exists(zipFilePath))

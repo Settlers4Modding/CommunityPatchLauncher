@@ -39,6 +39,7 @@ namespace CommunityPatchLauncher.Tasks
         public DownloadCommunityPatchTask(string communityPatchType)
         {
             this.communityPatchType = communityPatchType;
+            abortOnError = false;
         }
 
         /// <inheritdoc/>
@@ -48,12 +49,17 @@ namespace CommunityPatchLauncher.Tasks
             Version localVersion = GetLocalVersion(communityPatchType);
 
             string downloadPath = GetDownloadString(communityPatchType);
-            string extension = "." + downloadPath.Split('.').Last();
+            string fileEnd = downloadPath == string.Empty ? "7z" : downloadPath.Split('.').Last();
+            string extension = "." + fileEnd;
 
-            url = new Uri(downloadPath);
             string targetFileName = GetDownloadPath() + "\\" + communityPatchType + extension;
 
             settings.Add(new SettingPair("PatchInstaller", targetFileName));
+            if (remoteVersion == null)
+            {
+                return false;
+            }
+            url = new Uri(downloadPath);
             settingManager.AddValue(GetPatchVersion(communityPatchType), remoteVersion.ToString());
             if (!File.Exists(targetFileName) || localVersion < remoteVersion)
             {

@@ -38,6 +38,10 @@ namespace CommunityPatchLauncher.Tasks
             {
                 currentFile++;
                 Version remoteVersion = GetRemoteVersion(patch);
+                if (remoteVersion == null)
+                {
+                    return false;
+                }
                 Version localVersion = GetLocalVersion(patch);
 
                 string downloadPath = GetDownloadString(patch);
