@@ -32,7 +32,11 @@ namespace CommunityPatchLauncher.Tasks.Factories
         /// <param name="versionInformationUrl">The url to get the version information from</param>
         /// <param name="patch">The name of the patch file to get</param>
         /// <param name="speedMode">The speed mode to use</param>
-        public LaunchGameFactory(string versionInformationUrl, AvailablePatches patch, SpeedModes speedMode)
+        public LaunchGameFactory(
+            string versionInformationUrl,
+            AvailablePatches patch,
+            SpeedModes speedMode
+            )
         {
             this.versionInformationUrl = versionInformationUrl;
             patchName = patch;
@@ -45,7 +49,12 @@ namespace CommunityPatchLauncher.Tasks.Factories
         /// <param name="versionInformationUrl">The url to get the version information from</param>
         /// <param name="patch">The name of the patch file to get</param>
         /// <param name="speedMode">The speed mode to use</param>
-        public LaunchGameFactory(string versionInformationUrl, string patch, SpeedModes speedMode) : this(versionInformationUrl, AvailablePatches.HistoryEdition, speedMode)
+        public LaunchGameFactory(
+            string versionInformationUrl,
+            string patch,
+            SpeedModes speedMode
+            )
+            : this(versionInformationUrl, AvailablePatches.HistoryEdition, speedMode)
         {
             Enum.TryParse(patch, out patchName);
         }
