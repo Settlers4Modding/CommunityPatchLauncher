@@ -14,6 +14,11 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         protected int totalWorkload;
 
         /// <summary>
+        /// Was the done signal send already
+        /// </summary>
+        private bool doneSend;
+
+        /// <summary>
         /// Did the progress change
         /// </summary>
         public event EventHandler<TaskProgressChanged> ProgressChanged;
@@ -29,6 +34,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         public ProgressAbstractTask()
         {
             totalWorkload = 100;
+            doneSend = false;
         }
 
         /// <inheritdoc>
@@ -42,8 +48,13 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         /// </summary>
         protected virtual void TaskDone()
         {
+            if (doneSend)
+            {
+                return;
+            }
             EventHandler<TaskDone> handler = TaskComplete;
             handler?.Invoke(this, new TaskDone(totalWorkload));
+            doneSend = true;
         }
 
         /// <summary>
