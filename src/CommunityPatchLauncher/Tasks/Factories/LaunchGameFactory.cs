@@ -29,12 +29,12 @@ namespace CommunityPatchLauncher.Tasks.Factories
         /// Create a new factory 
         /// </summary>
         /// <param name="versionInformationUrl">The url to get the version information from</param>
-        /// <param name="patchName">The name of the patch file to get</param>
+        /// <param name="patch">The name of the patch file to get</param>
         /// <param name="speedMode">The speed mode to use</param>
-        public LaunchGameFactory(string versionInformationUrl, string patchName, SpeedModes speedMode)
+        public LaunchGameFactory(string versionInformationUrl, AvailablePatches patch, SpeedModes speedMode)
         {
             this.versionInformationUrl = versionInformationUrl;
-            this.patchName = patchName;
+            this.patchName = patch;
             this.speedMode = speedMode;
         }
 
