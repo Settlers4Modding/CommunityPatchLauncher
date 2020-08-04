@@ -35,7 +35,7 @@ namespace CommunityPatchLauncher.Tasks
                 foreach (ZipArchiveEntry entry in archive.Entries)
                 {
                     currentFile++;
-                    int currentProgress = (int)((currentFile / (float)filesToUnzip) * 100);
+                    int currentProgress = (int)(currentFile / (float)filesToUnzip * 100);
                     FileInfo info = new FileInfo(unzipFolder + entry.FullName);
                     if (!Directory.Exists(info.DirectoryName))
                     {
