@@ -1,6 +1,7 @@
 ﻿using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncherFramework.TaskPipeline.Factory;
 using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
+using System;
 using System.Collections.Generic;
 
 namespace CommunityPatchLauncher.Tasks.Factories
@@ -23,7 +24,7 @@ namespace CommunityPatchLauncher.Tasks.Factories
         /// <summary>
         /// The name of the patch file to get
         /// </summary>
-        private readonly string patchName;
+        private readonly AvailablePatches patchName;
 
         /// <summary>
         /// Create a new factory 
@@ -34,8 +35,19 @@ namespace CommunityPatchLauncher.Tasks.Factories
         public LaunchGameFactory(string versionInformationUrl, AvailablePatches patch, SpeedModes speedMode)
         {
             this.versionInformationUrl = versionInformationUrl;
-            this.patchName = patch;
+            patchName = patch;
             this.speedMode = speedMode;
+        }
+
+        /// <summary>
+        /// Create a new factory 
+        /// </summary>
+        /// <param name="versionInformationUrl">The url to get the version information from</param>
+        /// <param name="patch">The name of the patch file to get</param>
+        /// <param name="speedMode">The speed mode to use</param>
+        public LaunchGameFactory(string versionInformationUrl, string patch, SpeedModes speedMode) : this(versionInformationUrl, AvailablePatches.HistoryEdition, speedMode)
+        {
+            Enum.TryParse(patch, out patchName);
         }
 
         /// <inheritdoc/>
