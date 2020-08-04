@@ -1,19 +1,39 @@
-﻿using CommunityPatchLauncherFramework.Settings.Container;
+﻿using CommunityPatchLauncher.Enums;
+using CommunityPatchLauncherFramework.Settings.Container;
 using System;
 using System.IO;
 using System.Linq;
 
 namespace CommunityPatchLauncher.Tasks
 {
-    public class DownloadCommunityPatchTask : DownloadFileTask
+    /// <summary>
+    /// Download the community patch
+    /// </summary>
+    internal class DownloadCommunityPatchTask : DownloadFileTask
     {
+        /// <summary>
+        /// The type of patch to download
+        /// </summary>
         private readonly string communityPatchType;
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="patch">The community patch type to download</param>
+        public DownloadCommunityPatchTask(AvailablePatches patch) : this(patch.ToString())
+        {
+        }
+
+        /// <summary>
+        /// Create a new instance of this clss
+        /// </summary>
+        /// <param name="communityPatchType">The community patch type to download</param>
         public DownloadCommunityPatchTask(string communityPatchType)
         {
             this.communityPatchType = communityPatchType;
         }
 
+        /// <inheritdoc/>
         public override bool Execute(bool previousTaskState)
         {
             string patchVersion = communityPatchType + "/" + "Version";
@@ -25,8 +45,6 @@ namespace CommunityPatchLauncher.Tasks
             Version remoteVersion = new Version(version);
             string localPatchVersion = settingManager.GetValue<string>(patchVersion) ?? "0.0.0.0";
             Version localVersion = new Version(localPatchVersion);
-
-
 
             string downloadPath = GetSetting<string>(communityPatchType + "/" + "URI");
             if (downloadPath == null)
@@ -53,6 +71,10 @@ namespace CommunityPatchLauncher.Tasks
             return true;
         }
 
+        /// <summary>
+        /// Get the path to download the file into
+        /// </summary>
+        /// <returns>The download path for new installations</returns>
         private string getDownloadPath()
         {
             string downloadFolder = settingManager.GetValue<string>("DownloadFolder");

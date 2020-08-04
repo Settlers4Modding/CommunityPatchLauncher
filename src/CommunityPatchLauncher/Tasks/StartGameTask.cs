@@ -4,6 +4,9 @@ using System.IO;
 
 namespace CommunityPatchLauncher.Tasks
 {
+    /// <summary>
+    /// This class will try to start the game
+    /// </summary>
     internal class StartGameTask : AbstractTask
     {
         /// <summary>
