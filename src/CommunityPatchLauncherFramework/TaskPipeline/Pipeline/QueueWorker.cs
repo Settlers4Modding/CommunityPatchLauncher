@@ -90,7 +90,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Pipeline
             }
 
             queueWorkSet.ExecuteTask(tasks);
-            
+
 
             return true;
         }

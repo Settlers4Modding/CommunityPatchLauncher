@@ -16,6 +16,7 @@ namespace CommunityPatchLauncher.Tasks
         /// <param name="url">The url to download the information from</param>
         public DownloadVersionInformation(string url) : base(url)
         {
+            abortOnError = false;
         }
 
         /// <inheritdoc/>

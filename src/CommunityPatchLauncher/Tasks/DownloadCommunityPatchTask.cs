@@ -17,6 +17,14 @@ namespace CommunityPatchLauncher.Tasks
         private readonly string communityPatchType;
 
         /// <summary>
+        /// Create a new instance of this class and reset it to the vanilla version
+        /// </summary>
+        public DownloadCommunityPatchTask() : this(AvailablePatches.HistoryEdition)
+        {
+
+        }
+
+        /// <summary>
         /// Create a new instance of this class
         /// </summary>
         /// <param name="patch">The community patch type to download</param>
@@ -31,33 +39,28 @@ namespace CommunityPatchLauncher.Tasks
         public DownloadCommunityPatchTask(string communityPatchType)
         {
             this.communityPatchType = communityPatchType;
+            abortOnError = false;
         }
 
         /// <inheritdoc/>
         public override bool Execute(bool previousTaskState)
         {
-            string patchVersion = communityPatchType + "/" + "Version";
-            string version = GetSetting<string>(patchVersion);
-            if (version == null)
-            {
-                return false;
-            }
-            Version remoteVersion = new Version(version);
-            string localPatchVersion = settingManager.GetValue<string>(patchVersion) ?? "0.0.0.0";
-            Version localVersion = new Version(localPatchVersion);
+            Version remoteVersion = GetRemoteVersion(communityPatchType);
+            Version localVersion = GetLocalVersion(communityPatchType);
 
-            string downloadPath = GetSetting<string>(communityPatchType + "/" + "URI");
-            if (downloadPath == null)
-            {
-                return false;
-            }
-            string extension = "." + downloadPath.Split('.').Last();
+            string downloadPath = GetDownloadString(communityPatchType);
+            string fileEnd = downloadPath == string.Empty ? "7z" : downloadPath.Split('.').Last();
+            string extension = "." + fileEnd;
 
-            url = new Uri(downloadPath);
-            string targetFileName = getDownloadPath() + "\\" + communityPatchType + extension;
+            string targetFileName = GetDownloadPath() + "\\" + communityPatchType + extension;
 
             settings.Add(new SettingPair("PatchInstaller", targetFileName));
-            settingManager.AddValue(patchVersion, remoteVersion.ToString());
+            if (remoteVersion == null)
+            {
+                return false;
+            }
+            url = new Uri(downloadPath);
+            settingManager.AddValue(GetPatchVersion(communityPatchType), remoteVersion.ToString());
             if (!File.Exists(targetFileName) || localVersion < remoteVersion)
             {
                 if (File.Exists(targetFileName))
@@ -72,10 +75,65 @@ namespace CommunityPatchLauncher.Tasks
         }
 
         /// <summary>
+        /// Get the patch version string for searching
+        /// </summary>
+        /// <param name="communityPatch">The name of the patch to get the uri from</param>
+        /// <returns>The string to search for in the settings</returns>
+        protected string GetPatchVersion(string communityPatch)
+        {
+            return communityPatch + "/" + "Version";
+        }
+
+        /// <summary>
+        /// Get the local version for a given patch
+        /// </summary>
+        /// <param name="communityPatch">The name of the patch to get the uri from</param>
+        /// <returns>The local version</returns>
+        protected Version GetLocalVersion(string communityPatch)
+        {
+            string localPatchVersion = settingManager.GetValue<string>(GetPatchVersion(communityPatch)) ?? "0.0.0.0";
+            return new Version(localPatchVersion);
+        }
+
+        /// <summary>
+        /// Get the version of the remote patch
+        /// </summary>
+        /// <param name="communityPatch">The name of the patch to get the uri from</param>
+        /// <returns>The remote version</returns>
+        protected Version GetRemoteVersion(string communityPatch)
+        {
+            string version = GetSetting<string>(GetPatchVersion(communityPatch));
+            if (version == null)
+            {
+                return null;
+            }
+            if (!version.Contains("."))
+            {
+                int outValue = 0;
+                if (int.TryParse(version, out outValue))
+                {
+                    version += ".0";
+                }
+            }
+            return new Version(version);
+        }
+
+        /// <summary>
+        /// Get the string where to download
+        /// </summary>
+        /// <param name="communityPatch">The name of the patch to get the uri from</param>
+        /// <returns>The string to download the file from</returns>
+        protected string GetDownloadString(string communityPatch)
+        {
+            string downloadPath = GetSetting<string>(communityPatchType + "/" + "URI");
+            return downloadPath ?? string.Empty;
+        }
+
+        /// <summary>
         /// Get the path to download the file into
         /// </summary>
         /// <returns>The download path for new installations</returns>
-        private string getDownloadPath()
+        protected string GetDownloadPath()
         {
             string downloadFolder = settingManager.GetValue<string>("DownloadFolder");
             if (downloadFolder == null || downloadFolder == "" || !Directory.Exists(downloadFolder))

@@ -18,7 +18,7 @@ namespace CommunityPatchLauncher.Tasks
             if (filePath == null)
             {
                 TaskDone();
-                return true;
+                return false;
             }
             string zipFilePath = filePath;
             if (!File.Exists(zipFilePath))
@@ -27,7 +27,7 @@ namespace CommunityPatchLauncher.Tasks
                 return false;
             }
             string unzipFolder = Path.GetTempPath() + Guid.NewGuid() + "\\";
-            
+
             using (ZipArchive archive = new ZipArchive(new FileStream(zipFilePath, FileMode.Open), ZipArchiveMode.Read))
             {
                 int filesToUnzip = archive.Entries.Count;

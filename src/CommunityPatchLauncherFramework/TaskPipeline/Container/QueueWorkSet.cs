@@ -109,7 +109,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Container
                 handler?.Invoke(this, new WorkerSetTaskDone(totalWorkLoad, sender));
             }
             ProgressTask_ProgressChanged(sender, new TaskProgressChanged(totalWorkLoad, 0));
-            
+
         }
 
         /// <summary>
@@ -130,7 +130,8 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Container
         /// <returns>The total workload to do</returns>
         private int getCompleteWorkLoad(List<ITask> tasks)
         {
-            List<ITask> progressTasks = tasks.FindAll((task) => {
+            List<ITask> progressTasks = tasks.FindAll((task) =>
+            {
                 return task is IProgressTask;
             });
 

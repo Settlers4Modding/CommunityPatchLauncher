@@ -100,9 +100,11 @@
     <Compile Include="Settings\Reader\IniStringReader.cs" />
     <Compile Include="Settings\Reader\WpfPropertyReader.cs" />
     <Compile Include="Tasks\CopyFileToGameFolder.cs" />
+    <Compile Include="Tasks\DownloadAllPatches.cs" />
     <Compile Include="Tasks\DownloadCommunityPatchTask.cs" />
     <Compile Include="Tasks\DownloadFileTask.cs" />
     <Compile Include="Tasks\DownloadVersionInformation.cs" />
+    <Compile Include="Tasks\Factories\DownloadOfflineFilesFactory.cs" />
     <Compile Include="Tasks\Factories\LaunchGameFactory.cs" />
     <Compile Include="Tasks\PatchGameSpeedTask.cs" />
     <Compile Include="Tasks\StartGameTask.cs" />
