@@ -108,7 +108,8 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Container
             {
                 handler?.Invoke(this, new WorkerSetTaskDone(totalWorkLoad, sender));
             }
-            ProgressTask_ProgressChanged(sender, new TaskProgressChanged(totalWorkLoad, alreadyDoneWorkload));
+            ProgressTask_ProgressChanged(sender, new TaskProgressChanged(totalWorkLoad, 0));
+            
         }
 
         /// <summary>
