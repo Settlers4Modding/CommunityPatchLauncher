@@ -19,7 +19,7 @@ namespace CommunityPatchLauncher.Commands
         {
             if (parameter is SettingManager manager)
             {
-                SettingPair language = manager.GetValue("language");
+                SettingPair language = manager.GetValue("Language");
                 if (language != null)
                 {
                     data = language.GetValue<string>();

@@ -22,9 +22,9 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         private readonly ISettingWriter writer;
 
         /// <summary>
-        /// The default settings path to use for loading
+        /// The setting path to use for loading
         /// </summary>
-        private readonly string settingsPath;
+        public string SettingFilePath { get; }
 
         /// <summary>
         /// All the settings in the manager
@@ -46,7 +46,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         {
             this.reader = reader;
             this.writer = writer;
-            this.settingsPath = settingsPath;
+            SettingFilePath = settingsPath;
 
             settingsLoaded = false;
             Reload();
@@ -105,7 +105,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// </summary>
         public void Reload()
         {
-            settings = reader.LoadSettings(settingsPath);
+            settings = reader.LoadSettings(SettingFilePath);
             settingsLoaded = true;
         }
 
@@ -116,7 +116,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         public bool SaveSettings()
         {
             settingsLoaded = false;
-            return writer.WriteSettings(settings, settingsPath);
+            return writer.WriteSettings(settings, SettingFilePath);
         }
     }
 }

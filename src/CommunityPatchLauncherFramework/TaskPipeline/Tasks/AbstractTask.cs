@@ -1,6 +1,7 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Container;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
 {
@@ -15,7 +16,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         /// <summary>
         /// The private readonly abort error bool
         /// </summary>
-        protected readonly bool abortOnError;
+        protected bool abortOnError;
 
         /// <inheritdoc/>
         public HashSet<SettingPair> Settings => settings;
@@ -43,6 +44,38 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         {
             this.settingManager = settingManager;
             this.settings = settings;
+        }
+
+        /// <summary>
+        /// Get the setting pair
+        /// </summary>
+        /// <param name="key">They key to search for</param>
+        /// <returns>The setting pair or null</returns>
+        public SettingPair GetSetting(string key)
+        {
+            IReadOnlyList<SettingPair> matchingSettings = settings.Where((obj) => obj.Key == key).ToList();
+            if (matchingSettings.Count == 0)
+            {
+                return default;
+            }
+            return matchingSettings.First();
+        }
+
+        /// <summary>
+        /// Get the setting of a given type
+        /// </summary>
+        /// <typeparam name="T">The type of setting to get</typeparam>
+        /// <param name="key">The key to search for</param>
+        /// <returns>The setting value as given type</returns>
+        public T GetSetting<T>(string key)
+        {
+            SettingPair pair = GetSetting(key);
+            if (pair == null)
+            {
+                return default;
+            }
+
+            return pair.GetValue<T>();
         }
 
         /// <inheritdoc/>
