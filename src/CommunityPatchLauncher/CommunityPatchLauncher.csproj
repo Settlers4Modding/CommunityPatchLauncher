@@ -87,6 +87,7 @@
     <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
+    <Compile Include="Enums\AvailablePatches.cs" />
     <Compile Include="Enums\SpeedModes.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
     <Compile Include="Factories\LocalDocumentManagerFactory.cs" />
