@@ -8,7 +8,7 @@ namespace CommunityPatchLauncher.Tasks
     /// <summary>
     /// Download and parse the version information
     /// </summary>
-    public class DownloadVersionInformation : DownloadFileTask
+    internal class DownloadVersionInformation : DownloadFileTask
     {
         /// <summary>
         /// Create a new instance of this class
@@ -18,11 +18,7 @@ namespace CommunityPatchLauncher.Tasks
         {
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="previousTaskState"></param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public override bool Execute(bool previousTaskState)
         {
             MemoryStream dataStream = DownloadToMemory();
@@ -42,6 +38,10 @@ namespace CommunityPatchLauncher.Tasks
             return true;
         }
 
+        /// <summary>
+        /// Download the file into the memory
+        /// </summary>
+        /// <returns>The memorystream with the downloaded data</returns>
         private MemoryStream DownloadToMemory()
         {
             MemoryStream stream = null;
