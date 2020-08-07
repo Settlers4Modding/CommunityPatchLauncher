@@ -3,8 +3,9 @@
     /// <summary>
     /// The game speed modes
     /// </summary>
-    internal enum SpeedModes
+    public enum SpeedModes
     {
+        Unknown,
         Normal,
         Fast,
         Faster,

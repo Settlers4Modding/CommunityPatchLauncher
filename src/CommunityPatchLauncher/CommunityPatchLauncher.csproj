@@ -78,6 +78,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BindingData\Container\Patch.cs" />
+    <Compile Include="BindingData\MultiBinding\GameSpeedConverter.cs" />
+    <Compile Include="BindingData\MultiBinding\LaunchGameConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="CommandDataContainer\LaunchGameData.cs" />
     <Compile Include="Commands\BaseDataCommand.cs" />
@@ -121,6 +123,8 @@
     <Compile Include="UserControls\RankedUserControl.xaml.cs" />
     <Compile Include="Tasks\StartGameTask.cs" />
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\LaunchGameViewModel.cs" />
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
