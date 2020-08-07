@@ -8,12 +8,13 @@ namespace CommunityPatchLauncher.BindingData.Container
         public string Name { get; }
         public AvailablePatches RealPatch { get; }
 
-        public Patch(string name, AvailablePatches realPatch)
+        public Patch(AvailablePatches realPatch)
         {
             
             char lastChar = ' ';
             int currentPosition = 0;
             List<int> spacePositions = new List<int>();
+            string name = realPatch.ToString();
             foreach (char currentChar in name)
             {
                 if (lastChar != ' ')

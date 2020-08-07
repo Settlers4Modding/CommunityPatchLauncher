@@ -1,18 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace CommunityPatchLauncher.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        protected Window currentWindow;
+
+        public BaseViewModel() : this(null)
+        {
+        }
+
+        public BaseViewModel(Window window)
+        {
+            currentWindow = window;
+        }
+
         internal void RaisePropertyChanged(string prop)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public virtual void Dispose()
+        {
         }
     }
 }

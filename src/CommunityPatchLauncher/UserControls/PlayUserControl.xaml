@@ -7,7 +7,7 @@
              xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.MultiBinding"
              xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Unloaded="UserControl_Unloaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -22,20 +22,13 @@
         <Image Source="/Graphics/Capture.PNG"  Stretch="UniformToFill"  Grid.ColumnSpan="3" Grid.RowSpan="2"/>
 
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="10">
-            <ComboBox Name="GameCombobox" SelectedIndex="0" VerticalAlignment="Center" Margin="0, 0, 0, 10" ItemsSource="{Binding Path=AllPatches.AvailablePatch}">
+            <ComboBox Name="GameCombobox" SelectedItem="{Binding Patch}"  SelectedIndex="{Binding PatchIndex}" VerticalAlignment="Center" Margin="0, 0, 0, 10" ItemsSource="{Binding Path=AllPatches}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <!-- <ComboBox Visibility="Hidden" Name="VersionCombobox" VerticalAlignment="Center">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Versions}" />
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox> -->
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
             <StackPanel.Resources>
@@ -53,7 +46,7 @@
             <RadioButton GroupName="GameSpeed" IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Faster}" Grid.Column="0" Grid.Row="2" Content="{x:Static p:Resources.PlayControl_VeryFastSpeed}"/>
             <RadioButton GroupName="GameSpeed" IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Testing}" Grid.Column="0" Grid.Row="3" Content="{x:Static p:Resources.PlayControl_TestingSpeed}"/>
         </StackPanel>
-        <Button Grid.Column="3" Grid.Row="2" Height="Auto" Margin="15, 15, 15, 15" Command="{Binding Path=LaunchGameCommand}" Content="{x:Static p:Resources.PlayControl_Launch}" IsCancel="True">
+        <Button Grid.Column="3" Grid.Row="2" Height="Auto" Margin="15, 15, 15, 15" Command="{Binding LaunchGameCommand}" Content="{x:Static p:Resources.PlayControl_Launch}" IsCancel="True">
             <Button.Resources>
                 <conv:LaunchGameConverter x:Key="LaunchGameConverter"></conv:LaunchGameConverter>
             </Button.Resources>

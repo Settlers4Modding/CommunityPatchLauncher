@@ -18,7 +18,7 @@ namespace CommunityPatchLauncher.BindingData
             availablePatch = new List<Patch>();
             foreach (AvailablePatches currentPatch in Enum.GetValues(typeof(AvailablePatches)))
             {
-                availablePatch.Add(new Patch(currentPatch.ToString(), currentPatch));
+                availablePatch.Add(new Patch(currentPatch));
             }
         }
     }

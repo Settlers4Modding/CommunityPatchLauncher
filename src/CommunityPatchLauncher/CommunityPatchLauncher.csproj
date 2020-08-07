@@ -77,9 +77,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BindingData\AvailableLanguages.cs" />
+    <Compile Include="BindingData\Container\LanguageItem.cs" />
     <Compile Include="BindingData\Container\Patch.cs" />
     <Compile Include="BindingData\MultiBinding\GameSpeedConverter.cs" />
     <Compile Include="BindingData\MultiBinding\LaunchGameConverter.cs" />
+    <Compile Include="BindingData\MultiBinding\MultiBoolConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="CommandDataContainer\LaunchGameData.cs" />
     <Compile Include="Commands\BaseDataCommand.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LaunchGameViewModel.cs" />
+    <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
