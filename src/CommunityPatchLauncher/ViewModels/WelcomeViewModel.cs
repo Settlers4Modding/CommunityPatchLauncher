@@ -17,6 +17,7 @@ namespace CommunityPatchLauncher.ViewModels
     {
         public IDataCommand RegexSearch { get; private set; }
         public IDataCommand FolderSearch { get; private set; }
+        public IDataCommand AcceptAgreement { get; set; }
 
         public string GameFolder
         {
