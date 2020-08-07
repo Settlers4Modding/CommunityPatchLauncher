@@ -25,33 +25,7 @@ namespace CommunityPatchLauncher.Windows
             settingManagerCommand.Executed += SettingManagerCommand_Executed;
             settingManagerCommand.Execute(null);
             InitializeComponent();
-
-            //SetCurrentLanguage();
-            //CB_LanguageSelector.SelectionChanged += CB_LanguageSelector_SelectionChanged;
         }
-
-        /// <summary>
-        /// Set the current window language
-        /// </summary>
-        //private void SetCurrentLanguage()
-        //{
-        //    IDataCommand languageCommand = new GetCurrentLanguageCommand();
-        //    languageCommand.Executed += (command, data) =>
-        //    {
-        //        string language = data.GetData<string>();
-
-        //        for (int i = 0; i < CB_LanguageSelector.Items.Count; i++)
-        //        {
-        //            ComboBoxItem boxItem = CB_LanguageSelector.Items[i] as ComboBoxItem;
-        //            if (boxItem.Tag.ToString() == language)
-        //            {
-        //                CB_LanguageSelector.SelectedIndex = i;
-        //                break;
-        //            }
-        //        }
-        //    };
-        //    languageCommand.Execute(settingManager);
-        //}
 
         /// <summary>
         /// Language selection did change
