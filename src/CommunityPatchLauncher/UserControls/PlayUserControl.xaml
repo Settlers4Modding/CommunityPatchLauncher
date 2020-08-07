@@ -36,45 +36,21 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <Grid  Grid.Column="0" Grid.Row="1" Margin="5" HorizontalAlignment="Center">
-            <Grid.Resources>
-                <Style TargetType="{x:Type TextBlock}">
+        <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type RadioButton}">
                     <Setter Property="Margin" Value="0,0,0,1" />
                     <Setter Property="HorizontalAlignment" Value="Left"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="GroupName" Value="Speed"/>
                     <Setter Property="Foreground" Value="White" />
                 </Style>
-                <Style TargetType="{x:Type RadioButton}">
-                    <Setter Property="Margin" Value="0,0,0,1" />
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="GroupName" Value="Speed"/>
-                </Style>
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="17*"/>
-                <ColumnDefinition Width="32*"/>
-                <ColumnDefinition Width="46*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <RadioButton IsChecked="True" Grid.Column="0" Grid.Row="0"/>
-            <RadioButton Grid.Column="0" Grid.Row="1"/>
-            <RadioButton Grid.Column="0" Grid.Row="2"/>
-            <RadioButton Grid.Column="0" Grid.Row="3"/>
-
-            <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="{x:Static p:Resources.PlayControl_NormalSpeed}"></TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static p:Resources.PlayControl_FastSpeed}"></TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="{x:Static p:Resources.PlayControl_VeryFastSpeed}"></TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Text="{x:Static p:Resources.PlayControl_TestingSpeed}"></TextBlock>
-
-        </Grid>
+            </StackPanel.Resources>
+            <RadioButton GroupName="GameSpeed" IsChecked="True" Grid.Column="0" Grid.Row="0" Content="{x:Static p:Resources.PlayControl_NormalSpeed}"/>
+            <RadioButton GroupName="GameSpeed" Grid.Column="0" Grid.Row="1" Content="{x:Static p:Resources.PlayControl_FastSpeed}"/>
+            <RadioButton GroupName="GameSpeed" Grid.Column="0" Grid.Row="2" Content="{x:Static p:Resources.PlayControl_VeryFastSpeed}"/>
+            <RadioButton GroupName="GameSpeed" Grid.Column="0" Grid.Row="3" Content="{x:Static p:Resources.PlayControl_TestingSpeed}"/>
+        </StackPanel>
         <Button Grid.Column="3" Grid.Row="2" Height="Auto" Margin="15, 15, 15, 15" Command="{Binding Path=LaunchGameCommand}" Content="{x:Static p:Resources.PlayControl_Launch}" IsCancel="True"></Button>
-
-
     </Grid>
 </UserControl>
