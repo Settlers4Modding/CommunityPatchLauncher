@@ -22,9 +22,9 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         private readonly ISettingWriter writer;
 
         /// <summary>
-        /// The default settings path to use for loading
+        /// The setting path to use for loading
         /// </summary>
-        private readonly string settingsPath;
+        public string SettingFilePath { get; }
 
         /// <summary>
         /// All the settings in the manager
@@ -46,7 +46,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         {
             this.reader = reader;
             this.writer = writer;
-            this.settingsPath = settingsPath;
+            SettingFilePath = settingsPath;
 
             settingsLoaded = false;
             Reload();
@@ -65,6 +65,18 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
             }
 
             return settings?.Where(o => o.Key == key).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// This will directly get you the value from a setting pair
+        /// </summary>
+        /// <typeparam name="T">The type to load</typeparam>
+        /// <param name="key">The key to search for</param>
+        /// <returns>The requested setting</returns>
+        public T GetValue<T>(string key)
+        {
+            SettingPair pair = GetValue(key);
+            return pair == null ? default : pair.GetValue<T>();
         }
 
         /// <summary>
@@ -93,7 +105,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// </summary>
         public void Reload()
         {
-            settings = reader.LoadSettings(settingsPath);
+            settings = reader.LoadSettings(SettingFilePath);
             settingsLoaded = true;
         }
 
@@ -104,7 +116,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         public bool SaveSettings()
         {
             settingsLoaded = false;
-            return writer.WriteSettings(settings, settingsPath);
+            return writer.WriteSettings(settings, SettingFilePath);
         }
     }
 }

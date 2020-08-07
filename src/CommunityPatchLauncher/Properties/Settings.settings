@@ -1,5 +1,24 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CommunityPatchLauncher.Properties" GeneratedClassName="Settings">
   <Profiles />
-  <Settings />
+  <Settings>
+    <Setting Name="VersionInformation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://raw.githubusercontent.com/LitzeYT/Settlers4Patch/master/Version.ini</Value>
+    </Setting>
+    <Setting Name="Normal" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Fast" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="Faster" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="Testing" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="PatchPosition" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">1124076</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

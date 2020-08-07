@@ -64,7 +64,7 @@ namespace CommunityPatchLauncher.Windows
             {
                 if (box.SelectedItem is ComboBoxItem item)
                 {
-                    settingManager?.AddValue("language", item.Tag.ToString());
+                    settingManager?.AddValue("Language", item.Tag.ToString());
                     settingManager.SaveSettings();
                     SwitchLanguage(true);
                 }
