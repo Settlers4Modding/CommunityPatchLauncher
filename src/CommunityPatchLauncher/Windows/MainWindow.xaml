@@ -4,16 +4,72 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommunityPatchLauncher"
+        xmlns:uC="clr-namespace:CommunityPatchLauncher.UserControls"
         xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.MainWindow_Title}" Height="450" Width="800">
-    <Grid>
-        <StackPanel VerticalAlignment="Top" Orientation="Horizontal" MaxHeight="30">
-            <Label Content="{x:Static p:Resources.Default_LanguageLabel}"></Label>
-            <ComboBox Margin="5" Name="CB_LanguageSelector" MinWidth="200">
-                <ComboBoxItem Content="{x:Static p:Resources.Default_LanguageDe}" Tag="de-DE"></ComboBoxItem>
-                <ComboBoxItem Content="{x:Static p:Resources.Default_LanguageEn}" Tag="en-EN"></ComboBoxItem>
-            </ComboBox>
-        </StackPanel>
-    </Grid>
+        Title="{x:Static p:Resources.MainWindow_Title}" Height="480" Width="800" MinHeight="480" MinWidth="800">
+
+    <TabControl Margin="5 5 5 0" VerticalAlignment="Top">
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>Play</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:PlayUserControl MinHeight="410" MinWidth="700"></uC:PlayUserControl>
+        </TabItem>
+
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>News</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:NewsUserControl MinHeight="410" MinWidth="700"/>
+
+        </TabItem>
+        
+        <TabItem >
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>Maps</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:MapsUserControl MinHeight="410" MinWidth="700"/>
+        </TabItem>
+
+        <TabItem >
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>Multiplayer</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:MatchmakingUserControl MinHeight="410" MinWidth="700"/>
+        </TabItem>
+
+        <TabItem >
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>Ranked</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:RankedUserControl MinHeight="410" MinWidth="700"/>
+        </TabItem>
+
+        <TabItem >
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                    <TextBlock>Settings</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <uC:ConfigurationUserControl MinHeight="410" MinWidth="700"/>
+        </TabItem>
+    </TabControl>
+    
 </Window>
