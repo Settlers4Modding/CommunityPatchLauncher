@@ -77,12 +77,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BindingData\Container\Patch.cs" />
+    <Compile Include="BindingData\Patches.cs" />
+    <Compile Include="CommandDataContainer\LaunchGameData.cs" />
     <Compile Include="Commands\BaseDataCommand.cs" />
     <Compile Include="Commands\GetCurrentLanguageCommand.cs" />
     <Compile Include="Commands\GetSettingManagerCommand.cs" />
     <Compile Include="Commands\IDataCommand.cs" />
     <Compile Include="Commands\InstallationFromManuelSelectionCommand.cs" />
     <Compile Include="Commands\InstallationFromRegistryCommand.cs" />
+    <Compile Include="Commands\LaunchGameCommand.cs" />
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />

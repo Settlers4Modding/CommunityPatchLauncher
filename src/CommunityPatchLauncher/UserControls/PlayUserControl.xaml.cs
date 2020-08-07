@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommunityPatchLauncher.BindingData;
+using CommunityPatchLauncher.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,17 @@ namespace CommunityPatchLauncher.UserControls
     /// </summary>
     public partial class PlayUserControl : UserControl
     {
+        public ICommand LaunchGameCommand { get; }
+        public Patches AllPatches { get; }
+
         public PlayUserControl()
         {
             InitializeComponent();
+
+            DataContext = this;
+            AllPatches = new Patches();
+
+            LaunchGameCommand = new RefreshGuiLanguageCommand();
         }
     }
 }
