@@ -9,9 +9,9 @@ namespace CommunityPatchLauncher.CommandDataContainer
 {
     internal class LaunchGameData
     {
-        string VersionInformationUrl { get; }
-        AvailablePatches Patch { get; }
-        SpeedModes Speed { get; }
+        public string VersionInformationUrl { get; }
+        public AvailablePatches Patch { get; }
+        public SpeedModes Speed { get; }
 
         public LaunchGameData()
         {

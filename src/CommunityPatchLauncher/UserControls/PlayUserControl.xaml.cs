@@ -32,7 +32,7 @@ namespace CommunityPatchLauncher.UserControls
             DataContext = this;
             AllPatches = new Patches();
 
-            LaunchGameCommand = new RefreshGuiLanguageCommand();
+            LaunchGameCommand = new LaunchGameCommand();
         }
     }
 }

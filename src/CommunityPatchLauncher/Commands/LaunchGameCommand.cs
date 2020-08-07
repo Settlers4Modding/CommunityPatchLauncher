@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityPatchLauncher.CommandDataContainer;
+using CommunityPatchLauncher.Settings.Factories;
+using CommunityPatchLauncher.Tasks.Factories;
+using CommunityPatchLauncherFramework.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Manager;
+using CommunityPatchLauncherFramework.TaskPipeline.Factory;
+using System;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.Commands
@@ -11,14 +13,32 @@ namespace CommunityPatchLauncher.Commands
     {
         public event EventHandler CanExecuteChanged;
 
+        private readonly SettingManager manager;
+
+        public LaunchGameCommand()
+        {
+            ISettingFactory settingFactory = new WpfPropertySettingManagerFactory();
+            manager = settingFactory.GetSettingsManager();
+        }
+
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return parameter is LaunchGameData;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            if (!CanExecute(parameter))
+            {
+                return;
+            }
+
+            if (parameter is LaunchGameData gameData)
+            {
+                ITaskFactory taskFactory = new LaunchGameFactory(manager.GetValue<string>("VersionInformation"), gameData.Patch, gameData.Speed);
+            }
+
+
         }
     }
 }
