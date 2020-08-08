@@ -168,6 +168,12 @@
   <data name="WelcomeWindow_Agree" xml:space="preserve">
     <value>I did read the aggrement</value>
   </data>
+  <data name="WelcomeWindow_AutoDetect" xml:space="preserve">
+    <value>Auto detect</value>
+  </data>
+  <data name="WelcomeWindow_ManuelSelection" xml:space="preserve">
+    <value>...</value>
+  </data>
   <data name="WelcomeWindow_TextBox" xml:space="preserve">
     <value>Agreement</value>
   </data>

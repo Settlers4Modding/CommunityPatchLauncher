@@ -214,6 +214,24 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto detect.
+        /// </summary>
+        public static string WelcomeWindow_AutoDetect {
+            get {
+                return ResourceManager.GetString("WelcomeWindow_AutoDetect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ....
+        /// </summary>
+        public static string WelcomeWindow_ManuelSelection {
+            get {
+                return ResourceManager.GetString("WelcomeWindow_ManuelSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Agreement.
         /// </summary>
         public static string WelcomeWindow_TextBox {

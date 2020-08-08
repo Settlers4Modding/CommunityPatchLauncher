@@ -1,14 +1,20 @@
 ﻿using CommunityPatchLauncher.BindingData;
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Factories;
+using CommunityPatchLauncherFramework.Documentation.Factory;
+using CommunityPatchLauncherFramework.Documentation.Manager;
+using CommunityPatchLauncherFramework.Documentation.Strategy;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents.Serialization;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -17,7 +23,7 @@ namespace CommunityPatchLauncher.ViewModels
     {
         public IDataCommand RegexSearch { get; private set; }
         public IDataCommand FolderSearch { get; private set; }
-        public IDataCommand AcceptAgreement { get; set; }
+        public ICommand AcceptAgreement { get; set; }
 
         public string GameFolder
         {
@@ -39,6 +45,7 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
         private string gameFolder;
+
         public bool Agreement
         {
             get
@@ -52,6 +59,7 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
         private bool aggreement;
+
         public bool FolderSet
         {
             get
@@ -66,24 +74,69 @@ namespace CommunityPatchLauncher.ViewModels
         }
         private bool folderSet;
 
-
         public IReadOnlyList<LanguageItem> Languages { get; private set; }
-        public LanguageItem SelectedLanguage { get; set; }
+
+        public LanguageItem SelectedLanguage {
+            get => selectedLanguage;
+            set
+            {
+                selectedLanguage = value;
+                RaisePropertyChanged("SelectedLanguage");
+            }
+        }
+        private LanguageItem selectedLanguage;
+        public int SelectedIndex
+        {
+            get => selectedIndex;
+            set
+            {
+                selectedIndex = value;
+                RaisePropertyChanged("SelectedIndex");
+            }
+        }
+        private int selectedIndex;
+        private bool firstStart;
+
+        public string AgreementText 
+        {
+            get => agreementText;
+            set 
+            {
+                agreementText = value;
+                RaisePropertyChanged("AgreementText");
+            } 
+        }
+        private string agreementText;
 
         /// <summary>
         /// The setting manager to use
         /// </summary>
         private SettingManager settingManager;
+        private readonly DocumentManager documentManager;
 
         public WelcomeViewModel(Window window) : base(window)
         {
+            firstStart = true;
             FolderSearch = new InstallationFromManuelSelectionCommand();
             RegexSearch = new InstallationFromRegistryCommand();
+            AcceptAgreement = new AcceptAgreementCommand();
+
             FolderSearch.Executed += GameFolderChanged_Executed;
             RegexSearch.Executed += GameFolderChanged_Executed;
 
             Languages = new AvailableLanguages().GetAvailableLanguages();
-            SelectedLanguage = Languages[0];
+            string languageIsoCode = CultureInfo.CurrentUICulture.IetfLanguageTag;
+            for (int i = 0; i < Languages.Count; i++)
+            {
+                if (Languages[i].IsoCode == languageIsoCode)
+                {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+
+
+            //SelectedLanguage = Languages[0];
 
             IDataCommand settingManagerCommand = new GetSettingManagerCommand();
             settingManagerCommand.Executed += (sender, data) =>
@@ -93,9 +146,27 @@ namespace CommunityPatchLauncher.ViewModels
                 {
                     return;
                 }
+                
                 //ShowIfNeeded();
             };
             settingManagerCommand.Execute(null);
+            IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
+            documentManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
+            PropertyChanged += (sender, data) =>
+            {
+                if (data.PropertyName == "SelectedLanguage")
+                {
+                    AgreementText = documentManager.ReadConvertedDocument(selectedLanguage.IsoCode, "Agreement.md");
+                    ICommand switchLanguage = new SwitchGuiLanguage();
+                    ICommand refreshGui = new RefreshGuiLanguageCommand();
+                    switchLanguage.Execute(selectedLanguage.IsoCode);
+                    if (!firstStart)
+                    {
+                        refreshGui.Execute(currentWindow);
+                    }
+                    firstStart = false;
+                }
+            };
         }
 
         private void GameFolderChanged_Executed(object sender, EventArguments.DataCommandEventArg e)
@@ -108,5 +179,7 @@ namespace CommunityPatchLauncher.ViewModels
                 FolderSet = true;
             }
         }
+
+
     }
 }

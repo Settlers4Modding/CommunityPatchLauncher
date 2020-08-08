@@ -165,6 +165,9 @@
   <data name="WelcomeWindow_Agree" xml:space="preserve">
     <value>Ich habe die Vereinbarung gelesen</value>
   </data>
+  <data name="WelcomeWindow_AutoDetect" xml:space="preserve">
+    <value>Automatisch erkennen</value>
+  </data>
   <data name="WelcomeWindow_TextBox" xml:space="preserve">
     <value>Vereinbarung</value>
   </data>

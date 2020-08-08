@@ -1,5 +1,5 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
-using CommunityPatchLauncher.CommandDataContainer;
+using CommunityPatchLauncher.Commands.DataContainer;
 using CommunityPatchLauncher.Enums;
 using System;
 using System.Collections.Generic;

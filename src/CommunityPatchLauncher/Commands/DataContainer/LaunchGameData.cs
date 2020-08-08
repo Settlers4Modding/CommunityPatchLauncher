@@ -1,6 +1,6 @@
 ﻿using CommunityPatchLauncher.Enums;
 
-namespace CommunityPatchLauncher.CommandDataContainer
+namespace CommunityPatchLauncher.Commands.DataContainer
 {
     internal class LaunchGameData
     {

@@ -1,4 +1,4 @@
-﻿using CommunityPatchLauncher.CommandDataContainer;
+﻿using CommunityPatchLauncher.Commands.DataContainer;
 using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.Tasks.Factories;
 using CommunityPatchLauncherFramework.Settings.Factories;

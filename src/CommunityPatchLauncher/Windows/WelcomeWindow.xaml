@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommunityPatchLauncher.Windows"
+        xmlns:behavior="clr-namespace:CommunityPatchLauncher.BehaviorExtensions"
         xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.MultiBinding"
         xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.WelcomeWindow_Title}" Height="450" Width="800">
+        Title="{x:Static p:Resources.WelcomeWindow_Title}" Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"></RowDefinition>
@@ -24,7 +25,7 @@
             <StackPanel Grid.Column="2" VerticalAlignment="Top" Orientation="Horizontal" MaxHeight="30">
                 <Label Width="Auto" VerticalAlignment="Stretch"></Label>
                 <Label HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Static p:Resources.Default_LanguageLabel}"></Label>
-                <ComboBox SelectedIndex="0" SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Languages}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Name="CB_LanguageSelector" MinWidth="200">
+                <ComboBox SelectedIndex="{Binding SelectedIndex}" SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Languages}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Name="CB_LanguageSelector" MinWidth="200">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"></TextBlock>
@@ -33,7 +34,7 @@
                 </ComboBox>
             </StackPanel>
         </Grid>
-        <WebBrowser Name="WB_Agreement" Grid.Row="1"></WebBrowser>
+        <WebBrowser Name="WB_Agreement" behavior:BrowserBehavior.Html="{Binding AgreementText, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"></WebBrowser>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
@@ -41,20 +42,21 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <CheckBox IsChecked="{Binding Agreement}" Margin="5" Name="CB_Agree" VerticalAlignment="Center" Grid.Column="0" Content="{x:Static p:Resources.WelcomeWindow_Agree}"></CheckBox>
-            <Grid MaxHeight="23" Margin="5,5,2,2" Grid.Column="1" VerticalAlignment="Center">
+            <Grid MaxHeight="23" Grid.Column="1" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBox HorizontalAlignment="Stretch" Text="{Binding GameFolder, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <Button Content="..." Command="{Binding FolderSearch}" ></Button>
-                    <Button Content="Regex search" Command="{Binding RegexSearch}"></Button>
-                </StackPanel>
+                <DockPanel VerticalAlignment="Center" Grid.Column="1">
+                    <Button Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}" Command="{Binding FolderSearch}" ></Button>
+                    <Button Content="{x:Static p:Resources.WelcomeWindow_AutoDetect}" Command="{Binding RegexSearch}"></Button>
+                </DockPanel>
             </Grid>
-            <Button Name="B_Ok" Margin="5" VerticalAlignment="Center" Grid.Column="2" MaxHeight="23" Content="{x:Static p:Resources.Default_Ok}">
+            <Button Name="B_Ok" Margin="5" VerticalAlignment="Center" Grid.Column="2" MaxHeight="23" Content="{x:Static p:Resources.Default_Ok}" Command="{Binding AcceptAgreement}">
                 <Button.Resources>
                     <conv:MultiBoolConverter x:Key="WelcomeButtonEnabledConverter"></conv:MultiBoolConverter>
+                    <conv:AcceptAgreementConverter x:Key="AcceptAgreementConverter"></conv:AcceptAgreementConverter>
                 </Button.Resources>
                 <Button.IsEnabled>
                     <MultiBinding Converter="{StaticResource WelcomeButtonEnabledConverter}">
@@ -62,6 +64,14 @@
                         <Binding Path="FolderSet" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
                     </MultiBinding>
                 </Button.IsEnabled>
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource AcceptAgreementConverter}">
+                        <Binding Path="Agreement" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="FolderSet" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="GameFolder" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="SelectedLanguage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
             </Button>
         </Grid>
     </Grid>
