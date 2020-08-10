@@ -10,16 +10,18 @@ namespace CommunityPatchLauncher.BindingData
     /// </summary>
     public class Patches
     {
-        public IReadOnlyList<Patch> AvailablePatch => availablePatch;
-        private readonly List<Patch> availablePatch;
-
-        public Patches()
+        /// <summary>
+        /// Get all the patches
+        /// </summary>
+        /// <returns></returns>
+        public IReadOnlyList<Patch> GetPatches()
         {
-            availablePatch = new List<Patch>();
+            List<Patch>  availablePatch = new List<Patch>();
             foreach (AvailablePatches currentPatch in Enum.GetValues(typeof(AvailablePatches)))
             {
                 availablePatch.Add(new Patch(currentPatch));
             }
+            return availablePatch;
         }
     }
 }
