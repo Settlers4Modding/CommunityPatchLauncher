@@ -1,4 +1,7 @@
-﻿using Microsoft.Win32;
+﻿using CommunityPatchLauncher.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Manager;
+using Microsoft.Win32;
 using System.IO;
 
 namespace CommunityPatchLauncher.Commands
@@ -9,14 +12,15 @@ namespace CommunityPatchLauncher.Commands
     internal class InstallationFromRegistryCommand : BaseDataCommand
     {
         /// <summary>
-        /// Path of the registry key to read
+        /// The setting manager to use to read the version reg key from
         /// </summary>
-        private const string REGISTER_KEY = @"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Ubisoft\Launcher\Installs\11785";
+        private readonly SettingManager manager;
 
-        /// <summary>
-        /// Name of the registry key to read
-        /// </summary>
-        private const string KEY_NAME = "InstallDir";
+        public InstallationFromRegistryCommand()
+        {
+            ISettingFactory settingFactory = new WpfPropertySettingManagerFactory();
+            this.manager = settingFactory.GetSettingsManager();
+        }
 
         /// <inheritdoc/>
         public override bool CanExecute(object parameter)
@@ -27,7 +31,15 @@ namespace CommunityPatchLauncher.Commands
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
-            string installPath = Registry.GetValue(REGISTER_KEY, KEY_NAME, "").ToString();
+            string registryKeyPath = manager?.GetValue<string>("GamePathRegKeyPath");
+            string registryKeyName = manager?.GetValue<string>("GamePathRegKeyName");
+            if (registryKeyPath == null || registryKeyName == null)
+            {
+                data = string.Empty;
+                ExecutionDone();
+                return;
+            }
+            string installPath = Registry.GetValue(registryKeyPath, registryKeyName, "").ToString();
             data = File.Exists(installPath + "S4_Main.exe") ? installPath : "";
             ExecutionDone();
         }
