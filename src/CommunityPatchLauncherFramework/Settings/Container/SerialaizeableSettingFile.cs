@@ -40,6 +40,11 @@ namespace CommunityPatchLauncherFramework.Settings.Container
         public HashSet<SettingPair> GetSettingPairs()
         {
             HashSet<SettingPair> settingPairs = new HashSet<SettingPair>();
+            List<SerializeableSettingsPair> sortedSettings = Settings;
+            sortedSettings.Sort((item1, item2) =>
+            {
+                return item1.Key.CompareTo(item2.Key);
+            });
             foreach (SerializeableSettingsPair pair in Settings)
             {
                 settingPairs.Add(pair.GetSettingPair());
