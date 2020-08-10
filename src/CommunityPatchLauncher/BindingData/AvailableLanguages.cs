@@ -17,7 +17,8 @@ namespace CommunityPatchLauncher.BindingData
             List<LanguageItem> languageItems = new List<LanguageItem>()
             {
                 new LanguageItem("German", "de-DE"),
-                new LanguageItem("English", "en-EN")
+                new LanguageItem("English", "en-EN"),
+                new LanguageItem("Polish", "pl")
             };
             return languageItems;
         }
