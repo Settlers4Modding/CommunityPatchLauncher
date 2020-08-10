@@ -50,6 +50,7 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
@@ -136,6 +137,9 @@
     <Compile Include="Tasks\Factories\DownloadOfflineFilesFactory.cs" />
     <Compile Include="Tasks\Factories\LaunchGameFactory.cs" />
     <Compile Include="Tasks\PatchGameSpeedTask.cs" />
+    <Compile Include="UserControls\ComingSoonControl.xaml.cs">
+      <DependentUpon>ComingSoonControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ConfigurationUserControl.xaml.cs" />
     <Compile Include="UserControls\MapsUserControl.xaml.cs" />
     <Compile Include="UserControls\MatchmakingUserControl.xaml.cs" />
@@ -154,6 +158,10 @@
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Styles\DefaultStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComingSoonControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,7 +250,9 @@
   <ItemGroup>
     <Resource Include="Graphics\Capture.PNG" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\Images\CP_ComingSoon.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\CP_Logo1.png" />
   </ItemGroup>

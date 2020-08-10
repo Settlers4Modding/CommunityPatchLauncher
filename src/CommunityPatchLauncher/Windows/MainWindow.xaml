@@ -51,31 +51,31 @@
                         </StackPanel>
                     </Button>
                     <StackPanel x:Name="Home_Group" Visibility="{Binding HomeGroupVisible, UpdateSourceTrigger=PropertyChanged}">
-                        <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenHomeCommand}">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding LaunchGameCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="Rocket" Style="{StaticResource SubCategoryImage}" />
                                 <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource CategoryButton}">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="NewspaperOutline" Style="{StaticResource SubCategoryImage}" />
                                 <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource CategoryButton}">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="Clipboard" Style="{StaticResource SubCategoryImage}" />
                                 <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource CategoryButton}">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="Question" Style="{StaticResource SubCategoryImage}" />
                                 <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_FAQ}"></TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource CategoryButton}">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="ShareAlt" Style="{StaticResource SubCategoryImage}" />
                                 <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SocialMedia}"></TextBlock>

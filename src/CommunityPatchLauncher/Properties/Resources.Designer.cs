@@ -61,6 +61,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coming soon.
+        /// </summary>
+        public static string Default_ComingSoon {
+            get {
+                return ResourceManager.GetString("Default_ComingSoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language:.
         /// </summary>
         public static string Default_LanguageLabel {

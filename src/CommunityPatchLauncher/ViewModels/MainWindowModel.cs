@@ -12,7 +12,8 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand MaximizeWindow { get; private set; }
         public ICommand MinimizeWindow { get; private set; }
 
-        public ICommand OpenHomeCommand { get; private set; }
+        public ICommand LaunchGameCommand { get; private set; }
+        public ICommand ComingSoonCommand { get; private set; }
 
         public IDataCommand ChangeGroupVisiblity { get; private set; }
 
@@ -40,7 +41,8 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 contentDock = panel;
 
-                OpenHomeCommand = new OpenControlToPanel(contentDock, new PlayUserControl());
+                LaunchGameCommand = new OpenControlToPanel(contentDock, new PlayUserControl());
+                ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 
             ChangeGroupVisiblity = new ToggleVisibilityCommand();
