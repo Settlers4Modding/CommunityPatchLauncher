@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Markdig, Version=0.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Markdig.0.20.0\lib\netstandard2.0\Markdig.dll</HintPath>
     </Reference>
@@ -99,6 +102,8 @@
     <Compile Include="Commands\InstallationFromManuelSelectionCommand.cs" />
     <Compile Include="Commands\InstallationFromRegistryCommand.cs" />
     <Compile Include="Commands\LaunchGameCommand.cs" />
+    <Compile Include="Commands\MaximizeWindowCommand.cs" />
+    <Compile Include="Commands\MinimizeWindowCommand.cs" />
     <Compile Include="Commands\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
@@ -141,10 +146,15 @@
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LaunchGameViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Styles\DefaultStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ConfigurationUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -229,6 +239,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\Capture.PNG" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\Images\CP_Logo1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

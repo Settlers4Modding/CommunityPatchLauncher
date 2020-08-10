@@ -88,6 +88,33 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changelog.
+        /// </summary>
+        public static string MainWindow_Changelog {
+            get {
+                return ResourceManager.GetString("MainWindow_Changelog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FAQ.
+        /// </summary>
+        public static string MainWindow_FAQ {
+            get {
+                return ResourceManager.GetString("MainWindow_FAQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string MainWindow_Home {
+            get {
+                return ResourceManager.GetString("MainWindow_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maps.
         /// </summary>
         public static string MainWindow_Maps {
@@ -138,6 +165,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string MainWindow_Settings {
             get {
                 return ResourceManager.GetString("MainWindow_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Social Media.
+        /// </summary>
+        public static string MainWindow_SocialMedia {
+            get {
+                return ResourceManager.GetString("MainWindow_SocialMedia", resourceCulture);
             }
         }
         
