@@ -1,28 +1,48 @@
 ﻿using CommunityPatchLauncher.Commands.DataContainer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+using CommunityPatchLauncherFramework.Settings.Manager;
+using System.Windows;
 
 namespace CommunityPatchLauncher.Commands
 {
-    internal class AcceptAgreementCommand : ICommand
+    internal class AcceptAgreementCommand : BaseCommand
     {
-        public event EventHandler CanExecuteChanged;
+        private readonly SettingManager settingManager;
+        private readonly Window currentWindow;
+        private readonly Window windowToOpen;
 
-        public bool CanExecute(object parameter)
+        public AcceptAgreementCommand(SettingManager settingManager, Window currentWindow, Window windowToOpen)
         {
-            return parameter is AcceptAgreementData;
+            this.settingManager = settingManager;
+            this.currentWindow = currentWindow;
+            this.windowToOpen = windowToOpen;
         }
 
-        public void Execute(object parameter)
+        public override bool CanExecute(object parameter)
+        {
+            if (parameter is AcceptAgreementData agreementData)
+            {
+                bool returnValue = agreementData.FolderSet;
+                returnValue &= agreementData.Agreement;
+                return returnValue;
+            }
+
+            return false;
+        }
+
+        public override void Execute(object parameter)
         {
             if (!CanExecute(parameter))
             {
                 return;
             }
+            AcceptAgreementData agreementData = parameter as AcceptAgreementData;
+            settingManager.AddValue("AgreementAccepted", agreementData.Agreement);
+            settingManager.AddValue("GameFolder", agreementData.GameFolder);
+            settingManager.AddValue("Language", agreementData.Language.IsoCode);
+            settingManager.SaveSettings();
+
+            currentWindow?.Close();
+            windowToOpen?.ShowDialog();
         }
     }
 }

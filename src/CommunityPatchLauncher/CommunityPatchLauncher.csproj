@@ -87,6 +87,9 @@
     <Compile Include="BindingData\MultiBinding\MultiBoolConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="Commands\AcceptAgreementCommand.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\CloseApplicationCommand.cs" />
+    <Compile Include="Commands\CloseWindowCommand.cs" />
     <Compile Include="Commands\DataContainer\AcceptAgreementData.cs" />
     <Compile Include="Commands\DataContainer\LaunchGameData.cs" />
     <Compile Include="Commands\BaseDataCommand.cs" />
@@ -96,6 +99,7 @@
     <Compile Include="Commands\InstallationFromManuelSelectionCommand.cs" />
     <Compile Include="Commands\InstallationFromRegistryCommand.cs" />
     <Compile Include="Commands\LaunchGameCommand.cs" />
+    <Compile Include="Commands\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
@@ -217,7 +221,6 @@
   <ItemGroup>
     <Resource Include="Graphics\Capture.PNG" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

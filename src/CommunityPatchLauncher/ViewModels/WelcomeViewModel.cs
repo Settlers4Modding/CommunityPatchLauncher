@@ -2,19 +2,16 @@
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Factories;
+using CommunityPatchLauncher.Windows;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
 using CommunityPatchLauncherFramework.Settings.Manager;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents.Serialization;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -23,6 +20,7 @@ namespace CommunityPatchLauncher.ViewModels
     {
         public IDataCommand RegexSearch { get; private set; }
         public IDataCommand FolderSearch { get; private set; }
+        public ICommand CloseWindow { get; set; }
         public ICommand AcceptAgreement { get; set; }
 
         public string GameFolder
@@ -35,11 +33,15 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 gameFolder = value;
                 gameFolder = gameFolder.Replace("\\", "/");
-                char lastChar = gameFolder.Last();
-                if (lastChar != '/' && lastChar != '\\')
+                if (gameFolder.Length > 1)
                 {
-                    gameFolder += "/";
+                    char lastChar = gameFolder.Last();
+                    if (lastChar != '/' && lastChar != '\\')
+                    {
+                        gameFolder += "/";
+                    }
                 }
+                
                 FolderSet = Directory.Exists(gameFolder) && File.Exists(gameFolder + "S4_Main.exe");
                 RaisePropertyChanged("GameFolder");
             }
@@ -119,7 +121,9 @@ namespace CommunityPatchLauncher.ViewModels
             firstStart = true;
             FolderSearch = new InstallationFromManuelSelectionCommand();
             RegexSearch = new InstallationFromRegistryCommand();
-            AcceptAgreement = new AcceptAgreementCommand();
+
+            CloseWindow = new CloseApplicationCommand();
+            
 
             FolderSearch.Executed += GameFolderChanged_Executed;
             RegexSearch.Executed += GameFolderChanged_Executed;
@@ -135,9 +139,6 @@ namespace CommunityPatchLauncher.ViewModels
                 }
             }
 
-
-            //SelectedLanguage = Languages[0];
-
             IDataCommand settingManagerCommand = new GetSettingManagerCommand();
             settingManagerCommand.Executed += (sender, data) =>
             {
@@ -146,8 +147,18 @@ namespace CommunityPatchLauncher.ViewModels
                 {
                     return;
                 }
-                
-                //ShowIfNeeded();
+
+                string settingGameFolder = settingManager.GetValue<string>("GameFolder");
+                GameFolder = settingGameFolder ?? string.Empty;
+                AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, new MainWindow());
+                bool accepted = settingManager.GetValue<bool>("AgreementAccepted");
+
+                if (accepted && FolderSet)
+                {
+                    currentWindow.Close();
+                    Window mainWindow = new MainWindow();
+                    mainWindow.Show();
+                }
             };
             settingManagerCommand.Execute(null);
             IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
@@ -173,13 +184,11 @@ namespace CommunityPatchLauncher.ViewModels
         {
             FolderSet = false;
             string gameFolder = e.GetData<string>();
-            if (gameFolder != null || gameFolder != "")
+            if (gameFolder != null && gameFolder != "")
             {
                 GameFolder = gameFolder;
                 FolderSet = true;
             }
         }
-
-
     }
 }
