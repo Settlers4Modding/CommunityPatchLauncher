@@ -43,34 +43,38 @@
             <StackPanel Grid.Column="0">
                 <Image MaxHeight="80" x:Name="Img_MainLogo" Source="../Assets/Images/CP_Logo1.png"></Image>
                 <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                        <fa:ImageAwesome Icon="Home" Style="{StaticResource MainCategoryImage}" />
-                        <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Home}"></TextBlock>
+                    <Button Style="{StaticResource CategoryButton}">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                            <fa:ImageAwesome Icon="Home" Style="{StaticResource MainCategoryImage}" />
+                            <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Home}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <StackPanel x:Name="Home_Group" Visibility="Visible">
+                        <Button Style="{StaticResource CategoryButton}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="NewspaperOutline" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Clipboard" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Question" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_FAQ}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="ShareAlt" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SocialMedia}"></TextBlock>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
-                    <Button Style="{StaticResource CategoryButton}">
-                        <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                            <fa:ImageAwesome Icon="NewspaperOutline" Style="{StaticResource SubCategoryImage}" />
-                            <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Style="{StaticResource CategoryButton}">
-                        <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                            <fa:ImageAwesome Icon="Clipboard" Style="{StaticResource SubCategoryImage}" />
-                            <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Style="{StaticResource CategoryButton}">
-                        <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                            <fa:ImageAwesome Icon="Question" Style="{StaticResource SubCategoryImage}" />
-                            <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_FAQ}"></TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Style="{StaticResource CategoryButton}">
-                        <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                            <fa:ImageAwesome Icon="ShareAlt" Style="{StaticResource SubCategoryImage}" />
-                            <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SocialMedia}"></TextBlock>
-                        </StackPanel>
-                    </Button>
                 </StackPanel>
             </StackPanel>
         </Grid>
