@@ -94,5 +94,29 @@ namespace CommunityPatchLauncher.Properties {
                 this["PatchPosition"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Ubisoft\\Launcher\\Installs\\11785")]
+        public string GamePathRegKeyPath {
+            get {
+                return ((string)(this["GamePathRegKeyPath"]));
+            }
+            set {
+                this["GamePathRegKeyPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("InstallDir")]
+        public string GamePathRegKeyName {
+            get {
+                return ((string)(this["GamePathRegKeyName"]));
+            }
+            set {
+                this["GamePathRegKeyName"] = value;
+            }
+        }
     }
 }

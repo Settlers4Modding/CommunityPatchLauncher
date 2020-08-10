@@ -5,19 +5,29 @@ using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using CommunityPatchLauncherFramework.TaskPipeline.Factory;
 using CommunityPatchLauncherFramework.TaskPipeline.Pipeline;
-using System;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace CommunityPatchLauncher.Commands
 {
-    internal class LaunchGameCommand : ICommand
+    /// <summary>
+    /// This command will launch the game
+    /// </summary>
+    internal class LaunchGameCommand : BaseDataCommand
     {
-        public event EventHandler CanExecuteChanged;
-
+        /// <summary>
+        /// The setting manager to use to read the version information from
+        /// </summary>
         private readonly SettingManager manager;
+
+        /// <summary>
+        /// The setting manager to use for launching
+        /// </summary>
         private readonly SettingManager settingManager;
 
+        /// <summary>
+        /// Create a new instance of this command
+        /// </summary>
+        /// <param name="manager">The setting manager to use</param>
         public LaunchGameCommand(SettingManager manager)
         {
             ISettingFactory settingFactory = new WpfPropertySettingManagerFactory();
@@ -25,12 +35,14 @@ namespace CommunityPatchLauncher.Commands
             settingManager = manager;
         }
 
-        public bool CanExecute(object parameter)
+        /// <inheritdoc/>
+        public override bool CanExecute(object parameter)
         {
-            return true;
+            return parameter is LaunchGameData;
         }
 
-        public void Execute(object parameter)
+        /// <inheritdoc/>
+        public override void Execute(object parameter)
         {
             if (parameter is LaunchGameData gameData)
             {
@@ -38,8 +50,6 @@ namespace CommunityPatchLauncher.Commands
                 QueueWorker worker = new QueueWorker(settingManager);
                 Task<bool> startTask = worker.AsyncExecuteTasks(taskFactory);
             }
-
-
         }
     }
 }
