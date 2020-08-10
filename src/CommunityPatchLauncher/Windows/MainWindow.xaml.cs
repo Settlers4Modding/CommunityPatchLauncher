@@ -54,24 +54,6 @@ namespace CommunityPatchLauncher.Windows
         }
 
         /// <summary>
-        /// Language selection did change
-        /// </summary>
-        /// <param name="sender">Sender of the event</param>
-        /// <param name="e">Data of the event</param>
-        private void CB_LanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender is ComboBox box)
-            {
-                if (box.SelectedItem is ComboBoxItem item)
-                {
-                    settingManager?.AddValue("Language", item.Tag.ToString());
-                    settingManager.SaveSettings();
-                    SwitchLanguage(true);
-                }
-            }
-        }
-
-        /// <summary>
         /// Was the setting command executed
         /// </summary>
         /// <param name="sender">Sender of the event</param>
