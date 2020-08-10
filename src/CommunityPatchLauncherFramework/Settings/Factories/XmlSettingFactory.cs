@@ -26,7 +26,7 @@ namespace CommunityPatchLauncherFramework.Settings.Factories
         {
             string settingFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             settingFile += Path.DirectorySeparatorChar;
-            settingFile += "SiedlerIVCommunityPatchLauncher" + Path.DirectorySeparatorChar;
+            settingFile += "SIVCommunityPatchLauncher" + Path.DirectorySeparatorChar;
             settingFile += "settings.xml";
             return GetSettingsManager(settingFile);
         }
