@@ -46,7 +46,11 @@ namespace CommunityPatchLauncher.Commands
         {
             if (parameter is LaunchGameData gameData)
             {
-                ITaskFactory taskFactory = new LaunchGameFactory(manager.GetValue<string>("VersionInformation"), gameData.Patch, gameData.Speed);
+                ITaskFactory taskFactory = new LaunchGameFactory(
+                    manager.GetValue<string>("VersionInformation"),
+                    gameData.Patch,
+                    gameData.Speed
+                    );
                 QueueWorker worker = new QueueWorker(settingManager);
                 Task<bool> startTask = worker.AsyncExecuteTasks(taskFactory);
             }

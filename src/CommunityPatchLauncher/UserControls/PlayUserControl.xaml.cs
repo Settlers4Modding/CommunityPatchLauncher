@@ -14,6 +14,11 @@ namespace CommunityPatchLauncher.UserControls
             DataContext = new LaunchGameViewModel();
         }
 
+        /// <summary>
+        /// Unload event of this control
+        /// </summary>
+        /// <param name="sender">The sender of the event</param>
+        /// <param name="e">The arguments of the event</param>
         private void UserControl_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
             if (DataContext is BaseViewModel viewModel)

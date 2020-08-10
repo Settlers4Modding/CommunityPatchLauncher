@@ -15,7 +15,7 @@ namespace CommunityPatchLauncher.Commands
         /// <summary>
         /// Create a new instance of this command
         /// </summary>
-        /// <param name="windowToOpen"></param>
+        /// <param name="windowToOpen">The new window to open</param>
         public OpenNewWindowCommand(Window windowToOpen)
         {
             this.windowToOpen = windowToOpen;

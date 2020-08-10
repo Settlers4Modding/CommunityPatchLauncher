@@ -13,7 +13,7 @@ namespace CommunityPatchLauncher.BindingData
         /// <summary>
         /// Get all the patches
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns a list with all the available patches</returns>
         public IReadOnlyList<Patch> GetPatches()
         {
             List<Patch>  availablePatch = new List<Patch>();
