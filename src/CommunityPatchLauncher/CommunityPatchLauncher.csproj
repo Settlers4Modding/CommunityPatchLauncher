@@ -104,10 +104,12 @@
     <Compile Include="Commands\LaunchGameCommand.cs" />
     <Compile Include="Commands\MaximizeWindowCommand.cs" />
     <Compile Include="Commands\MinimizeWindowCommand.cs" />
+    <Compile Include="Commands\OpenControlToPanel.cs" />
     <Compile Include="Commands\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
+    <Compile Include="Commands\ToggleVisibilityCommand.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />
     <Compile Include="Enums\SpeedModes.cs" />

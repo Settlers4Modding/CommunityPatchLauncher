@@ -43,13 +43,20 @@
             <StackPanel Grid.Column="0">
                 <Image MaxHeight="80" x:Name="Img_MainLogo" Source="../Assets/Images/CP_Logo1.png"></Image>
                 <StackPanel Orientation="Vertical">
-                    <Button Style="{StaticResource CategoryButton}">
+
+                    <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="{Binding HomeGroupVisible}">
                         <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                             <fa:ImageAwesome Icon="Home" Style="{StaticResource MainCategoryImage}" />
                             <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Home}"></TextBlock>
                         </StackPanel>
                     </Button>
-                    <StackPanel x:Name="Home_Group" Visibility="Visible">
+                    <StackPanel x:Name="Home_Group" Visibility="{Binding HomeGroupVisible, UpdateSourceTrigger=PropertyChanged}">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenHomeCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Rocket" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
+                            </StackPanel>
+                        </Button>
                         <Button Style="{StaticResource CategoryButton}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="NewspaperOutline" Style="{StaticResource SubCategoryImage}" />
@@ -77,6 +84,7 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
+            <DockPanel x:Name="DP_ContentDock" Grid.Column="1"></DockPanel>
         </Grid>
     </Grid>
     <!--
