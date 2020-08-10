@@ -40,7 +40,7 @@ namespace CommunityPatchLauncher.ViewModels
         public LaunchGameViewModel()
         {
             Patches patches = new Patches();
-            AllPatches = patches.AvailablePatch;
+            AllPatches = patches.GetPatches();
             Speed = SpeedModes.Testing;
 
             IDataCommand dataCommand = new GetSettingManagerCommand();

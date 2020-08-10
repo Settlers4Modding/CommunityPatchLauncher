@@ -1,19 +1,18 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands.DataContainer;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
 
 namespace CommunityPatchLauncher.BindingData.MultiBinding
 {
+    /// <summary>
+    /// This class will convert the values from the welcome screen into a class instance
+    /// </summary>
     class AcceptAgreementConverter : IMultiValueConverter
     {
+        /// <inheritdoc/>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values.Length != 4)
@@ -48,6 +47,7 @@ namespace CommunityPatchLauncher.BindingData.MultiBinding
             return new AcceptAgreementData(agreement, folderSet, gameFolder, language);
         }
 
+        /// <inheritdoc/>
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             return null;

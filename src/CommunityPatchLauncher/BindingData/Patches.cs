@@ -2,12 +2,12 @@
 using CommunityPatchLauncher.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommunityPatchLauncher.BindingData
 {
+    /// <summary>
+    /// This class will return you a list with all the available patches
+    /// </summary>
     public class Patches
     {
         public IReadOnlyList<Patch> AvailablePatch => availablePatch;
