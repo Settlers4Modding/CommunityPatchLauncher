@@ -16,13 +16,34 @@ using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
 {
+    /// <summary>
+    /// This view model is used on the welcome screen
+    /// </summary>
     public class WelcomeViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Command to use to search the game path in the reged
+        /// </summary>
         public IDataCommand RegexSearch { get; private set; }
-        public IDataCommand FolderSearch { get; private set; }
-        public ICommand CloseWindow { get; set; }
-        public ICommand AcceptAgreement { get; set; }
 
+        /// <summary>
+        /// Command to use to search the game path on your own
+        /// </summary>
+        public IDataCommand FolderSearch { get; private set; }
+
+        /// <summary>
+        /// Command to use if you close this window
+        /// </summary>
+        public ICommand CloseWindow { get; set; }
+
+        /// <summary>
+        /// Command to use if you accept the agreement
+        /// </summary>
+        public ICommand AcceptAgreement { get; set; }
+        
+        /// <summary>
+        /// The game folder to use
+        /// </summary>
         public string GameFolder
         {
             get
@@ -46,8 +67,14 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("GameFolder");
             }
         }
+        /// <summary>
+        /// Private game folder to use
+        /// </summary>
         private string gameFolder;
 
+        /// <summary>
+        /// Was the agreement accepted
+        /// </summary>
         public bool Agreement
         {
             get
@@ -60,8 +87,14 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("Agreement");
             }
         }
+        /// <summary>
+        /// Private variable if the agreement was accepted
+        /// </summary>
         private bool aggreement;
 
+        /// <summary>
+        /// Is the selected folder correct
+        /// </summary>
         public bool FolderSet
         {
             get
@@ -74,10 +107,19 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("FolderSet");
             }
         }
+        /// <summary>
+        /// Private variable if the selected folder is correct
+        /// </summary>
         private bool folderSet;
 
+        /// <summary>
+        /// All the available languages
+        /// </summary>
         public IReadOnlyList<LanguageItem> Languages { get; private set; }
 
+        /// <summary>
+        /// The currently selected language
+        /// </summary>
         public LanguageItem SelectedLanguage {
             get => selectedLanguage;
             set
@@ -86,7 +128,14 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("SelectedLanguage");
             }
         }
+        /// <summary>
+        /// Private access to the current sleected language
+        /// </summary>
         private LanguageItem selectedLanguage;
+
+        /// <summary>
+        /// Index of the currently selected language
+        /// </summary>
         public int SelectedIndex
         {
             get => selectedIndex;
@@ -96,9 +145,19 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("SelectedIndex");
             }
         }
+        /// <summary>
+        /// Private variable of the current selected language
+        /// </summary>
         private int selectedIndex;
+
+        /// <summary>
+        /// Is this the first start of this window
+        /// </summary>
         private bool firstStart;
 
+        /// <summary>
+        /// The text to display in the agreement web browser
+        /// </summary>
         public string AgreementText 
         {
             get => agreementText;
@@ -108,14 +167,25 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("AgreementText");
             } 
         }
+        /// <summary>
+        /// Private variable for the text to show in the agreement web browser
+        /// </summary>
         private string agreementText;
 
         /// <summary>
         /// The setting manager to use
         /// </summary>
         private SettingManager settingManager;
+
+        /// <summary>
+        /// The current manager to use for loading documents
+        /// </summary>
         private readonly DocumentManager documentManager;
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="window">The window this view belongs to</param>
         public WelcomeViewModel(Window window) : base(window)
         {
             firstStart = true;
@@ -180,6 +250,11 @@ namespace CommunityPatchLauncher.ViewModels
             };
         }
 
+        /// <summary>
+        /// The game folder did change
+        /// </summary>
+        /// <param name="sender">Sender of the event</param>
+        /// <param name="e">Event arguments</param>
         private void GameFolderChanged_Executed(object sender, EventArguments.DataCommandEventArg e)
         {
             FolderSet = false;

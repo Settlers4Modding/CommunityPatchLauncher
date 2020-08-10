@@ -5,20 +5,43 @@ using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
 using System.Collections.Generic;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
 {
+    /// <summary>
+    /// The view model for the launch game window
+    /// </summary>
     class LaunchGameViewModel : BaseViewModel
     {
+        /// <summary>
+        /// The settings manager to use
+        /// </summary>
         private SettingManager settingManager;
 
+        /// <summary>
+        /// The command used to launch the game
+        /// </summary>
         public ICommand LaunchGameCommand { get; private set; }
+
+        /// <summary>
+        /// All the patches you can select
+        /// </summary>
         public IReadOnlyList<Patch> AllPatches { get; }
+
+        /// <summary>
+        /// The current seleted patch
+        /// </summary>
         public Patch Patch { get; set; }
+
+        /// <summary>
+        /// The currently selected index
+        /// </summary>
         public int PatchIndex { get; set; }
+
+        /// <summary>
+        /// The current speed mode
+        /// </summary>
         public SpeedModes Speed
         {
             get
@@ -35,8 +58,14 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("Speed");
             }
         }
+        /// <summary>
+        /// Private current speed mode
+        /// </summary>
         private SpeedModes speed;
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
         public LaunchGameViewModel()
         {
             Patches patches = new Patches();
@@ -54,6 +83,9 @@ namespace CommunityPatchLauncher.ViewModels
             dataCommand.Execute(null);
         }
 
+        /// <summary>
+        /// This method will set the last selected patch
+        /// </summary>
         private void SetLastPatch()
         {
             string patchToUse = settingManager.GetValue<string>("Patch");
@@ -73,6 +105,9 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
 
+        /// <summary>
+        /// This method will set the last used speed mode
+        /// </summary>
         private void SetLastSpeedMode()
         {
             speed = SpeedModes.Normal;
@@ -80,6 +115,7 @@ namespace CommunityPatchLauncher.ViewModels
             Enum.TryParse(speedModeToUse, out speed);
         }
 
+        /// <inheritdoc/>
         public override void Dispose()
         {
             if (settingManager != null)
