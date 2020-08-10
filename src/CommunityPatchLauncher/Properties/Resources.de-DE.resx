@@ -126,11 +126,47 @@
   <data name="Default_LanguageLabel" xml:space="preserve">
     <value>Sprache:</value>
   </data>
+  <data name="MainWindow_Maps" xml:space="preserve">
+    <value>Karten</value>
+  </data>
+  <data name="MainWindow_Multiplayer" xml:space="preserve">
+    <value>Mehrspieler</value>
+  </data>
+  <data name="MainWindow_News" xml:space="preserve">
+    <value>Neuigkeiten</value>
+  </data>
+  <data name="MainWindow_Play" xml:space="preserve">
+    <value>Spielen</value>
+  </data>
+  <data name="MainWindow_Ranked" xml:space="preserve">
+    <value>Ranked</value>
+  </data>
+  <data name="MainWindow_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
   <data name="MainWindow_WindowTitle" xml:space="preserve">
     <value>Community Patch Launcher</value>
   </data>
+  <data name="PlayControl_FastSpeed" xml:space="preserve">
+    <value>Schnelle Spielgeschwindigkeit (2)</value>
+  </data>
+  <data name="PlayControl_Launch" xml:space="preserve">
+    <value>Spiel starten</value>
+  </data>
+  <data name="PlayControl_NormalSpeed" xml:space="preserve">
+    <value>Normale Spielgeschwindigkeit (1)</value>
+  </data>
+  <data name="PlayControl_TestingSpeed" xml:space="preserve">
+    <value>Test Spielgeschwindigkeit (60)</value>
+  </data>
+  <data name="PlayControl_VeryFastSpeed" xml:space="preserve">
+    <value>Sehr schnelle Spielgeschwindigkeit (3)</value>
+  </data>
   <data name="WelcomeWindow_Agree" xml:space="preserve">
     <value>Ich habe die Vereinbarung gelesen</value>
+  </data>
+  <data name="WelcomeWindow_AutoDetect" xml:space="preserve">
+    <value>Automatisch erkennen</value>
   </data>
   <data name="WelcomeWindow_TextBox" xml:space="preserve">
     <value>Vereinbarung</value>

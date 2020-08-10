@@ -20,5 +20,11 @@
     <Setting Name="PatchPosition" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">1124076</Value>
     </Setting>
+    <Setting Name="GamePathRegKeyPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Ubisoft\Launcher\Installs\11785</Value>
+    </Setting>
+    <Setting Name="GamePathRegKeyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">InstallDir</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

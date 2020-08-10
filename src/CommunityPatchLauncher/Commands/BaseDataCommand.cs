@@ -6,7 +6,7 @@ namespace CommunityPatchLauncher.Commands
     /// <summary>
     /// This class is a abstract base class which will implement the base functions
     /// </summary>
-    internal abstract class BaseDataCommand : IDataCommand
+    public abstract class BaseDataCommand : IDataCommand
     {
         /// <summary>
         /// The data of the command

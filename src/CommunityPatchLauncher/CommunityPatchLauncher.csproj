@@ -77,12 +77,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BehaviorExtensions\BrowserBehavior.cs" />
+    <Compile Include="BindingData\AvailableLanguages.cs" />
+    <Compile Include="BindingData\Container\LanguageItem.cs" />
+    <Compile Include="BindingData\Container\Patch.cs" />
+    <Compile Include="BindingData\MultiBinding\AcceptAgreementConverter.cs" />
+    <Compile Include="BindingData\MultiBinding\GameSpeedConverter.cs" />
+    <Compile Include="BindingData\MultiBinding\LaunchGameConverter.cs" />
+    <Compile Include="BindingData\MultiBinding\MultiBoolConverter.cs" />
+    <Compile Include="BindingData\Patches.cs" />
+    <Compile Include="Commands\AcceptAgreementCommand.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\CloseApplicationCommand.cs" />
+    <Compile Include="Commands\CloseWindowCommand.cs" />
+    <Compile Include="Commands\DataContainer\AcceptAgreementData.cs" />
+    <Compile Include="Commands\DataContainer\LaunchGameData.cs" />
     <Compile Include="Commands\BaseDataCommand.cs" />
     <Compile Include="Commands\GetCurrentLanguageCommand.cs" />
     <Compile Include="Commands\GetSettingManagerCommand.cs" />
     <Compile Include="Commands\IDataCommand.cs" />
     <Compile Include="Commands\InstallationFromManuelSelectionCommand.cs" />
     <Compile Include="Commands\InstallationFromRegistryCommand.cs" />
+    <Compile Include="Commands\LaunchGameCommand.cs" />
+    <Compile Include="Commands\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
@@ -117,6 +134,9 @@
     <Compile Include="UserControls\RankedUserControl.xaml.cs" />
     <Compile Include="Tasks\StartGameTask.cs" />
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\LaunchGameViewModel.cs" />
+    <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
@@ -201,7 +221,6 @@
   <ItemGroup>
     <Resource Include="Graphics\Capture.PNG" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

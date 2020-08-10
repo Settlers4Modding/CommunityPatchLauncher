@@ -97,6 +97,60 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maps.
+        /// </summary>
+        public static string MainWindow_Maps {
+            get {
+                return ResourceManager.GetString("MainWindow_Maps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multiplayer.
+        /// </summary>
+        public static string MainWindow_Multiplayer {
+            get {
+                return ResourceManager.GetString("MainWindow_Multiplayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News.
+        /// </summary>
+        public static string MainWindow_News {
+            get {
+                return ResourceManager.GetString("MainWindow_News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play.
+        /// </summary>
+        public static string MainWindow_Play {
+            get {
+                return ResourceManager.GetString("MainWindow_Play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ranked.
+        /// </summary>
+        public static string MainWindow_Ranked {
+            get {
+                return ResourceManager.GetString("MainWindow_Ranked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string MainWindow_Settings {
+            get {
+                return ResourceManager.GetString("MainWindow_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Community Patch Launcher.
         /// </summary>
         public static string MainWindow_Title {
@@ -106,11 +160,74 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fast Speed (2).
+        /// </summary>
+        public static string PlayControl_FastSpeed {
+            get {
+                return ResourceManager.GetString("PlayControl_FastSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Launch game.
+        /// </summary>
+        public static string PlayControl_Launch {
+            get {
+                return ResourceManager.GetString("PlayControl_Launch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal Speed (1).
+        /// </summary>
+        public static string PlayControl_NormalSpeed {
+            get {
+                return ResourceManager.GetString("PlayControl_NormalSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Testing Speed (60).
+        /// </summary>
+        public static string PlayControl_TestingSpeed {
+            get {
+                return ResourceManager.GetString("PlayControl_TestingSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Very Fast Speed (3).
+        /// </summary>
+        public static string PlayControl_VeryFastSpeed {
+            get {
+                return ResourceManager.GetString("PlayControl_VeryFastSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I did read the aggrement.
         /// </summary>
         public static string WelcomeWindow_Agree {
             get {
                 return ResourceManager.GetString("WelcomeWindow_Agree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto detect.
+        /// </summary>
+        public static string WelcomeWindow_AutoDetect {
+            get {
+                return ResourceManager.GetString("WelcomeWindow_AutoDetect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ....
+        /// </summary>
+        public static string WelcomeWindow_ManuelSelection {
+            get {
+                return ResourceManager.GetString("WelcomeWindow_ManuelSelection", resourceCulture);
             }
         }
         

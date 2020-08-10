@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using CommunityPatchLauncher.ViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CommunityPatchLauncher.UserControls
 {
@@ -23,6 +11,20 @@ namespace CommunityPatchLauncher.UserControls
         public PlayUserControl()
         {
             InitializeComponent();
+            DataContext = new LaunchGameViewModel();
+        }
+
+        /// <summary>
+        /// Unload event of this control
+        /// </summary>
+        /// <param name="sender">The sender of the event</param>
+        /// <param name="e">The arguments of the event</param>
+        private void UserControl_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (DataContext is BaseViewModel viewModel)
+            {
+                viewModel.Dispose();
+            }
         }
     }
 }

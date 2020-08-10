@@ -3,7 +3,7 @@
     /// <summary>
     /// All the available patch packages
     /// </summary>
-    internal enum AvailablePatches
+    public enum AvailablePatches
     {
         HistoryEdition,
         CommunityPatch,

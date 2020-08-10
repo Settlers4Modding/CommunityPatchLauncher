@@ -5,7 +5,7 @@ namespace CommunityPatchLauncher.EventArguments
     /// <summary>
     /// Return argument for a data command
     /// </summary>
-    internal class DataCommandEventArg : EventArgs
+    public class DataCommandEventArg : EventArgs
     {
         /// <summary>
         /// The return data of the command

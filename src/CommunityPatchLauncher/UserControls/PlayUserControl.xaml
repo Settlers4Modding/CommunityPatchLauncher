@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
+             xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.MultiBinding"
+             xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Unloaded="UserControl_Unloaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -20,61 +22,40 @@
         <Image Source="/Graphics/Capture.PNG"  Stretch="UniformToFill"  Grid.ColumnSpan="3" Grid.RowSpan="2"/>
 
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="10">
-            <ComboBox Name="GameCombobox" VerticalAlignment="Center" Margin="0, 0, 0, 10">
-
+            <ComboBox Name="GameCombobox" SelectedItem="{Binding Patch}"  SelectedIndex="{Binding PatchIndex}" VerticalAlignment="Center" Margin="0, 0, 0, 10" ItemsSource="{Binding Path=AllPatches}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Versions}" />
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <ComboBox Name="VersionCombobox" VerticalAlignment="Center">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Versions}" />
+                        <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <Grid  Grid.Column="0" Grid.Row="1" Margin="5" HorizontalAlignment="Center">
-            <Grid.Resources>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Margin" Value="0,0,0,1" />
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="Foreground" Value="White" />
-                </Style>
+        <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
+            <StackPanel.Resources>
                 <Style TargetType="{x:Type RadioButton}">
                     <Setter Property="Margin" Value="0,0,0,1" />
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
                     <Setter Property="GroupName" Value="Speed"/>
+                    <Setter Property="Foreground" Value="White" />
                 </Style>
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="17*"/>
-                <ColumnDefinition Width="32*"/>
-                <ColumnDefinition Width="46*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <RadioButton IsChecked="True" Grid.Column="0" Grid.Row="0"/>
-            <RadioButton Grid.Column="0" Grid.Row="1"/>
-            <RadioButton Grid.Column="0" Grid.Row="2"/>
-            <RadioButton Grid.Column="0" Grid.Row="3"/>
-
-            <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" >Normal Speed</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" >Normal Speed</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" >Normal Speed</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" >Normal Speed</TextBlock>
-
-        </Grid>
-        <Button Grid.Column="3" Grid.Row="2" Height="Auto" Margin="15, 15, 15, 15">Start</Button>
-
-
+                <conv:GameSpeedConverter x:Key="GameSpeedConverter"></conv:GameSpeedConverter>
+            </StackPanel.Resources>
+            <RadioButton GroupName="GameSpeed" IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Normal}" Grid.Column="0" Grid.Row="0" Content="{x:Static p:Resources.PlayControl_NormalSpeed}"/>
+            <RadioButton GroupName="GameSpeed" IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Fast}" Grid.Column="0" Grid.Row="1" Content="{x:Static p:Resources.PlayControl_FastSpeed}"/>
+            <RadioButton GroupName="GameSpeed" IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Faster}" Grid.Column="0" Grid.Row="2" Content="{x:Static p:Resources.PlayControl_VeryFastSpeed}"/>
+            <RadioButton GroupName="GameSpeed" IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Testing}" Grid.Column="0" Grid.Row="3" Content="{x:Static p:Resources.PlayControl_TestingSpeed}"/>
+        </StackPanel>
+        <Button Grid.Column="3" Grid.Row="2" Height="Auto" Margin="15, 15, 15, 15" Command="{Binding LaunchGameCommand}" Content="{x:Static p:Resources.PlayControl_Launch}" IsCancel="True">
+            <Button.Resources>
+                <conv:LaunchGameConverter x:Key="LaunchGameConverter"></conv:LaunchGameConverter>
+            </Button.Resources>
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource LaunchGameConverter}">
+                    <Binding Path="Speed" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                    <Binding ElementName="GameCombobox" Path="SelectedItem"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
     </Grid>
 </UserControl>

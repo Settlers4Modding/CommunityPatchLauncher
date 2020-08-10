@@ -14,7 +14,7 @@
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <Ellipse Width="10" Height="10" Fill="DarkGray"/>
-                    <TextBlock>Play</TextBlock>
+                    <TextBlock Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
                 </StackPanel>
             </TabItem.Header>
             <uC:PlayUserControl MinHeight="410" MinWidth="700"></uC:PlayUserControl>
@@ -24,7 +24,7 @@
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <Ellipse Width="10" Height="10" Fill="DarkGray"/>
-                    <TextBlock>News</TextBlock>
+                    <TextBlock Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>
                 </StackPanel>
             </TabItem.Header>
             <uC:NewsUserControl MinHeight="410" MinWidth="700"/>
@@ -35,7 +35,7 @@
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <Ellipse Width="10" Height="10" Fill="DarkGray"/>
-                    <TextBlock>Maps</TextBlock>
+                    <TextBlock Text="{x:Static p:Resources.MainWindow_Maps}"></TextBlock>
                 </StackPanel>
             </TabItem.Header>
             <uC:MapsUserControl MinHeight="410" MinWidth="700"/>
@@ -45,17 +45,16 @@
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <Ellipse Width="10" Height="10" Fill="DarkGray"/>
-                    <TextBlock>Multiplayer</TextBlock>
+                    <TextBlock Text="{x:Static p:Resources.MainWindow_Multiplayer}"></TextBlock>
                 </StackPanel>
             </TabItem.Header>
             <uC:MatchmakingUserControl MinHeight="410" MinWidth="700"/>
         </TabItem>
-
         <TabItem >
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <Ellipse Width="10" Height="10" Fill="DarkGray"/>
-                    <TextBlock>Ranked</TextBlock>
+                    <TextBlock Text="{x:Static p:Resources.MainWindow_Ranked}"></TextBlock>
                 </StackPanel>
             </TabItem.Header>
             <uC:RankedUserControl MinHeight="410" MinWidth="700"/>
@@ -65,7 +64,7 @@
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <Ellipse Width="10" Height="10" Fill="DarkGray"/>
-                    <TextBlock>Settings</TextBlock>
+                    <TextBlock Text="{x:Static p:Resources.MainWindow_Settings}"></TextBlock>
                 </StackPanel>
             </TabItem.Header>
             <uC:ConfigurationUserControl MinHeight="410" MinWidth="700"/>

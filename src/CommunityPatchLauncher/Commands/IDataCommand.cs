@@ -7,7 +7,7 @@ namespace CommunityPatchLauncher.Commands
     /// <summary>
     /// A command which will return some data
     /// </summary>
-    internal interface IDataCommand : ICommand
+    public interface IDataCommand : ICommand
     {
         /// <summary>
         /// Was the command executed
