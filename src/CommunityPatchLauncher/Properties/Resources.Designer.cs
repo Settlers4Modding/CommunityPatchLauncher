@@ -61,29 +61,20 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to German.
-        /// </summary>
-        public static string Default_LanguageDe {
-            get {
-                return ResourceManager.GetString("Default_LanguageDe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to English.
-        /// </summary>
-        public static string Default_LanguageEn {
-            get {
-                return ResourceManager.GetString("Default_LanguageEn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Language:.
         /// </summary>
         public static string Default_LanguageLabel {
             get {
                 return ResourceManager.GetString("Default_LanguageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polish.
+        /// </summary>
+        public static string Default_LanguagePl {
+            get {
+                return ResourceManager.GetString("Default_LanguagePl", resourceCulture);
             }
         }
         

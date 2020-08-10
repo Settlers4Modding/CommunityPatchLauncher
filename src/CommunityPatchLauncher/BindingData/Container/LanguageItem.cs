@@ -7,9 +7,14 @@ namespace CommunityPatchLauncher.BindingData.Container
     public class LanguageItem
     {
         /// <summary>
-        /// The display name of the language
+        /// The generic display name of the language
         /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// The translated name to display
+        /// </summary>
+        public string TranslatedName { get; }
 
         /// <summary>
         /// The iso code of the language
@@ -24,6 +29,8 @@ namespace CommunityPatchLauncher.BindingData.Container
         public LanguageItem(string name, string isoCode)
         {
             Name = name;
+            TranslatedName = Properties.Resources.ResourceManager.GetString(isoCode);
+            TranslatedName = TranslatedName ?? Name;
             IsoCode = isoCode;
         }
 
