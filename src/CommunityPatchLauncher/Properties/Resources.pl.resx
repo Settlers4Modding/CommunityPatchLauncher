@@ -117,4 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="de-DE" xml:space="preserve">
+    <value>Niemiecki</value>
+  </data>
+  <data name="Default_ComingSoon" xml:space="preserve">
+    <value>Dostępne wkrótce</value>
+  </data>
+  <data name="Default_LanguageLabel" xml:space="preserve">
+    <value>Język</value>
+  </data>
+  <data name="Default_LanguagePl" xml:space="preserve">
+    <value>Polski</value>
+  </data>
+  <data name="en-EN" xml:space="preserve">
+    <value>Angielski</value>
+  </data>
+  <data name="MainWindow_Changelog" xml:space="preserve">
+    <value>Aktualizacje</value>
+  </data>
+  <data name="MainWindow_FAQ" xml:space="preserve">
+    <value>Najczęściej zadawane pytania</value>
+  </data>
+  <data name="MainWindow_Home" xml:space="preserve">
+    <value>Strona główna</value>
+  </data>
+  <data name="MainWindow_Maps" xml:space="preserve">
+    <value>Mapy</value>
+  </data>
+  <data name="MainWindow_Multiplayer" xml:space="preserve">
+    <value>Gra wieloosobowa</value>
+  </data>
+  <data name="MainWindow_News" xml:space="preserve">
+    <value>Nowości</value>
+  </data>
+  <data name="MainWindow_Play" xml:space="preserve">
+    <value>Graj</value>
+  </data>
+  <data name="MainWindow_Ranked" xml:space="preserve">
+    <value>Rozgrywka rankingowa</value>
+  </data>
+  <data name="MainWindow_Settings" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="MainWindow_SocialMedia" xml:space="preserve">
+    <value>Media społecznościowe</value>
+  </data>
+  <data name="MainWindow_WindowTitle" xml:space="preserve">
+    <value>Community Patch Launcher</value>
+  </data>
+  <data name="pl" xml:space="preserve">
+    <value>Polski</value>
+  </data>
+  <data name="PlayControl_FastSpeed" xml:space="preserve">
+    <value>Szybka prędkość (2)</value>
+  </data>
+  <data name="PlayControl_Launch" xml:space="preserve">
+    <value>Graj</value>
+  </data>
+  <data name="PlayControl_NormalSpeed" xml:space="preserve">
+    <value>Normalna prędkość (1)</value>
+  </data>
+  <data name="PlayControl_TestingSpeed" xml:space="preserve">
+    <value>Testowa prędkość (60)</value>
+  </data>
+  <data name="PlayControl_VeryFastSpeed" xml:space="preserve">
+    <value>Bardzo szybka prędkość (3)</value>
+  </data>
+  <data name="WelcomeWindow_Agree" xml:space="preserve">
+    <value>Przeczytałem warunki umowy</value>
+  </data>
+  <data name="WelcomeWindow_AutoDetect" xml:space="preserve">
+    <value>Dopasuj automatycznie</value>
+  </data>
+  <data name="WelcomeWindow_TextBox" xml:space="preserve">
+    <value>Umowa</value>
+  </data>
+  <data name="WelcomeWindow_Title" xml:space="preserve">
+    <value>Witaj</value>
+  </data>
 </root>
