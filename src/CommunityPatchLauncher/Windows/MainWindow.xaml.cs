@@ -37,6 +37,10 @@ namespace CommunityPatchLauncher.Windows
         {
             if (e.ChangedButton == MouseButton.Left)
             {
+                if (WindowState == WindowState.Maximized)
+                {
+                    WindowState = WindowState.Normal;
+                }
                 DragMove();
             }
         }

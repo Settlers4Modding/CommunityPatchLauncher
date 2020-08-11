@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CommunityPatchLauncher.Commands
@@ -27,6 +28,13 @@ namespace CommunityPatchLauncher.Commands
 
         public override void Execute(object parameter)
         {
+            foreach (UIElement child in panelToUse.Children)
+            {
+                if (child is IDisposable disposable)
+                {
+                    disposable.Dispose();
+                }
+            }
             panelToUse.Children.Clear();
             panelToUse.Children.Add(userControl);
         }

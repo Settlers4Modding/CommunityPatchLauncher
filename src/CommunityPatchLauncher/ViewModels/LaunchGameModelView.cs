@@ -54,16 +54,39 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private SpeedModes speed;
 
+        private readonly SettingManager settingManager;
+
+        private string currentSpeedPath;
+
         public LaunchGameModelView()
         {
             ISettingFactory factory = new XmlSettingFactory();
-            SettingManager settingManager = factory.GetSettingsManager();
+            settingManager = factory.GetSettingsManager();
             LaunchGameCommand = new LaunchGameCommand(settingManager);
         }
 
         public void SetPatch(Patch availablePatch)
         {
             PatchToUse = availablePatch;
+            currentSpeedPath = patchToUse.RealPatch.ToString() + "/Speed";
+            string speedString = settingManager.GetValue<string>(currentSpeedPath);
+            SpeedModes newMode = SpeedModes.Normal;
+            if (speedString != null)
+            {
+                Enum.TryParse(speedString, out newMode);
+            }
+            Speed = newMode;
+        }
+
+        private void SaveData()
+        {
+            settingManager.AddValue(currentSpeedPath, speed.ToString());
+            settingManager.SaveSettings();
+        }
+
+        public override void Dispose()
+        {
+            SaveData();
         }
     }
 }

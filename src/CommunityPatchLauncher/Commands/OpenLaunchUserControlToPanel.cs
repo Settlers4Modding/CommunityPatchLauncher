@@ -22,11 +22,11 @@ namespace CommunityPatchLauncher.Commands
 
         public override void Execute(object parameter)
         {
-            if (userControl is LaunchGameUserControl launchGameUserControl && parameter is AvailablePatches patch) 
+            base.Execute(parameter);
+            if (userControl is LaunchGameUserControl launchGameUserControl && parameter is AvailablePatches patch)
             {
                 launchGameUserControl.SetPatch(patch);
             }
-            base.Execute(parameter);
         }
     }
 }

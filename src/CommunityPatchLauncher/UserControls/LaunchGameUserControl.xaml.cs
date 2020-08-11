@@ -21,12 +21,20 @@ namespace CommunityPatchLauncher.UserControls
     /// <summary>
     /// Interaction logic for LaunchGameUserControl.xaml
     /// </summary>
-    public partial class LaunchGameUserControl : UserControl
+    public partial class LaunchGameUserControl : UserControl, IDisposable
     {
         public LaunchGameUserControl()
         {
             InitializeComponent();
             DataContext = new LaunchGameModelView();
+        }
+
+        public void Dispose()
+        {
+            if (DataContext is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
         }
 
         public void SetPatch(AvailablePatches availablePatch)

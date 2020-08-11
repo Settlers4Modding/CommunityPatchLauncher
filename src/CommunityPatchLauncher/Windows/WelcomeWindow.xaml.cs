@@ -18,13 +18,17 @@ namespace CommunityPatchLauncher.Windows
             InitializeComponent();
             DataContext = new WelcomeViewModel(this);
             SetDefaultWindowStyle();
-            this.MouseDown += WelcomeWindow_MouseDown;
+            MouseDown += WelcomeWindow_MouseDown;
         }
 
         private void WelcomeWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
+                if (WindowState == WindowState.Maximized)
+                {
+                    WindowState = WindowState.Normal;
+                }
                 DragMove();
             }
         }
@@ -33,7 +37,7 @@ namespace CommunityPatchLauncher.Windows
         {
             try
             {
-                this.Style = this.Resources["WindowStyle"] as System.Windows.Style;
+                Style = Resources["WindowStyle"] as Style;
             }
             catch (Exception)
             {
