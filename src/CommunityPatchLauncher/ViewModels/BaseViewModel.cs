@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CommunityPatchLauncher.Commands;
+using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
 {
@@ -9,6 +11,11 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     public class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
+        public ICommand CloseApplication { get; private set; }
+        public ICommand MaximizeWindow { get; private set; }
+        public ICommand MinimizeWindow { get; private set; }
+
+
         /// <summary>
         /// Property has changed event
         /// </summary>
@@ -33,6 +40,10 @@ namespace CommunityPatchLauncher.ViewModels
         public BaseViewModel(Window window)
         {
             currentWindow = window;
+
+            CloseApplication = new CloseApplicationCommand();
+            MinimizeWindow = new MinimizeWindowCommand(currentWindow);
+            MaximizeWindow = new MaximizeWindowCommand(currentWindow);
         }
 
         /// <summary>

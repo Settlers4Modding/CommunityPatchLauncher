@@ -97,11 +97,38 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string MainWindow_About {
+            get {
+                return ResourceManager.GetString("MainWindow_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changelog.
         /// </summary>
         public static string MainWindow_Changelog {
             get {
                 return ResourceManager.GetString("MainWindow_Changelog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chat.
+        /// </summary>
+        public static string MainWindow_Chat {
+            get {
+                return ResourceManager.GetString("MainWindow_Chat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disclaimer.
+        /// </summary>
+        public static string MainWindow_Disclaimer {
+            get {
+                return ResourceManager.GetString("MainWindow_Disclaimer", resourceCulture);
             }
         }
         
@@ -115,6 +142,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string MainWindow_Help {
+            get {
+                return ResourceManager.GetString("MainWindow_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string MainWindow_Home {
@@ -124,11 +160,29 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Intellectual property.
+        /// </summary>
+        public static string MainWindow_IntellectualProperty {
+            get {
+                return ResourceManager.GetString("MainWindow_IntellectualProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maps.
         /// </summary>
         public static string MainWindow_Maps {
             get {
                 return ResourceManager.GetString("MainWindow_Maps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mods.
+        /// </summary>
+        public static string MainWindow_Mods {
+            get {
+                return ResourceManager.GetString("MainWindow_Mods", resourceCulture);
             }
         }
         
@@ -160,6 +214,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search players.
+        /// </summary>
+        public static string MainWindow_PlayerSearch {
+            get {
+                return ResourceManager.GetString("MainWindow_PlayerSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ranked.
         /// </summary>
         public static string MainWindow_Ranked {
@@ -187,11 +250,29 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Community Patch Team.
+        /// </summary>
+        public static string MainWindow_Team {
+            get {
+                return ResourceManager.GetString("MainWindow_Team", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Community Patch Launcher.
         /// </summary>
         public static string MainWindow_Title {
             get {
                 return ResourceManager.GetString("MainWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tools.
+        /// </summary>
+        public static string MainWindow_Tools {
+            get {
+                return ResourceManager.GetString("MainWindow_Tools", resourceCulture);
             }
         }
         

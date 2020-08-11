@@ -8,10 +8,6 @@ namespace CommunityPatchLauncher.ViewModels
 {
     internal class MainWindowModel : BaseViewModel
     {
-        public ICommand CloseApplication { get; private set; }
-        public ICommand MaximizeWindow { get; private set; }
-        public ICommand MinimizeWindow { get; private set; }
-
         public ICommand LaunchGameCommand { get; private set; }
         public ICommand ComingSoonCommand { get; private set; }
 
@@ -32,10 +28,6 @@ namespace CommunityPatchLauncher.ViewModels
 
         public MainWindowModel(Window window) : base(window)
         {
-            CloseApplication = new CloseApplicationCommand();
-            MinimizeWindow = new MinimizeWindowCommand(currentWindow);
-            MaximizeWindow = new MaximizeWindowCommand(currentWindow);
-
             object dockArea = window.FindName("DP_ContentDock");
             if (dockArea is DockPanel panel)
             {
@@ -45,10 +37,10 @@ namespace CommunityPatchLauncher.ViewModels
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 
-            ChangeGroupVisiblity = new ToggleVisibilityCommand();
+            ChangeGroupVisiblity = new ToggleVisibilityCommand(currentWindow);
             ChangeGroupVisiblity.Executed += (sender, data) =>
             {
-                HomeGroupVisible = data.GetData<Visibility>();
+                //HomeGroupVisible = data.GetData<Visibility>();
             };
             HomeGroupVisible = Visibility.Visible;
         }

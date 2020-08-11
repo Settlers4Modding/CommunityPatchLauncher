@@ -32,7 +32,7 @@
             <Button Command="{Binding MinimizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
                 <fa:ImageAwesome Icon="WindowMinimize" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
-            <Image Style="{StaticResource TitleBarImage}" DockPanel.Dock="Left" Source="../Assets/Images/CP_Logo2.png"></Image>
+            <!--<Image Style="{StaticResource TitleBarImage}" DockPanel.Dock="Left" Source="../Assets/Images/CP_Logo2.png"></Image>-->
             <TextBlock DockPanel.Dock="Left" Style="{StaticResource TitleBarText}" Text="{x:Static p:Resources.MainWindow_Title}"></TextBlock>
         </DockPanel>
         <Grid Grid.Row="1">
@@ -43,19 +43,13 @@
             <StackPanel Grid.Column="0">
                 <Image MaxHeight="80" x:Name="Img_MainLogo" Source="../Assets/Images/CP_Logo1.png"></Image>
                 <StackPanel Orientation="Vertical">
-                    <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="{Binding HomeGroupVisible}">
+                    <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Home_Group">
                         <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                             <fa:ImageAwesome Icon="Home" Style="{StaticResource MainCategoryImage}" />
                             <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Home}"></TextBlock>
                         </StackPanel>
                     </Button>
-                    <StackPanel x:Name="Home_Group" Visibility="{Binding HomeGroupVisible, UpdateSourceTrigger=PropertyChanged}">
-                        <Button Style="{StaticResource CategoryButton}" Command="{Binding LaunchGameCommand}">
-                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                                <fa:ImageAwesome Icon="Rocket" Style="{StaticResource SubCategoryImage}" />
-                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
-                            </StackPanel>
-                        </Button>
+                    <StackPanel Tag="SubGroup" x:Name="Home_Group">
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="NewspaperOutline" Style="{StaticResource SubCategoryImage}" />
@@ -78,6 +72,88 @@
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="ShareAlt" Style="{StaticResource SubCategoryImage}" />
                                 <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SocialMedia}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Play_Group">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                            <fa:ImageAwesome Icon="Play" Style="{StaticResource MainCategoryImage}" />
+                            <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <StackPanel Visibility="Collapsed" Tag="SubGroup" x:Name="Play_Group">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding LaunchGameCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Rocket" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Wifi" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_PlayerSearch}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Crosshairs" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Ranked}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="SmileOutline" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Chat}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="MapMarker" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Maps}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Help_Group">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                            <fa:ImageAwesome Icon="Question" Style="{StaticResource MainCategoryImage}" />
+                            <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Help}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <StackPanel Visibility="Collapsed" Tag="SubGroup" x:Name="Help_Group">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Cog" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Settings}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Bookmark" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Disclaimer}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Users" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Team}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Plug" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Mods}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Wrench" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Mods}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
+                                <fa:ImageAwesome Icon="Question" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Help}"></TextBlock>
                             </StackPanel>
                         </Button>
                     </StackPanel>

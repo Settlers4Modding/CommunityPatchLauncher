@@ -58,10 +58,11 @@
     </Style>
     <Style TargetType="fa:ImageAwesome" x:Key="MainCategoryImage">
         <Setter Property="Foreground" Value="Snow"></Setter>
-        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="MaxWidth" Value="32"></Setter>
-        <Setter Property="MaxHeight" Value="32"></Setter>
+        <Setter Property="Margin" Value="2,0,2,0"></Setter>
+        <Setter Property="MaxWidth" Value="30"></Setter>
+        <Setter Property="MaxHeight" Value="30"></Setter>
     </Style>
     <Style TargetType="fa:ImageAwesome" x:Key="SubCategoryImage" BasedOn="{StaticResource MainCategoryImage}">
         <Setter Property="Margin" Value="15,5,0,0"></Setter>
