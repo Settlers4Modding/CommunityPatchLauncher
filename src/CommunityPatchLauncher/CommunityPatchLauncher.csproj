@@ -237,6 +237,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Styles\DefaultBrowserStyle.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -255,6 +258,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\CP_Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\CP_Logo2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

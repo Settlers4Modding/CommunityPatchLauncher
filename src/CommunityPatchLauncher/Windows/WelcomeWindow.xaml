@@ -7,78 +7,89 @@
         xmlns:behavior="clr-namespace:CommunityPatchLauncher.BehaviorExtensions"
         xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.MultiBinding"
         xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.WelcomeWindow_Title}" Height="450" Width="800" MinWidth="800" MinHeight="450">
+        Height="450" Width="800" MinWidth="800" MinHeight="450">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CommunityPatchLauncher;component/Styles/DefaultStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0"></RowDefinition>
             <RowDefinition Height="35"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <!--<DockPanel>
-            <Button x:Name="B_CloseWindow" DockPanel.Dock="Right" Command="{Binding CloseWindow}">
-                <Image Source="../Assets/Images/times.svg"></Image>
+        <DockPanel Grid.Row="0" x:Name="TitleBar">
+            <Button Command="{Binding CloseApplication}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
+                <fa:ImageAwesome Icon="Close" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
-        </DockPanel>-->
+            <Button Command="{Binding MaximizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
+                <fa:ImageAwesome Icon="WindowMaximize" Style="{StaticResource TitleBarImageAwesome}" />
+            </Button>
+            <Button Command="{Binding MinimizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
+                <fa:ImageAwesome Icon="WindowMinimize" Style="{StaticResource TitleBarImageAwesome}" />
+            </Button>
+            <Image Style="{StaticResource TitleBarImage}" DockPanel.Dock="Left" Source="../Assets/Images/CP_Logo2.png"></Image>
+            <TextBlock DockPanel.Dock="Left" Style="{StaticResource TitleBarText}" Text="{x:Static p:Resources.WelcomeWindow_Title}"></TextBlock>
+        </DockPanel>
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="4*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="{x:Static p:Resources.WelcomeWindow_TextBox}"></Label>
-            <StackPanel Grid.Column="2" VerticalAlignment="Top" Orientation="Horizontal" MaxHeight="30">
-                <Label Width="Auto" VerticalAlignment="Stretch"></Label>
-                <Label HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Static p:Resources.Default_LanguageLabel}"></Label>
-                <ComboBox SelectedIndex="{Binding SelectedIndex}" SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Languages}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Name="CB_LanguageSelector" MinWidth="200">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TranslatedName}"></TextBlock>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-            </StackPanel>
-        </Grid>
-        <WebBrowser Name="WB_Agreement" behavior:BrowserBehavior.Html="{Binding AgreementText, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"></WebBrowser>
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-                <ColumnDefinition Width="5*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <CheckBox IsChecked="{Binding Agreement}" Margin="5" Name="CB_Agree" VerticalAlignment="Center" Grid.Column="0" Content="{x:Static p:Resources.WelcomeWindow_Agree}"></CheckBox>
-            <Grid MaxHeight="23" Grid.Column="1" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"></RowDefinition>
+                <RowDefinition Height="35"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="35"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="1" MaxHeight="30">
+                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Top" Orientation="Horizontal" MaxHeight="30">
+                    <TextBlock Style="{StaticResource DefaultText}" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static p:Resources.Default_LanguageLabel}"></TextBlock>
+                    <ComboBox SelectedIndex="{Binding SelectedIndex}" SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Languages}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Name="CB_LanguageSelector" MinWidth="200">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TranslatedName}"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <TextBlock></TextBlock>
+                <!-- <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" DockPanel.Dock="Left" Style="{StaticResource DefaultText}" Text="{x:Static p:Resources.WelcomeWindow_TextBox}"></TextBlock>-->
+            </DockPanel>
+            <WebBrowser Name="WB_Agreement" behavior:BrowserBehavior.Html="{Binding AgreementText, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"></WebBrowser>
+            <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBox HorizontalAlignment="Stretch" Text="{Binding GameFolder, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <DockPanel VerticalAlignment="Center" Grid.Column="1">
-                    <Button Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}" Command="{Binding FolderSearch}" ></Button>
-                    <Button Content="{x:Static p:Resources.WelcomeWindow_AutoDetect}" Command="{Binding RegexSearch}"></Button>
-                </DockPanel>
+                <CheckBox Style="{StaticResource DefaultCheckbox}" IsChecked="{Binding Agreement}" Margin="5" Name="CB_Agree" VerticalAlignment="Center" Grid.Column="0" Content="{x:Static p:Resources.WelcomeWindow_Agree}"></CheckBox>
+                <Grid MaxHeight="23" Grid.Column="1" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Style="{StaticResource DefaultTextBox}" HorizontalAlignment="Stretch" Text="{Binding GameFolder, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <DockPanel Margin="5,0,5,0" VerticalAlignment="Center" Grid.Column="1">
+                        <Button Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}" Command="{Binding FolderSearch}" ></Button>
+                        <Button Margin="3,0,0,0" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.WelcomeWindow_AutoDetect}" Command="{Binding RegexSearch}"></Button>
+                    </DockPanel>
+                </Grid>
+                <Button Style="{StaticResource DefaultButton}" Name="B_Ok" Margin="5" VerticalAlignment="Center" Grid.Column="2" MaxHeight="23" Content="{x:Static p:Resources.Default_Ok}" Command="{Binding AcceptAgreement}">
+                    <Button.Resources>
+                        <conv:MultiBoolConverter x:Key="WelcomeButtonEnabledConverter"></conv:MultiBoolConverter>
+                        <conv:AcceptAgreementConverter x:Key="AcceptAgreementConverter"></conv:AcceptAgreementConverter>
+                    </Button.Resources>
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource AcceptAgreementConverter}">
+                            <Binding Path="Agreement" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                            <Binding Path="FolderSet" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                            <Binding Path="GameFolder" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                            <Binding Path="SelectedLanguage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
             </Grid>
-            <Button Name="B_Ok" Margin="5" VerticalAlignment="Center" Grid.Column="2" MaxHeight="23" Content="{x:Static p:Resources.Default_Ok}" Command="{Binding AcceptAgreement}">
-                <Button.Resources>
-                    <conv:MultiBoolConverter x:Key="WelcomeButtonEnabledConverter"></conv:MultiBoolConverter>
-                    <conv:AcceptAgreementConverter x:Key="AcceptAgreementConverter"></conv:AcceptAgreementConverter>
-                </Button.Resources>
-                <!--<Button.IsEnabled>
-                    <MultiBinding Converter="{StaticResource WelcomeButtonEnabledConverter}">
-                        <Binding Path="Agreement" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
-                        <Binding Path="FolderSet" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
-                    </MultiBinding>
-                </Button.IsEnabled>-->
-                <Button.CommandParameter>
-                    <MultiBinding Converter="{StaticResource AcceptAgreementConverter}">
-                        <Binding Path="Agreement" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
-                        <Binding Path="FolderSet" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
-                        <Binding Path="GameFolder" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
-                        <Binding Path="SelectedLanguage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
-                    </MultiBinding>
-                </Button.CommandParameter>
-            </Button>
         </Grid>
     </Grid>
 </Window>
