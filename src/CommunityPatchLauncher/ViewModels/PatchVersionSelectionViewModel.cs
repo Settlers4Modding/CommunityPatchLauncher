@@ -2,9 +2,12 @@
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Enums;
+using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
 using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -12,17 +15,14 @@ namespace CommunityPatchLauncher.ViewModels
     /// <summary>
     /// The view model for the launch game window
     /// </summary>
-    class LaunchGameViewModel : BaseViewModel
+    class PatchVersionSelectionViewModel : BaseViewModel
     {
         /// <summary>
         /// The settings manager to use
         /// </summary>
         private SettingManager settingManager;
 
-        /// <summary>
-        /// The command used to launch the game
-        /// </summary>
-        public ICommand LaunchGameCommand { get; private set; }
+        public ICommand OpenLaunchGameCommand { get; private set; }
 
         /// <summary>
         /// All the patches you can select
@@ -66,19 +66,25 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// Create a new instance of this class
         /// </summary>
-        public LaunchGameViewModel()
+        public PatchVersionSelectionViewModel(UserControl control)
         {
             Patches patches = new Patches();
             AllPatches = patches.GetPatches();
             Speed = SpeedModes.Testing;
 
+            object dockArea = control.FindName("DP_InnerDock");
+            if (dockArea is DockPanel panel)
+            {
+                OpenLaunchGameCommand = new OpenLaunchUserControlToPanel(panel, new LaunchGameUserControl());
+            }
+            
             IDataCommand dataCommand = new GetSettingManagerCommand();
             dataCommand.Executed += (sender, data) =>
             {
                 settingManager = data.GetData<SettingManager>();
                 SetLastPatch();
                 SetLastSpeedMode();
-                LaunchGameCommand = new LaunchGameCommand(settingManager);
+                
             };
             dataCommand.Execute(null);
         }

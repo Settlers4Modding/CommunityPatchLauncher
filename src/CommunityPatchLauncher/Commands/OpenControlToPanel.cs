@@ -10,8 +10,8 @@ namespace CommunityPatchLauncher.Commands
     internal class OpenControlToPanel : BaseCommand
     {
 
-        private readonly DockPanel panelToUse;
-        private readonly UserControl userControl;
+        protected readonly DockPanel panelToUse;
+        protected readonly UserControl userControl;
 
         public OpenControlToPanel(DockPanel panelToUse, UserControl userControl)
         {

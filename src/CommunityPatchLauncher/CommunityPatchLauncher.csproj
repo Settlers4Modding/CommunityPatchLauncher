@@ -106,6 +106,7 @@
     <Compile Include="Commands\MaximizeWindowCommand.cs" />
     <Compile Include="Commands\MinimizeWindowCommand.cs" />
     <Compile Include="Commands\OpenControlToPanel.cs" />
+    <Compile Include="Commands\OpenLaunchUserControlToPanel.cs" />
     <Compile Include="Commands\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
@@ -141,17 +142,21 @@
       <DependentUpon>ComingSoonControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ConfigurationUserControl.xaml.cs" />
+    <Compile Include="UserControls\LaunchGameUserControl.xaml.cs">
+      <DependentUpon>LaunchGameUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MapsUserControl.xaml.cs" />
     <Compile Include="UserControls\MatchmakingUserControl.xaml.cs" />
     <Compile Include="UserControls\NewsUserControl.xaml.cs" />
-    <Compile Include="UserControls\PlayUserControl.xaml.cs">
-      <DependentUpon>PlayUserControl.xaml</DependentUpon>
+    <Compile Include="UserControls\PatchVersionSelectionUserControl.xaml.cs">
+      <DependentUpon>PatchVersionSelectionUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\RankedUserControl.xaml.cs" />
     <Compile Include="Tasks\StartGameTask.cs" />
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\LaunchGameViewModel.cs" />
+    <Compile Include="ViewModels\LaunchGameModelView.cs" />
+    <Compile Include="ViewModels\PatchVersionSelectionViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
@@ -169,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UserControls\LaunchGameUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\MapsUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -181,7 +190,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\PlayUserControl.xaml">
+    <Page Include="UserControls\PatchVersionSelectionUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

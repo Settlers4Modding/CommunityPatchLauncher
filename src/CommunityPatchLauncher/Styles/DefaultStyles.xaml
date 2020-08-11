@@ -8,7 +8,6 @@
     <SolidColorBrush x:Key="SelectedColor" Color="#585062"></SolidColorBrush>
     <SolidColorBrush x:Key="BrightSelectedColor" Color="#7e738c"></SolidColorBrush>
     <SolidColorBrush x:Key="DarkerDisabledColor" Color="#3f3946"></SolidColorBrush>
-
     <Style TargetType="TextBox" x:Key="DefaultTextBox">
         <Setter Property="Background" Value="{StaticResource SelectedColor}"></Setter>
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
@@ -132,5 +131,23 @@
                 <Setter Property="Background" Value="{StaticResource SelectedColor}"></Setter>
             </Trigger>
         </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" x:Key="TabButton" BasedOn="{StaticResource CategoryButton}">
+        <Setter Property="Margin" Value="0,0,0,0"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{StaticResource SelectedColor}" BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TabText" BasedOn="{StaticResource MainCategoryString}">
+        <Setter Property="Margin" Value="5"></Setter>
+    </Style>
+    <Style TargetType="RadioButton" x:Key="DefaultRadioButton">
+        <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
     </Style>
 </ResourceDictionary>

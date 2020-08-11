@@ -1,4 +1,5 @@
 ﻿using CommunityPatchLauncher.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CommunityPatchLauncher.UserControls
@@ -6,12 +7,12 @@ namespace CommunityPatchLauncher.UserControls
     /// <summary>
     /// Interaction logic for PlayUserControl.xaml
     /// </summary>
-    public partial class PlayUserControl : UserControl
+    public partial class PatchVersionSelectionUserControl : UserControl
     {
-        public PlayUserControl()
+        public PatchVersionSelectionUserControl(Window parentWindow)
         {
             InitializeComponent();
-            DataContext = new LaunchGameViewModel();
+            DataContext = new PatchVersionSelectionViewModel(this);
         }
 
         /// <summary>

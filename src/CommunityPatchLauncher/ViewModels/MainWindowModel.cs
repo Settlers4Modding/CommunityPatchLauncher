@@ -33,7 +33,7 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 contentDock = panel;
 
-                LaunchGameCommand = new OpenControlToPanel(contentDock, new PlayUserControl());
+                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(currentWindow));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 
