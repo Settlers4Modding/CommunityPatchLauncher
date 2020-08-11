@@ -1,6 +1,10 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Enums;
+using CommunityPatchLauncher.Factories;
+using CommunityPatchLauncherFramework.Documentation.Factory;
+using CommunityPatchLauncherFramework.Documentation.Manager;
+using CommunityPatchLauncherFramework.Documentation.Strategy;
 using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
@@ -58,6 +62,16 @@ namespace CommunityPatchLauncher.ViewModels
 
         private string currentSpeedPath;
 
+        public string ChangelogContent { 
+            get => changelogContent; 
+            private set 
+            {
+                changelogContent = value;
+                RaisePropertyChanged("ChangelogContent");
+            }
+        }
+        private string changelogContent;
+
         public LaunchGameModelView()
         {
             ISettingFactory factory = new XmlSettingFactory();
@@ -76,6 +90,10 @@ namespace CommunityPatchLauncher.ViewModels
                 Enum.TryParse(speedString, out newMode);
             }
             Speed = newMode;
+
+            IDocumentManagerFactory managerFactory = new LocalDocumentManagerFactory();
+            DocumentManager documentManager = managerFactory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
+            ChangelogContent = documentManager.ReadConvertedDocument("en-EN", "Placeholder.md");
         }
 
         private void SaveData()

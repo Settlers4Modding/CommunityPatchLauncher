@@ -3,7 +3,6 @@ using CommunityPatchLauncher.ViewModels;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.Windows
@@ -49,7 +48,7 @@ namespace CommunityPatchLauncher.Windows
         {
             try
             {
-                this.Style = this.Resources["WindowStyle"] as System.Windows.Style;
+                this.Style = this.Resources["WindowStyle"] as Style;
             }
             catch (Exception)
             {

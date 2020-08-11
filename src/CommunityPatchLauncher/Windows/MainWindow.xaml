@@ -26,10 +26,10 @@
             <Button Command="{Binding CloseApplication}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
                 <fa:ImageAwesome Icon="Close" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
-            <Button Command="{Binding MaximizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
+            <Button Command="{Binding MaximizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
                 <fa:ImageAwesome Icon="WindowMaximize" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
-            <Button Command="{Binding MinimizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
+            <Button Command="{Binding MinimizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
                 <fa:ImageAwesome Icon="WindowMinimize" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
             <!--<Image Style="{StaticResource TitleBarImage}" DockPanel.Dock="Left" Source="../Assets/Images/CP_Logo2.png"></Image>-->
@@ -51,28 +51,44 @@
                     </Button>
                     <StackPanel Tag="SubGroup" x:Name="Home_Group">
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
-                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                                <fa:ImageAwesome Icon="NewspaperOutline" Style="{StaticResource SubCategoryImage}" />
-                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <fa:ImageAwesome Grid.Column="0" Icon="NewspaperOutline" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Grid.Column="1" Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>
+                            </Grid>
                         </Button>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
-                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                                <fa:ImageAwesome Icon="Clipboard" Style="{StaticResource SubCategoryImage}" />
-                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <fa:ImageAwesome Grid.Column="0" Icon="Bullhorn" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Grid.Column="1" Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
+                            </Grid>
                         </Button>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
-                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                                <fa:ImageAwesome Icon="Question" Style="{StaticResource SubCategoryImage}" />
-                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_FAQ}"></TextBlock>
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <fa:ImageAwesome Grid.Column="0" Icon="Question" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Grid.Column="1" Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_FAQ}"></TextBlock>
+                            </Grid>
                         </Button>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
-                            <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                                <fa:ImageAwesome Icon="ShareAlt" Style="{StaticResource SubCategoryImage}" />
-                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SocialMedia}"></TextBlock>
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <fa:ImageAwesome Grid.Column="0" Icon="ShareAlt" Style="{StaticResource SubCategoryImage}" />
+                                <TextBlock Grid.Column="1"  Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SocialMedia}"></TextBlock>
+                            </Grid>
                         </Button>
                     </StackPanel>
                     <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Play_Group">
@@ -96,13 +112,13 @@
                         </Button>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                                <fa:ImageAwesome Icon="Crosshairs" Style="{StaticResource SubCategoryImage}" />
+                                <fa:ImageAwesome Icon="Trophy" Style="{StaticResource SubCategoryImage}" />
                                 <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Ranked}"></TextBlock>
                             </StackPanel>
                         </Button>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
-                                <fa:ImageAwesome Icon="SmileOutline" Style="{StaticResource SubCategoryImage}" />
+                                <fa:ImageAwesome Icon="Headphones" Style="{StaticResource SubCategoryImage}" />
                                 <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Chat}"></TextBlock>
                             </StackPanel>
                         </Button>
@@ -147,13 +163,13 @@
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="Wrench" Style="{StaticResource SubCategoryImage}" />
-                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Mods}"></TextBlock>
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Tools}"></TextBlock>
                             </StackPanel>
                         </Button>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                             <StackPanel Orientation="Horizontal" Style="{StaticResource DockMenu}">
                                 <fa:ImageAwesome Icon="Question" Style="{StaticResource SubCategoryImage}" />
-                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Help}"></TextBlock>
+                                <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_About}"></TextBlock>
                             </StackPanel>
                         </Button>
                     </StackPanel>

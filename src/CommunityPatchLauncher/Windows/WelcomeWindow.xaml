@@ -26,10 +26,10 @@
             <Button Command="{Binding CloseApplication}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
                 <fa:ImageAwesome Icon="Close" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
-            <Button Command="{Binding MaximizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
+            <Button Command="{Binding MaximizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
                 <fa:ImageAwesome Icon="WindowMaximize" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
-            <Button Command="{Binding MinimizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
+            <Button Command="{Binding MinimizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
                 <fa:ImageAwesome Icon="WindowMinimize" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
             <Image Style="{StaticResource TitleBarImage}" DockPanel.Dock="Left" Source="../Assets/Images/CP_Logo2.png"></Image>

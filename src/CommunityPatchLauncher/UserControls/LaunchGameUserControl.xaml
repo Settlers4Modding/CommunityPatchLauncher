@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
+             xmlns:behavior="clr-namespace:CommunityPatchLauncher.BehaviorExtensions"
              xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.MultiBinding"
              xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
              mc:Ignorable="d" 
@@ -47,15 +48,17 @@
                 </Button>
                 </StackPanel>
             </DockPanel>
-        <Grid Grid.Column="1" Margin="5,0,5,0">
+        <Grid Grid.Column="1" Margin="5,0,10,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" ></RowDefinition>
                 <RowDefinition Height="*" ></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <TextBlock  Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
             </StackPanel>
-            <WebBrowser Margin="0,0,0,10" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></WebBrowser>
+            <Border BorderThickness="2" Margin="0,0,0,10" Grid.Row="1" BorderBrush="{StaticResource SelectedColor}">
+                <WebBrowser behavior:BrowserBehavior.Html="{Binding ChangelogContent, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></WebBrowser>
+            </Border>
         </Grid>
     </Grid>
 </UserControl>

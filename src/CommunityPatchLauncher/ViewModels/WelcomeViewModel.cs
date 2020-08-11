@@ -6,6 +6,7 @@ using CommunityPatchLauncher.Windows;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
+using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Collections.Generic;
 using System.Globalization;
@@ -209,28 +210,25 @@ namespace CommunityPatchLauncher.ViewModels
                 }
             }
 
-            IDataCommand settingManagerCommand = new GetSettingManagerCommand();
-            settingManagerCommand.Executed += (sender, data) =>
+            ISettingFactory settingFactory = new XmlSettingFactory();
+            settingManager = settingFactory.GetSettingsManager();
+            if (settingManager == null)
             {
-                settingManager = data.GetData<SettingManager>();
-                if (settingManager == null)
-                {
-                    return;
-                }
+                return;
+            }
 
-                string settingGameFolder = settingManager.GetValue<string>("GameFolder");
-                GameFolder = settingGameFolder ?? string.Empty;
-                AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, new MainWindow());
-                bool accepted = settingManager.GetValue<bool>("AgreementAccepted");
+            string settingGameFolder = settingManager.GetValue<string>("GameFolder");
+            GameFolder = settingGameFolder ?? string.Empty;
+            AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, new MainWindow());
+            bool accepted = settingManager.GetValue<bool>("AgreementAccepted");
 
-                if (accepted && FolderSet)
-                {
-                    currentWindow.Close();
-                    Window mainWindow = new MainWindow();
-                    mainWindow.Show();
-                }
-            };
-            settingManagerCommand.Execute(null);
+            if (accepted && FolderSet)
+            {
+                currentWindow.Close();
+                Window mainWindow = new MainWindow();
+                mainWindow.Show();
+            }
+
             IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
             documentManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
             PropertyChanged += (sender, data) =>

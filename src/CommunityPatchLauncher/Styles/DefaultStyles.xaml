@@ -17,8 +17,7 @@
         <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
     </Style>
     <Style TargetType="Window" x:Key="WindowStyle" >
-        <Setter Property="ResizeMode" Value="CanResizeWithGrip"></Setter>
-        <Setter Property="AllowsTransparency" Value="True"></Setter>
+        <Setter Property="ResizeMode" Value="NoResize"></Setter>
         <Setter Property="Background" Value="{StaticResource BackgroundColor}"></Setter>
         <Setter Property="WindowStyle" Value="None"></Setter>
     </Style>
@@ -44,12 +43,12 @@
     <Style TargetType="TextBlock" x:Key="MainCategoryString" BasedOn="{StaticResource DefaultText}">
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="Margin" Value="5,0,0,0"></Setter>
+        <Setter Property="Margin" Value="5,5,0,5"></Setter>
         <Setter Property="FontSize" Value="15"></Setter>
     </Style>
     <Style TargetType="TextBlock" x:Key="SubCategoryString" BasedOn="{StaticResource MainCategoryString}">
         <Setter Property="FontSize" Value="10"></Setter>
-        <Setter Property="Margin" Value="5,5,0,0"></Setter>
+        <Setter Property="Margin" Value="5,2,0,2"></Setter>
     </Style>
     <Style  TargetType="fa:ImageAwesome" x:Key="WhiteImage">
         <Setter Property="Foreground" Value="Snow"></Setter>
@@ -61,21 +60,18 @@
         <Setter Property="Foreground" Value="Snow"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="Margin" Value="2,0,2,0"></Setter>
-        <Setter Property="MaxWidth" Value="30"></Setter>
-        <Setter Property="MaxHeight" Value="30"></Setter>
+        <Setter Property="Margin" Value="2,5,2,5"></Setter>
+        <Setter Property="MaxWidth" Value="25"></Setter>
+        <Setter Property="MaxHeight" Value="25"></Setter>
     </Style>
     <Style TargetType="fa:ImageAwesome" x:Key="SubCategoryImage" BasedOn="{StaticResource MainCategoryImage}">
-        <Setter Property="Margin" Value="15,5,0,0"></Setter>
+        <Setter Property="Margin" Value="15,2,0,2"></Setter>
         <Setter Property="MaxWidth" Value="16"></Setter>
         <Setter Property="MaxHeight" Value="16"></Setter>
     </Style>
     <Style TargetType="Button" x:Key="Invisible">
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
-    </Style>
-    <Style TargetType="TreeView" x:Key="CategoryTreeView">
-        <Setter Property="Background" Value="Transparent"></Setter>
     </Style>
     <Style TargetType="Button" x:Key="DefaultButton">
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
@@ -113,6 +109,13 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="DarkRed"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" x:Key="TitleBarButtonGray" BasedOn="{StaticResource TitleBarButton}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="DarkSlateGray"></Setter>
             </Trigger>
         </Style.Triggers>
     </Style>

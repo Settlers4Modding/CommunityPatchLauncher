@@ -126,6 +126,12 @@
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>
   </data>
+  <data name="MainWindow_About" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="MainWindow_IntellectualProperty" xml:space="preserve">
+    <value>Gestiges Eigentum</value>
+  </data>
   <data name="MainWindow_Maps" xml:space="preserve">
     <value>Karten</value>
   </data>

@@ -6,10 +6,9 @@
     public enum AvailablePatches
     {
         HistoryEdition,
+        CommunityPatchLight,
         CommunityPatch,
         CommunityPatchPTR,
-        CommunityPatchTournamentCustom,
-        CommunityPatchTournamentRandom,
         CommunityPatchDLC
     }
 }
