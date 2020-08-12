@@ -85,20 +85,12 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="fa:ImageAwesome" x:Key="MainCategoryImage">
-        <Setter Property="Foreground" Value="Snow"></Setter>
-        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-        <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="Margin" Value="2,5,2,5"></Setter>
-        <Setter Property="MaxWidth" Value="25"></Setter>
-        <Setter Property="MaxHeight" Value="25"></Setter>
-    </Style>
     <Style TargetType="fa:FontAwesome" x:Key="MainCategoryFontAwesome">
         <Setter Property="Grid.Column" Value="0"></Setter>
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="FontSize" Value="25"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="Margin" Value="5,0,0,0"></Setter>
     </Style>
     <Style TargetType="fa:FontAwesome" x:Key="SubCategoryFontAwesome" BasedOn="{StaticResource MainCategoryFontAwesome}">

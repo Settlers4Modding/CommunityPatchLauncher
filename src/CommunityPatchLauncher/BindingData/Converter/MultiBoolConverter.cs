@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace CommunityPatchLauncher.BindingData.MultiBinding
+namespace CommunityPatchLauncher.BindingData.Converter
 {
     /// <summary>
     /// This class will check multiple bools and return false if one of them is false

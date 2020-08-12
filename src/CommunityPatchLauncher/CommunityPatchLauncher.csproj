@@ -85,10 +85,10 @@
     <Compile Include="BindingData\AvailableLanguages.cs" />
     <Compile Include="BindingData\Container\LanguageItem.cs" />
     <Compile Include="BindingData\Container\Patch.cs" />
-    <Compile Include="BindingData\MultiBinding\AcceptAgreementConverter.cs" />
-    <Compile Include="BindingData\MultiBinding\GameSpeedConverter.cs" />
-    <Compile Include="BindingData\MultiBinding\LaunchGameConverter.cs" />
-    <Compile Include="BindingData\MultiBinding\MultiBoolConverter.cs" />
+    <Compile Include="BindingData\Converter\AcceptAgreementConverter.cs" />
+    <Compile Include="BindingData\Converter\GameSpeedConverter.cs" />
+    <Compile Include="BindingData\Converter\LaunchGameConverter.cs" />
+    <Compile Include="BindingData\Converter\MultiBoolConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="Commands\AcceptAgreementCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
@@ -112,6 +112,7 @@
     <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
     <Compile Include="Commands\ToggleVisibilityCommand.cs" />
+    <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />
     <Compile Include="Enums\SpeedModes.cs" />
@@ -154,6 +155,9 @@
     <Compile Include="UserControls\RankedUserControl.xaml.cs" />
     <Compile Include="Tasks\StartGameTask.cs" />
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
+    <Compile Include="UserControls\TitleBarUseControl.xaml.cs">
+      <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LaunchGameModelView.cs" />
     <Compile Include="ViewModels\PatchVersionSelectionViewModel.cs" />
@@ -197,6 +201,10 @@
     <Page Include="UserControls\RankedUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TitleBarUseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

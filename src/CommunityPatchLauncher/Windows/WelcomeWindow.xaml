@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommunityPatchLauncher.Windows"
         xmlns:behavior="clr-namespace:CommunityPatchLauncher.BehaviorExtensions"
-        xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.MultiBinding"
+        xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.Converter"
         xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:uC="clr-namespace:CommunityPatchLauncher.UserControls"
         mc:Ignorable="d"
         Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Window.Resources>
@@ -22,19 +23,7 @@
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" x:Name="TitleBar">
-            <Button Command="{Binding CloseApplication}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
-                <fa:ImageAwesome Icon="Close" Style="{StaticResource TitleBarImageAwesome}" />
-            </Button>
-            <Button Command="{Binding MaximizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
-                <fa:ImageAwesome Icon="WindowMaximize" Style="{StaticResource TitleBarImageAwesome}" />
-            </Button>
-            <Button Command="{Binding MinimizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
-                <fa:ImageAwesome Icon="WindowMinimize" Style="{StaticResource TitleBarImageAwesome}" />
-            </Button>
-            <Image Style="{StaticResource TitleBarImage}" DockPanel.Dock="Left" Source="../Assets/Images/CP_Logo2.png"></Image>
-            <TextBlock DockPanel.Dock="Left" Style="{StaticResource TitleBarText}" Text="{x:Static p:Resources.WelcomeWindow_Title}"></TextBlock>
-        </DockPanel>
+        <uC:TitleBarUseControl></uC:TitleBarUseControl>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0"></RowDefinition>

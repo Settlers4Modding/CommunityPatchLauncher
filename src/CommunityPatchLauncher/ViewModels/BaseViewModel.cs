@@ -11,9 +11,19 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     public class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
-        public ICommand CloseApplication { get; private set; }
-        public ICommand MaximizeWindow { get; private set; }
-        public ICommand MinimizeWindow { get; private set; }
+        public ICommand CloseApplication { get; protected set; }
+        public ICommand MaximizeWindow { get; protected set; }
+        public ICommand MinimizeWindow { get; protected set; }
+
+        public bool IconVisible { 
+            get => iconVisible;  
+            protected set
+            {
+                iconVisible = value;
+                RaisePropertyChanged("IconVisible");
+            }
+        }
+        private bool iconVisible;
 
 
         /// <summary>
@@ -44,6 +54,7 @@ namespace CommunityPatchLauncher.ViewModels
             CloseApplication = new CloseApplicationCommand();
             MinimizeWindow = new MinimizeWindowCommand(currentWindow);
             MaximizeWindow = new MaximizeWindowCommand(currentWindow);
+            IconVisible = true;
         }
 
         /// <summary>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
              xmlns:behavior="clr-namespace:CommunityPatchLauncher.BehaviorExtensions"
-             xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.MultiBinding"
+             xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.Converter"
              xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">

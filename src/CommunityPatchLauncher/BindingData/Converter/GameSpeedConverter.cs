@@ -3,7 +3,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace CommunityPatchLauncher.BindingData.MultiBinding
+namespace CommunityPatchLauncher.BindingData.Converter
 {
     /// <summary>
     /// This class is used for radio buttons game speeds

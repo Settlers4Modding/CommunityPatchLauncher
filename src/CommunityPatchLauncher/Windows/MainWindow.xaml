@@ -22,19 +22,7 @@
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" x:Name="TitleBar">
-            <Button Command="{Binding CloseApplication}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
-                <fa:ImageAwesome Icon="Close" Style="{StaticResource TitleBarImageAwesome}" />
-            </Button>
-            <Button Command="{Binding MaximizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
-                <fa:ImageAwesome Icon="WindowMaximize" Style="{StaticResource TitleBarImageAwesome}" />
-            </Button>
-            <Button Command="{Binding MinimizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
-                <fa:ImageAwesome Icon="WindowMinimize" Style="{StaticResource TitleBarImageAwesome}" />
-            </Button>
-            <!--<Image Style="{StaticResource TitleBarImage}" DockPanel.Dock="Left" Source="../Assets/Images/CP_Logo2.png"></Image>-->
-            <TextBlock DockPanel.Dock="Left" Style="{StaticResource TitleBarText}" Text="{x:Static p:Resources.MainWindow_Title}"></TextBlock>
-        </DockPanel>
+        <uC:TitleBarUseControl></uC:TitleBarUseControl>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>

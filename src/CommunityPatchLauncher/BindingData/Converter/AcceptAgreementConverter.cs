@@ -5,7 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Data;
 
-namespace CommunityPatchLauncher.BindingData.MultiBinding
+namespace CommunityPatchLauncher.BindingData.Converter
 {
     /// <summary>
     /// This class will convert the values from the welcome screen into a class instance
@@ -33,12 +33,12 @@ namespace CommunityPatchLauncher.BindingData.MultiBinding
                 folderSet = folderState;
             }
             string gameFolderToSet = values[2]?.ToString();
-            
+
             if (Directory.Exists(gameFolderToSet) && File.Exists(gameFolderToSet + "S4_Main.exe"))
             {
                 gameFolder = gameFolderToSet;
             }
-            
+
             if (values[3] is LanguageItem languageItem)
             {
                 language = languageItem;
