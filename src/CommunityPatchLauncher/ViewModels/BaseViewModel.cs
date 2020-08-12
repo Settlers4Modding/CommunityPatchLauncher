@@ -15,6 +15,8 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand MaximizeWindowCommand { get; protected set; }
         public ICommand MinimizeWindowCommand { get; protected set; }
 
+        public string WindowTitle { get; protected set; }
+
         public bool IconVisible { 
             get => iconVisible;  
             protected set
@@ -60,8 +62,8 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 currentWindow.MouseDown += CurrentWindow_MouseDown;
                 SetDefaultWindowStyle();
+                WindowTitle = currentWindow.Title;
             }
-            
         }
 
         /// <summary>
