@@ -88,9 +88,6 @@ namespace CommunityPatchLauncher.ViewModels
 
         public PopupWindowsViewModel(Window window, UserControl content, FontAwesomeIcon fontAwesomeIcon, object parameter) : base(window)
         {
-            ISettingFactory settingFactory = new XmlSettingFactory();
-            SettingManager settingManager = settingFactory.GetSettingsManager();
-
             int currentWidth = settingManager.GetValue<int>("Width");
             int currentHeight = settingManager.GetValue<int>("Height");
             bool customValues = settingManager.GetValue<bool>("CustomWindowSize");
@@ -118,6 +115,7 @@ namespace CommunityPatchLauncher.ViewModels
 
             AvailableSizes = new List<WindowSize>()
             {
+                new WindowSize(800, 480),
                 new WindowSize(800, 800),
                 new WindowSize(800, 600),
             };

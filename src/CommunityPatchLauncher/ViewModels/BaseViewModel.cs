@@ -1,5 +1,7 @@
 ﻿using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.UserControls;
+using CommunityPatchLauncherFramework.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Manager;
 using FontAwesome.WPF;
 using System;
 using System.ComponentModel;
@@ -41,6 +43,8 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         protected Window currentWindow;
 
+        protected SettingManager settingManager;
+
         /// <summary>
         /// Create a new instance of this class without a attached window
         /// </summary>
@@ -54,7 +58,20 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="window">The window which uses this model</param>
         public BaseViewModel(Window window)
         {
+            ISettingFactory settingFactory = new XmlSettingFactory();
+            settingManager = settingFactory.GetSettingsManager();
+
             currentWindow = window;
+            if (currentWindow != null)
+            {
+                int currentWidth = settingManager.GetValue<int>("Width");
+                int currentHeight = settingManager.GetValue<int>("Height");
+                if (currentWidth != 0 && currentHeight != 0)
+                {
+                    currentWindow.Width = currentWidth;
+                    currentWindow.Height = currentHeight;
+                }
+            }
 
             CloseWindowCommand = new CloseWindowCommand(currentWindow);
             AddWindowResizeableCommand();
@@ -75,7 +92,7 @@ namespace CommunityPatchLauncher.ViewModels
             ChangeWindowSizeCommand = new OpenCustomPopupWindowCommand(
                 currentWindow,
                 FontAwesomeIcon.ArrowsAlt,
-                "Resize window",
+                Properties.Resources.ResizeWindow_Title,
                 new ResizeWindowUserControl(),
                 currentWindow
                 );
