@@ -30,6 +30,7 @@ namespace CommunityPatchLauncher.Windows
             this.DataContext = new MainWindowModel(this);
 
             this.MouseDown += MainWindow_MouseDown;
+            Title = "Will be fixed!";
         }
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)

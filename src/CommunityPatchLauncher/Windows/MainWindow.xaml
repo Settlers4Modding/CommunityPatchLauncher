@@ -28,7 +28,7 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="4*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border BorderThickness="0,0,1,0" Margin="0,-5,0,0" Style="{StaticResource DefaultBorder}">
+            <Border BorderThickness="0,0,1,0" Margin="0,-5,5,0" Style="{StaticResource DefaultBorder}">
                 <StackPanel Grid.Column="0">
                     <Image Margin="0,5,0,0" MaxHeight="80" x:Name="Img_MainLogo" Source="../Assets/Images/CP_Logo1.png"></Image>
                     <StackPanel Orientation="Vertical">
