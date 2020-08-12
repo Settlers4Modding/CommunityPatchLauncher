@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -46,7 +47,16 @@ namespace CommunityPatchLauncher.Commands
                     disposable.Dispose();
                 }
             }
-            panelToUse.Children.Clear();
+            List<UIElement> elementsToRemove = new List<UIElement>();
+            foreach (UIElement uIElement in panelToUse.Children)
+            {
+                elementsToRemove.Add(uIElement);
+            }
+            foreach (UIElement elementToRemove in elementsToRemove)
+            {
+                panelToUse.Children.Remove(elementToRemove);
+            }
+            
             panelToUse.Children.Add(userControl);
         }
     }
