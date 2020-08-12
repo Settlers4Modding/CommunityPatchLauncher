@@ -29,6 +29,7 @@ namespace CommunityPatchLauncher.ViewModels
         public MainWindowModel(Window window) : base(window)
         {
             IconVisible = false;
+            CloseWindowCommand = new CloseApplicationCommand();
             object dockArea = window.FindName("DP_ContentDock");
             if (dockArea is DockPanel panel)
             {

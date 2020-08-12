@@ -21,13 +21,13 @@
             <DockPanel.Resources>
                 <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"></conv:BoolToVisibilityConverter>
             </DockPanel.Resources>
-            <Button Command="{Binding CloseApplication}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
+            <Button Command="{Binding CloseWindowCommand}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
                 <fa:ImageAwesome Icon="Close" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
-            <Button Command="{Binding MaximizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
+            <Button Command="{Binding MaximizeWindowCommand}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
                 <fa:ImageAwesome Icon="WindowMaximize" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
-            <Button Command="{Binding MinimizeWindow}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
+            <Button Command="{Binding MinimizeWindowCommand}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
                 <fa:ImageAwesome Icon="WindowMinimize" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
             <Image Visibility="{Binding IconVisible, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource TitleBarImage}" DockPanel.Dock="Left" Source="../Assets/Images/CP_Logo2.png"></Image>

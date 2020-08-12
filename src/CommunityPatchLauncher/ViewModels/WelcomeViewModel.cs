@@ -190,6 +190,7 @@ namespace CommunityPatchLauncher.ViewModels
         public WelcomeViewModel(Window window) : base(window)
         {
             firstStart = true;
+            CloseWindowCommand = new CloseApplicationCommand();
             FolderSearch = new InstallationFromManuelSelectionCommand();
             RegexSearch = new InstallationFromRegistryCommand();
 
