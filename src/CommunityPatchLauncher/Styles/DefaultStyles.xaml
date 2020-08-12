@@ -60,6 +60,11 @@
     <Style TargetType="fa:ImageAwesome" x:Key="TitleBarImageAwesome" BasedOn="{StaticResource WhiteImage}">
         <Setter Property="Margin" Value="7"></Setter>
     </Style>
+    <Style TargetType="fa:ImageAwesome" x:Key="TitleBarImageAwesomeIcon" BasedOn="{StaticResource WhiteImage}">
+        <Setter Property="MaxHeight" Value="25"></Setter>
+        <Setter Property="MaxWidth" Value="25"></Setter>
+        <Setter Property="Margin" Value="10,5,0,5"></Setter>
+    </Style>
     <Style TargetType="ItemsControl" x:Key="MainCategoryGrid">
         <Setter Property="ItemsPanel">
             <Setter.Value>

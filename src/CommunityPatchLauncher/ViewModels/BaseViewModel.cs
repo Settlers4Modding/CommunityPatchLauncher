@@ -1,4 +1,6 @@
 ﻿using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.UserControls;
+using FontAwesome.WPF;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -14,6 +16,7 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand CloseWindowCommand { get; protected set; }
         public ICommand MaximizeWindowCommand { get; protected set; }
         public ICommand MinimizeWindowCommand { get; protected set; }
+        public ICommand ChangeWindowSizeCommand { get; protected set; }
 
         public string WindowTitle { get; protected set; }
 
@@ -54,6 +57,7 @@ namespace CommunityPatchLauncher.ViewModels
             currentWindow = window;
 
             CloseWindowCommand = new CloseWindowCommand(currentWindow);
+            AddWindowResizeableCommand();
             MinimizeWindowCommand = new MinimizeWindowCommand(currentWindow);
             MaximizeWindowCommand = new MaximizeWindowCommand(currentWindow);
             IconVisible = true;
@@ -64,6 +68,17 @@ namespace CommunityPatchLauncher.ViewModels
                 SetDefaultWindowStyle();
                 WindowTitle = currentWindow.Title;
             }
+        }
+
+        protected virtual void AddWindowResizeableCommand()
+        {
+            ChangeWindowSizeCommand = new OpenCustomPopupWindowCommand(
+                currentWindow,
+                FontAwesomeIcon.ArrowsAlt,
+                "Resize window",
+                new ResizeWindowUserControl(),
+                currentWindow
+                );
         }
 
         /// <summary>
