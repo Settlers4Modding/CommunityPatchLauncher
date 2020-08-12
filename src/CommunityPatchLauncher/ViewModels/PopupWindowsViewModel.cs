@@ -116,8 +116,8 @@ namespace CommunityPatchLauncher.ViewModels
             AvailableSizes = new List<WindowSize>()
             {
                 new WindowSize(800, 480),
-                new WindowSize(800, 800),
                 new WindowSize(800, 600),
+                new WindowSize(800, 800)
             };
 
             if (customValues)
