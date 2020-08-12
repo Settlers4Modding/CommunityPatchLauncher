@@ -31,7 +31,7 @@
                 <fa:ImageAwesome Icon="WindowMinimize" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
             <Image Visibility="{Binding IconVisible, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource TitleBarImage}" DockPanel.Dock="Left" Source="../Assets/Images/CP_Logo2.png"></Image>
-            <TextBlock DockPanel.Dock="Left" Style="{StaticResource TitleBarText}" Text="{x:Static p:Resources.MainWindow_Title}"></TextBlock>
+            <TextBlock DockPanel.Dock="Left" Style="{StaticResource TitleBarText}" Text="{Binding WindowTitle}"></TextBlock>
         </DockPanel>
     </Border>
 </UserControl>

@@ -26,8 +26,6 @@ namespace CommunityPatchLauncher.Windows
             settingManagerCommand.Execute(null);
             InitializeComponent();
             this.DataContext = new MainWindowModel(this);
-
-            Title = "Will be fixed!";
         }
 
         /// <summary>
