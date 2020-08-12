@@ -1,29 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace CommunityPatchLauncher.Commands
 {
+    /// <summary>
+    /// This command will toggle the visiblity for a category on the main window
+    /// </summary>
     public class ToggleVisibilityCommand : BaseDataCommand
     {
+        /// <summary>
+        /// The window to search the control on
+        /// </summary>
         private readonly Window windowToSearchOn;
 
+        /// <summary>
+        /// Create a new instance of this command
+        /// </summary>
+        /// <param name="windowToSearchOn">The window to search in</param>
         public ToggleVisibilityCommand(Window windowToSearchOn)
         {
             this.windowToSearchOn = windowToSearchOn;
         }
 
+        /// <inheritdoc/>
         public override bool CanExecute(object parameter)
         {
             return parameter is string && windowToSearchOn != null;
         }
 
+        /// <inheritdoc/>
         public override void Execute(object parameter)
         {
             if (!CanExecute(parameter))
@@ -55,6 +63,12 @@ namespace CommunityPatchLauncher.Commands
             }
         }
 
+        /// <summary>
+        /// This method will find all the elements of a given type
+        /// </summary>
+        /// <typeparam name="T">The type of elemnts to find</typeparam>
+        /// <param name="dependencyObject">The object to search elements in</param>
+        /// <returns></returns>
         private IEnumerable<T> FindElementsOfType<T>(DependencyObject dependencyObject) where T : DependencyObject
         {
             if (dependencyObject == null)

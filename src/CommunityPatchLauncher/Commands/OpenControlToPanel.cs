@@ -1,31 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace CommunityPatchLauncher.Commands
 {
+    /// <summary>
+    /// This command will open a given command to a specific control panel
+    /// </summary>
     internal class OpenControlToPanel : BaseCommand
     {
-
+        /// <summary>
+        /// The panel to add the control to
+        /// </summary>
         protected readonly DockPanel panelToUse;
+
+        /// <summary>
+        /// The user control to add
+        /// </summary>
         protected readonly UserControl userControl;
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="panelToUse">The panel to add the control to</param>
+        /// <param name="userControl">The control to add</param>
         public OpenControlToPanel(DockPanel panelToUse, UserControl userControl)
         {
             this.panelToUse = panelToUse;
             this.userControl = userControl;
         }
 
-
+        /// <inheritdoc/>
         public override bool CanExecute(object parameter)
         {
             return true;
         }
 
+        /// <inheritdoc/>
         public override void Execute(object parameter)
         {
             foreach (UIElement child in panelToUse.Children)

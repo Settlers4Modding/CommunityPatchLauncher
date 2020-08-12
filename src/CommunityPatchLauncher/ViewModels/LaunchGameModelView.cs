@@ -8,14 +8,13 @@ using CommunityPatchLauncherFramework.Documentation.Strategy;
 using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
 {
+    /// <summary>
+    /// View model to use for the launch game user control
+    /// </summary>
     internal class LaunchGameModelView : BaseViewModel
     {
         /// <summary>
@@ -23,6 +22,9 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public ICommand LaunchGameCommand { get; private set; }
 
+        /// <summary>
+        /// The patch to use for this launch button
+        /// </summary>
         public Patch PatchToUse
         {
             get => patchToUse;
@@ -32,6 +34,9 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("PatchToUse");
             }
         }
+        /// <summary>
+        /// private acces to the patch to use
+        /// </summary>
         private Patch patchToUse;
 
         /// <summary>
@@ -58,10 +63,19 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private SpeedModes speed;
 
+        /// <summary>
+        /// The settings manager to use for saving
+        /// </summary>
         private readonly SettingManager settingManager;
 
+        /// <summary>
+        /// The current path to save the seting to
+        /// </summary>
         private string currentSpeedPath;
 
+        /// <summary>
+        /// Content of the changelog
+        /// </summary>
         public string ChangelogContent { 
             get => changelogContent; 
             private set 
@@ -70,8 +84,14 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("ChangelogContent");
             }
         }
+        /// <summary>
+        /// Private content of the change log
+        /// </summary>
         private string changelogContent;
 
+        /// <summary>
+        /// Create a new instance of this view model
+        /// </summary>
         public LaunchGameModelView()
         {
             ISettingFactory factory = new XmlSettingFactory();
@@ -79,6 +99,10 @@ namespace CommunityPatchLauncher.ViewModels
             LaunchGameCommand = new LaunchGameCommand(settingManager);
         }
 
+        /// <summary>
+        /// Set the patch for this view model
+        /// </summary>
+        /// <param name="availablePatch">The patch to use</param>
         public void SetPatch(Patch availablePatch)
         {
             PatchToUse = availablePatch;
@@ -96,12 +120,16 @@ namespace CommunityPatchLauncher.ViewModels
             ChangelogContent = documentManager.ReadConvertedDocument("en-EN", "Placeholder.md");
         }
 
+        /// <summary>
+        /// Save the data to the setting manager
+        /// </summary>
         private void SaveData()
         {
             settingManager.AddValue(currentSpeedPath, speed.ToString());
             settingManager.SaveSettings();
         }
 
+        /// <inheritdoc/>
         public override void Dispose()
         {
             SaveData();

@@ -1,7 +1,6 @@
 ﻿using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.ViewModels;
 using CommunityPatchLauncherFramework.Settings.Manager;
-using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -26,35 +25,9 @@ namespace CommunityPatchLauncher.Windows
             settingManagerCommand.Executed += SettingManagerCommand_Executed;
             settingManagerCommand.Execute(null);
             InitializeComponent();
-            SetDefaultWindowStyle();
             this.DataContext = new MainWindowModel(this);
 
-            this.MouseDown += MainWindow_MouseDown;
             Title = "Will be fixed!";
-        }
-
-        private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                if (WindowState == WindowState.Maximized)
-                {
-                    WindowState = WindowState.Normal;
-                }
-                DragMove();
-            }
-        }
-
-        protected void SetDefaultWindowStyle()
-        {
-            try
-            {
-                this.Style = this.Resources["WindowStyle"] as Style;
-            }
-            catch (Exception)
-            {
-                return;
-            }
         }
 
         /// <summary>
