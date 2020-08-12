@@ -144,11 +144,17 @@
   <data name="MainWindow_Play" xml:space="preserve">
     <value>Spielen</value>
   </data>
+  <data name="MainWindow_PlayerSearch" xml:space="preserve">
+    <value>Spielersuche</value>
+  </data>
   <data name="MainWindow_Ranked" xml:space="preserve">
     <value>Ranked</value>
   </data>
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="MainWindow_Tools" xml:space="preserve">
+    <value>Extras</value>
   </data>
   <data name="MainWindow_WindowTitle" xml:space="preserve">
     <value>Community Patch Launcher</value>

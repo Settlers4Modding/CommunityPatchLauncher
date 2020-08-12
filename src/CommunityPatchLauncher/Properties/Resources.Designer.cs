@@ -250,7 +250,7 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Community Patch Team.
+        ///   Looks up a localized string similar to Team.
         /// </summary>
         public static string MainWindow_Team {
             get {

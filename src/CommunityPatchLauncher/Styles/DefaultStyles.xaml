@@ -8,6 +8,7 @@
     <SolidColorBrush x:Key="SelectedColor" Color="#585062"></SolidColorBrush>
     <SolidColorBrush x:Key="BrightSelectedColor" Color="#7e738c"></SolidColorBrush>
     <SolidColorBrush x:Key="DarkerDisabledColor" Color="#3f3946"></SolidColorBrush>
+
     <Style TargetType="TextBox" x:Key="DefaultTextBox">
         <Setter Property="Background" Value="{StaticResource SelectedColor}"></Setter>
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
@@ -41,20 +42,48 @@
         <Setter Property="FontStyle" Value="Normal"></Setter>
     </Style>
     <Style TargetType="TextBlock" x:Key="MainCategoryString" BasedOn="{StaticResource DefaultText}">
-        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Grid.Column" Value="1"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="Margin" Value="5,5,0,5"></Setter>
         <Setter Property="FontSize" Value="15"></Setter>
     </Style>
     <Style TargetType="TextBlock" x:Key="SubCategoryString" BasedOn="{StaticResource MainCategoryString}">
-        <Setter Property="FontSize" Value="10"></Setter>
-        <Setter Property="Margin" Value="5,2,0,2"></Setter>
+        <Setter Property="Grid.Column" Value="2"></Setter>
     </Style>
     <Style  TargetType="fa:ImageAwesome" x:Key="WhiteImage">
         <Setter Property="Foreground" Value="Snow"></Setter>
     </Style>
     <Style TargetType="fa:ImageAwesome" x:Key="TitleBarImageAwesome" BasedOn="{StaticResource WhiteImage}">
         <Setter Property="Margin" Value="7"></Setter>
+    </Style>
+    <Style TargetType="ItemsControl" x:Key="MainCategoryGrid">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="37"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="ItemsControl" x:Key="SubCategoryGrid">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"></ColumnDefinition>
+                            <ColumnDefinition Width="37"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     <Style TargetType="fa:ImageAwesome" x:Key="MainCategoryImage">
         <Setter Property="Foreground" Value="Snow"></Setter>
@@ -63,6 +92,17 @@
         <Setter Property="Margin" Value="2,5,2,5"></Setter>
         <Setter Property="MaxWidth" Value="25"></Setter>
         <Setter Property="MaxHeight" Value="25"></Setter>
+    </Style>
+    <Style TargetType="fa:FontAwesome" x:Key="MainCategoryFontAwesome">
+        <Setter Property="Grid.Column" Value="0"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontSize" Value="25"></Setter>
+        <Setter Property="Margin" Value="5,0,0,0"></Setter>
+    </Style>
+    <Style TargetType="fa:FontAwesome" x:Key="SubCategoryFontAwesome" BasedOn="{StaticResource MainCategoryFontAwesome}">
+        <Setter Property="Grid.Column" Value="1"></Setter>
     </Style>
     <Style TargetType="fa:ImageAwesome" x:Key="SubCategoryImage" BasedOn="{StaticResource MainCategoryImage}">
         <Setter Property="Margin" Value="15,2,0,2"></Setter>

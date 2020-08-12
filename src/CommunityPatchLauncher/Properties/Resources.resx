@@ -181,7 +181,7 @@
     <value>Social Media</value>
   </data>
   <data name="MainWindow_Team" xml:space="preserve">
-    <value>Community Patch Team</value>
+    <value>Team</value>
   </data>
   <data name="MainWindow_Title" xml:space="preserve">
     <value>Community Patch Launcher</value>
