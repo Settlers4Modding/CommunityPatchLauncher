@@ -37,7 +37,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>s4communitypatch.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Markdig, Version=0.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Markdig.0.20.0\lib\netstandard2.0\Markdig.dll</HintPath>
     </Reference>
@@ -47,6 +53,7 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
@@ -81,10 +88,10 @@
     <Compile Include="BindingData\AvailableLanguages.cs" />
     <Compile Include="BindingData\Container\LanguageItem.cs" />
     <Compile Include="BindingData\Container\Patch.cs" />
-    <Compile Include="BindingData\MultiBinding\AcceptAgreementConverter.cs" />
-    <Compile Include="BindingData\MultiBinding\GameSpeedConverter.cs" />
-    <Compile Include="BindingData\MultiBinding\LaunchGameConverter.cs" />
-    <Compile Include="BindingData\MultiBinding\MultiBoolConverter.cs" />
+    <Compile Include="BindingData\Converter\AcceptAgreementConverter.cs" />
+    <Compile Include="BindingData\Converter\GameSpeedConverter.cs" />
+    <Compile Include="BindingData\Converter\LaunchGameConverter.cs" />
+    <Compile Include="BindingData\Converter\MultiBoolConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="Commands\AcceptAgreementCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
@@ -99,10 +106,16 @@
     <Compile Include="Commands\InstallationFromManuelSelectionCommand.cs" />
     <Compile Include="Commands\InstallationFromRegistryCommand.cs" />
     <Compile Include="Commands\LaunchGameCommand.cs" />
+    <Compile Include="Commands\MaximizeWindowCommand.cs" />
+    <Compile Include="Commands\MinimizeWindowCommand.cs" />
+    <Compile Include="Commands\OpenControlToPanel.cs" />
+    <Compile Include="Commands\OpenLaunchUserControlToPanel.cs" />
     <Compile Include="Commands\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
+    <Compile Include="Commands\ToggleVisibilityCommand.cs" />
+    <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />
     <Compile Include="Enums\SpeedModes.cs" />
@@ -129,25 +142,48 @@
     <Compile Include="Tasks\Factories\DownloadOfflineFilesFactory.cs" />
     <Compile Include="Tasks\Factories\LaunchGameFactory.cs" />
     <Compile Include="Tasks\PatchGameSpeedTask.cs" />
+    <Compile Include="UserControls\ComingSoonControl.xaml.cs">
+      <DependentUpon>ComingSoonControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ConfigurationUserControl.xaml.cs" />
+    <Compile Include="UserControls\LaunchGameUserControl.xaml.cs">
+      <DependentUpon>LaunchGameUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MapsUserControl.xaml.cs" />
     <Compile Include="UserControls\MatchmakingUserControl.xaml.cs" />
     <Compile Include="UserControls\NewsUserControl.xaml.cs" />
-    <Compile Include="UserControls\PlayUserControl.xaml.cs">
-      <DependentUpon>PlayUserControl.xaml</DependentUpon>
+    <Compile Include="UserControls\PatchVersionSelectionUserControl.xaml.cs">
+      <DependentUpon>PatchVersionSelectionUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\RankedUserControl.xaml.cs" />
     <Compile Include="Tasks\StartGameTask.cs" />
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
+    <Compile Include="UserControls\TitleBarUseControl.xaml.cs">
+      <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\LaunchGameViewModel.cs" />
+    <Compile Include="ViewModels\LaunchGameModelView.cs" />
+    <Compile Include="ViewModels\PatchVersionSelectionViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Styles\DefaultStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComingSoonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ConfigurationUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\LaunchGameUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\MapsUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -161,13 +197,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\PlayUserControl.xaml">
+    <Page Include="UserControls\PatchVersionSelectionUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\RankedUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TitleBarUseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -217,6 +257,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="s4communitypatch.ico" />
+    <Content Include="Styles\DefaultBrowserStyle.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -229,6 +273,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\Capture.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\CP_ComingSoon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\CP_Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\CP_Logo2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

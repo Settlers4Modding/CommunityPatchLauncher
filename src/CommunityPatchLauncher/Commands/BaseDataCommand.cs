@@ -6,7 +6,7 @@ namespace CommunityPatchLauncher.Commands
     /// <summary>
     /// This class is a abstract base class which will implement the base functions
     /// </summary>
-    public abstract class BaseDataCommand : IDataCommand
+    public abstract class BaseDataCommand : BaseCommand, IDataCommand
     {
         /// <summary>
         /// The data of the command
@@ -15,15 +15,6 @@ namespace CommunityPatchLauncher.Commands
 
         /// <inheritdoc/>
         public event EventHandler<DataCommandEventArg> Executed;
-
-        /// <inheritdoc/>
-        public event EventHandler CanExecuteChanged;
-
-        /// <inheritdoc/>
-        public abstract bool CanExecute(object parameter);
-
-        /// <inheritdoc/>
-        public abstract void Execute(object parameter);
 
         /// <summary>
         /// Was the execution successful

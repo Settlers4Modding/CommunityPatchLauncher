@@ -120,11 +120,26 @@
   <data name="de-DE" xml:space="preserve">
     <value>Niemiecki</value>
   </data>
+  <data name="Default_ComingSoon" xml:space="preserve">
+    <value>Dostępne wkrótce</value>
+  </data>
   <data name="Default_LanguageLabel" xml:space="preserve">
     <value>Język</value>
   </data>
+  <data name="Default_LanguagePl" xml:space="preserve">
+    <value>Polski</value>
+  </data>
   <data name="en-EN" xml:space="preserve">
     <value>Angielski</value>
+  </data>
+  <data name="MainWindow_Changelog" xml:space="preserve">
+    <value>Aktualizacje</value>
+  </data>
+  <data name="MainWindow_FAQ" xml:space="preserve">
+    <value>Najczęściej zadawane pytania</value>
+  </data>
+  <data name="MainWindow_Home" xml:space="preserve">
+    <value>Strona główna</value>
   </data>
   <data name="MainWindow_Maps" xml:space="preserve">
     <value>Mapy</value>
@@ -143,6 +158,9 @@
   </data>
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Ustawienia</value>
+  </data>
+  <data name="MainWindow_SocialMedia" xml:space="preserve">
+    <value>Media społecznościowe</value>
   </data>
   <data name="MainWindow_WindowTitle" xml:space="preserve">
     <value>Community Patch Launcher</value>

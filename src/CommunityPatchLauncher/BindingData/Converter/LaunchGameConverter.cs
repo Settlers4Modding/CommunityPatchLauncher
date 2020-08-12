@@ -5,7 +5,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace CommunityPatchLauncher.BindingData.MultiBinding
+namespace CommunityPatchLauncher.BindingData.Converter
 {
     /// <summary>
     /// This class will convert different values into a class usable by the launch game command

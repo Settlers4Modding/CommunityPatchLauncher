@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Default_ComingSoon" xml:space="preserve">
+    <value>Coming soon</value>
+  </data>
   <data name="Default_LanguageLabel" xml:space="preserve">
     <value>Language:</value>
   </data>
@@ -126,8 +129,35 @@
   <data name="Default_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="MainWindow_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="MainWindow_Changelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="MainWindow_Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="MainWindow_Disclaimer" xml:space="preserve">
+    <value>Disclaimer</value>
+  </data>
+  <data name="MainWindow_FAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="MainWindow_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="MainWindow_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="MainWindow_IntellectualProperty" xml:space="preserve">
+    <value>Intellectual property</value>
+  </data>
   <data name="MainWindow_Maps" xml:space="preserve">
     <value>Maps</value>
+  </data>
+  <data name="MainWindow_Mods" xml:space="preserve">
+    <value>Mods</value>
   </data>
   <data name="MainWindow_Multiplayer" xml:space="preserve">
     <value>Multiplayer</value>
@@ -138,14 +168,26 @@
   <data name="MainWindow_Play" xml:space="preserve">
     <value>Play</value>
   </data>
+  <data name="MainWindow_PlayerSearch" xml:space="preserve">
+    <value>Search players</value>
+  </data>
   <data name="MainWindow_Ranked" xml:space="preserve">
     <value>Ranked</value>
   </data>
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="MainWindow_SocialMedia" xml:space="preserve">
+    <value>Social Media</value>
+  </data>
+  <data name="MainWindow_Team" xml:space="preserve">
+    <value>Team</value>
+  </data>
   <data name="MainWindow_Title" xml:space="preserve">
     <value>Community Patch Launcher</value>
+  </data>
+  <data name="MainWindow_Tools" xml:space="preserve">
+    <value>Tools</value>
   </data>
   <data name="PlayControl_FastSpeed" xml:space="preserve">
     <value>Fast Speed (2)</value>
