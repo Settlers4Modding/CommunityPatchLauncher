@@ -132,8 +132,11 @@ namespace CommunityPatchLauncher.ViewModels
                 int selectedIndex = FindSizeByValues(currentWidth, currentHeight);
                 SelectedIndex = selectedIndex;
                 SelectedSize = AvailableSizes[SelectedIndex];
-                currentHeight = selectedSize.Height;
-                currentWidth = selectedSize.Width;
+                if (!customValues)
+                {
+                    currentHeight = selectedSize.Height;
+                    currentWidth = selectedSize.Width;
+                }
             }
 
             CustomHeight = currentHeight;
