@@ -9,6 +9,10 @@
     <SolidColorBrush x:Key="BrightSelectedColor" Color="#7e738c"></SolidColorBrush>
     <SolidColorBrush x:Key="DarkerDisabledColor" Color="#3f3946"></SolidColorBrush>
 
+    <Style TargetType="Border" x:Key="DefaultBorder">
+        <Setter Property="BorderBrush" Value="{StaticResource SelectedColor}"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+    </Style>
     <Style TargetType="TextBox" x:Key="DefaultTextBox">
         <Setter Property="Background" Value="{StaticResource SelectedColor}"></Setter>
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
@@ -90,7 +94,7 @@
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
         <Setter Property="Margin" Value="5,0,0,0"></Setter>
     </Style>
     <Style TargetType="fa:FontAwesome" x:Key="SubCategoryFontAwesome" BasedOn="{StaticResource MainCategoryFontAwesome}">
