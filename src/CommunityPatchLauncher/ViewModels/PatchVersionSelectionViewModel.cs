@@ -18,10 +18,8 @@ namespace CommunityPatchLauncher.ViewModels
     class PatchVersionSelectionViewModel : BaseViewModel
     {
         /// <summary>
-        /// The settings manager to use
+        /// Command to use to launch a game
         /// </summary>
-        private SettingManager settingManager;
-
         public ICommand OpenLaunchGameCommand { get; private set; }
 
         /// <summary>
@@ -30,105 +28,17 @@ namespace CommunityPatchLauncher.ViewModels
         public IReadOnlyList<Patch> AllPatches { get; }
 
         /// <summary>
-        /// The current seleted patch
-        /// </summary>
-        public Patch Patch { get; set; }
-
-        /// <summary>
-        /// The currently selected index
-        /// </summary>
-        public int PatchIndex { get; set; }
-
-        /// <summary>
-        /// The current speed mode
-        /// </summary>
-        public SpeedModes Speed
-        {
-            get
-            {
-                return speed;
-            }
-            set
-            {
-                if (value == SpeedModes.Unknown)
-                {
-                    return;
-                }
-                speed = value;
-                RaisePropertyChanged("Speed");
-            }
-        }
-        /// <summary>
-        /// Private current speed mode
-        /// </summary>
-        private SpeedModes speed;
-
-        /// <summary>
         /// Create a new instance of this class
         /// </summary>
         public PatchVersionSelectionViewModel(UserControl control)
         {
             Patches patches = new Patches();
             AllPatches = patches.GetPatches();
-            Speed = SpeedModes.Testing;
 
             object dockArea = control.FindName("DP_InnerDock");
             if (dockArea is DockPanel panel)
             {
                 OpenLaunchGameCommand = new OpenLaunchUserControlToPanel(panel, new LaunchGameUserControl());
-            }
-            
-            IDataCommand dataCommand = new GetSettingManagerCommand();
-            dataCommand.Executed += (sender, data) =>
-            {
-                settingManager = data.GetData<SettingManager>();
-                SetLastPatch();
-                SetLastSpeedMode();
-                
-            };
-            dataCommand.Execute(null);
-        }
-
-        /// <summary>
-        /// This method will set the last selected patch
-        /// </summary>
-        private void SetLastPatch()
-        {
-            string patchToUse = settingManager.GetValue<string>("Patch");
-            AvailablePatches realPatch;
-            if (Enum.TryParse(patchToUse, out realPatch))
-            {
-                Patch = new Patch(realPatch);
-                for (int i = 0; i < AllPatches.Count; i++)
-                {
-                    if (AllPatches[i].RealPatch == Patch.RealPatch)
-                    {
-                        PatchIndex = i;
-                        RaisePropertyChanged("PatchIndex");
-                        break;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// This method will set the last used speed mode
-        /// </summary>
-        private void SetLastSpeedMode()
-        {
-            speed = SpeedModes.Normal;
-            string speedModeToUse = settingManager.GetValue<string>("Speed");
-            Enum.TryParse(speedModeToUse, out speed);
-        }
-
-        /// <inheritdoc/>
-        public override void Dispose()
-        {
-            if (settingManager != null)
-            {
-                settingManager.AddValue("Speed", Speed.ToString());
-                settingManager.AddValue("Patch", Patch.RealPatch.ToString());
-                settingManager.SaveSettings();
             }
         }
     }
