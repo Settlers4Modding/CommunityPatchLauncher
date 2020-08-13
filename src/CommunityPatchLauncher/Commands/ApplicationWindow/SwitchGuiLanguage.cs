@@ -10,8 +10,15 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
     /// </summary>
     internal class SwitchGuiLanguage : BaseCommand
     {
+        /// <summary>
+        /// The setting manager to use
+        /// </summary>
         private readonly SettingManager settingManager;
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="settingManager">The setting manager to use</param>
         public SwitchGuiLanguage(SettingManager settingManager)
         {
             this.settingManager = settingManager;

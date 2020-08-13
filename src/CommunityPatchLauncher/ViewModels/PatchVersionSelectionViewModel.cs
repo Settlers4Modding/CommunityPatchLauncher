@@ -46,6 +46,7 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
 
+        /// <inheritdoc/>
         public override void Reload()
         {
             base.Reload();
