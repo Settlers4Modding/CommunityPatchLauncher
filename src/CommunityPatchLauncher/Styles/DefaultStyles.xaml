@@ -52,7 +52,7 @@
         <Setter Property="Grid.Column" Value="1"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
     </Style>
     <Style TargetType="TextBlock" x:Key="SubCategoryString" BasedOn="{StaticResource MainCategoryString}">
         <Setter Property="Grid.Column" Value="2"></Setter>
@@ -74,7 +74,7 @@
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="37"></ColumnDefinition>
+                            <ColumnDefinition Width="27"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                     </Grid>
@@ -89,7 +89,7 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15"></ColumnDefinition>
-                            <ColumnDefinition Width="37"></ColumnDefinition>
+                            <ColumnDefinition Width="27"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                     </Grid>
@@ -102,7 +102,7 @@
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="Margin" Value="5,0,0,0"></Setter>
     </Style>
     <Style TargetType="fa:FontAwesome" x:Key="SubCategoryFontAwesome" BasedOn="{StaticResource MainCategoryFontAwesome}">
