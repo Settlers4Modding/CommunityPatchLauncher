@@ -1,27 +1,34 @@
 ﻿using CommunityPatchLauncher.Commands.DataContainer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CommunityPatchLauncher.Commands
 {
+    /// <summary>
+    /// This command will resize a specific window
+    /// </summary>
     internal class ResizeWindowCommand : BaseCommand
     {
+        /// <summary>
+        /// The window to resize
+        /// </summary>
         private readonly Window windowToResize;
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="windowToResize"></param>
         public ResizeWindowCommand(Window windowToResize)
         {
             this.windowToResize = windowToResize;
         }
 
+        /// <inheritdoc/>
         public override bool CanExecute(object parameter)
         {
             return windowToResize != null && parameter is ResizeWindowData;
         }
 
+        /// <inheritdoc/>
         public override void Execute(object parameter)
         {
             if (!CanExecute(parameter))
