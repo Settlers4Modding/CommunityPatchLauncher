@@ -102,12 +102,13 @@ namespace CommunityPatchLauncher.ViewModels
             ResetAgreementCommand = new MultiCommand(new List<ICommand>()
             {
                 new ChangeSettingCommand(settingManager, "AgreementAccepted", true),
-                new SaveSettingsCommand(settingManager),
+                new SaveSettingsCommand(false, settingManager),
                 new RestartApplicationCommand()
             });
             SaveSettingCommand = new MultiCommand(new List<ICommand>()
             {
                 new SaveSettingsCommand(settingManager),
+                new SwitchGuiLanguage(settingManager),
                 new RefreshGuiLanguageCommand(window)
             });
 

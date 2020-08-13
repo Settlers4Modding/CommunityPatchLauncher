@@ -187,6 +187,12 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="window">The window this view belongs to</param>
         public WelcomeViewModel(Window window) : base(window)
         {
+            RefreshGuiCommand = new MultiCommand(new List<ICommand>()
+            {
+                new SaveSettingsCommand(settingManager),
+                new RefreshGuiLanguageCommand(currentWindow)
+            }); ;
+
             firstStart = true;
             CloseWindowCommand = new CloseApplicationCommand();
             FolderSearch = new InstallationFromManuelSelectionCommand();
@@ -216,13 +222,13 @@ namespace CommunityPatchLauncher.ViewModels
 
             string settingGameFolder = settingManager.GetValue<string>("GameFolder");
             GameFolder = settingGameFolder ?? string.Empty;
-            AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, new MainWindow());
+            Window mainWindow = new MainWindow();
+            AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, mainWindow);
             bool accepted = settingManager.GetValue<bool>("AgreementAccepted");
 
             if (accepted && FolderSet)
             {
                 currentWindow.Close();
-                Window mainWindow = new MainWindow();
                 mainWindow.Show();
             }
 

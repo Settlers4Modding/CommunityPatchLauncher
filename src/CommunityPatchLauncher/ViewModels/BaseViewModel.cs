@@ -154,22 +154,19 @@ namespace CommunityPatchLauncher.ViewModels
                     currentWindow.Width = currentWidth;
                     currentWindow.Height = currentHeight;
                 }
-            }
-
-            CloseWindowCommand = new CloseWindowCommand(currentWindow);
-            AddWindowResizeableCommand();
-            MinimizeWindowCommand = new MinimizeWindowCommand(currentWindow);
-            MaximizeWindowCommand = new MaximizeWindowCommand(currentWindow);
-            IconVisible = true;
-
-            if (currentWindow != null)
-            {
+                AddWindowResizeableCommand();
                 RefreshGuiCommand = new RefreshGuiLanguageCommand(currentWindow);
                 currentWindow.MouseDown += CurrentWindow_MouseDown;
                 SetDefaultWindowStyle();
                 SwitchGuiLanguage();
                 WindowTitle = currentWindow.Title;
             }
+
+            CloseWindowCommand = new CloseWindowCommand(currentWindow);
+            
+            MinimizeWindowCommand = new MinimizeWindowCommand(currentWindow);
+            MaximizeWindowCommand = new MaximizeWindowCommand(currentWindow);
+            IconVisible = true;
         }
 
         protected void SwitchGuiLanguage(string specificIsoCode)

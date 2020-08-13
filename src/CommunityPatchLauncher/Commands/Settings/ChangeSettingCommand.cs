@@ -9,7 +9,6 @@ namespace CommunityPatchLauncher.Commands.Settings
         private readonly SettingManager settingManager;
         private readonly string settingName;
         private readonly bool forceReload;
-        private readonly bool saveDirectly;
         private readonly Type settingType;
 
         public ChangeSettingCommand(SettingManager settingManager, string settingName, bool forceReload)
@@ -17,7 +16,6 @@ namespace CommunityPatchLauncher.Commands.Settings
             this.settingManager = settingManager;
             this.settingName = settingName;
             this.forceReload = forceReload;
-            saveDirectly = saveDirectly;
             SettingPair pair = settingManager.GetValue(settingName);
             if (pair == null)
             {

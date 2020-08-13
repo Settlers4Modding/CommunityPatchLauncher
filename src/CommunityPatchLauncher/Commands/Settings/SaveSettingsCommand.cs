@@ -5,24 +5,25 @@ namespace CommunityPatchLauncher.Commands.Settings
 {
     internal class SaveSettingsCommand : BaseCommand
     {
+        private readonly bool checkSettings;
         private readonly SettingManager settingManager;
 
-        public SaveSettingsCommand() : this(null)
+        public SaveSettingsCommand(SettingManager settingManager) : this(true, settingManager)
         {
 
         }
 
-        public SaveSettingsCommand(SettingManager settingManager)
+        public SaveSettingsCommand(bool checkSettings, SettingManager settingManager)
         {
+            this.checkSettings = checkSettings;
             this.settingManager = settingManager;
         }
 
         public override bool CanExecute(object parameter)
         {
-            bool canSave = false;
-            if (GetSettingManagerToUse(parameter) is SettingManager manager)
+            bool canSave = true;
+            if (checkSettings && GetSettingManagerToUse(parameter) is SettingManager manager)
             {
-                canSave = true;
                 string gameFolder = manager.GetValue<string>("GameFolder");
                 string DownloadFolder = manager.GetValue<string>("DownloadFolder");
                 canSave &= File.Exists(gameFolder + "S4_Main.exe");

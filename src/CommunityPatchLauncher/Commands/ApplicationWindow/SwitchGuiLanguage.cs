@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityPatchLauncherFramework.Settings.Manager;
+using System;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Input;
@@ -8,27 +9,40 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
     /// <summary>
     /// This command will switch the GUI language
     /// </summary>
-    [Obsolete]
-    internal class SwitchGuiLanguage : ICommand
+    internal class SwitchGuiLanguage : BaseCommand
     {
-        /// <inheritdoc/>
-        public event EventHandler CanExecuteChanged;
+        private readonly SettingManager settingManager;
 
-        /// <inheritdoc/>
-        public bool CanExecute(object parameter)
+        public SwitchGuiLanguage(SettingManager settingManager)
         {
-            return parameter != null && parameter.GetType() == typeof(string);
+            this.settingManager = settingManager;
         }
 
         /// <inheritdoc/>
-        public void Execute(object parameter)
+        public override bool CanExecute(object parameter)
+        {
+            return settingManager != null;
+        }
+
+        /// <inheritdoc/>
+        public override void Execute(object parameter)
         {
             if (!CanExecute(parameter))
             {
                 return;
             }
-
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(parameter.ToString());
+            string language = settingManager.GetValue<string>("Language");
+            if (language == null)
+            {
+                return;
+            }
+            try
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }
