@@ -211,8 +211,6 @@ namespace CommunityPatchLauncher.ViewModels
                 }
             }
 
-            ISettingFactory settingFactory = new XmlSettingFactory();
-            settingManager = settingFactory.GetSettingsManager();
             if (settingManager == null)
             {
                 return;
