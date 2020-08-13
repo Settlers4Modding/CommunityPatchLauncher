@@ -67,8 +67,7 @@ namespace CommunityPatchLauncher.Tasks.Factories
             //returnList.Add(new DownloadCommunityPatchTask(AvailablePatches.CommunityPatchDLC));
             //returnList.Add(new UnzipCommunityPatchTask());
             returnList.Add(new DownloadCommunityPatchTask(patchName));
-            returnList.Add(new UnzipCommunityPatchTask());
-            returnList.Add(new CopyFileToGameFolder());
+            returnList.Add(new UnzipAndExtractCommunityPatchTask());
             returnList.Add(new PatchGameSpeedTask(speedMode));
             returnList.Add(new StartGameTask());
             return returnList;
