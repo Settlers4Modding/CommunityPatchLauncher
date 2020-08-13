@@ -23,9 +23,6 @@ namespace CommunityPatchLauncher.Windows
         /// </summary>
         public MainWindow()
         {
-            IDataCommand settingManagerCommand = new GetSettingManagerCommand();
-            settingManagerCommand.Executed += SettingManagerCommand_Executed;
-            settingManagerCommand.Execute(null);
             InitializeComponent();
             this.DataContext = new MainWindowModel(this);
         }
@@ -42,41 +39,6 @@ namespace CommunityPatchLauncher.Windows
             {
                 return;
             }
-            SwitchLanguage();
-        }
-
-        /// <summary>
-        /// Switch the language of this window
-        /// </summary>
-        private void SwitchLanguage()
-        {
-            SwitchLanguage(false);
-        }
-
-        /// <summary>
-        /// Switch the language of this window
-        /// </summary>
-        /// <param name="refresh">Should the gui get a refresh</param>
-        private void SwitchLanguage(bool refresh)
-        {
-            IDataCommand languageCommand = new GetCurrentLanguageCommand();
-            languageCommand.Executed += (command, data) =>
-            {
-                string language = data.GetData<string>();
-                if (language == null)
-                {
-                    return;
-                }
-
-                ICommand changeLanguage = new SwitchGuiLanguage();
-                changeLanguage.Execute(language);
-                if (refresh)
-                {
-                    ICommand refreshUiCommand = new RefreshGuiLanguageCommand(this);
-                    refreshUiCommand.Execute(this);
-                }
-            };
-            languageCommand.Execute(settingManager);
         }
     }
 }

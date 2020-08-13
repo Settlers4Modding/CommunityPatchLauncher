@@ -139,7 +139,7 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 if (SelectableLanguages[i].IsoCode == languageCode)
                 {
-                    selectedIndex = i;
+                    SelectedIndex = i;
                     break;
                 }
             }

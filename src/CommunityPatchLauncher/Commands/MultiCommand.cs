@@ -28,7 +28,7 @@ namespace CommunityPatchLauncher.Commands
             bool canExecute = true;
             foreach (ICommand command in commands)
             {
-                canExecute &= command.CanExecute(parameter);
+                canExecute &= command != null && command.CanExecute(parameter);
             }
             return canExecute;
         }

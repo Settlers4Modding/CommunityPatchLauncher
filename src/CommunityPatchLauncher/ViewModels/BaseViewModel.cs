@@ -6,6 +6,8 @@ using CommunityPatchLauncherFramework.Settings.Manager;
 using FontAwesome.WPF;
 using System;
 using System.ComponentModel;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
@@ -16,6 +18,11 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     public class BaseViewModel : INotifyPropertyChanged, IDisposable, IViewModelReloadable
     {
+        /// <summary>
+        /// Refresh the gui
+        /// </summary>
+        public ICommand RefreshGuiCommand { get; protected set; }
+
         /// <summary>
         /// The command used to close the window
         /// </summary>
@@ -157,10 +164,48 @@ namespace CommunityPatchLauncher.ViewModels
 
             if (currentWindow != null)
             {
+                RefreshGuiCommand = new RefreshGuiLanguageCommand(currentWindow);
                 currentWindow.MouseDown += CurrentWindow_MouseDown;
                 SetDefaultWindowStyle();
+                SwitchGuiLanguage();
                 WindowTitle = currentWindow.Title;
             }
+        }
+
+        protected void SwitchGuiLanguage(string specificIsoCode)
+        {
+            settingManager.AddValue("Language", specificIsoCode);
+            SwitchGuiLanguage(true);
+        }
+
+        protected void SwitchGuiLanguage(bool forceRefresh)
+        {
+            if (currentWindow == null || settingManager == null)
+            {
+                return;
+            }
+            string language = settingManager.GetValue<string>("Language");
+            if (language != null)
+            {
+                try
+                {
+                    CultureInfo info = new CultureInfo(language);
+                    Thread.CurrentThread.CurrentUICulture = info;
+                    if (forceRefresh)
+                    {
+                        RefreshGuiCommand?.Execute(null);
+                    }
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
+        }
+
+        protected void SwitchGuiLanguage()
+        {
+            SwitchGuiLanguage(false);
         }
 
         /// <summary>

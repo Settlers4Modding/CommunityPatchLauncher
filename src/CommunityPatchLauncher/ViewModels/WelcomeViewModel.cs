@@ -233,12 +233,9 @@ namespace CommunityPatchLauncher.ViewModels
                 if (data.PropertyName == "SelectedLanguage")
                 {
                     AgreementText = documentManager.ReadConvertedDocument(selectedLanguage.IsoCode, "Agreement.md");
-                    ICommand switchLanguage = new SwitchGuiLanguage();
-                    ICommand refreshGui = new RefreshGuiLanguageCommand(currentWindow);
-                    switchLanguage.Execute(selectedLanguage.IsoCode);
                     if (!firstStart)
                     {
-                        refreshGui.Execute(null);
+                        SwitchGuiLanguage(selectedLanguage.IsoCode);
                     }
                     firstStart = false;
                 }

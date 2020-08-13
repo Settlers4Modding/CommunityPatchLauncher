@@ -8,8 +8,15 @@ namespace CommunityPatchLauncher.Commands.Os
     /// </summary>
     internal class OpenFolderCommand : BaseCommand
     {
+        /// <summary>
+        /// The folder to open
+        /// </summary>
         private readonly string folderToOpen;
 
+        /// <summary>
+        /// Create a new instance of this command
+        /// </summary>
+        /// <param name="folderToOpen"></param>
         public OpenFolderCommand(string folderToOpen)
         {
             this.folderToOpen = folderToOpen;
@@ -33,6 +40,11 @@ namespace CommunityPatchLauncher.Commands.Os
             Process.Start(GetRealFolder(parameter));
         }
 
+        /// <summary>
+        /// Get the real folder which should be opend
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         private string GetRealFolder(object parameter)
         {
             string folderToCheck = folderToOpen;

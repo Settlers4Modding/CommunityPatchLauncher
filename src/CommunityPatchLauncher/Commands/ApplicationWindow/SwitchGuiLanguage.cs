@@ -8,6 +8,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
     /// <summary>
     /// This command will switch the GUI language
     /// </summary>
+    [Obsolete]
     internal class SwitchGuiLanguage : ICommand
     {
         /// <inheritdoc/>
