@@ -4,8 +4,12 @@ using System.Windows.Data;
 
 namespace CommunityPatchLauncher.BindingData.Converter
 {
+    /// <summary>
+    /// This class will convert a string to int
+    /// </summary>
     internal class StringToIntConverter : IValueConverter
     {
+        /// <inheritdoc/>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is int)
@@ -15,6 +19,7 @@ namespace CommunityPatchLauncher.BindingData.Converter
             return "";
         }
 
+        /// <inheritdoc/>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int returnValue = 0;

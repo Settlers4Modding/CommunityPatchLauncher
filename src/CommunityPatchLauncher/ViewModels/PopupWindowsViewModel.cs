@@ -1,13 +1,8 @@
-﻿using CommunityPatchLauncher.BindingData;
-using CommunityPatchLauncher.BindingData.Container;
-using CommunityPatchLauncher.Commands;
-using CommunityPatchLauncher.UserControls.SpecialTypes;
+﻿using CommunityPatchLauncher.UserControls.SpecialTypes;
 using FontAwesome.WPF;
 using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
 {
@@ -16,6 +11,9 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     internal class PopupWindowsViewModel : BaseViewModel
     {
+        /// <summary>
+        /// The icon to use for the title bar
+        /// </summary>
         public FontAwesomeIcon TitleBarIcon
         {
             get => titleBarIcon;
@@ -25,15 +23,38 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("TitleBarIcon");
             }
         }
+        /// <summary>
+        /// The icon to use for the title bar
+        /// </summary>
         private FontAwesomeIcon titleBarIcon;
 
+        /// <summary>
+        /// The dock panel to use for docking content
+        /// </summary>
         private readonly DockPanel dockPanelToFill;
+
+        /// <summary>
+        /// The content to use
+        /// </summary>
         public UserControl Content { get; }
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="window">The window this popup was opened in</param>
+        /// <param name="content">The content for the popup window</param>
+        /// <param name="parameter">The parameter for the popup window</param>
         public PopupWindowsViewModel(Window window, UserControl content, object parameter) : this(window, content, FontAwesomeIcon.None, parameter)
         {
         }
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="window">The window this popup was opened in</param>
+        /// <param name="content">The content for the popup window</param>
+        /// <param name="fontAwesomeIcon">The icon to use for the title bar</param>
+        /// <param name="parameter">The parameter for the popup window</param>
         public PopupWindowsViewModel(Window window, UserControl content, FontAwesomeIcon fontAwesomeIcon, object parameter) : base(window)
         {
             TitleBarIcon = fontAwesomeIcon;
@@ -53,10 +74,14 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
 
+        /// <inheritdoc/>
         protected override void AddWindowResizeableCommand()
         {
         }
 
+        /// <summary>
+        /// Things to do if the window is disposing
+        /// </summary>
         public override void Dispose()
         {
             dockPanelToFill.Children.Remove(Content);

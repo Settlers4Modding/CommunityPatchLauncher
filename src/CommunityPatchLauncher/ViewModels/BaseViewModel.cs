@@ -15,6 +15,9 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     public class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
+        /// <summary>
+        /// The command used to close the window
+        /// </summary>
         public ICommand CloseWindowCommand
         { 
             get => closeWindowCommand; 
@@ -24,8 +27,14 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("CloseWindowCommand");
             }
         }
+        /// <summary>
+        /// The command used to close the window
+        /// </summary>
         private ICommand closeWindowCommand;
 
+        /// <summary>
+        /// The command used to maximize the window
+        /// </summary>
         public ICommand MaximizeWindowCommand 
         { 
             get => maximizeWindowCommand;
@@ -35,8 +44,14 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("MaximizeWindowCommand");
             }
         }
+        /// <summary>
+        /// The command used to maximize the window
+        /// </summary>
         private ICommand maximizeWindowCommand;
 
+        /// <summary>
+        /// The command used to minimize the window
+        /// </summary>
         public ICommand MinimizeWindowCommand
         {
             get => minimizeWindowCommand;
@@ -46,8 +61,14 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("MaximizeWindowCommand");
             }
         }
+        /// <summary>
+        /// The command used to minimize the window
+        /// </summary>
         private ICommand minimizeWindowCommand;
 
+        /// <summary>
+        /// The command used to change the window size
+        /// </summary>
         public ICommand ChangeWindowSizeCommand
         {
             get => changeWindowSizeCommand;
@@ -57,10 +78,19 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("MaximizeWindowCommand");
             }
         }
+        /// <summary>
+        /// The command used to change the window size
+        /// </summary>
         private ICommand changeWindowSizeCommand;
 
+        /// <summary>
+        /// The title of the window
+        /// </summary>
         public string WindowTitle { get; protected set; }
 
+        /// <summary>
+        /// Is the window icon visible
+        /// </summary>
         public bool IconVisible { 
             get => iconVisible;  
             protected set
@@ -69,6 +99,9 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("IconVisible");
             }
         }
+        /// <summary>
+        /// Is the window icon visible
+        /// </summary>
         private bool iconVisible;
 
 
@@ -82,6 +115,9 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         protected Window currentWindow;
 
+        /// <summary>
+        /// The setting manager to use
+        /// </summary>
         protected SettingManager settingManager;
 
         /// <summary>
@@ -126,6 +162,9 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
 
+        /// <summary>
+        /// Add the command to resize the window
+        /// </summary>
         protected virtual void AddWindowResizeableCommand()
         {
             ChangeWindowSizeCommand = new OpenCustomPopupWindowCommand(

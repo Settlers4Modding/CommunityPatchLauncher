@@ -1,18 +1,17 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands.DataContainer;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
 
 namespace CommunityPatchLauncher.BindingData.Converter
 {
+    /// <summary>
+    /// This class will create a resize window data container
+    /// </summary>
     internal class ResizeWindowConverter : IMultiValueConverter
     {
+        /// <inheritdoc/>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             ResizeWindowData returnData = null;
@@ -40,6 +39,7 @@ namespace CommunityPatchLauncher.BindingData.Converter
             return returnData;
         }
 
+        /// <inheritdoc/>
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             return null;
