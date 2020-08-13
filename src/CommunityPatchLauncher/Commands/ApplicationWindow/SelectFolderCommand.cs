@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
+    /// <summary>
+    /// Command to select a folder and save it into the data field
+    /// </summary>
     internal class SelectFolderCommand : BaseDataCommand
     {
         /// <inheritdoc/>
