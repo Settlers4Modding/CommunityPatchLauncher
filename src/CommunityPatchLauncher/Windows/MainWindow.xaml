@@ -109,7 +109,7 @@
                             </ItemsControl>
                         </Button>
                         <StackPanel Visibility="Collapsed" Tag="SubGroup" x:Name="Help_Group">
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenSettingCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Cog" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Settings}"></TextBlock>

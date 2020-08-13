@@ -50,7 +50,7 @@ namespace CommunityPatchLauncher.Tasks
                         }
                         entry.ExtractToFile(info.FullName, true);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         TaskDone();
                         return false;

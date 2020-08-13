@@ -1,7 +1,8 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
-using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.Factories;
+using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
@@ -64,11 +65,6 @@ namespace CommunityPatchLauncher.ViewModels
         private SpeedModes speed;
 
         /// <summary>
-        /// The settings manager to use for saving
-        /// </summary>
-        private readonly SettingManager settingManager;
-
-        /// <summary>
         /// The current path to save the seting to
         /// </summary>
         private string currentSpeedPath;
@@ -94,8 +90,6 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public LaunchGameModelView()
         {
-            ISettingFactory factory = new XmlSettingFactory();
-            settingManager = factory.GetSettingsManager();
             LaunchGameCommand = new LaunchGameCommand(settingManager);
         }
 
@@ -128,11 +122,10 @@ namespace CommunityPatchLauncher.ViewModels
             settingManager.AddValue(currentSpeedPath, speed.ToString());
             settingManager.SaveSettings();
         }
-
-        /// <inheritdoc/>
-        public override void Dispose()
+         
+        public override void Reload()
         {
-            SaveData();
+            settingManager.Reload();
         }
     }
 }

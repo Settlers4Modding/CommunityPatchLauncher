@@ -58,10 +58,9 @@
             </Border>
         </StackPanel>
         <DockPanel Grid.Row="2" LastChildFill="False" Margin="0,5,0,0">
-            <Button Command="{Binding CloseWindowCommand}" Height="23"  DockPanel.Dock="Left" Style="{StaticResource DefaultButton}">
-                <TextBlock Text="{x:Static p:Resources.Default_Abort}" VerticalAlignment="Center" Margin="5" Style="{StaticResource DefaultText}"></TextBlock>
+            <Button Content="{x:Static p:Resources.Default_Abort}" Command="{Binding CloseWindowCommand}" Height="23"  DockPanel.Dock="Left" Style="{StaticResource DefaultButton}">
             </Button>
-            <Button Command="{Binding ResizeWindowCommand}" Height="23" DockPanel.Dock="Right" Style="{StaticResource DefaultButton}">
+            <Button Content="{x:Static p:Resources.Default_Ok}" Command="{Binding ResizeWindowCommand}" Height="23" DockPanel.Dock="Right" Style="{StaticResource DefaultButton}">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource ResizeWindowConverter}">
                         <Binding ElementName="CB_CustomStyle" Path="IsChecked"></Binding>
@@ -70,7 +69,6 @@
                         <Binding Path="SelectedSize" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
                     </MultiBinding>
                 </Button.CommandParameter>
-                <TextBlock Text="{x:Static p:Resources.Default_Ok}" VerticalAlignment="Center" Margin="5" Style="{StaticResource DefaultText}"></TextBlock>
             </Button>
         </DockPanel>
     </Grid>

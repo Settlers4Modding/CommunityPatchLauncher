@@ -2,7 +2,7 @@
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Windows;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.Settings
 {
     /// <summary>
     /// This command will accept the aggreement
@@ -58,9 +58,16 @@ namespace CommunityPatchLauncher.Commands
                 return;
             }
             AcceptAgreementData agreementData = parameter as AcceptAgreementData;
+            settingManager.Reload();
             settingManager.AddValue("AgreementAccepted", agreementData.Agreement);
             settingManager.AddValue("GameFolder", agreementData.GameFolder);
             settingManager.AddValue("Language", agreementData.Language.IsoCode);
+            if (settingManager.GetValue<string>("DownloadFolder") == null)
+            {
+                string downloadFolder = settingManager.SettingFolderPath + "\\Downloads";
+                downloadFolder = downloadFolder.Replace("\\", "/");
+                settingManager.AddValue("DownloadFolder", downloadFolder);
+            }
             settingManager.SaveSettings();
 
             currentWindow?.Close();

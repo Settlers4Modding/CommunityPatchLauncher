@@ -1,10 +1,13 @@
-﻿using CommunityPatchLauncher.Commands;
+﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.UserControls;
+using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using FontAwesome.WPF;
 using System;
 using System.ComponentModel;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
@@ -13,8 +16,13 @@ namespace CommunityPatchLauncher.ViewModels
     /// <summary>
     /// Basic view model which defines some events
     /// </summary>
-    public class BaseViewModel : INotifyPropertyChanged, IDisposable
+    public class BaseViewModel : INotifyPropertyChanged, IDisposable, IViewModelReloadable
     {
+        /// <summary>
+        /// Refresh the gui
+        /// </summary>
+        public ICommand RefreshGuiCommand { get; protected set; }
+
         /// <summary>
         /// The command used to close the window
         /// </summary>
@@ -146,20 +154,66 @@ namespace CommunityPatchLauncher.ViewModels
                     currentWindow.Width = currentWidth;
                     currentWindow.Height = currentHeight;
                 }
+                AddWindowResizeableCommand();
+                RefreshGuiCommand = new RefreshGuiLanguageCommand(currentWindow);
+                currentWindow.MouseDown += CurrentWindow_MouseDown;
+                SetDefaultWindowStyle();
+                SwitchGuiLanguage();
+                WindowTitle = currentWindow.Title;
             }
 
             CloseWindowCommand = new CloseWindowCommand(currentWindow);
-            AddWindowResizeableCommand();
+            
             MinimizeWindowCommand = new MinimizeWindowCommand(currentWindow);
             MaximizeWindowCommand = new MaximizeWindowCommand(currentWindow);
             IconVisible = true;
+        }
 
-            if (currentWindow != null)
+        /// <summary>
+        /// Switch the language of the gui
+        /// </summary>
+        /// <param name="specificIsoCode">The specific iso code to use</param>
+        protected void SwitchGuiLanguage(string specificIsoCode)
+        {
+            settingManager.AddValue("Language", specificIsoCode);
+            SwitchGuiLanguage(true);
+        }
+
+        /// <summary>
+        /// Switch language of the gui
+        /// </summary>
+        /// <param name="forceRefresh">Should we force refresh the gui</param>
+        protected void SwitchGuiLanguage(bool forceRefresh)
+        {
+            if (currentWindow == null || settingManager == null)
             {
-                currentWindow.MouseDown += CurrentWindow_MouseDown;
-                SetDefaultWindowStyle();
-                WindowTitle = currentWindow.Title;
+                return;
             }
+            string language = settingManager.GetValue<string>("Language");
+            if (language != null)
+            {
+                try
+                {
+                    CultureInfo info = new CultureInfo(language);
+                    Thread.CurrentThread.CurrentUICulture = info;
+                    if (forceRefresh)
+                    {
+                        RefreshGuiCommand?.Execute(null);
+                    }
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Switch the gui language without force refresh
+        /// </summary>
+        protected void SwitchGuiLanguage()
+        {
+            SwitchGuiLanguage(false);
         }
 
         /// <summary>
@@ -222,6 +276,12 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public virtual void Dispose()
         {
+        }
+
+        /// <inheritdoc/>
+        public virtual void Reload()
+        {
+            settingManager.Reload();
         }
     }
 }

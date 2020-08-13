@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
-    /// Get the installation directory from manual selection
+    /// Command to select a folder and save it into the data field
     /// </summary>
-    internal class InstallationFromManuelSelectionCommand : BaseDataCommand
+    internal class SelectFolderCommand : BaseDataCommand
     {
         /// <inheritdoc/>
         public override bool CanExecute(object parameter)
@@ -18,12 +18,18 @@ namespace CommunityPatchLauncher.Commands
         public override void Execute(object parameter)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
+            if (parameter != null && parameter is string stringParameter)
+            {
+                if (Directory.Exists(stringParameter))
+                {
+                    folderBrowserDialog.SelectedPath = stringParameter;
+                }
+            }
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
                 string filePath = folderBrowserDialog.SelectedPath + "\\";
-                data = File.Exists(filePath + "S4_Main.exe") ? filePath : "";
+                data = Directory.Exists(filePath) ? filePath : string.Empty;
                 ExecutionDone();
             }
         }

@@ -1,29 +1,32 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Input;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
     /// This command will refresh the window gui
     /// </summary>
-    internal class RefreshGuiLanguageCommand : ICommand
+    internal class RefreshGuiLanguageCommand : BaseCommand
     {
-        /// <inheritdoc/>
-        public event EventHandler CanExecuteChanged;
+        private readonly Window windowToRefresh;
 
-        /// <inheritdoc/>
-        public bool CanExecute(object parameter)
+        public RefreshGuiLanguageCommand(Window windowToRefresh)
         {
-            return parameter != null && parameter is Window;
+            this.windowToRefresh = windowToRefresh;
         }
 
         /// <inheritdoc/>
-        public void Execute(object parameter)
+        public override bool CanExecute(object parameter)
+        {
+            return windowToRefresh != null && windowToRefresh is Window;
+        }
+
+        /// <inheritdoc/>
+        public override void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
-                Window window = parameter as Window;
+                Window window = windowToRefresh;
                 Window newWindow = Activator.CreateInstance(window.GetType()) as Window;
                 newWindow.Left = window.Left;
                 newWindow.Top = window.Top;

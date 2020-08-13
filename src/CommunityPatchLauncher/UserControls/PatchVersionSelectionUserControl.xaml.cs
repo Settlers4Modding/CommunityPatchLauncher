@@ -9,7 +9,7 @@ namespace CommunityPatchLauncher.UserControls
     /// </summary>
     public partial class PatchVersionSelectionUserControl : UserControl
     {
-        public PatchVersionSelectionUserControl(Window parentWindow)
+        public PatchVersionSelectionUserControl()
         {
             InitializeComponent();
             DataContext = new PatchVersionSelectionViewModel(this);

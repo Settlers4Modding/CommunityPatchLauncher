@@ -132,6 +132,9 @@
   <data name="Default_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="Default_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="MainWindow_About" xml:space="preserve">
     <value>About</value>
   </data>
@@ -225,6 +228,21 @@
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Enter window width</value>
   </data>
+  <data name="SettingWindow_DownloadFolder" xml:space="preserve">
+    <value>Download folder:</value>
+  </data>
+  <data name="SettingWindow_OpenDownloadFolder" xml:space="preserve">
+    <value>Open download folder</value>
+  </data>
+  <data name="SettingWindow_OpenGameFolder" xml:space="preserve">
+    <value>Open game folder</value>
+  </data>
+  <data name="SettingWindow_OpenSettingFolder" xml:space="preserve">
+    <value>Open setting folder</value>
+  </data>
+  <data name="SettingWindow_ResetAgreement" xml:space="preserve">
+    <value>Reset agreement</value>
+  </data>
   <data name="WelcomeWindow_Agree" xml:space="preserve">
     <value>I did read the aggrement</value>
   </data>
@@ -239,5 +257,8 @@
   </data>
   <data name="WelcomeWindow_Title" xml:space="preserve">
     <value>Welcome</value>
+  </data>
+  <data name="WelcomWindow_GameFolder" xml:space="preserve">
+    <value>Game folder:</value>
   </data>
 </root>

@@ -4,7 +4,7 @@ using CommunityPatchLauncherFramework.Settings.Manager;
 using Microsoft.Win32;
 using System.IO;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.DataCommands
 {
     /// <summary>
     /// This class will find the installation folder from the registry
@@ -19,7 +19,7 @@ namespace CommunityPatchLauncher.Commands
         public InstallationFromRegistryCommand()
         {
             ISettingFactory settingFactory = new WpfPropertySettingManagerFactory();
-            this.manager = settingFactory.GetSettingsManager();
+            manager = settingFactory.GetSettingsManager();
         }
 
         /// <inheritdoc/>

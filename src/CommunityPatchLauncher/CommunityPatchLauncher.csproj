@@ -98,33 +98,38 @@
     <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="BindingData\WindowsSizeService.cs" />
-    <Compile Include="Commands\AcceptAgreementCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\ReloadObjectCommand.cs" />
+    <Compile Include="Commands\Settings\SaveSettingsCommand.cs" />
+    <Compile Include="Commands\Settings\AcceptAgreementCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
-    <Compile Include="Commands\CloseApplicationCommand.cs" />
-    <Compile Include="Commands\CloseWindowCommand.cs" />
+    <Compile Include="Commands\Settings\ChangeSettingCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\CloseApplicationCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\CloseWindowCommand.cs" />
     <Compile Include="Commands\DataContainer\AcceptAgreementData.cs" />
     <Compile Include="Commands\DataContainer\LaunchGameData.cs" />
     <Compile Include="Commands\BaseDataCommand.cs" />
     <Compile Include="Commands\DataContainer\ResizeWindowData.cs" />
-    <Compile Include="Commands\GetCurrentLanguageCommand.cs" />
-    <Compile Include="Commands\GetSettingManagerCommand.cs" />
+    <Compile Include="Commands\Settings\GetCurrentLanguageCommand.cs" />
+    <Compile Include="Commands\Settings\GetSettingManagerCommand.cs" />
     <Compile Include="Commands\IDataCommand.cs" />
-    <Compile Include="Commands\InstallationFromManuelSelectionCommand.cs" />
-    <Compile Include="Commands\InstallationFromRegistryCommand.cs" />
-    <Compile Include="Commands\LaunchGameCommand.cs" />
-    <Compile Include="Commands\MaximizeWindowCommand.cs" />
-    <Compile Include="Commands\MinimizeWindowCommand.cs" />
+    <Compile Include="Commands\DataCommands\InstallationFromManuelSelectionCommand.cs" />
+    <Compile Include="Commands\DataCommands\InstallationFromRegistryCommand.cs" />
+    <Compile Include="Commands\TaskCommands\LaunchGameCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\MaximizeWindowCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\MinimizeWindowCommand.cs" />
     <Compile Include="Commands\MultiCommand.cs" />
-    <Compile Include="Commands\OpenControlToPanel.cs" />
-    <Compile Include="Commands\OpenCustomPopupWindowCommand.cs" />
-    <Compile Include="Commands\OpenLaunchUserControlToPanel.cs" />
-    <Compile Include="Commands\OpenNewWindowCommand.cs" />
-    <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
-    <Compile Include="Commands\ResizeWindowCommand.cs" />
-    <Compile Include="Commands\RestartApplicationCommand.cs" />
-    <Compile Include="Commands\SaveWindowSizeCommand.cs" />
-    <Compile Include="Commands\SwitchGuiLanguage.cs" />
-    <Compile Include="Commands\ToggleVisibilityCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenControlToPanel.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenCustomPopupWindowCommand.cs" />
+    <Compile Include="Commands\Os\OpenFolderCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenLaunchUserControlToPanel.cs" />
+    <Compile Include="Commands\ApplicationWindow\RefreshGuiLanguageCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\ResizeWindowCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\RestartApplicationCommand.cs" />
+    <Compile Include="Commands\Settings\SaveWindowSizeCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\SelectFolderCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\SwitchGuiLanguage.cs" />
+    <Compile Include="Commands\ApplicationWindow\ToggleVisibilityCommand.cs" />
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />
@@ -155,7 +160,6 @@
     <Compile Include="UserControls\ComingSoonControl.xaml.cs">
       <DependentUpon>ComingSoonControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ConfigurationUserControl.xaml.cs" />
     <Compile Include="UserControls\LaunchGameUserControl.xaml.cs">
       <DependentUpon>LaunchGameUserControl.xaml</DependentUpon>
     </Compile>
@@ -174,6 +178,9 @@
     <Compile Include="UserControls\ResizeWindowUserControl.xaml.cs">
       <DependentUpon>ResizeWindowUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SettingsUserControl.xaml.cs">
+      <DependentUpon>SettingsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SpecialTypes\IPopupContent.cs" />
     <Compile Include="UserControls\TitleBarUseControl.xaml.cs">
       <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
@@ -184,6 +191,8 @@
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="ViewModels\PopupWindowsViewModel.cs" />
     <Compile Include="ViewModels\ResizeWindowViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\SpecialViews\IViewModelReloadable.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="Windows\PopupWindow.xaml.cs">
       <DependentUpon>PopupWindow.xaml</DependentUpon>
@@ -198,10 +207,6 @@
     <Page Include="UserControls\ComingSoonControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ConfigurationUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\LaunchGameUserControl.xaml">
       <SubType>Designer</SubType>
@@ -232,6 +237,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\ResizeWindowUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SettingsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -318,6 +327,7 @@
   <ItemGroup>
     <Resource Include="Assets\Images\CP_Logo2.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

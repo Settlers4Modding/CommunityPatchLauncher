@@ -81,7 +81,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Container
                 task.Init(settingManager, taskSettings);
                 if (task is IProgressTask progressTask)
                 {
-                    progressTask.ProgressChanged += ProgressTask_ProgressChanged; ;
+                    progressTask.ProgressChanged += ProgressTask_ProgressChanged;
                     progressTask.TaskComplete += ProgressTask_TaskComplete;
                 }
                 lastTaskState = task.Execute(lastTaskState);

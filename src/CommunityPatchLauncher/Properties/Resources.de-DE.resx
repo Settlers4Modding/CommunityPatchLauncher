@@ -121,10 +121,13 @@
     <value>Deutsch</value>
   </data>
   <data name="Default_Abort" xml:space="preserve">
-    <value>Abrechen</value>
+    <value>Abbrechen</value>
   </data>
   <data name="Default_LanguageLabel" xml:space="preserve">
     <value>Sprache:</value>
+  </data>
+  <data name="Default_Save" xml:space="preserve">
+    <value>Speichern</value>
   </data>
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>
@@ -197,6 +200,18 @@
   </data>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Fenster breite eintragen</value>
+  </data>
+  <data name="SettingWindow_OpenDownloadFolder" xml:space="preserve">
+    <value>Downloads Ordner öffnen</value>
+  </data>
+  <data name="SettingWindow_OpenGameFolder" xml:space="preserve">
+    <value>Spielverzeichnis öffnen</value>
+  </data>
+  <data name="SettingWindow_OpenSettingFolder" xml:space="preserve">
+    <value>Einstellungen Ordner öffnen</value>
+  </data>
+  <data name="SettingWindow_ResetAgreement" xml:space="preserve">
+    <value>Vereinbarung zurücksetzten</value>
   </data>
   <data name="WelcomeWindow_Agree" xml:space="preserve">
     <value>Ich habe die Vereinbarung gelesen</value>

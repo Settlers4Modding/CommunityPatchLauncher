@@ -3,6 +3,7 @@ using CommunityPatchLauncherFramework.Settings.Reader;
 using CommunityPatchLauncherFramework.Settings.Writer;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace CommunityPatchLauncherFramework.Settings.Manager
 {
@@ -27,6 +28,11 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         public string SettingFilePath { get; }
 
         /// <summary>
+        /// The path to the settings folder
+        /// </summary>
+        public string SettingFolderPath { get; }
+
+        /// <summary>
         /// All the settings in the manager
         /// </summary>
         private HashSet<SettingPair> settings;
@@ -46,6 +52,12 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         {
             this.reader = reader;
             this.writer = writer;
+            if (settingsPath != string.Empty)
+            {
+
+                FileInfo fileInfo = new FileInfo(settingsPath);
+                SettingFolderPath = fileInfo.DirectoryName;
+            }
             SettingFilePath = settingsPath;
 
             settingsLoaded = false;

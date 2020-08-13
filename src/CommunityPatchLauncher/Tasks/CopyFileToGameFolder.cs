@@ -39,7 +39,7 @@ namespace CommunityPatchLauncher.Tasks
                 {
                     File.Copy(currentFile, realTarget, true);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Directory.Delete(extractPath, true);
                     return false;

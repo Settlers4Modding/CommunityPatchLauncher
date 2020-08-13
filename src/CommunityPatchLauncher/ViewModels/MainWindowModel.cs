@@ -1,4 +1,4 @@
-﻿using CommunityPatchLauncher.Commands;
+﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.UserControls;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +15,11 @@ namespace CommunityPatchLauncher.ViewModels
         /// The command used if you click on launch game
         /// </summary>
         public ICommand LaunchGameCommand { get; private set; }
+
+        /// <summary>
+        /// This command will open the settings page
+        /// </summary>
+        public ICommand OpenSettingCommand { get; private set; }
 
         /// <summary>
         /// The command used if something is coming soon
@@ -45,7 +50,8 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 contentDock = panel;
 
-                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(currentWindow));
+                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl());
+                OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 

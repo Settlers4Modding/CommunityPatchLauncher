@@ -34,6 +34,9 @@
     <Style TargetType="TextBlock" x:Key="DefaultText">
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
     </Style>
+    <Style TargetType="TextBlock" x:Key="SettingText" BasedOn="{StaticResource DefaultText}">
+        <Setter Property="MinWidth" Value="150"></Setter>
+    </Style>
     <Style TargetType="CheckBox" x:Key="DefaultCheckbox">
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
     </Style>
@@ -120,7 +123,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                    <Border Padding="5" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -195,5 +198,8 @@
     </Style>
     <Style TargetType="RadioButton" x:Key="DefaultRadioButton">
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
+    </Style>
+    <Style TargetType="DockPanel" x:Key="SettingDockPanel">
+        <Setter Property="Margin" Value="0,0,0,5"></Setter>
     </Style>
 </ResourceDictionary>

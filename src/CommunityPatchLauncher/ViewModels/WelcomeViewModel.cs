@@ -1,6 +1,9 @@
 ﻿using CommunityPatchLauncher.BindingData;
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.DataCommands;
+using CommunityPatchLauncher.Commands.Settings;
 using CommunityPatchLauncher.Factories;
 using CommunityPatchLauncher.Windows;
 using CommunityPatchLauncherFramework.Documentation.Factory;
@@ -174,11 +177,6 @@ namespace CommunityPatchLauncher.ViewModels
         private string agreementText;
 
         /// <summary>
-        /// The setting manager to use
-        /// </summary>
-        private SettingManager settingManager;
-
-        /// <summary>
         /// The current manager to use for loading documents
         /// </summary>
         private readonly DocumentManager documentManager;
@@ -189,6 +187,12 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="window">The window this view belongs to</param>
         public WelcomeViewModel(Window window) : base(window)
         {
+            RefreshGuiCommand = new MultiCommand(new List<ICommand>()
+            {
+                new SaveSettingsCommand(settingManager),
+                new RefreshGuiLanguageCommand(currentWindow)
+            }); ;
+
             firstStart = true;
             CloseWindowCommand = new CloseApplicationCommand();
             FolderSearch = new InstallationFromManuelSelectionCommand();
@@ -211,8 +215,6 @@ namespace CommunityPatchLauncher.ViewModels
                 }
             }
 
-            ISettingFactory settingFactory = new XmlSettingFactory();
-            settingManager = settingFactory.GetSettingsManager();
             if (settingManager == null)
             {
                 return;
@@ -220,13 +222,13 @@ namespace CommunityPatchLauncher.ViewModels
 
             string settingGameFolder = settingManager.GetValue<string>("GameFolder");
             GameFolder = settingGameFolder ?? string.Empty;
-            AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, new MainWindow());
+            Window mainWindow = new MainWindow();
+            AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, mainWindow);
             bool accepted = settingManager.GetValue<bool>("AgreementAccepted");
 
             if (accepted && FolderSet)
             {
                 currentWindow.Close();
-                Window mainWindow = new MainWindow();
                 mainWindow.Show();
             }
 
@@ -237,12 +239,9 @@ namespace CommunityPatchLauncher.ViewModels
                 if (data.PropertyName == "SelectedLanguage")
                 {
                     AgreementText = documentManager.ReadConvertedDocument(selectedLanguage.IsoCode, "Agreement.md");
-                    ICommand switchLanguage = new SwitchGuiLanguage();
-                    ICommand refreshGui = new RefreshGuiLanguageCommand();
-                    switchLanguage.Execute(selectedLanguage.IsoCode);
                     if (!firstStart)
                     {
-                        refreshGui.Execute(currentWindow);
+                        SwitchGuiLanguage(selectedLanguage.IsoCode);
                     }
                     firstStart = false;
                 }

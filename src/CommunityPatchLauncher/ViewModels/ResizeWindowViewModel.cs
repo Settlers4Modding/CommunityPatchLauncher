@@ -1,6 +1,8 @@
 ﻿using CommunityPatchLauncher.BindingData;
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.Settings;
 using CommunityPatchLauncher.UserControls.SpecialTypes;
 using System.Collections.Generic;
 using System.Windows;
@@ -146,19 +148,15 @@ namespace CommunityPatchLauncher.ViewModels
         /// <inheritdoc/>
         public void Init(Window currentWindow, object parameter)
         {
-            if (!initDone)
+            CloseWindowCommand = new CloseWindowCommand(currentWindow);
+            if (parameter is Window windowToResize)
             {
-                CloseWindowCommand = new CloseWindowCommand(currentWindow);
-                if (parameter is Window windowToResize)
-                {
-                    ResizeWindowCommand = new MultiCommand(new List<ICommand>()
+                ResizeWindowCommand = new MultiCommand(new List<ICommand>()
                 {
                     new ResizeWindowCommand(windowToResize),
                     new SaveWindowSizeCommand(settingManager),
                     CloseWindowCommand
                 });
-                }
-                Parameter = parameter;
             }
             SetTextBoxes();
             initDone = true;

@@ -7,7 +7,7 @@ using CommunityPatchLauncherFramework.TaskPipeline.Factory;
 using CommunityPatchLauncherFramework.TaskPipeline.Pipeline;
 using System.Threading.Tasks;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.TaskCommands
 {
     /// <summary>
     /// This command will launch the game
