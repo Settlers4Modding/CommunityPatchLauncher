@@ -17,6 +17,10 @@
         <Setter Property="Background" Value="{StaticResource SelectedColor}"></Setter>
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
     </Style>
+    <Style TargetType="TextBox" x:Key="SettingTextBox" BasedOn="{StaticResource DefaultTextBox}">
+        <Setter Property="MaxWidth" Value="250"></Setter>
+        <Setter Property="Margin" Value="0,0,5,0"></Setter>
+    </Style>
     <Style TargetType="StackPanel" x:Key="DockMenu">
         <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
@@ -35,7 +39,8 @@
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
     </Style>
     <Style TargetType="TextBlock" x:Key="SettingText" BasedOn="{StaticResource DefaultText}">
-        <Setter Property="MinWidth" Value="150"></Setter>
+        <Setter Property="MinWidth" Value="140"></Setter>
+        <Setter Property="Margin" Value="0,0,5,0"></Setter>
     </Style>
     <Style TargetType="CheckBox" x:Key="DefaultCheckbox">
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
@@ -199,6 +204,6 @@
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
     </Style>
     <Style TargetType="DockPanel" x:Key="SettingDockPanel">
-        <Setter Property="Margin" Value="0,0,0,5"></Setter>
+        <Setter Property="Margin" Value="0,0,0,15"></Setter>
     </Style>
 </ResourceDictionary>

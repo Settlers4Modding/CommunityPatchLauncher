@@ -55,7 +55,7 @@ namespace CommunityPatchLauncher.Commands.Settings
         /// <inheritdoc/>
         public override bool CanExecute(object parameter)
         {
-            return settingType != null && parameter.GetType() == settingType;
+            return settingType != null && parameter != null && parameter.GetType() == settingType;
         }
 
         /// <inheritdoc/>
