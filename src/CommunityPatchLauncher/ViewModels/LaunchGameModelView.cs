@@ -122,7 +122,15 @@ namespace CommunityPatchLauncher.ViewModels
             settingManager.AddValue(currentSpeedPath, speed.ToString());
             settingManager.SaveSettings();
         }
-         
+
+        /// <inheritdoc/>
+        public override void Dispose()
+        {
+            base.Dispose();
+            SaveData();
+        }
+
+        /// <inheritdoc/>
         public override void Reload()
         {
             settingManager.Reload();
