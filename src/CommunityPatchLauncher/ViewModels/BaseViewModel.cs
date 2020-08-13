@@ -1,5 +1,6 @@
 ﻿using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.UserControls;
+using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using FontAwesome.WPF;
@@ -13,7 +14,7 @@ namespace CommunityPatchLauncher.ViewModels
     /// <summary>
     /// Basic view model which defines some events
     /// </summary>
-    public class BaseViewModel : INotifyPropertyChanged, IDisposable
+    public class BaseViewModel : INotifyPropertyChanged, IDisposable, IViewModelReloadable
     {
         /// <summary>
         /// The command used to close the window
@@ -222,6 +223,11 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public virtual void Dispose()
         {
+        }
+
+        public virtual void Reload()
+        {
+            settingManager.Reload();
         }
     }
 }

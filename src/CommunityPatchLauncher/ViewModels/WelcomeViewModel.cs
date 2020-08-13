@@ -174,11 +174,6 @@ namespace CommunityPatchLauncher.ViewModels
         private string agreementText;
 
         /// <summary>
-        /// The setting manager to use
-        /// </summary>
-        private SettingManager settingManager;
-
-        /// <summary>
         /// The current manager to use for loading documents
         /// </summary>
         private readonly DocumentManager documentManager;

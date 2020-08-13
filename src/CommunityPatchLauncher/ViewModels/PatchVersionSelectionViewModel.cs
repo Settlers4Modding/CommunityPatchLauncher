@@ -3,6 +3,7 @@ using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.UserControls;
+using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public IReadOnlyList<Patch> AllPatches { get; }
 
+        private readonly DockPanel panelToUse;
+
         /// <summary>
         /// Create a new instance of this class
         /// </summary>
@@ -38,7 +41,23 @@ namespace CommunityPatchLauncher.ViewModels
             object dockArea = control.FindName("DP_InnerDock");
             if (dockArea is DockPanel panel)
             {
-                OpenLaunchGameCommand = new OpenLaunchUserControlToPanel(panel, new LaunchGameUserControl());
+                panelToUse = panel;
+                OpenLaunchGameCommand = new OpenLaunchUserControlToPanel(panelToUse, new LaunchGameUserControl());
+            }
+        }
+
+        public override void Reload()
+        {
+            base.Reload();
+            foreach (UIElement panel in panelToUse.Children)
+            {
+                if (panel is UserControl control)
+                {
+                    if (control.DataContext is IViewModelReloadable reloadable)
+                    {
+                        reloadable.Reload();
+                    }
+                }
             }
         }
     }

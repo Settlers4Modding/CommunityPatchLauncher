@@ -54,8 +54,7 @@ namespace CommunityPatchLauncher.ViewModels
 
         public SettingsViewModel()
         {
-            GameFolder = settingManager?.GetValue<string>("GameFolder");
-            DownloadFolder = settingManager?.GetValue<string>("DownloadFolder");
+            Reload();
 
             OpenSettingFolderCommand = new OpenFolderCommand(settingManager.SettingFolderPath);
             OpenDownloadFolderCommand = new OpenFolderCommand(DownloadFolder);
@@ -83,6 +82,13 @@ namespace CommunityPatchLauncher.ViewModels
         protected override void AddWindowResizeableCommand()
         {
             
+        }
+
+        public override void Reload()
+        {
+            base.Reload();
+            GameFolder = settingManager?.GetValue<string>("GameFolder");
+            DownloadFolder = settingManager?.GetValue<string>("DownloadFolder");
         }
     }
 }

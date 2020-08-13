@@ -2,6 +2,7 @@
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.Factories;
+using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
@@ -128,11 +129,10 @@ namespace CommunityPatchLauncher.ViewModels
             settingManager.AddValue(currentSpeedPath, speed.ToString());
             settingManager.SaveSettings();
         }
-
-        /// <inheritdoc/>
-        public override void Dispose()
+         
+        public override void Reload()
         {
-            SaveData();
+            settingManager.Reload();
         }
     }
 }
