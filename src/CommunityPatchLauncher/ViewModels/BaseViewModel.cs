@@ -169,12 +169,20 @@ namespace CommunityPatchLauncher.ViewModels
             IconVisible = true;
         }
 
+        /// <summary>
+        /// Switch the language of the gui
+        /// </summary>
+        /// <param name="specificIsoCode">The specific iso code to use</param>
         protected void SwitchGuiLanguage(string specificIsoCode)
         {
             settingManager.AddValue("Language", specificIsoCode);
             SwitchGuiLanguage(true);
         }
 
+        /// <summary>
+        /// Switch language of the gui
+        /// </summary>
+        /// <param name="forceRefresh">Should we force refresh the gui</param>
         protected void SwitchGuiLanguage(bool forceRefresh)
         {
             if (currentWindow == null || settingManager == null)
@@ -200,6 +208,9 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
 
+        /// <summary>
+        /// Switch the gui language without force refresh
+        /// </summary>
         protected void SwitchGuiLanguage()
         {
             SwitchGuiLanguage(false);
