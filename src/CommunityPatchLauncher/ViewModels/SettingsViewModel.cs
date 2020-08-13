@@ -5,12 +5,9 @@ using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.DataCommands;
 using CommunityPatchLauncher.Commands.Os;
 using CommunityPatchLauncher.Commands.Settings;
-using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -99,7 +96,9 @@ namespace CommunityPatchLauncher.ViewModels
             OpenGameFolderCommand = new OpenFolderCommand(GameFolder);
             AutoDetectGameFolder = new InstallationFromRegistryCommand();
             ManuelSelectGameFolder = new InstallationFromManuelSelectionCommand();
+            ResetSettingCommand = new ReloadObjectCommand(this);
             SelectFolder = new SelectFolderCommand();
+            
             ResetAgreementCommand = new MultiCommand(new List<ICommand>()
             {
                 new ChangeSettingCommand(settingManager, "AgreementAccepted", true),

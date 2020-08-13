@@ -99,6 +99,7 @@
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="BindingData\WindowsSizeService.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\ReloadObjectCommand.cs" />
     <Compile Include="Commands\Settings\SaveSettingsCommand.cs" />
     <Compile Include="Commands\Settings\AcceptAgreementCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
