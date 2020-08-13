@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CommunityPatchLauncher.Commands.DataCommands
@@ -17,15 +18,15 @@ namespace CommunityPatchLauncher.Commands.DataCommands
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+			CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+			dialog.IsFolderPicker = true;
 
-            DialogResult result = folderBrowserDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                string filePath = folderBrowserDialog.SelectedPath + "\\";
-                data = File.Exists(filePath + "S4_Main.exe") ? filePath : "";
-                ExecutionDone();
-            }
-        }
+			CommonFileDialogResult result = dialog.ShowDialog();
+			if (result == CommonFileDialogResult.Ok) {
+				string filePath = dialog.FileName + "\\";
+				data = File.Exists(filePath + "S4_Main.exe") ? filePath : "";
+				ExecutionDone();
+			}
+		}
     }
 }
