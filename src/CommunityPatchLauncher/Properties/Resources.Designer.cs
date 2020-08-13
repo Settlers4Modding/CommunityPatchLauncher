@@ -61,6 +61,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Abort.
+        /// </summary>
+        public static string Default_Abort {
+            get {
+                return ResourceManager.GetString("Default_Abort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Coming soon.
         /// </summary>
         public static string Default_ComingSoon {
@@ -318,6 +327,60 @@ namespace CommunityPatchLauncher.Properties {
         public static string PlayControl_VeryFastSpeed {
             get {
                 return ResourceManager.GetString("PlayControl_VeryFastSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom size.
+        /// </summary>
+        public static string ResizeWindow_CustomSize {
+            get {
+                return ResourceManager.GetString("ResizeWindow_CustomSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter window height.
+        /// </summary>
+        public static string ResizeWindow_HeightTooltip {
+            get {
+                return ResourceManager.GetString("ResizeWindow_HeightTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter new size.
+        /// </summary>
+        public static string ResizeWindow_NewSize {
+            get {
+                return ResourceManager.GetString("ResizeWindow_NewSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select new size:.
+        /// </summary>
+        public static string ResizeWindow_SelectNewSize {
+            get {
+                return ResourceManager.GetString("ResizeWindow_SelectNewSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resize Window.
+        /// </summary>
+        public static string ResizeWindow_Title {
+            get {
+                return ResourceManager.GetString("ResizeWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter window width.
+        /// </summary>
+        public static string ResizeWindow_WidthTooltip {
+            get {
+                return ResourceManager.GetString("ResizeWindow_WidthTooltip", resourceCulture);
             }
         }
         

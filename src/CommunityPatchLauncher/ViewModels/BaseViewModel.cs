@@ -1,4 +1,8 @@
 ﻿using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.UserControls;
+using CommunityPatchLauncherFramework.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Manager;
+using FontAwesome.WPF;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -11,12 +15,82 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     public class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
-        public ICommand CloseWindowCommand { get; protected set; }
-        public ICommand MaximizeWindowCommand { get; protected set; }
-        public ICommand MinimizeWindowCommand { get; protected set; }
+        /// <summary>
+        /// The command used to close the window
+        /// </summary>
+        public ICommand CloseWindowCommand
+        { 
+            get => closeWindowCommand; 
+            protected set
+            {
+                closeWindowCommand = value;
+                RaisePropertyChanged("CloseWindowCommand");
+            }
+        }
+        /// <summary>
+        /// The command used to close the window
+        /// </summary>
+        private ICommand closeWindowCommand;
 
+        /// <summary>
+        /// The command used to maximize the window
+        /// </summary>
+        public ICommand MaximizeWindowCommand 
+        { 
+            get => maximizeWindowCommand;
+            protected set
+            {
+                maximizeWindowCommand = value;
+                RaisePropertyChanged("MaximizeWindowCommand");
+            }
+        }
+        /// <summary>
+        /// The command used to maximize the window
+        /// </summary>
+        private ICommand maximizeWindowCommand;
+
+        /// <summary>
+        /// The command used to minimize the window
+        /// </summary>
+        public ICommand MinimizeWindowCommand
+        {
+            get => minimizeWindowCommand;
+            protected set
+            {
+                minimizeWindowCommand = value;
+                RaisePropertyChanged("MaximizeWindowCommand");
+            }
+        }
+        /// <summary>
+        /// The command used to minimize the window
+        /// </summary>
+        private ICommand minimizeWindowCommand;
+
+        /// <summary>
+        /// The command used to change the window size
+        /// </summary>
+        public ICommand ChangeWindowSizeCommand
+        {
+            get => changeWindowSizeCommand;
+            protected set
+            {
+                changeWindowSizeCommand = value;
+                RaisePropertyChanged("MaximizeWindowCommand");
+            }
+        }
+        /// <summary>
+        /// The command used to change the window size
+        /// </summary>
+        private ICommand changeWindowSizeCommand;
+
+        /// <summary>
+        /// The title of the window
+        /// </summary>
         public string WindowTitle { get; protected set; }
 
+        /// <summary>
+        /// Is the window icon visible
+        /// </summary>
         public bool IconVisible { 
             get => iconVisible;  
             protected set
@@ -25,6 +99,9 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("IconVisible");
             }
         }
+        /// <summary>
+        /// Is the window icon visible
+        /// </summary>
         private bool iconVisible;
 
 
@@ -39,6 +116,11 @@ namespace CommunityPatchLauncher.ViewModels
         protected Window currentWindow;
 
         /// <summary>
+        /// The setting manager to use
+        /// </summary>
+        protected SettingManager settingManager;
+
+        /// <summary>
         /// Create a new instance of this class without a attached window
         /// </summary>
         public BaseViewModel() : this(null)
@@ -51,9 +133,23 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="window">The window which uses this model</param>
         public BaseViewModel(Window window)
         {
+            ISettingFactory settingFactory = new XmlSettingFactory();
+            settingManager = settingFactory.GetSettingsManager();
+
             currentWindow = window;
+            if (currentWindow != null)
+            {
+                int currentWidth = settingManager.GetValue<int>("Width");
+                int currentHeight = settingManager.GetValue<int>("Height");
+                if (currentWidth != 0 && currentHeight != 0)
+                {
+                    currentWindow.Width = currentWidth;
+                    currentWindow.Height = currentHeight;
+                }
+            }
 
             CloseWindowCommand = new CloseWindowCommand(currentWindow);
+            AddWindowResizeableCommand();
             MinimizeWindowCommand = new MinimizeWindowCommand(currentWindow);
             MaximizeWindowCommand = new MaximizeWindowCommand(currentWindow);
             IconVisible = true;
@@ -64,6 +160,20 @@ namespace CommunityPatchLauncher.ViewModels
                 SetDefaultWindowStyle();
                 WindowTitle = currentWindow.Title;
             }
+        }
+
+        /// <summary>
+        /// Add the command to resize the window
+        /// </summary>
+        protected virtual void AddWindowResizeableCommand()
+        {
+            ChangeWindowSizeCommand = new OpenCustomPopupWindowCommand(
+                currentWindow,
+                FontAwesomeIcon.ArrowsAlt,
+                Properties.Resources.ResizeWindow_Title,
+                new ResizeWindowUserControl(),
+                currentWindow
+                );
         }
 
         /// <summary>

@@ -88,11 +88,16 @@
     <Compile Include="BindingData\AvailableLanguages.cs" />
     <Compile Include="BindingData\Container\LanguageItem.cs" />
     <Compile Include="BindingData\Container\Patch.cs" />
+    <Compile Include="BindingData\Container\WindowSize.cs" />
     <Compile Include="BindingData\Converter\AcceptAgreementConverter.cs" />
     <Compile Include="BindingData\Converter\GameSpeedConverter.cs" />
+    <Compile Include="BindingData\Converter\InvertBoolConverter.cs" />
     <Compile Include="BindingData\Converter\LaunchGameConverter.cs" />
     <Compile Include="BindingData\Converter\MultiBoolConverter.cs" />
+    <Compile Include="BindingData\Converter\ResizeWindowConverter.cs" />
+    <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
+    <Compile Include="BindingData\WindowsSizeService.cs" />
     <Compile Include="Commands\AcceptAgreementCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\CloseApplicationCommand.cs" />
@@ -100,6 +105,7 @@
     <Compile Include="Commands\DataContainer\AcceptAgreementData.cs" />
     <Compile Include="Commands\DataContainer\LaunchGameData.cs" />
     <Compile Include="Commands\BaseDataCommand.cs" />
+    <Compile Include="Commands\DataContainer\ResizeWindowData.cs" />
     <Compile Include="Commands\GetCurrentLanguageCommand.cs" />
     <Compile Include="Commands\GetSettingManagerCommand.cs" />
     <Compile Include="Commands\IDataCommand.cs" />
@@ -108,11 +114,15 @@
     <Compile Include="Commands\LaunchGameCommand.cs" />
     <Compile Include="Commands\MaximizeWindowCommand.cs" />
     <Compile Include="Commands\MinimizeWindowCommand.cs" />
+    <Compile Include="Commands\MultiCommand.cs" />
     <Compile Include="Commands\OpenControlToPanel.cs" />
+    <Compile Include="Commands\OpenCustomPopupWindowCommand.cs" />
     <Compile Include="Commands\OpenLaunchUserControlToPanel.cs" />
     <Compile Include="Commands\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
+    <Compile Include="Commands\ResizeWindowCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
+    <Compile Include="Commands\SaveWindowSizeCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
     <Compile Include="Commands\ToggleVisibilityCommand.cs" />
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
@@ -155,9 +165,16 @@
     <Compile Include="UserControls\PatchVersionSelectionUserControl.xaml.cs">
       <DependentUpon>PatchVersionSelectionUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PopupTitleBarUserControl.xaml.cs">
+      <DependentUpon>PopupTitleBarUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RankedUserControl.xaml.cs" />
     <Compile Include="Tasks\StartGameTask.cs" />
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
+    <Compile Include="UserControls\ResizeWindowUserControl.xaml.cs">
+      <DependentUpon>ResizeWindowUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SpecialTypes\IPopupContent.cs" />
     <Compile Include="UserControls\TitleBarUseControl.xaml.cs">
       <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
     </Compile>
@@ -165,7 +182,12 @@
     <Compile Include="ViewModels\LaunchGameModelView.cs" />
     <Compile Include="ViewModels\PatchVersionSelectionViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
+    <Compile Include="ViewModels\PopupWindowsViewModel.cs" />
+    <Compile Include="ViewModels\ResizeWindowViewModel.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
+    <Compile Include="Windows\PopupWindow.xaml.cs">
+      <DependentUpon>PopupWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
@@ -201,9 +223,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\PopupTitleBarUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\RankedUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ResizeWindowUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\TitleBarUseControl.xaml">
       <SubType>Designer</SubType>
@@ -221,6 +251,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\PopupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\WelcomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -258,6 +292,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Resource Include="s4communitypatch.ico" />
+    <EmbeddedResource Include="Assets\Resources\PredefinedWindowSizes.txt" />
     <Content Include="Styles\DefaultBrowserStyle.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,29 +1,34 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
 
 namespace CommunityPatchLauncher.BindingData.Converter
 {
     /// <summary>
-    /// This class will convert a bool into a visiblity
+    /// This class will convert a string to int
     /// </summary>
-    internal class BoolToVisibilityConverter : IValueConverter
+    internal class StringToIntConverter : IValueConverter
     {
         /// <inheritdoc/>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool boolValue)
+            if (value is int)
             {
-                return boolValue ? Visibility.Visible : Visibility.Collapsed;
+                return value.ToString();
             }
-            return Visibility.Hidden;
+            return "";
         }
 
         /// <inheritdoc/>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return null;
+            int returnValue = 0;
+            if (value is string stringValue)
+            {
+                int.TryParse(stringValue, out returnValue);
+            }
+
+            return returnValue;
         }
     }
 }
