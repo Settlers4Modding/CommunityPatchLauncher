@@ -30,7 +30,7 @@ namespace CommunityPatchLauncher.Commands
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
-            windowToClose.Close();
+            windowToClose?.Close();
         }
     }
 }

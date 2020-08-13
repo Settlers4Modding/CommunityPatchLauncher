@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityPatchLauncher.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace CommunityPatchLauncher.UserControls
         public ResizeWindowUserControl()
         {
             InitializeComponent();
+            DataContext = new ResizeWindowViewModel();
         }
     }
 }

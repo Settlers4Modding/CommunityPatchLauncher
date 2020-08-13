@@ -10,7 +10,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:uC="clr-namespace:CommunityPatchLauncher.UserControls"
         mc:Ignorable="d"
-        Height="480" Width="800" MinWidth="640" MinHeight="480" Title="{x:Static p:Resources.WelcomeWindow_Title}">
+        Height="480" Width="800" MinHeight="480" MinWidth="680" Title="{x:Static p:Resources.WelcomeWindow_Title}">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -15,10 +15,49 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     public class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
-        public ICommand CloseWindowCommand { get; protected set; }
-        public ICommand MaximizeWindowCommand { get; protected set; }
-        public ICommand MinimizeWindowCommand { get; protected set; }
-        public ICommand ChangeWindowSizeCommand { get; protected set; }
+        public ICommand CloseWindowCommand
+        { 
+            get => closeWindowCommand; 
+            protected set
+            {
+                closeWindowCommand = value;
+                RaisePropertyChanged("CloseWindowCommand");
+            }
+        }
+        private ICommand closeWindowCommand;
+
+        public ICommand MaximizeWindowCommand 
+        { 
+            get => maximizeWindowCommand;
+            protected set
+            {
+                maximizeWindowCommand = value;
+                RaisePropertyChanged("MaximizeWindowCommand");
+            }
+        }
+        private ICommand maximizeWindowCommand;
+
+        public ICommand MinimizeWindowCommand
+        {
+            get => minimizeWindowCommand;
+            protected set
+            {
+                minimizeWindowCommand = value;
+                RaisePropertyChanged("MaximizeWindowCommand");
+            }
+        }
+        private ICommand minimizeWindowCommand;
+
+        public ICommand ChangeWindowSizeCommand
+        {
+            get => changeWindowSizeCommand;
+            protected set
+            {
+                changeWindowSizeCommand = value;
+                RaisePropertyChanged("MaximizeWindowCommand");
+            }
+        }
+        private ICommand changeWindowSizeCommand;
 
         public string WindowTitle { get; protected set; }
 
