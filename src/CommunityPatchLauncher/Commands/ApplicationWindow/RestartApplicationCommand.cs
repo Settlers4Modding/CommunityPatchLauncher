@@ -1,26 +1,21 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Windows;
-using System.Windows.Input;
 
 namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
     /// This command will restart the application
     /// </summary>
-    internal class RestartApplicationCommand : ICommand
+    internal class RestartApplicationCommand : BaseCommand
     {
         /// <inheritdoc/>
-        public event EventHandler CanExecuteChanged;
-
-        /// <inheritdoc/>
-        public bool CanExecute(object parameter)
+        public override bool CanExecute(object parameter)
         {
             return true;
         }
 
         /// <inheritdoc/>
-        public void Execute(object parameter)
+        public override void Execute(object parameter)
         {
             Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();

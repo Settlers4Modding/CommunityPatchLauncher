@@ -65,11 +65,6 @@ namespace CommunityPatchLauncher.ViewModels
         private SpeedModes speed;
 
         /// <summary>
-        /// The settings manager to use for saving
-        /// </summary>
-        private readonly SettingManager settingManager;
-
-        /// <summary>
         /// The current path to save the seting to
         /// </summary>
         private string currentSpeedPath;
@@ -95,8 +90,6 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public LaunchGameModelView()
         {
-            ISettingFactory factory = new XmlSettingFactory();
-            settingManager = factory.GetSettingsManager();
             LaunchGameCommand = new LaunchGameCommand(settingManager);
         }
 

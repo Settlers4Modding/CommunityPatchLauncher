@@ -14,8 +14,6 @@ namespace CommunityPatchLauncher.ViewModels
 {
     internal class SettingsViewModel : BaseViewModel
     {
-        private bool languageChanged;
-
         public ICommand OpenSettingFolderCommand { get; private set; }
         public ICommand OpenDownloadFolderCommand { get; private set; }
         public ICommand OpenGameFolderCommand { get; private set; }
