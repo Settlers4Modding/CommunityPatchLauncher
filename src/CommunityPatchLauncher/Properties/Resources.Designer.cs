@@ -106,6 +106,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Default_Save {
+            get {
+                return ResourceManager.GetString("Default_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string MainWindow_About {
@@ -385,6 +394,51 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download folder:.
+        /// </summary>
+        public static string SettingWindow_DownloadFolder {
+            get {
+                return ResourceManager.GetString("SettingWindow_DownloadFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open download folder.
+        /// </summary>
+        public static string SettingWindow_OpenDownloadFolder {
+            get {
+                return ResourceManager.GetString("SettingWindow_OpenDownloadFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open game folder.
+        /// </summary>
+        public static string SettingWindow_OpenGameFolder {
+            get {
+                return ResourceManager.GetString("SettingWindow_OpenGameFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open setting folder.
+        /// </summary>
+        public static string SettingWindow_OpenSettingFolder {
+            get {
+                return ResourceManager.GetString("SettingWindow_OpenSettingFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset agreement.
+        /// </summary>
+        public static string SettingWindow_ResetAgreement {
+            get {
+                return ResourceManager.GetString("SettingWindow_ResetAgreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I did read the aggrement.
         /// </summary>
         public static string WelcomeWindow_Agree {
@@ -426,6 +480,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string WelcomeWindow_Title {
             get {
                 return ResourceManager.GetString("WelcomeWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game folder:.
+        /// </summary>
+        public static string WelcomWindow_GameFolder {
+            get {
+                return ResourceManager.GetString("WelcomWindow_GameFolder", resourceCulture);
             }
         }
     }

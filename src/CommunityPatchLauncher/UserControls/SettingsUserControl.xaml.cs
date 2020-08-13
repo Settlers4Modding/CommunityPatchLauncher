@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityPatchLauncher.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,14 @@ using System.Windows.Shapes;
 namespace CommunityPatchLauncher.UserControls
 {
     /// <summary>
-    /// Interaction logic for ConfigurationUserControl.xaml
+    /// Interaction logic for SettingsUserControl.xaml
     /// </summary>
-    public partial class ConfigurationUserControl : UserControl
+    public partial class SettingsUserControl : UserControl
     {
-        public ConfigurationUserControl()
+        public SettingsUserControl()
         {
             InitializeComponent();
+            DataContext = new SettingsViewModel();
         }
     }
 }

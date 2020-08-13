@@ -117,12 +117,15 @@
     <Compile Include="Commands\MultiCommand.cs" />
     <Compile Include="Commands\OpenControlToPanel.cs" />
     <Compile Include="Commands\OpenCustomPopupWindowCommand.cs" />
+    <Compile Include="Commands\OpenFolderCommand.cs" />
     <Compile Include="Commands\OpenLaunchUserControlToPanel.cs" />
     <Compile Include="Commands\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\RefreshGuiLanguageCommand.cs" />
     <Compile Include="Commands\ResizeWindowCommand.cs" />
     <Compile Include="Commands\RestartApplicationCommand.cs" />
+    <Compile Include="Commands\SaveSettingsCommand.cs" />
     <Compile Include="Commands\SaveWindowSizeCommand.cs" />
+    <Compile Include="Commands\SelectFolderCommand.cs" />
     <Compile Include="Commands\SwitchGuiLanguage.cs" />
     <Compile Include="Commands\ToggleVisibilityCommand.cs" />
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
@@ -155,7 +158,6 @@
     <Compile Include="UserControls\ComingSoonControl.xaml.cs">
       <DependentUpon>ComingSoonControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ConfigurationUserControl.xaml.cs" />
     <Compile Include="UserControls\LaunchGameUserControl.xaml.cs">
       <DependentUpon>LaunchGameUserControl.xaml</DependentUpon>
     </Compile>
@@ -174,6 +176,9 @@
     <Compile Include="UserControls\ResizeWindowUserControl.xaml.cs">
       <DependentUpon>ResizeWindowUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SettingsUserControl.xaml.cs">
+      <DependentUpon>SettingsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SpecialTypes\IPopupContent.cs" />
     <Compile Include="UserControls\TitleBarUseControl.xaml.cs">
       <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
@@ -184,6 +189,7 @@
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="ViewModels\PopupWindowsViewModel.cs" />
     <Compile Include="ViewModels\ResizeWindowViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="Windows\PopupWindow.xaml.cs">
       <DependentUpon>PopupWindow.xaml</DependentUpon>
@@ -198,10 +204,6 @@
     <Page Include="UserControls\ComingSoonControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ConfigurationUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\LaunchGameUserControl.xaml">
       <SubType>Designer</SubType>
@@ -232,6 +234,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\ResizeWindowUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SettingsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

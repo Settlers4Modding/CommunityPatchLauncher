@@ -17,6 +17,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand LaunchGameCommand { get; private set; }
 
         /// <summary>
+        /// This command will open the settings page
+        /// </summary>
+        public ICommand OpenSettingCommand { get; private set; }
+
+        /// <summary>
         /// The command used if something is coming soon
         /// </summary>
         public ICommand ComingSoonCommand { get; private set; }
@@ -45,7 +50,8 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 contentDock = panel;
 
-                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(currentWindow));
+                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl());
+                OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl());
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 
