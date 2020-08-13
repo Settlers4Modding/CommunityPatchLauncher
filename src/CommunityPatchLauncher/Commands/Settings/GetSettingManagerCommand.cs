@@ -1,10 +1,12 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Factories;
+using System;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.Settings
 {
     /// <summary>
     /// Get the settings manager
     /// </summary>
+    [Obsolete]
     internal class GetSettingManagerCommand : BaseDataCommand
     {
         /// <inheritdoc/>

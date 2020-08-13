@@ -2,7 +2,7 @@
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Windows;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.Settings
 {
     /// <summary>
     /// This command will accept the aggreement

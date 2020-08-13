@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.DataCommands
 {
     /// <summary>
     /// Get the installation directory from manual selection

@@ -1,6 +1,9 @@
 ﻿using CommunityPatchLauncher.BindingData;
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.DataCommands;
+using CommunityPatchLauncher.Commands.Settings;
 using CommunityPatchLauncher.Factories;
 using CommunityPatchLauncher.Windows;
 using CommunityPatchLauncherFramework.Documentation.Factory;
@@ -231,11 +234,11 @@ namespace CommunityPatchLauncher.ViewModels
                 {
                     AgreementText = documentManager.ReadConvertedDocument(selectedLanguage.IsoCode, "Agreement.md");
                     ICommand switchLanguage = new SwitchGuiLanguage();
-                    ICommand refreshGui = new RefreshGuiLanguageCommand();
+                    ICommand refreshGui = new RefreshGuiLanguageCommand(currentWindow);
                     switchLanguage.Execute(selectedLanguage.IsoCode);
                     if (!firstStart)
                     {
-                        refreshGui.Execute(currentWindow);
+                        refreshGui.Execute(null);
                     }
                     firstStart = false;
                 }

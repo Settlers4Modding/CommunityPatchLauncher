@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -19,10 +20,16 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="60"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" VerticalAlignment="Top">
             <DockPanel Style="{StaticResource SettingDockPanel}">
                 <TextBlock Margin="0,0,5,0" Style="{StaticResource SettingText}" Text="{x:Static p:Resources.Default_LanguageLabel}"></TextBlock>
-                <ComboBox ItemsSource="{Binding AvailableLanguages}"></ComboBox>
+                <ComboBox ItemsSource="{Binding SelectableLanguages}" SelectedItem="{Binding SelectedItem}" SelectedIndex="{Binding SelectedIndex}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TranslatedName}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </DockPanel>
             <DockPanel Style="{StaticResource SettingDockPanel}">
                 <TextBlock Margin="0,0,5,0" Style="{StaticResource SettingText}" Text="{x:Static p:Resources.WelcomWindow_GameFolder}"></TextBlock>
@@ -35,19 +42,20 @@
                 <TextBox Margin="0,0,5,0" x:Name="TB_DownloadFolder" Style="{StaticResource DefaultTextBox}" Text="{Binding DownloadFolder}"></TextBox>
                 <Button Style="{StaticResource DefaultButton}" Command="{Binding SelectFolder}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}"></Button>
             </DockPanel>
-
         </StackPanel>
-
         <StackPanel Grid.Row="1">
+            <StackPanel.Resources>
+                <system:Boolean x:Key="FalseBool">false</system:Boolean>
+            </StackPanel.Resources>
             <DockPanel LastChildFill="False" Margin="0,0,0,5">
                 <Button DockPanel.Dock="Left" Margin="0,0,5,0" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_OpenSettingFolder}" Command="{Binding OpenSettingFolderCommand}"></Button>
                 <Button DockPanel.Dock="Left" Margin="0,0,5,0" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_OpenDownloadFolder}" Command="{Binding OpenDownloadFolderCommand}" CommandParameter="{Binding ElementName=TB_DownloadFolder, Path=Text}"></Button>
                 <Button DockPanel.Dock="Left" Margin="0,0,5,0" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_OpenGameFolder}" Command="{Binding OpenGameFolderCommand}" CommandParameter="{Binding ElementName=TB_GameFolder, Path=Text}"></Button>
-                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_ResetAgreement}" Command="{Binding ResetAgreementCommand}"></Button>
+                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_ResetAgreement}" Command="{Binding ResetAgreementCommand}" CommandParameter="{StaticResource FalseBool}"></Button>
             </DockPanel>
             <DockPanel LastChildFill="False">
                 <Button DockPanel.Dock="Left" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.Default_Abort}" Command="{Binding ResetSettingCommand}"></Button>
-                <Button DockPanel.Dock="Right"  Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.Default_Save}" Command="{Binding SaveSettingCommand}" CommandParameter="{Binding SettingManager}"></Button>
+                <Button DockPanel.Dock="Right"  Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.Default_Save}" Command="{Binding SaveSettingCommand}"></Button>
             </DockPanel>
         </StackPanel>
     </Grid>

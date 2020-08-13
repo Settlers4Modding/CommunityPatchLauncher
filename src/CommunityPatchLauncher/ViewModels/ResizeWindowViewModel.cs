@@ -1,6 +1,8 @@
 ﻿using CommunityPatchLauncher.BindingData;
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.Settings;
 using CommunityPatchLauncher.UserControls.SpecialTypes;
 using System.Collections.Generic;
 using System.Windows;

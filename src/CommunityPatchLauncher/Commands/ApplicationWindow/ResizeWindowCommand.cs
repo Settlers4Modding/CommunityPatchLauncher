@@ -1,7 +1,7 @@
 ﻿using CommunityPatchLauncher.Commands.DataContainer;
 using System.Windows;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
     /// This command will resize a specific window

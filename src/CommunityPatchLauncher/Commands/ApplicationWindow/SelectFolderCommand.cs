@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     internal class SelectFolderCommand : BaseDataCommand
     {

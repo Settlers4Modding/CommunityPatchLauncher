@@ -1,4 +1,4 @@
-﻿using CommunityPatchLauncher.Commands;
+﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Settings.Factories;

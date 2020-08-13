@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
     /// This command will open a custom popup window
@@ -143,8 +143,8 @@ namespace CommunityPatchLauncher.Commands
                 windowToOpen.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             }
             windowToOpen?.ShowDialog();
-            
-            
+
+
             return;
         }
     }

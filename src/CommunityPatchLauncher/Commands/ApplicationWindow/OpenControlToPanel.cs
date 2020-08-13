@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
     /// This command will open a given command to a specific control panel
@@ -57,7 +57,7 @@ namespace CommunityPatchLauncher.Commands
             {
                 panelToUse.Children.Remove(elementToRemove);
             }
-            
+
             if (userControl.DataContext is IViewModelReloadable reloadable)
             {
                 reloadable.Reload();

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Input;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
     /// This command will switch the GUI language

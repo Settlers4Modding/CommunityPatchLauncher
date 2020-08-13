@@ -1,4 +1,6 @@
 ﻿using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.Settings;
 using CommunityPatchLauncher.ViewModels;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Windows;
@@ -70,7 +72,7 @@ namespace CommunityPatchLauncher.Windows
                 changeLanguage.Execute(language);
                 if (refresh)
                 {
-                    ICommand refreshUiCommand = new RefreshGuiLanguageCommand();
+                    ICommand refreshUiCommand = new RefreshGuiLanguageCommand(this);
                     refreshUiCommand.Execute(this);
                 }
             };

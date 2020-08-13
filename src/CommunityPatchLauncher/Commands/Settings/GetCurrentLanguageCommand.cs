@@ -1,11 +1,13 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Container;
 using CommunityPatchLauncherFramework.Settings.Manager;
+using System;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.Settings
 {
     /// <summary>
     /// This command will return you the current language of the application
     /// </summary>
+    [Obsolete]
     internal class GetCurrentLanguageCommand : BaseDataCommand
     {
         /// <inheritdoc/>

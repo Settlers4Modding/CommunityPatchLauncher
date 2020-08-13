@@ -2,7 +2,7 @@
 using CommunityPatchLauncher.UserControls;
 using System.Windows.Controls;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
     /// This class will open a launch user control in a given panel

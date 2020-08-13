@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.Os
 {
     /// <summary>
     /// This command will open a given folder

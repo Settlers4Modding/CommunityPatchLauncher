@@ -1,13 +1,7 @@
 ﻿using CommunityPatchLauncher.Commands.DataContainer;
 using CommunityPatchLauncherFramework.Settings.Manager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.Settings
 {
     /// <summary>
     /// This command will save the window size
@@ -48,7 +42,7 @@ namespace CommunityPatchLauncher.Commands
                 settingManager.AddValue("CustomWindowSize", resizeWindowData.Custom);
                 settingManager.SaveSettings();
             }
-            
+
         }
     }
 }

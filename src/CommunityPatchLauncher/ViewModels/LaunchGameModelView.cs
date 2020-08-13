@@ -1,5 +1,5 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
-using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.Factories;
 using CommunityPatchLauncher.ViewModels.SpecialViews;

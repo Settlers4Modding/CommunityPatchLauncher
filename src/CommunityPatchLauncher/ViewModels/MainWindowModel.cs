@@ -1,4 +1,4 @@
-﻿using CommunityPatchLauncher.Commands;
+﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.UserControls;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,7 +51,7 @@ namespace CommunityPatchLauncher.ViewModels
                 contentDock = panel;
 
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl());
-                OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl());
+                OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 

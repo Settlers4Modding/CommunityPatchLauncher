@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
     /// This command will toggle the visiblity for a category on the main window
@@ -40,7 +40,8 @@ namespace CommunityPatchLauncher.Commands
             }
             string searchString = parameter as string;
             object element = windowToSearchOn.FindName(searchString);
-            IEnumerable<StackPanel> panels = FindElementsOfType<StackPanel>(windowToSearchOn).Where(currentPanel => {
+            IEnumerable<StackPanel> panels = FindElementsOfType<StackPanel>(windowToSearchOn).Where(currentPanel =>
+            {
                 return currentPanel.Tag != null && currentPanel.Tag.ToString() == "SubGroup";
             });
             foreach (StackPanel currentPanel in panels)

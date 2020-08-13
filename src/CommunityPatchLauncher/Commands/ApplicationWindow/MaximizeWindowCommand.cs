@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace CommunityPatchLauncher.Commands
+namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
     /// <summary>
     /// This command will maximize a window
