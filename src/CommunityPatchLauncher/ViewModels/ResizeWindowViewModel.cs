@@ -15,10 +15,6 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     internal class ResizeWindowViewModel : BaseViewModel, IPopupContent
     {
-        /// <summary>
-        /// Was the init done already
-        /// </summary>
-        private bool initDone;
 
         /// <summary>
         /// The command used to resize the window
@@ -114,7 +110,6 @@ namespace CommunityPatchLauncher.ViewModels
         {
             WindowsSizeService windowsSizeService = new WindowsSizeService();
             AvailableSizes = windowsSizeService.GetWindowSizes();
-            initDone = false;
         }
 
         /// <inheritdoc/>
@@ -159,7 +154,6 @@ namespace CommunityPatchLauncher.ViewModels
                 });
             }
             SetTextBoxes();
-            initDone = true;
         }
 
         /// <summary>
