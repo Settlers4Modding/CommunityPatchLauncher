@@ -59,7 +59,7 @@ namespace CommunityPatchLauncher.ViewModels
             set
             {
                 gameFolder = value;
-                if (downloadFolder != null)
+                if (gameFolder != null)
                 {
                     settingManager.AddValue("GameFolder", gameFolder);
                 }

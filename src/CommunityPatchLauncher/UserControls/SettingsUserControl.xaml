@@ -40,7 +40,7 @@
             <DockPanel Style="{StaticResource SettingDockPanel}">
                 <TextBlock Margin="0,0,5,0" Style="{StaticResource SettingText}" Text="{x:Static p:Resources.SettingWindow_DownloadFolder}"></TextBlock>
                 <TextBox Margin="0,0,5,0" x:Name="TB_DownloadFolder" Style="{StaticResource DefaultTextBox}" Text="{Binding DownloadFolder}"></TextBox>
-                <Button Style="{StaticResource DefaultButton}" Command="{Binding SelectFolder}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}"></Button>
+                <Button Style="{StaticResource DefaultButton}" Command="{Binding SelectFolder}" CommandParameter="{Binding ElementName=TB_DownloadFolder, Path=Text}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}"></Button>
             </DockPanel>
         </StackPanel>
         <StackPanel Grid.Row="1">

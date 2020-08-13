@@ -15,7 +15,13 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         public override void Execute(object parameter)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
+            if (parameter != null && parameter is string stringParameter)
+            {
+                if (Directory.Exists(stringParameter))
+                {
+                    folderBrowserDialog.SelectedPath = stringParameter;
+                }
+            }
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
