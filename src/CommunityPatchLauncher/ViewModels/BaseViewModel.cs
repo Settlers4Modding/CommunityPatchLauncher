@@ -278,6 +278,7 @@ namespace CommunityPatchLauncher.ViewModels
         {
         }
 
+        /// <inheritdoc/>
         public virtual void Reload()
         {
             settingManager.Reload();
