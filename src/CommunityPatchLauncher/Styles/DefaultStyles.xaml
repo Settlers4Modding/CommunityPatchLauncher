@@ -186,7 +186,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{StaticResource SelectedColor}" BorderThickness="1">
+                    <Border Padding="5" Background="{TemplateBinding Background}" BorderBrush="{StaticResource SelectedColor}" BorderThickness="1">
                         <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -194,7 +194,6 @@
         </Setter>
     </Style>
     <Style TargetType="TextBlock" x:Key="TabText" BasedOn="{StaticResource MainCategoryString}">
-        <Setter Property="Margin" Value="5"></Setter>
     </Style>
     <Style TargetType="RadioButton" x:Key="DefaultRadioButton">
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>

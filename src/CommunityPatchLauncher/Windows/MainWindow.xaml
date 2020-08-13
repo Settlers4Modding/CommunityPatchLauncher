@@ -25,8 +25,8 @@
         <uC:TitleBarUseControl></uC:TitleBarUseControl>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border BorderThickness="0,0,1,0" Margin="0,-5,5,0" Style="{StaticResource DefaultBorder}">
                 <StackPanel Grid.Column="0">
