@@ -1,10 +1,14 @@
 ﻿using CommunityPatchLauncher.Windows;
 using FontAwesome.WPF;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace CommunityPatchLauncher.Commands
 {
+    /// <summary>
+    /// This command will open a custom popup window
+    /// </summary>
     internal class OpenCustomPopupWindowCommand : BaseCommand
     {
         private readonly bool readyToShow;
@@ -63,7 +67,17 @@ namespace CommunityPatchLauncher.Commands
                 return;
             }
 
-            Window windowToOpen = new PopupWindow(controlToOpen, title, fontAwesomeIcon, this.parameter);
+            object realParameter = this.parameter ?? parameter;
+
+            if (parameter != null && this.parameter != null)
+            {
+                List<object> parameterList = new List<object>();
+                parameterList.Add(parameter);
+                parameterList.Add(this.parameter);
+                realParameter = parameterList;
+            }
+
+            Window windowToOpen = new PopupWindow(controlToOpen, title, fontAwesomeIcon, realParameter);
             if (parentWindow.ShowActivated)
             {
                 windowToOpen.Owner = Window.GetWindow(parentWindow);
