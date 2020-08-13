@@ -97,6 +97,7 @@
     <Compile Include="BindingData\Converter\ResizeWindowConverter.cs" />
     <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
+    <Compile Include="BindingData\WindowsSizeService.cs" />
     <Compile Include="Commands\AcceptAgreementCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\CloseApplicationCommand.cs" />
@@ -289,6 +290,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Resource Include="s4communitypatch.ico" />
+    <EmbeddedResource Include="Assets\Resources\PredefinedWindowSizes.txt" />
     <Content Include="Styles\DefaultBrowserStyle.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

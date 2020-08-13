@@ -113,12 +113,8 @@ namespace CommunityPatchLauncher.ViewModels
                 dockPanelToFill.Children.Add(this.content);
             }
 
-            AvailableSizes = new List<WindowSize>()
-            {
-                new WindowSize(800, 480),
-                new WindowSize(800, 600),
-                new WindowSize(800, 800)
-            };
+            WindowsSizeService windowsSizeService = new WindowsSizeService();
+            AvailableSizes = windowsSizeService.GetWindowSizes();
 
             if (customValues)
             {
