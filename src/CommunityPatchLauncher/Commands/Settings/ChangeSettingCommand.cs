@@ -35,7 +35,11 @@ namespace CommunityPatchLauncher.Commands.Settings
         /// <param name="settingManager">The settings manager to use</param>
         /// <param name="settingName">The setting name to change</param>
         /// <param name="forceReload">Force reload before saving</param>
-        public ChangeSettingCommand(SettingManager settingManager, string settingName, bool forceReload)
+        public ChangeSettingCommand(
+            SettingManager settingManager,
+            string settingName,
+            bool forceReload
+            )
         {
             this.settingManager = settingManager;
             this.settingName = settingName;
