@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 
 namespace CommunityPatchLauncherFramework.Documentation.Strategy
 {
@@ -21,6 +22,11 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
         /// <inheritdoc/>
         public string ReadDocument(string basePath, string language, string document)
         {
+            return ReadDocument(basePath, language, document, true);
+        }
+
+        protected string ReadDocument(string basePath, string language, string document, bool initialCall)
+        {
             string path = basePath + language;
             if (!Directory.Exists(path))
             {
@@ -29,6 +35,10 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             path += "\\" + document; ;
             if (!File.Exists(path))
             {
+                if (initialCall)
+                {
+                    return ReadDocument(basePath, fallbackLanguage, document, false);
+                }
                 return string.Empty;
             }
 

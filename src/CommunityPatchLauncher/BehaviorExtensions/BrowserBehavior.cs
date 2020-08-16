@@ -43,7 +43,7 @@ namespace CommunityPatchLauncher.BehaviorExtensions
         static void OnHtmlChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
             var browser = dependencyObject as WebBrowser;
-            if (browser != null)
+            if (browser != null && e.NewValue != null)
             {
                 browser.NavigateToString(e.NewValue.ToString());
             }

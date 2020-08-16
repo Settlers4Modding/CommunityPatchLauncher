@@ -13,14 +13,27 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
         /// <inheritdoc/>
         public string GetConverted(string rawData)
         {
+            return GetHtml(rawData);
+        }
+
+        protected virtual string GetCssLink()
+        {
             string applicationPath = Assembly.GetExecutingAssembly().Location;
             FileInfo applicationInfo = new FileInfo(applicationPath);
+
             string cssPath = "file:///";
             cssPath += applicationInfo.DirectoryName + "\\";
             cssPath = cssPath.Replace("\\", "/");
             cssPath += "Styles/DefaultBrowserStyle.css";
+
+            return "<link rel='stylesheet' type='text/css' href='" + cssPath + "'>";
+        }
+
+        protected virtual string GetHtml(string rawData)
+        {
             string html = "<head><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
-            html += "<link rel='stylesheet' type='text/css' href='" + cssPath + "'>";
+            html += "<meta http-equiv='X - UA - Compatible' content='IE = edge'>";
+            html += GetCssLink();
             html += "</head><body>";
             html += Markdown.ToHtml(rawData);
             html += "</body>";

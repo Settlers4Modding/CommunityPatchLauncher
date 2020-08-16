@@ -144,10 +144,11 @@
     <Compile Include="Commands\ApplicationWindow\ToggleVisibilityCommand.cs" />
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
+    <Compile Include="Documentation\Strategy\MarkdownHtmlWithoutScrollStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />
     <Compile Include="Enums\SpeedModes.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
-    <Compile Include="Factories\LocalDocumentManagerFactory.cs" />
+    <Compile Include="Documentation\Factories\LocalDocumentManagerFactory.cs" />
     <Compile Include="Properties\Resources.pl.Designer.cs">
       <DependentUpon>Resources.pl.resx</DependentUpon>
       <AutoGen>True</AutoGen>

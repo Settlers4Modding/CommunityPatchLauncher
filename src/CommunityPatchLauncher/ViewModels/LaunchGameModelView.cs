@@ -1,7 +1,8 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands.TaskCommands;
+using CommunityPatchLauncher.Documentation.Factories;
+using CommunityPatchLauncher.Documentation.Strategy;
 using CommunityPatchLauncher.Enums;
-using CommunityPatchLauncher.Factories;
 using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
@@ -9,6 +10,8 @@ using CommunityPatchLauncherFramework.Documentation.Strategy;
 using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
+using System.IO;
+using System.Threading;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -72,7 +75,8 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// Content of the changelog
         /// </summary>
-        public string ChangelogContent { 
+        public string ChangelogContent
+        { 
             get => changelogContent; 
             private set 
             {
@@ -84,6 +88,23 @@ namespace CommunityPatchLauncher.ViewModels
         /// Private content of the change log
         /// </summary>
         private string changelogContent;
+
+        /// <summary>
+        /// This is the the patch description
+        /// </summary>
+        public string PatchDescription
+        {
+            get => patchDescription;
+            private set
+            {
+                patchDescription = value;
+                RaisePropertyChanged("PatchDescription");
+            }
+        }
+        /// <summary>
+        /// This is the private parch description
+        /// </summary>
+        private string patchDescription;
 
         /// <summary>
         /// Create a new instance of this view model
@@ -110,7 +131,18 @@ namespace CommunityPatchLauncher.ViewModels
             Speed = newMode;
 
             IDocumentManagerFactory managerFactory = new LocalDocumentManagerFactory();
-            DocumentManager documentManager = managerFactory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
+            DocumentManager documentManager = managerFactory.GetDocumentManager(
+                "en-EN",
+                new MarkdownHtmlConvertStrategy()
+                );
+            DocumentManager scrollLessDocumentManager = managerFactory.GetDocumentManager(
+                "en-EN",
+                new MarkdownHtmlWithoutScrollStrategy()
+                );
+            PatchDescription = scrollLessDocumentManager.ReadConvertedDocument(
+                Thread.CurrentThread.CurrentCulture.Name,
+                patchToUse.RealPatch.ToString() + ".md"
+                );
             ChangelogContent = documentManager.ReadConvertedDocument("en-EN", "Placeholder.md");
         }
 

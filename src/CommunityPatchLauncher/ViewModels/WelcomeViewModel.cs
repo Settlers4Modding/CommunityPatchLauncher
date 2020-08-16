@@ -4,7 +4,7 @@ using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.DataCommands;
 using CommunityPatchLauncher.Commands.Settings;
-using CommunityPatchLauncher.Factories;
+using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Windows;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
