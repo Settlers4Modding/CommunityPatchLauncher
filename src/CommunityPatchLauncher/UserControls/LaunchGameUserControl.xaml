@@ -16,49 +16,59 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid Margin="0,5,0,10">
+    <Grid Margin="0,0,0,10">
         <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <DockPanel Grid.Column="0" LastChildFill="False">
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="{StaticResource SelectedColor}">
+                <WebBrowser DockPanel.Dock="Top" behavior:BrowserBehavior.Html="{Binding PatchDescription, UpdateSourceTrigger=PropertyChanged}"></WebBrowser>
+            </Border>
+            <DockPanel Grid.Row="1" LastChildFill="False">
                 <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,10">
                     <StackPanel Margin="0,10,0,10">
-                    <StackPanel.Resources>
-                        <Style TargetType="{x:Type RadioButton}">
-                            <Setter Property="GroupName" Value="Speed"/>
-                        </Style>
-                        <conv:GameSpeedConverter x:Key="GameSpeedConverter"></conv:GameSpeedConverter>
-                    </StackPanel.Resources>
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type RadioButton}">
+                                <Setter Property="GroupName" Value="Speed"/>
+                            </Style>
+                            <conv:GameSpeedConverter x:Key="GameSpeedConverter"></conv:GameSpeedConverter>
+                        </StackPanel.Resources>
                         <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Normal}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_NormalSpeed}"></RadioButton>
                         <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Fast}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_FastSpeed}"></RadioButton>
                         <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Faster}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_VeryFastSpeed}"></RadioButton>
                         <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Testing}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_TestingSpeed}"></RadioButton>
                     </StackPanel>
                     <Button MinHeight="40" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.PlayControl_Launch}" Command="{Binding LaunchGameCommand}">
-                    <Button.Resources>
-                        <conv:LaunchGameConverter x:Key="LaunchGameConverter"></conv:LaunchGameConverter>
-                    </Button.Resources>
-                    <Button.CommandParameter>
-                        <MultiBinding Converter="{StaticResource LaunchGameConverter}">
-                            <Binding Path="Speed" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
-                            <Binding Path="PatchToUse"/>
-                        </MultiBinding>
-                    </Button.CommandParameter>
-                </Button>
+                        <Button.Resources>
+                            <conv:LaunchGameConverter x:Key="LaunchGameConverter"></conv:LaunchGameConverter>
+                        </Button.Resources>
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource LaunchGameConverter}">
+                                <Binding Path="Speed" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                <Binding Path="PatchToUse"/>
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
                 </StackPanel>
             </DockPanel>
-        <Grid Grid.Column="1" Margin="5,0,10,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30" ></RowDefinition>
-                <RowDefinition Height="*" ></RowDefinition>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0">
-                <TextBlock HorizontalAlignment="Center" Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
-            </StackPanel>
-            <Border BorderThickness="2" Margin="0,0,0,10" Grid.Row="1" BorderBrush="{StaticResource SelectedColor}">
+        </Grid>
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,0,10,0">
+            <TextBlock HorizontalAlignment="Center" Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
+        </StackPanel>
+        <DockPanel Grid.Column="1" Grid.Row="1" Margin="5,0,5,10">
+            <Border  BorderThickness="2"  Grid.Row="1" BorderBrush="{StaticResource SelectedColor}">
                 <WebBrowser behavior:BrowserBehavior.Html="{Binding ChangelogContent, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></WebBrowser>
             </Border>
-        </Grid>
+        </DockPanel>
+
     </Grid>
 </UserControl>
