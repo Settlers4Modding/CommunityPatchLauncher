@@ -4,7 +4,7 @@ using CommunityPatchLauncherFramework.Documentation.Strategy;
 using System.IO;
 using System.Reflection;
 
-namespace CommunityPatchLauncher.Factories
+namespace CommunityPatchLauncher.Documentation.Factories
 {
     /// <summary>
     /// Create a document manager ready to use
@@ -14,7 +14,7 @@ namespace CommunityPatchLauncher.Factories
         /// <summary>
         /// The directory this assembly is in
         /// </summary>
-        private readonly string assemblyPath;
+        protected readonly string assemblyPath;
 
         /// <summary>
         /// Create a new instance of this factory
@@ -25,6 +25,15 @@ namespace CommunityPatchLauncher.Factories
             assemblyPath = fileInfo.DirectoryName + "\\docs";
         }
 
+        /// <summary>
+        /// This method will get you the connector strategy to use
+        /// </summary>
+        /// <returns>A valid instance of the connector strategy</returns>
+        protected virtual IDocumentConnectorStrategy GetConvertStrategy()
+        {
+            return new LocalDocumentConnectorStrategy();
+        }
+
         /// <inheritdoc/>
         public DocumentManager GetDocumentManager(string fallbackLanguage, IDocumentConvertStrategy convertStrategy)
         {
@@ -32,7 +41,7 @@ namespace CommunityPatchLauncher.Factories
                 assemblyPath,
                 fallbackLanguage,
                 convertStrategy,
-                new LocalDocumentConnectorStrategy());
+                GetConvertStrategy());
         }
     }
 }

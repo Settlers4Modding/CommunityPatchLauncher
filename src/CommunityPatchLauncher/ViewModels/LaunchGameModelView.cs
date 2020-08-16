@@ -1,7 +1,8 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands.TaskCommands;
+using CommunityPatchLauncher.Documentation.Factories;
+using CommunityPatchLauncher.Documentation.Strategy;
 using CommunityPatchLauncher.Enums;
-using CommunityPatchLauncher.Factories;
 using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
@@ -10,6 +11,7 @@ using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
 using System.IO;
+using System.Threading;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -130,7 +132,8 @@ namespace CommunityPatchLauncher.ViewModels
 
             IDocumentManagerFactory managerFactory = new LocalDocumentManagerFactory();
             DocumentManager documentManager = managerFactory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
-            PatchDescription = "Hier könnte Ihre Werbung stehen!";
+            DocumentManager scrollLessDocumentManager = managerFactory.GetDocumentManager("en-EN", new MarkdownHtmlWithoutScrollStrategy());
+            PatchDescription = scrollLessDocumentManager.ReadConvertedDocument(Thread.CurrentThread.CurrentCulture.Name, patchToUse.RealPatch.ToString() + ".md");
             ChangelogContent = documentManager.ReadConvertedDocument("en-EN", "Placeholder.md");
         }
 
