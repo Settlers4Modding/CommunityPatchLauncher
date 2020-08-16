@@ -159,6 +159,9 @@
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="MainWindow_StartSettle" xml:space="preserve">
+    <value>Siedlen</value>
+  </data>
   <data name="MainWindow_Tools" xml:space="preserve">
     <value>Extras</value>
   </data>
@@ -169,19 +172,19 @@
     <value>Polnisch</value>
   </data>
   <data name="PlayControl_FastSpeed" xml:space="preserve">
-    <value>Schnelle Spielgeschwindigkeit (2)</value>
+    <value>Schnelle Geschwindigkeit (2)</value>
   </data>
   <data name="PlayControl_Launch" xml:space="preserve">
     <value>Spiel starten</value>
   </data>
   <data name="PlayControl_NormalSpeed" xml:space="preserve">
-    <value>Normale Spielgeschwindigkeit (1)</value>
+    <value>Normale Geschwindigkeit (1)</value>
   </data>
   <data name="PlayControl_TestingSpeed" xml:space="preserve">
-    <value>Test Spielgeschwindigkeit (60)</value>
+    <value>Test Geschwindigkeit (60)</value>
   </data>
   <data name="PlayControl_VeryFastSpeed" xml:space="preserve">
-    <value>Sehr schnelle Spielgeschwindigkeit (3)</value>
+    <value>Sehr schnelle Geschwindigkeit (3)</value>
   </data>
   <data name="ResizeWindow_CustomSize" xml:space="preserve">
     <value>Eigene Größe</value>
@@ -200,6 +203,9 @@
   </data>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Fenster breite eintragen</value>
+  </data>
+  <data name="SettingWindow_DownloadFolder" xml:space="preserve">
+    <value>Download Ordner:</value>
   </data>
   <data name="SettingWindow_OpenDownloadFolder" xml:space="preserve">
     <value>Downloads Ordner öffnen</value>
@@ -224,5 +230,8 @@
   </data>
   <data name="WelcomeWindow_Title" xml:space="preserve">
     <value>Willkommen</value>
+  </data>
+  <data name="WelcomWindow_GameFolder" xml:space="preserve">
+    <value>Spielverzeichnis:</value>
   </data>
 </root>
