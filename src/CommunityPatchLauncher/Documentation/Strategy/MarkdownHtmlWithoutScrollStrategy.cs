@@ -3,8 +3,12 @@ using Markdig;
 
 namespace CommunityPatchLauncher.Documentation.Strategy
 {
+    /// <summary>
+    /// This class will convert markdown to html without a scroll bar
+    /// </summary>
     internal class MarkdownHtmlWithoutScrollStrategy : MarkdownHtmlConvertStrategy
     {
+        /// <inheritdoc/>
         protected override string GetHtml(string rawData)
         {
             string html = "<head><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";

@@ -131,9 +131,18 @@ namespace CommunityPatchLauncher.ViewModels
             Speed = newMode;
 
             IDocumentManagerFactory managerFactory = new LocalDocumentManagerFactory();
-            DocumentManager documentManager = managerFactory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
-            DocumentManager scrollLessDocumentManager = managerFactory.GetDocumentManager("en-EN", new MarkdownHtmlWithoutScrollStrategy());
-            PatchDescription = scrollLessDocumentManager.ReadConvertedDocument(Thread.CurrentThread.CurrentCulture.Name, patchToUse.RealPatch.ToString() + ".md");
+            DocumentManager documentManager = managerFactory.GetDocumentManager(
+                "en-EN",
+                new MarkdownHtmlConvertStrategy()
+                );
+            DocumentManager scrollLessDocumentManager = managerFactory.GetDocumentManager(
+                "en-EN",
+                new MarkdownHtmlWithoutScrollStrategy()
+                );
+            PatchDescription = scrollLessDocumentManager.ReadConvertedDocument(
+                Thread.CurrentThread.CurrentCulture.Name,
+                patchToUse.RealPatch.ToString() + ".md"
+                );
             ChangelogContent = documentManager.ReadConvertedDocument("en-EN", "Placeholder.md");
         }
 
