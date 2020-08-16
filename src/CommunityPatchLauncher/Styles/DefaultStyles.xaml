@@ -17,6 +17,10 @@
         <Setter Property="Background" Value="{StaticResource SelectedColor}"></Setter>
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
     </Style>
+    <Style TargetType="TextBox" x:Key="SettingTextBox" BasedOn="{StaticResource DefaultTextBox}">
+        <Setter Property="MaxWidth" Value="285"></Setter>
+        <Setter Property="Margin" Value="0,0,5,0"></Setter>
+    </Style>
     <Style TargetType="StackPanel" x:Key="DockMenu">
         <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
@@ -35,7 +39,8 @@
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
     </Style>
     <Style TargetType="TextBlock" x:Key="SettingText" BasedOn="{StaticResource DefaultText}">
-        <Setter Property="MinWidth" Value="150"></Setter>
+        <Setter Property="MinWidth" Value="140"></Setter>
+        <Setter Property="Margin" Value="0,0,5,0"></Setter>
     </Style>
     <Style TargetType="CheckBox" x:Key="DefaultCheckbox">
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
@@ -52,7 +57,7 @@
         <Setter Property="Grid.Column" Value="1"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
     </Style>
     <Style TargetType="TextBlock" x:Key="SubCategoryString" BasedOn="{StaticResource MainCategoryString}">
         <Setter Property="Grid.Column" Value="2"></Setter>
@@ -74,7 +79,7 @@
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="37"></ColumnDefinition>
+                            <ColumnDefinition Width="27"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                     </Grid>
@@ -89,7 +94,7 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15"></ColumnDefinition>
-                            <ColumnDefinition Width="37"></ColumnDefinition>
+                            <ColumnDefinition Width="27"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                     </Grid>
@@ -102,7 +107,7 @@
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="Margin" Value="5,0,0,0"></Setter>
     </Style>
     <Style TargetType="fa:FontAwesome" x:Key="SubCategoryFontAwesome" BasedOn="{StaticResource MainCategoryFontAwesome}">
@@ -199,6 +204,6 @@
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
     </Style>
     <Style TargetType="DockPanel" x:Key="SettingDockPanel">
-        <Setter Property="Margin" Value="0,0,0,5"></Setter>
+        <Setter Property="Margin" Value="0,0,0,15"></Setter>
     </Style>
 </ResourceDictionary>
