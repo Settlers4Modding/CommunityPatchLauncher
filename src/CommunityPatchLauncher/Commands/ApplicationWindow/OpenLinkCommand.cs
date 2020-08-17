@@ -38,6 +38,10 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
+            if (!CanExecute(parameter))
+            {
+                return;
+            }
             Process.Start(urlToOpen.ToString());
         }
     }
