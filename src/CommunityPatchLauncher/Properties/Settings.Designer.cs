@@ -118,5 +118,17 @@ namespace CommunityPatchLauncher.Properties {
                 this["GamePathRegKeyName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/Settlers4Modding/CommunityPatchLauncher/issues")]
+        public string ReportIssueLink {
+            get {
+                return ((string)(this["ReportIssueLink"]));
+            }
+            set {
+                this["ReportIssueLink"] = value;
+            }
+        }
     }
 }

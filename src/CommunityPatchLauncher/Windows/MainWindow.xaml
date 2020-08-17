@@ -145,6 +145,12 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_About}"></TextBlock>
                                 </ItemsControl>
                             </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ReportIssueCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Bug" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_ReportIssue}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

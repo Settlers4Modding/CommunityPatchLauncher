@@ -250,6 +250,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report issue.
+        /// </summary>
+        public static string MainWindow_ReportIssue {
+            get {
+                return ResourceManager.GetString("MainWindow_ReportIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string MainWindow_Settings {
