@@ -44,7 +44,7 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
            tag_name: ${{ github.ref }}-${{ GITHUB.RUN_NUMBER }}
-           release_name: Release - ${{ env.tag }
+           release_name: Release - ${{ env.tag }}
            body: Body goes here!
            draft: true
            prerelease: false
