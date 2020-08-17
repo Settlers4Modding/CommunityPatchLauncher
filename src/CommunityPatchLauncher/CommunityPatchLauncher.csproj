@@ -106,12 +106,14 @@
     <Compile Include="BindingData\Converter\InvertBoolConverter.cs" />
     <Compile Include="BindingData\Converter\LaunchGameConverter.cs" />
     <Compile Include="BindingData\Converter\MultiBoolConverter.cs" />
+    <Compile Include="BindingData\Converter\PatchSelectionConverter.cs" />
     <Compile Include="BindingData\Converter\ResizeWindowConverter.cs" />
     <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="BindingData\WindowsSizeService.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\ReloadObjectCommand.cs" />
+    <Compile Include="Commands\DataContainer\PatchSelectionData.cs" />
     <Compile Include="Commands\Settings\SaveSettingsCommand.cs" />
     <Compile Include="Commands\Settings\AcceptAgreementCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
