@@ -1,0 +1,21 @@
+name: Check pull request
+
+on: push
+
+jobs:
+   build:
+     name: Check pull request
+     runs-on: windows-latest
+     steps:
+       - name: Clone repository
+         uses: actions/checkout@v2
+       - name: Install nuget
+         uses: nuget/setup-nuget@v1
+       - name: Nuget restore
+         run: nuget restore
+         shell: powershell
+       - name: Setup msbuild
+         uses: microsoft/setup-msbuild@v1.0.0
+       - name: Build project
+         run: msbuild /t:Build /p:Configuration=Release
+         shell: powershell
