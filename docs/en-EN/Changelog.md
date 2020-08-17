@@ -25,6 +25,8 @@
 
 ### New
 
+#### Functionalites
+
 #### Welcome Window
 
 * Placeholder agreement
@@ -47,6 +49,18 @@
 * Maximize button
 * Resize window button
 
+##### Launch game window
+
+* Download newest patch
+* Unzip z7 files
+* Launch game with selected speed
+
+##### Setting window
+
+* Select language
+* Select download and game folder
+* Open setting/download or game folder
+* Reset agreement
 
 #### Resize window
 
