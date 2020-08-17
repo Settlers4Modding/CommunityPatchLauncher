@@ -25,7 +25,11 @@
 
 ### New
 
-#### Functionalites
+#### Translations
+
+* German language
+* English language
+* Polish language
 
 #### Welcome Window
 
