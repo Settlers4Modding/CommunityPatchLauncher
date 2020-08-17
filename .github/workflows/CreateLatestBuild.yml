@@ -1,12 +1,12 @@
 name: Latest unstable build
 
-on: push
-  #pull_request:
-    #types: [closed] 
+on:
+  pull_request:
+    types: [closed] 
 
 jobs:
    build:
-     #if: github.event.pull_request.merged == true
+     if: github.event.pull_request.merged == true
      name: Create latest build artifact
      runs-on: windows-latest
      steps:
@@ -41,7 +41,7 @@ jobs:
            tag_name: ${{ github.ref }}-${{ GITHUB.RUN_NUMBER }}
            release_name: Latest unstable
            body: You cannot update this version from within the application!
-           draft: true
+           draft: false
            prerelease: true
        - name: Upload CommunityPatchLauncher Release Asset
          id: upload-application-release-asset 
