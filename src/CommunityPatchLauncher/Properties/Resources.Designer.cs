@@ -268,6 +268,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settle.
+        /// </summary>
+        public static string MainWindow_StartSettle {
+            get {
+                return ResourceManager.GetString("MainWindow_StartSettle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team.
         /// </summary>
         public static string MainWindow_Team {

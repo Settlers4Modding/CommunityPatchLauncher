@@ -67,7 +67,7 @@
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Play_Group">
                             <ItemsControl Style="{StaticResource MainCategoryGrid}">
                                 <fa:FontAwesome Icon="Play" Style="{StaticResource MainCategoryFontAwesome}" />
-                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
+                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_StartSettle}"></TextBlock>
                             </ItemsControl>
                         </Button>
                         <StackPanel Visibility="Collapsed" Tag="SubGroup" x:Name="Play_Group">

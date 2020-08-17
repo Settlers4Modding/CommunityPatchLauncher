@@ -3,12 +3,9 @@ using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Documentation.Strategy;
 using CommunityPatchLauncher.Enums;
-using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
-using CommunityPatchLauncherFramework.Settings.Factories;
-using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
 using System.IO;
 using System.Threading;
@@ -107,11 +104,18 @@ namespace CommunityPatchLauncher.ViewModels
         private string patchDescription;
 
         /// <summary>
+        /// The manager factory to use
+        /// </summary>
+        private readonly IDocumentManagerFactory managerFactory;
+
+        /// <summary>
         /// Create a new instance of this view model
         /// </summary>
         public LaunchGameModelView()
         {
             LaunchGameCommand = new LaunchGameCommand(settingManager);
+
+            managerFactory = new LocalDocumentManagerFactory();
         }
 
         /// <summary>
@@ -130,20 +134,19 @@ namespace CommunityPatchLauncher.ViewModels
             }
             Speed = newMode;
 
-            IDocumentManagerFactory managerFactory = new LocalDocumentManagerFactory();
-            DocumentManager documentManager = managerFactory.GetDocumentManager(
-                "en-EN",
-                new MarkdownHtmlConvertStrategy()
-                );
             DocumentManager scrollLessDocumentManager = managerFactory.GetDocumentManager(
                 "en-EN",
                 new MarkdownHtmlWithoutScrollStrategy()
-                );
-            PatchDescription = scrollLessDocumentManager.ReadConvertedDocument(
-                Thread.CurrentThread.CurrentCulture.Name,
+            );
+            string language = settingManager.GetValue<string>("Language");
+            if (language != null)
+            {
+                PatchDescription = scrollLessDocumentManager.ReadConvertedDocument(
+                language,
                 patchToUse.RealPatch.ToString() + ".md"
-                );
-            ChangelogContent = documentManager.ReadConvertedDocument("en-EN", "Placeholder.md");
+            );
+            }
+            
         }
 
         /// <summary>
@@ -166,6 +169,12 @@ namespace CommunityPatchLauncher.ViewModels
         public override void Reload()
         {
             settingManager.Reload();
+
+            DocumentManager documentManager = managerFactory.GetDocumentManager(
+                "en-EN",
+                new MarkdownHtmlConvertStrategy()
+                );
+            ChangelogContent = documentManager.ReadConvertedDocument(Thread.CurrentThread.CurrentCulture.Name, "Placeholder.md");
         }
     }
 }

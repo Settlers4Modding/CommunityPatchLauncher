@@ -186,6 +186,9 @@
   <data name="MainWindow_SocialMedia" xml:space="preserve">
     <value>Social Media</value>
   </data>
+  <data name="MainWindow_StartSettle" xml:space="preserve">
+    <value>Settle</value>
+  </data>
   <data name="MainWindow_Team" xml:space="preserve">
     <value>Team</value>
   </data>
