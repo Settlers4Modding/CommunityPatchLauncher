@@ -2,16 +2,12 @@
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CommunityPatchLauncher.ViewModels
 {
+    /// <summary>
+    /// This class is the view model for the browser control
+    /// </summary>
     internal class BrowserModelView : BaseViewModel
     {
         /// <summary>
@@ -27,6 +23,9 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
 
+        /// <summary>
+        /// Private access to ther browser content
+        /// </summary>
         private string browserContent;
 
         /// <summary>
@@ -39,6 +38,10 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private readonly string documentToShow;
 
+        /// <summary>
+        /// Create a new instance of this view model
+        /// </summary>
+        /// <param name="documentToShow"></param>
         public BrowserModelView(string documentToShow)
         {
             IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
@@ -46,6 +49,7 @@ namespace CommunityPatchLauncher.ViewModels
             this.documentToShow = documentToShow;
         }
 
+        /// <inheritdoc/>
         public override void Reload()
         {
             base.Reload();

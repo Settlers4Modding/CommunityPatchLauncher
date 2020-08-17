@@ -8,6 +8,10 @@ namespace CommunityPatchLauncher.UserControls
     /// </summary>
     public partial class BrowserUserControl : UserControl
     {
+        /// <summary>
+        /// A user control containing a full size webbrowser to display content
+        /// </summary>
+        /// <param name="fileToOpen"></param>
         public BrowserUserControl(string fileToOpen)
         {
             InitializeComponent();
