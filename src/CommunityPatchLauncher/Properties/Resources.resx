@@ -180,6 +180,9 @@
   <data name="MainWindow_Ranked" xml:space="preserve">
     <value>Ranked</value>
   </data>
+  <data name="MainWindow_ReportIssue" xml:space="preserve">
+    <value>Report issue</value>
+  </data>
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>

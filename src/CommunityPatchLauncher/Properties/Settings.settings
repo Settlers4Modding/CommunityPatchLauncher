@@ -26,5 +26,8 @@
     <Setting Name="GamePathRegKeyName" Type="System.String" Scope="User">
       <Value Profile="(Default)">InstallDir</Value>
     </Setting>
+    <Setting Name="ReportIssueLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/Settlers4Modding/CommunityPatchLauncher/issues</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
