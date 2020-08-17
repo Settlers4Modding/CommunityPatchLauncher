@@ -12,6 +12,9 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
     /// </summary>
     internal class OpenLaunchUserControlToPanel : OpenControlToPanel
     {
+        /// <summary>
+        /// The container to search the buttons in
+        /// </summary>
         private readonly DependencyObject container;
 
         /// <summary>
@@ -19,7 +22,11 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// </summary>
         /// <param name="panelToUse">The panel to add the control to</param>
         /// <param name="userControl">The user control to add</param>
-        public OpenLaunchUserControlToPanel(DockPanel panelToUse, UserControl userControl, DependencyObject container) : base(panelToUse, userControl)
+        public OpenLaunchUserControlToPanel(
+            DockPanel panelToUse,
+            UserControl userControl,
+            DependencyObject container
+            ) : base(panelToUse, userControl)
         {
             this.container = container;
         }
