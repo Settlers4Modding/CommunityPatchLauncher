@@ -3,12 +3,9 @@ using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Documentation.Strategy;
 using CommunityPatchLauncher.Enums;
-using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
-using CommunityPatchLauncherFramework.Settings.Factories;
-using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
 using System.IO;
 using System.Threading;
@@ -106,6 +103,9 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private string patchDescription;
 
+        /// <summary>
+        /// The manager factory to use
+        /// </summary>
         private readonly IDocumentManagerFactory managerFactory;
 
         /// <summary>
