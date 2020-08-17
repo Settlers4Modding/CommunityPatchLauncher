@@ -12,6 +12,11 @@ namespace CommunityPatchLauncher.ViewModels
     internal class MainWindowModel : BaseViewModel
     {
         /// <summary>
+        /// The command used to open the changelog
+        /// </summary>
+        public ICommand OpenChangelogCommand { get; private set; }
+
+        /// <summary>
         /// The command used if you click on launch game
         /// </summary>
         public ICommand LaunchGameCommand { get; private set; }
@@ -52,6 +57,7 @@ namespace CommunityPatchLauncher.ViewModels
 
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl());
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
+                OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 

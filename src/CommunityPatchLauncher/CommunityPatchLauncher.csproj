@@ -173,6 +173,9 @@
     <Compile Include="Tasks\Factories\LaunchGameFactory.cs" />
     <Compile Include="Tasks\PatchGameSpeedTask.cs" />
     <Compile Include="Tasks\UnzipAndExtractCommunityPatchTask.cs" />
+    <Compile Include="UserControls\BrowserUserControl.xaml.cs">
+      <DependentUpon>BrowserUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ComingSoonControl.xaml.cs">
       <DependentUpon>ComingSoonControl.xaml</DependentUpon>
     </Compile>
@@ -202,6 +205,7 @@
       <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BrowserModelView.cs" />
     <Compile Include="ViewModels\LaunchGameModelView.cs" />
     <Compile Include="ViewModels\PatchVersionSelectionViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
@@ -217,6 +221,10 @@
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Styles\DefaultStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\BrowserUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
