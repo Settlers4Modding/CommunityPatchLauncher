@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
@@ -40,10 +38,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
             }
             string searchString = parameter as string;
             object element = windowToSearchOn.FindName(searchString);
-            IEnumerable<StackPanel> panels = FindElementsOfType<StackPanel>(windowToSearchOn).Where(currentPanel =>
-            {
-                return currentPanel.Tag != null && currentPanel.Tag.ToString() == "SubGroup";
-            });
+            IEnumerable<StackPanel> panels = FindElementsOfType<StackPanel>(windowToSearchOn, "SubGroup");
             foreach (StackPanel currentPanel in panels)
             {
                 if (currentPanel.Name == searchString)
@@ -61,33 +56,6 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
                     return;
                 }
                 stackPanel.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        /// <summary>
-        /// This method will find all the elements of a given type
-        /// </summary>
-        /// <typeparam name="T">The type of elemnts to find</typeparam>
-        /// <param name="dependencyObject">The object to search elements in</param>
-        /// <returns></returns>
-        private IEnumerable<T> FindElementsOfType<T>(DependencyObject dependencyObject) where T : DependencyObject
-        {
-            if (dependencyObject == null)
-            {
-                yield return default;
-            }
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(dependencyObject); i++)
-            {
-                DependencyObject currentObject = VisualTreeHelper.GetChild(dependencyObject, i);
-                if (currentObject != null && currentObject is T returnObject)
-                {
-                    yield return returnObject;
-                }
-
-                foreach (T childOfChild in FindElementsOfType<T>(currentObject))
-                {
-                    yield return childOfChild;
-                }
             }
         }
     }

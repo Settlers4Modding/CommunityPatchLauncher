@@ -39,10 +39,16 @@ namespace CommunityPatchLauncher.ViewModels
             AllPatches = patches.GetPatches();
 
             object dockArea = control.FindName("DP_InnerDock");
-            if (dockArea is DockPanel panel)
+
+            object controllerDock = control.FindName("IC_PatchSelectionControl");
+            if (dockArea is DockPanel panel && controllerDock is ItemsControl controller)
             {
                 panelToUse = panel;
-                OpenLaunchGameCommand = new OpenLaunchUserControlToPanel(panelToUse, new LaunchGameUserControl());
+                OpenLaunchGameCommand = new OpenLaunchUserControlToPanel(
+                    panelToUse,
+                    new LaunchGameUserControl(),
+                    controller
+                    );
             }
         }
 

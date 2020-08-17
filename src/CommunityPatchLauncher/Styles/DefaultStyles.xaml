@@ -9,6 +9,28 @@
     <SolidColorBrush x:Key="BrightSelectedColor" Color="#7e738c"></SolidColorBrush>
     <SolidColorBrush x:Key="DarkerDisabledColor" Color="#3f3946"></SolidColorBrush>
 
+    <Style TargetType="ToggleButton" x:Key="DefaultToggleButton">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border Padding="5" Margin="0,0,2,0" Background="{TemplateBinding Background}" BorderBrush="{StaticResource BrightSelectedColor}" BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource SelectedColor}"></Setter>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{StaticResource BrightSelectedColor}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="Border" x:Key="DefaultBorder">
         <Setter Property="BorderBrush" Value="{StaticResource SelectedColor}"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>
