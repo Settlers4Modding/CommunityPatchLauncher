@@ -1,0 +1,55 @@
+name: Latest unstable build
+
+on:
+  pull_request:
+    types: [closed] 
+
+jobs:
+   build:
+     if: github.event.pull_request.merged == true
+     name: Create latest build artifact
+     runs-on: windows-latest
+     steps:
+       - name: Clone repository
+         uses: actions/checkout@v2
+         with: 
+           ref: develop
+       - name: Install nuget
+         uses: nuget/setup-nuget@v1
+       - name: Setup msbuild
+         uses: microsoft/setup-msbuild@v1.0.0
+       - name: Build project
+         run: |
+           nuget restore
+           msbuild /t:Build /p:Configuration=Release
+         shell: powershell
+       - name: Create artifacts
+         run: |
+           mkdir ..\Artifacts
+           mkdir ..\Artifacts\CommunityPatchLauncher\
+           mv .\src\CommunityPatchLauncher\bin\Release\** ..\Artifacts\CommunityPatchLauncher\
+           mv LICENSE ..\Artifacts\CommunityPatchLauncher\
+           cd ..\Artifacts\
+           7z a LatestDevelopment_CommunityPatchLauncher.zip .\CommunityPatchLauncher\**
+         shell: powershell
+       - name: Create Release
+         id: create_release
+         uses: actions/create-release@v1
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+           tag_name: ${{ github.ref }}-${{ GITHUB.RUN_NUMBER }}
+           release_name: Latest unstable
+           body: You cannot update this version from within the application!
+           draft: false
+           prerelease: true
+       - name: Upload CommunityPatchLauncher Release Asset
+         id: upload-application-release-asset 
+         uses: actions/upload-release-asset@v1
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+           upload_url: ${{ steps.create_release.outputs.upload_url }}
+           asset_path: ..\Artifacts\LatestDevelopment_CommunityPatchLauncher.zip
+           asset_name: LatestDevelopment_CommunityPatchLauncher.zip
+           asset_content_type: application/zip
