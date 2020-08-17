@@ -56,5 +56,5 @@ jobs:
          with:
            upload_url: ${{ steps.create_release.outputs.upload_url }}
            asset_path: ..\Artifacts\${{ env.communityPatchLauncher }}
-           asset_name: ${{ env.xmlFormatter }}
+           asset_name: ${{ env.communityPatchLauncher }}
            asset_content_type: application/zip
