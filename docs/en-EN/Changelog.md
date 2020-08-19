@@ -9,6 +9,10 @@
 * Changelog button is working now
 * Added user control as browser dock for specific files
 
+#### Launch Game Window
+
+* Describing texts for all versions added in german and english
+
 ### Fixed
 
 * All web content allows richt text now
