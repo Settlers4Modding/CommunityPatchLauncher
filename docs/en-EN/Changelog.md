@@ -9,6 +9,10 @@
 * Changelog button is working now
 * Added user control as browser dock for specific files
 
+#### Launch Game Window
+
+* Describing texts for all versions added in german and english
+
 ### Fixed
 
 * All web content allows richt text now
@@ -24,6 +28,12 @@
 ## Showcase - Version 0.0.1
 
 ### New
+
+#### Translations
+
+* German language
+* English language
+* Polish language
 
 #### Welcome Window
 
@@ -47,6 +57,18 @@
 * Maximize button
 * Resize window button
 
+##### Launch game window
+
+* Download newest patch
+* Unzip z7 files
+* Launch game with selected speed
+
+##### Setting window
+
+* Select language
+* Select download and game folder
+* Open setting/download or game folder
+* Reset agreement
 
 #### Resize window
 
