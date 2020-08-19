@@ -1,4 +1,4 @@
-# Community Patch
+## Community Patch
 
 Dies ist die von uns empfohlene Version mit dem besten Spielgefühl.
 Die Hauptversion des Community Patches beinhaltet alle Bugfixe und Optimierungen die auch in der light Version enthalten sind.

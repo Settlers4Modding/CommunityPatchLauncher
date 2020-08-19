@@ -1,4 +1,4 @@
-# History Edition
+## History Edition
 
 Diese Version entspricht der von Ubisoft veröffentlichten Version ohne Änderungen.
 Dies ist die richtige Wahl für Multiplayer Spiele mit Spielern, die den Community Patch nicht installiert haben.

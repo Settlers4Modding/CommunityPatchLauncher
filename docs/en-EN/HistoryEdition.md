@@ -1,4 +1,4 @@
-# History Edition
+## History Edition
 
 With this setting you play the original game as delivered by Ubisoft.
 This is the right version to pick if you want to play multiplayer with people who do not use the Community Patch.

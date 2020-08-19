@@ -1,4 +1,4 @@
-# Community Patch
+## Community Patch
 
 This is the recommended version to play with the best game play feeling.
 The Community Patch main version contains all bug fixes and optimizations which are also included in the light version.
