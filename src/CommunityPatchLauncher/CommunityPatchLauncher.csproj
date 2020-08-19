@@ -111,6 +111,7 @@
     <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="BindingData\WindowsSizeService.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenLinkCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\ReloadObjectCommand.cs" />
     <Compile Include="Commands\DataContainer\PatchSelectionData.cs" />
@@ -307,6 +308,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Version.txt" />
     <EmbeddedResource Include="Properties\Resources.pl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.pl.Designer.cs</LastGenOutput>

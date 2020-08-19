@@ -1,0 +1,60 @@
+name: Live build
+
+on:
+  push:
+    tags:
+     - '*'
+
+jobs:
+   build:
+     name: Create release build
+     runs-on: windows-latest
+     steps:
+       - name: Clone repository
+         uses: actions/checkout@v2
+         with: 
+           ref: master
+       - name: Get Current Tag
+         run: echo "::set-env name=tag::$(($env:GITHUB_REF -split '/')[-1] -replace ' ','')"
+       - name: Install nuget
+         uses: nuget/setup-nuget@v1
+       - name: Setup msbuild
+         uses: microsoft/setup-msbuild@v1.0.0
+       - name: Build project
+         run: |
+           nuget restore
+           echo $env:tag > .\src\CommunityPatchLauncher\Version.txt
+           msbuild /t:Build /p:Configuration=Release
+         shell: powershell
+       - name: Create artifacts
+         run: |
+           $communityPatchLauncher = -join($env:tag, "_CommunityPatchLauncher.zip")
+           echo "::set-env name=communityPatchLauncher::$($communityPatchLauncher)"
+           mkdir ..\Artifacts
+           mkdir ..\Artifacts\CommunityPatchLauncher\
+           mv .\src\CommunityPatchLauncher\bin\Release\** ..\Artifacts\CommunityPatchLauncher\
+           mv LICENSE ..\Artifacts\CommunityPatchLauncher\
+           cd ..\Artifacts\
+           7z a $communityPatchLauncher .\CommunityPatchLauncher\**
+         shell: powershell
+       - name: Create Release
+         id: create_release
+         uses: actions/create-release@v1
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+           tag_name: ${{ github.ref }}-${{ GITHUB.RUN_NUMBER }}
+           release_name: Release - ${{ env.tag }}
+           body: Body goes here!
+           draft: true
+           prerelease: false
+       - name: Upload CommunityPatchLauncher Release Asset
+         id: upload-application-release-asset 
+         uses: actions/upload-release-asset@v1
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+           upload_url: ${{ steps.create_release.outputs.upload_url }}
+           asset_path: ..\Artifacts\${{ env.communityPatchLauncher }}
+           asset_name: ${{ env.communityPatchLauncher }}
+           asset_content_type: application/zip

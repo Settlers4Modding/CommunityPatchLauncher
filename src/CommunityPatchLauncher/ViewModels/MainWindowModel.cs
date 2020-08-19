@@ -1,5 +1,8 @@
 ﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.UserControls;
+using CommunityPatchLauncherFramework.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -37,6 +40,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand ChangeGroupVisiblity { get; private set; }
 
         /// <summary>
+        /// The command to report a issue
+        /// </summary>
+        public ICommand ReportIssueCommand { get; private set; }
+
+        /// <summary>
         /// The content dock to use
         /// </summary>
         private readonly DockPanel contentDock;
@@ -53,11 +61,15 @@ namespace CommunityPatchLauncher.ViewModels
             object dockArea = window.FindName("DP_ContentDock");
             if (dockArea is DockPanel panel)
             {
+                ISettingFactory settingFactory = new WpfPropertySettingManagerFactory();
+                SettingManager wpfSettings = settingFactory.GetSettingsManager();
+
                 contentDock = panel;
 
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl());
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
+                ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 
