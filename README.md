@@ -1,7 +1,7 @@
 # Community Patch Launcher
 
 This project is a launcher application for the Settler IV Community patch.
-The whole source code can be found in our [Git]
+The whole source code can be found in our [Git].
 
 ## How to install this application
 
@@ -24,18 +24,17 @@ Currently, this is the only possibility to use the Community Patch. Once the new
 
 #### Written installation guide
 
-Step 1: Download the newest zip file from the [Release]
+Step 1: Download the newest zip file from the [Release].
 
 Step 2: Unpack the zip file to a location you prefer. We recommend to create a new folder for this in program files directory.
 
-Step 3: Double click CommunityPatchLauncher.exe
+Step 3: Double click CommunityPatchLauncher.exe.
 
 Step 4: Before using the Community Patch you have to accept the agreement.
 
 Step 5: Select the Installation folder of your Settlers 4 History Edition. This should normally work by hitting the "auto detect" button.
 
 ![Agreement.JPG](/.github/Assets/Agreement.JPG "Settlers 5 is not a real Settlers game!")
-![SelectButton.png](/.github/Screenshots/SelectButton.png)
 
 If not you can click on the "three dots" button and select the location yourself.
 
@@ -53,13 +52,18 @@ For players who make use of the login functionality we offer additional function
 * Chat functionality - Discuss things like PTR Balance changes with other players within the launcher!
 * *(Coming soon)*
 
-You can log in by hitting the button *(Coming soon)*
+You can log in by hitting the button *(Coming soon)*.
 
-### Social Media
+### Social Media and Support
 
 You can find other players and most of the devs in our Discord: [![Join the chat at https://discord.gg/Qu5Und](https://img.shields.io/discord/644571557276155905?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Qu5Und)
 
 If you want to help us working on the Community Patch meet us there and let us know!
+If you find any bug or want to request a new feature please check our [issue tracker] and add it if you can't find it already or join us in Discord. There we have a dedicated chat for suggestions and discussion.
+
+
+### Have fun playing!
 
 [Git]: https://github.com/Settlers4Modding/CommunityPatchLauncher/
 [Release]: https://github.com/Settlers4Modding/CommunityPatchLauncher/releases
+[issue tracker]: https://github.com/Settlers4Modding/CommunityPatchLauncher/issues
