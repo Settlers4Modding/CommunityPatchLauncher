@@ -33,7 +33,9 @@ Step 3: Double click CommunityPatchLauncher.exe
 Step 4: Before using the Community Patch you have to accept the agreement.
 
 Step 5: Select the Installation folder of your Settlers 4 History Edition. This should normally work by hitting the "auto detect" button.
+
 ![Aggreement.JPG](/.github/Assets/Aggreement.JPG "Settlers 5 is not a real Settlers game!")
+
 If not you can click on the "three dots" button and select the location yourself.
 
 Step 6: Press OK ;-)
