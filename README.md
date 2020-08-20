@@ -20,7 +20,7 @@ If you prefer a written guide you can find it directly after.
 
 This video currently demonstrates the installation with the old launcher which will be replaced soon.
 Currently, this is the only possibility to use the Community Patch. Once the new launcher is released officially, there will be a new video.
-[![Settlers 4 Community Patch Installation Guide](/.github/Assets/VideoGuideold.JPG =800x450)](https://www.youtube.com/watch?v=145BOFN9m2s "Settlers 4 Community Patch Installation Guide")
+[![Settlers 4 Community Patch Installation Guide](/.github/Assets/VideoGuideold.JPG)] { width=50% }(https://www.youtube.com/watch?v=145BOFN9m2s "Settlers 4 Community Patch Installation Guide")
 
 #### Written installation guide
 
@@ -57,7 +57,7 @@ You can log in by hitting the button *(Coming soon)*
 
 ### Social Media
 
-You can find other players and most of the devs in our Discord: [![Join the chat at https://discord.gg/Qu5Und](https://img.shields.io/discord/355231098122272778?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Qu5Und)
+You can find other players and most of the devs in our Discord: [![Join the chat at https://discord.gg/Qu5Und](https://img.shields.io/discord/644571557276155905?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Qu5Und)
 
 If you want to help us working on the Community Patch meet us there and let us know!
 
