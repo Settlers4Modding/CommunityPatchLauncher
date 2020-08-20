@@ -20,7 +20,7 @@ If you prefer a written guide you can find it directly after.
 
 This video currently demonstrates the installation with the old launcher which will be replaced soon.
 Currently, this is the only possibility to use the Community Patch. Once the new launcher is released officially, there will be a new video.
-[![Settlers 4 Community Patch Installation Guide](/.github/Assets/VideoGuideold.JPG)](https://www.youtube.com/watch?v=145BOFN9m2s "Settlers 4 Community Patch Installation Guide")
+[![Settlers 4 Community Patch Installation Guide](/.github/Assets/VideoGuideold.JPG =800x450)](https://www.youtube.com/watch?v=145BOFN9m2s "Settlers 4 Community Patch Installation Guide")
 
 #### Written installation guide
 
@@ -34,7 +34,8 @@ Step 4: Before using the Community Patch you have to accept the agreement.
 
 Step 5: Select the Installation folder of your Settlers 4 History Edition. This should normally work by hitting the "auto detect" button.
 
-![Aggreement.JPG](/.github/Assets/Aggreement.JPG "Settlers 5 is not a real Settlers game!")
+![Agreement.JPG](/.github/Assets/Agreement.JPG "Settlers 5 is not a real Settlers game!")
+![SelectButton.png](/.github/Screenshots/SelectButton.png)
 
 If not you can click on the "three dots" button and select the location yourself.
 
@@ -57,6 +58,7 @@ You can log in by hitting the button *(Coming soon)*
 ### Social Media
 
 You can find other players and most of the devs in our Discord: [![Join the chat at https://discord.gg/Qu5Und](https://img.shields.io/discord/355231098122272778?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Qu5Und)
+
 If you want to help us working on the Community Patch meet us there and let us know!
 
 [Git]: https://github.com/Settlers4Modding/CommunityPatchLauncher/
