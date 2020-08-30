@@ -9,7 +9,7 @@ The whole source code can be found in our [Git].
 
 The Settlers 4 Community Patch currently only works for the History Edition. Other editions such as the Gold Edition are not yet supported.
 The Community Patch Launcher is a Windows only application!
-To install this application you will need the '.NET Framework 4.7' or newer. This is installed on Windows 10 already.
+To install this application you will need the '.NET Framework 4.7' or newer. This is installed on Windows 10 by default.
 
 ### Installation
 
@@ -41,7 +41,7 @@ If not you can click on the "three dots" button and select the location yourself
 
 Step 6: Press OK ;-)
 
-### Login functionality
+## Login functionality
 
 It is **not** necessary for playing settlers 4 with the Community patch to make use of the login functionality!
 
@@ -55,7 +55,7 @@ For players who make use of the login functionality we offer additional function
 
 You can log in by hitting the button *(Coming soon)*.
 
-### Social Media and Support
+## Social Media and Support
 
 You can find other players and most of the devs in our Discord: [![Join the chat at https://discord.gg/Qu5Und](https://img.shields.io/discord/644571557276155905?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Qu5Und)
 
@@ -63,7 +63,7 @@ If you want to help us working on the Community Patch meet us there and let us k
 If you find any bug or want to request a new feature please check our [issue tracker] and add it if you can't find it already or join us in Discord. There we have a dedicated chat for suggestions and discussion.
 
 
-### Have fun playing!
+## Have fun playing!
 
 [Git]: https://github.com/Settlers4Modding/CommunityPatchLauncher/
 [Release]: https://github.com/Settlers4Modding/CommunityPatchLauncher/releases
