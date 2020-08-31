@@ -117,7 +117,7 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         /// </summary>
         public void Reload()
         {
-            settings = reader.LoadSettings(SettingFilePath);
+            settings = reader?.LoadSettings(SettingFilePath);
             settingsLoaded = true;
         }
 

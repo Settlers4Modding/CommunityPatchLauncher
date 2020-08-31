@@ -174,6 +174,7 @@
     <Compile Include="Tasks\Factories\LaunchGameFactory.cs" />
     <Compile Include="Tasks\PatchGameSpeedTask.cs" />
     <Compile Include="Tasks\UnzipAndExtractCommunityPatchTask.cs" />
+    <Compile Include="Update\GetLocalVersion.cs" />
     <Compile Include="UserControls\BrowserUserControl.xaml.cs">
       <DependentUpon>BrowserUserControl.xaml</DependentUpon>
     </Compile>
