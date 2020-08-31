@@ -15,6 +15,7 @@
 
 ### Fixed
 
+* Spelling mistakes
 * All web content allows richt text now
 * All web content is loaded in the correct language now
 * All web content is using English as fallback now

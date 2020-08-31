@@ -163,7 +163,7 @@
     <value>Einstellungen</value>
   </data>
   <data name="MainWindow_StartSettle" xml:space="preserve">
-    <value>Siedlen</value>
+    <value>Siedeln</value>
   </data>
   <data name="MainWindow_Tools" xml:space="preserve">
     <value>Extras</value>
@@ -193,7 +193,7 @@
     <value>Eigene Größe</value>
   </data>
   <data name="ResizeWindow_HeightTooltip" xml:space="preserve">
-    <value>Fenster höhe eintragen</value>
+    <value>Fenster Höhe eintragen</value>
   </data>
   <data name="ResizeWindow_NewSize" xml:space="preserve">
     <value>Eigene Größe angeben</value>
