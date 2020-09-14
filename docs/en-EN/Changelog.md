@@ -12,6 +12,7 @@
 #### Launch Game Window
 
 * Describing texts for all versions added in german and english
+* Community DLC is getting installed for all patches
 
 ### Fixed
 
