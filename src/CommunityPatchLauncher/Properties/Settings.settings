@@ -29,5 +29,8 @@
     <Setting Name="ReportIssueLink" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://github.com/Settlers4Modding/CommunityPatchLauncher/issues</Value>
     </Setting>
+    <Setting Name="PreInstall" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PreInstall.txt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
