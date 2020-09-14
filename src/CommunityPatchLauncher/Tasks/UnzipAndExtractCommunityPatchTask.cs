@@ -1,8 +1,5 @@
-﻿using CommunityPatchLauncherFramework.Settings.Container;
-using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
-using System;
+﻿using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
 using System.IO;
-using SharpCompress;
 using SharpCompress.Archives.SevenZip;
 using System.Linq;
 using SharpCompress.Common;

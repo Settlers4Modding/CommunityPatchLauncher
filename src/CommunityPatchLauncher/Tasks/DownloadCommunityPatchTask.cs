@@ -1,5 +1,4 @@
 ﻿using CommunityPatchLauncher.Enums;
-using CommunityPatchLauncherFramework.Settings.Container;
 using System;
 using System.IO;
 using System.Linq;
