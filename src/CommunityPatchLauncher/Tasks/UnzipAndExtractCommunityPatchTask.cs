@@ -97,6 +97,8 @@ namespace CommunityPatchLauncher.Tasks
 					string line = string.Empty;
 					while ((line = fileReader.ReadLine()) != null)
 					{
+						line = line.Replace("../", "");
+						line = line.Replace("..\\", "");
 						string gameFolder = settingManager.GetValue<string>("GameFolder");
 						string fullPath = gameFolder + line;
 						if (File.Exists(fullPath))
