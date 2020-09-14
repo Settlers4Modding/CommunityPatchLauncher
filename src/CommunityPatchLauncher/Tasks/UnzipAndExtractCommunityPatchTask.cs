@@ -97,6 +97,7 @@ namespace CommunityPatchLauncher.Tasks
 					string line = string.Empty;
 					while ((line = fileReader.ReadLine()) != null)
 					{
+						//TODO: IMPORTANT: Check if this is enough protection so that nobody can escape the game folder!
 						line = line.Replace("../", "");
 						line = line.Replace("..\\", "");
 						string gameFolder = settingManager.GetValue<string>("GameFolder");
