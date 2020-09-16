@@ -111,10 +111,10 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         /// <returns>True if adding was successful</returns>
         public bool AddSetting<T>(string key, T data, bool overrideEntry)
         {
-            bool entryExisting = settings.Where((obj) => obj.Key == key).ToList().Count > 0;
+            bool entryExisting = settings?.Where((obj) => obj.Key == key).ToList().Count > 0;
             if (!entryExisting)
             {
-                settings.Add(new SettingPair(key, data));
+                settings?.Add(new SettingPair(key, data));
                 return true;
             }
             if (overrideEntry)

@@ -142,5 +142,53 @@ namespace CommunityPatchLauncher.Properties {
                 this["PreInstall"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Settlers4Modding")]
+        public string ReporistoryOwner {
+            get {
+                return ((string)(this["ReporistoryOwner"]));
+            }
+            set {
+                this["ReporistoryOwner"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CommunityPatchLauncher")]
+        public string RepositoryName {
+            get {
+                return ((string)(this["RepositoryName"]));
+            }
+            set {
+                this["RepositoryName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("develop-([0-9]+)")]
+        public string DevelopFilter {
+            get {
+                return ((string)(this["DevelopFilter"]));
+            }
+            set {
+                this["DevelopFilter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("v(\\d+\\.\\d+\\.\\d+)")]
+        public string ReleaseFilter {
+            get {
+                return ((string)(this["ReleaseFilter"]));
+            }
+            set {
+                this["ReleaseFilter"] = value;
+            }
+        }
     }
 }

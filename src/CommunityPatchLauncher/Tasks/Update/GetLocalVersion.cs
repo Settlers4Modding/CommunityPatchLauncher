@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace CommunityPatchLauncher.Update
+namespace CommunityPatchLauncher.Tasks.Update
 {
     /// <summary>
     /// Get the local version of this installation

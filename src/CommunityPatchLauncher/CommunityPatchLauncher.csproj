@@ -56,6 +56,9 @@
     <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Octokit, Version=0.48.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octokit.0.48.0\lib\net46\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="SharpCompress, Version=0.26.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpCompress.0.26.0\lib\net46\SharpCompress.dll</HintPath>
     </Reference>
@@ -150,6 +153,7 @@
     <Compile Include="Documentation\Strategy\MarkdownHtmlWithoutScrollStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />
     <Compile Include="Enums\SpeedModes.cs" />
+    <Compile Include="Enums\UpdateBranchEnum.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
     <Compile Include="Documentation\Factories\LocalDocumentManagerFactory.cs" />
     <Compile Include="Properties\Resources.pl.Designer.cs">
@@ -172,9 +176,10 @@
     <Compile Include="Tasks\DownloadVersionInformation.cs" />
     <Compile Include="Tasks\Factories\DownloadOfflineFilesFactory.cs" />
     <Compile Include="Tasks\Factories\LaunchGameFactory.cs" />
+    <Compile Include="Tasks\Factories\UpdateClientFactory.cs" />
     <Compile Include="Tasks\PatchGameSpeedTask.cs" />
     <Compile Include="Tasks\UnzipAndExtractCommunityPatchTask.cs" />
-    <Compile Include="Update\GetLocalVersion.cs" />
+    <Compile Include="Tasks\Update\GetLocalVersion.cs" />
     <Compile Include="UserControls\BrowserUserControl.xaml.cs">
       <DependentUpon>BrowserUserControl.xaml</DependentUpon>
     </Compile>

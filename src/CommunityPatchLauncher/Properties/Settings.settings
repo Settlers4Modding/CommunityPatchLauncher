@@ -32,5 +32,17 @@
     <Setting Name="PreInstall" Type="System.String" Scope="User">
       <Value Profile="(Default)">PreInstall.txt</Value>
     </Setting>
+    <Setting Name="ReporistoryOwner" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Settlers4Modding</Value>
+    </Setting>
+    <Setting Name="RepositoryName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CommunityPatchLauncher</Value>
+    </Setting>
+    <Setting Name="DevelopFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">develop-([0-9]+)</Value>
+    </Setting>
+    <Setting Name="ReleaseFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">v(\d+\.\d+\.\d+)</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="TaskPipeline\Tasks\Factories\" />
+    <Compile Remove="TaskPipeline\Tasks\Factories\**" />
+    <EmbeddedResource Remove="TaskPipeline\Tasks\Factories\**" />
+    <None Remove="TaskPipeline\Tasks\Factories\**" />
   </ItemGroup>
 
   <ItemGroup>
