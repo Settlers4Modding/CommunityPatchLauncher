@@ -1,5 +1,4 @@
 ﻿using CommunityPatchLauncher.Enums;
-using CommunityPatchLauncherFramework.Settings.Container;
 using System;
 using System.IO;
 using System.Linq;
@@ -53,8 +52,7 @@ namespace CommunityPatchLauncher.Tasks
             string extension = "." + fileEnd;
 
             string targetFileName = GetDownloadPath() + "\\" + communityPatchType + extension;
-
-            settings.Add(new SettingPair("PatchInstaller", targetFileName));
+            AddSetting<string>("PatchInstaller", targetFileName, true);
             if (remoteVersion == null)
             {
                 return false;

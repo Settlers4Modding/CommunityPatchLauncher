@@ -89,6 +89,42 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
             return pair.GetValue<T>();
         }
 
+        /// <summary>
+        /// This method will add settings to the internal setting library
+        /// </summary>
+        /// <typeparam name="T">The type of object to add</typeparam>
+        /// <param name="key">The key of the setting to add</param>
+        /// <param name="data">The data to add</param>
+        /// <returns>True if adding was successful</returns>
+        public bool AddSetting<T>(string key, T data)
+        {
+            return AddSetting<T>(key, data, false);
+        }
+
+        /// <summary>
+        /// This method will add settings to the internal setting library
+        /// </summary>
+        /// <typeparam name="T">The type of object to add</typeparam>
+        /// <param name="key">The key of the setting to add</param>
+        /// <param name="data">The data to add</param>
+        /// <param name="overrideEntry">Should we override already existing entries</param>
+        /// <returns>True if adding was successful</returns>
+        public bool AddSetting<T>(string key, T data, bool overrideEntry)
+        {
+            bool entryExisting = settings.Where((obj) => obj.Key == key).ToList().Count > 0;
+            if (!entryExisting)
+            {
+                settings.Add(new SettingPair(key, data));
+                return true;
+            }
+            if (overrideEntry)
+            {
+                int removed = settings.RemoveWhere((obj) => obj.Key == key);
+                return removed > 0 ? AddSetting<T>(key, data) : false;
+            }
+            return false;
+        }
+
         /// <inheritdoc/>
         public abstract bool Execute(bool previousTaskState);
     }
