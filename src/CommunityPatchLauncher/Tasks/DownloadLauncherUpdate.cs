@@ -1,4 +1,5 @@
 ﻿using CommunityPatchLauncherFramework.Update;
+using System;
 using System.IO;
 using System.Net;
 
@@ -8,6 +9,8 @@ namespace CommunityPatchLauncher.Tasks
     {
         public override bool Execute(bool previousTaskState)
         {
+            Version localVersion = GetSetting<Version>("LocalVersion");
+            Version remoteVersion = GetSetting<Version>("RemoteVersion");
             string downloadTarget = Path.GetTempPath() + "SIVLauncherUpdate.zip";
             ArtifactRelease latestArtifact = GetSetting<ArtifactRelease>("LatestArtifact");
             if (latestArtifact == null || latestArtifact.Artifacts.Count == 0)

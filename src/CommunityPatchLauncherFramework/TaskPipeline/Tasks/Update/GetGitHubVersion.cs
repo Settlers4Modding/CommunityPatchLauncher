@@ -74,7 +74,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks.Update
             artifactReleases.Sort((release1, release2) => release2.Version.CompareTo(release1.Version));
             ArtifactRelease newestArtifact = artifactReleases.First();
 
-            AddSetting("GitHubVersion", newestArtifact.Version);
+            AddSetting("RemoteVersion", newestArtifact.Version);
             AddSetting("LatestArtifact", newestArtifact);
 
             return true;
