@@ -39,6 +39,7 @@ namespace CommunityPatchLauncher.Tasks.Factories
             string repositoryName = manager.GetValue<string>("RepositoryName");
             string releaseFilter = manager.GetValue<string>(settingToLoad);
             tasks.Add(new GetGitHubVersion(repositoryOwner, repositoryName, releaseFilter));
+            tasks.Add(new DownloadLauncherUpdate());
             return tasks;
         }
     }

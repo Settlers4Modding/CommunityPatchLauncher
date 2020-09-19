@@ -173,6 +173,7 @@
     <Compile Include="Tasks\DownloadAllPatches.cs" />
     <Compile Include="Tasks\DownloadCommunityPatchTask.cs" />
     <Compile Include="Tasks\DownloadFileTask.cs" />
+    <Compile Include="Tasks\DownloadLauncherUpdate.cs" />
     <Compile Include="Tasks\DownloadVersionInformation.cs" />
     <Compile Include="Tasks\Factories\DownloadOfflineFilesFactory.cs" />
     <Compile Include="Tasks\Factories\LaunchGameFactory.cs" />
