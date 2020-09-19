@@ -38,8 +38,10 @@ namespace CommunityPatchLauncher.Tasks.Factories
             string repositoryOwner = manager.GetValue<string>("ReporistoryOwner");
             string repositoryName = manager.GetValue<string>("RepositoryName");
             string releaseFilter = manager.GetValue<string>(settingToLoad);
+            string patchLauncher = manager.GetValue<string>("PatchAppName");
             tasks.Add(new GetGitHubVersion(repositoryOwner, repositoryName, releaseFilter));
             tasks.Add(new DownloadLauncherUpdate());
+            tasks.Add(new PatchLauncher(patchLauncher));
             return tasks;
         }
     }

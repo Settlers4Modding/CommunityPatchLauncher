@@ -44,5 +44,8 @@
     <Setting Name="ReleaseFilter" Type="System.String" Scope="User">
       <Value Profile="(Default)">v(\d+\.\d+\.\d+)</Value>
     </Setting>
+    <Setting Name="PatchAppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CommunityLauncherPatcher.exe</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

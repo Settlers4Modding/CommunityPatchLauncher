@@ -190,5 +190,17 @@ namespace CommunityPatchLauncher.Properties {
                 this["ReleaseFilter"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CommunityLauncherPatcher.exe")]
+        public string PatchAppName {
+            get {
+                return ((string)(this["PatchAppName"]));
+            }
+            set {
+                this["PatchAppName"] = value;
+            }
+        }
     }
 }

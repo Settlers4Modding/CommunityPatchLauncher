@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityPatchLauncher", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunityPatchLauncherFramework", "src\CommunityPatchLauncherFramework\CommunityPatchLauncherFramework.csproj", "{846F883F-2C63-480F-9272-27F596B6B08C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityLauncherPatcher", "CommunityLauncherPatcher\CommunityLauncherPatcher.csproj", "{4CCC0BC2-46D3-4B50-8E6E-37AB6ADBD6D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{846F883F-2C63-480F-9272-27F596B6B08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{846F883F-2C63-480F-9272-27F596B6B08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{846F883F-2C63-480F-9272-27F596B6B08C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CCC0BC2-46D3-4B50-8E6E-37AB6ADBD6D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CCC0BC2-46D3-4B50-8E6E-37AB6ADBD6D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CCC0BC2-46D3-4B50-8E6E-37AB6ADBD6D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CCC0BC2-46D3-4B50-8E6E-37AB6ADBD6D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
