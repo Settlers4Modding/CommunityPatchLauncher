@@ -1,11 +1,8 @@
-﻿using CommunityPatchLauncherFramework.Settings.Factories;
-using CommunityPatchLauncherFramework.Settings.Manager;
-using CommunityPatchLauncherFramework.Update;
+﻿using CommunityPatchLauncherFramework.Update;
 using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -13,7 +10,6 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks.Update
 {
     public class GetGitHubVersion : AbstractTask
     {
-        private const string BASE_URL = "";
         private readonly string repositoryOwner;
         private readonly Regex filter;
 
