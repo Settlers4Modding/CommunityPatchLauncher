@@ -48,6 +48,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand ResetSettingCommand { get; private set; }
 
         /// <summary>
+        /// This command will update the application
+        /// </summary>
+        public ICommand UpdateApplicationCommand { get; private set; }
+
+        /// <summary>
         /// Command to auto detect the game folder
         /// </summary>
         public IDataCommand AutoDetectGameFolder { get; private set; }
@@ -163,6 +168,7 @@ namespace CommunityPatchLauncher.ViewModels
             AutoDetectGameFolder = new InstallationFromRegistryCommand();
             ManuelSelectGameFolder = new InstallationFromManuelSelectionCommand();
             ResetSettingCommand = new ReloadObjectCommand(this);
+            UpdateApplicationCommand = new UpdateApplicationCommand(settingManager);
             SelectFolder = new SelectFolderCommand();
             
             ResetAgreementCommand = new MultiCommand(new List<ICommand>()

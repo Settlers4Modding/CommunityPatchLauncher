@@ -115,6 +115,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UpdateApplication.
+        /// </summary>
+        public static string Default_UpdateApplication {
+            get {
+                return ResourceManager.GetString("Default_UpdateApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string MainWindow_About {

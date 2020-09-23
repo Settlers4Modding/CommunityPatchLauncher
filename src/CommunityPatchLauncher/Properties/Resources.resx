@@ -135,6 +135,9 @@
   <data name="Default_Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Default_UpdateApplication" xml:space="preserve">
+    <value>UpdateApplication</value>
+  </data>
   <data name="MainWindow_About" xml:space="preserve">
     <value>About</value>
   </data>

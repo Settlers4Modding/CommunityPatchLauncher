@@ -45,7 +45,8 @@
                 <TextBox x:Name="TB_DownloadFolder" Style="{StaticResource SettingTextBox}" Text="{Binding DownloadFolder}"></TextBox>
                 <Button Style="{StaticResource DefaultButton}" Command="{Binding SelectFolder}" CommandParameter="{Binding ElementName=TB_DownloadFolder, Path=Text}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}"></Button>
             </DockPanel>
-            
+
+            <Button DockPanel.Dock="Left" Margin="0,0,0,5" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.Default_UpdateApplication}" Command="{Binding UpdateApplicationCommand}"></Button>
             <Button DockPanel.Dock="Left" Margin="0,0,0,5" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_OpenSettingFolder}" Command="{Binding OpenSettingFolderCommand}"></Button>
             <Button DockPanel.Dock="Left" Margin="0,0,0,5" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_OpenDownloadFolder}" Command="{Binding OpenDownloadFolderCommand}" CommandParameter="{Binding ElementName=TB_DownloadFolder, Path=Text}"></Button>
             <Button DockPanel.Dock="Left" Margin="0,0,0,5" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_OpenGameFolder}" Command="{Binding OpenGameFolderCommand}" CommandParameter="{Binding ElementName=TB_GameFolder, Path=Text}"></Button>

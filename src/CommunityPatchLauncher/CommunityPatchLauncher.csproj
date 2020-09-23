@@ -117,6 +117,7 @@
     <Compile Include="Commands\ApplicationWindow\OpenLinkCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\ReloadObjectCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\UpdateApplicationCommand.cs" />
     <Compile Include="Commands\DataContainer\PatchSelectionData.cs" />
     <Compile Include="Commands\Settings\SaveSettingsCommand.cs" />
     <Compile Include="Commands\Settings\AcceptAgreementCommand.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="Settings\Factories\WpfPropertySettingManagerFactory.cs" />
     <Compile Include="Settings\Reader\IniStringReader.cs" />
     <Compile Include="Settings\Reader\WpfPropertyReader.cs" />
+    <Compile Include="Tasks\CloseApplicationTask.cs" />
     <Compile Include="Tasks\CopyFileToGameFolder.cs" />
     <Compile Include="Tasks\DownloadAllPatches.cs" />
     <Compile Include="Tasks\DownloadCommunityPatchTask.cs" />

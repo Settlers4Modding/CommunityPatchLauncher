@@ -1,28 +1,29 @@
 ﻿using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CommunityPatchLauncher.Tasks.Update
 {
     internal class PatchLauncher : AbstractTask
     {
         private readonly string launcherAppName;
+        private readonly string applicationPath;
 
         public PatchLauncher(string launcherAppName)
         {
             this.launcherAppName = launcherAppName;
+            
+            FileInfo fileInfo = new FileInfo(Assembly.GetExecutingAssembly().Location);
+            applicationPath = fileInfo.DirectoryName;
         }
 
         public override bool Execute(bool previousTaskState)
         {
+
+            AddSetting<string>("LauncherUpdate", @"C:\Users\Xanat\AppData\Local\Temp\SIVLauncherUpdate.zip");
             if (!previousTaskState)
             {
                 return previousTaskState;
@@ -47,18 +48,23 @@ namespace CommunityPatchLauncher.Tasks.Update
                 launcherUpdater.ExtractToFile(destinationFile);
             }
 
+            string gameFolder = settingManager?.GetValue<string>("GameFolder");
+            if (gameFolder == null)
+            {
+                return false;
+            }
+            
             if (File.Exists(destinationFile))
             {
-                string arguments = Assembly.GetExecutingAssembly().Location + " ";
+                string arguments = "\"" + Assembly.GetExecutingAssembly().Location + "\" ";
                 arguments += Process.GetCurrentProcess().Id + " ";
-                arguments += launcherUpdate + " ";
-                arguments += "Test";
+                arguments += "\"" + launcherUpdate + "\" ";
+                arguments += "\"" + applicationPath + "\" ";
+                arguments += "\"" + launcherAppName + "\"";
                 Process.Start(destinationFile, arguments);
             }
 
-
             return true;
-
         }
     }
 }

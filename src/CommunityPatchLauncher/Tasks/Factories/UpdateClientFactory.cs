@@ -1,4 +1,5 @@
-﻿using CommunityPatchLauncher.Enums;
+﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.Tasks.Update;
 using CommunityPatchLauncherFramework.Settings.Factories;
@@ -39,9 +40,11 @@ namespace CommunityPatchLauncher.Tasks.Factories
             string repositoryName = manager.GetValue<string>("RepositoryName");
             string releaseFilter = manager.GetValue<string>(settingToLoad);
             string patchLauncher = manager.GetValue<string>("PatchAppName");
-            tasks.Add(new GetGitHubVersion(repositoryOwner, repositoryName, releaseFilter));
-            tasks.Add(new DownloadLauncherUpdate());
+            //tasks.Add(new GetGitHubVersion(repositoryOwner, repositoryName, releaseFilter));
+
+            //tasks.Add(new DownloadLauncherUpdate());
             tasks.Add(new PatchLauncher(patchLauncher));
+            tasks.Add(new CloseApplicationTask(new CloseApplicationCommand()));
             return tasks;
         }
     }

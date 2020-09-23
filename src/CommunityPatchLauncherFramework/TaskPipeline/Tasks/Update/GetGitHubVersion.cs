@@ -49,8 +49,17 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks.Update
         public override bool Execute(bool previousTaskState)
         {
             GitHubClient client = new GitHubClient(new ProductHeaderValue(repositoryOwner));
-            Task<IReadOnlyList<Release>> releaseTask = client.Repository.Release.GetAll(repositoryOwner, RepositoryName);
-            releaseTask.Wait(4000);
+            Task<IReadOnlyList<Release>> releaseTask;
+            try
+            {
+                releaseTask = client.Repository.Release.GetAll(repositoryOwner, RepositoryName);
+                releaseTask.Wait(4000);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
             if (!releaseTask.IsCompleted && filter != null)
             {
                 return false;
