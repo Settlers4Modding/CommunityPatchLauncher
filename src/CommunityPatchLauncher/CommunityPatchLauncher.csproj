@@ -118,6 +118,7 @@
     <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\ReloadObjectCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\UpdateApplicationCommand.cs" />
+    <Compile Include="Commands\DataCommands\SetYesNoEnumCommand.cs" />
     <Compile Include="Commands\DataContainer\PatchSelectionData.cs" />
     <Compile Include="Commands\Settings\SaveSettingsCommand.cs" />
     <Compile Include="Commands\Settings\AcceptAgreementCommand.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Enums\AvailablePatches.cs" />
     <Compile Include="Enums\SpeedModes.cs" />
     <Compile Include="Enums\UpdateBranchEnum.cs" />
+    <Compile Include="Enums\YesNoEnum.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
     <Compile Include="Documentation\Factories\LocalDocumentManagerFactory.cs" />
     <Compile Include="Properties\Resources.pl.Designer.cs">
@@ -215,6 +217,9 @@
     <Compile Include="UserControls\TitleBarUseControl.xaml.cs">
       <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\YesNoDialog.xaml.cs">
+      <DependentUpon>YesNoDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BrowserModelView.cs" />
     <Compile Include="ViewModels\LaunchGameModelView.cs" />
@@ -225,6 +230,7 @@
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SpecialViews\IViewModelReloadable.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
+    <Compile Include="ViewModels\YesNoViewModel.cs" />
     <Compile Include="Windows\PopupWindow.xaml.cs">
       <DependentUpon>PopupWindow.xaml</DependentUpon>
     </Compile>
@@ -280,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\TitleBarUseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\YesNoDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
