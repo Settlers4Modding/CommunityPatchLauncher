@@ -24,7 +24,7 @@
         <DockPanel Grid.Row="2" LastChildFill="False" Margin="0,5,0,0">
             <Button Style="{StaticResource DefaultButton}" DockPanel.Dock="Right" Content="{x:Static p:Resources.Default_Yes}" Command="{Binding YesCommand}" CommandParameter="Yes">
             </Button>
-            <Button Style="{StaticResource DefaultButton}" DockPanel.Dock="Left" Content="{x:Static p:Resources.Default_No}" Command="{Binding NoCommand}" CommandParameter="No">
+            <Button Style="{StaticResource DefaultButton}" DockPanel.Dock="Right" Content="{x:Static p:Resources.Default_No}" Command="{Binding NoCommand}" CommandParameter="No">
             </Button>
         </DockPanel>
     </Grid>
