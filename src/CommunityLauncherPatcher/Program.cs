@@ -6,6 +6,9 @@ using System.Threading;
 
 namespace CommunityLauncherPatcher
 {
+    /// <summary>
+    /// This small console app will patch the launcher
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
@@ -64,6 +67,12 @@ namespace CommunityLauncherPatcher
             Thread.Sleep(10000);
         }
 
+        /// <summary>
+        /// patch the launcher
+        /// </summary>
+        /// <param name="zipArchive">The zip archive to use</param>
+        /// <param name="fileToIgnore">Files to ignore while patching</param>
+        /// <param name="targetFolder">The target to unzip the content to</param>
         private static void PatchLauncher(string zipArchive, string fileToIgnore, DirectoryInfo targetFolder)
         {
             using (ZipArchive archive = ZipFile.OpenRead(zipArchive))

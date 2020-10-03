@@ -64,7 +64,12 @@ namespace CommunityPatchLauncher.Tasks.Update
                 //Everything is okay the execution will just fail
             }
 
-            warningPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesomeIcon.Exclamation, Properties.Resources.Dialog_UpdateProblemTitle, new InfoPopup());
+            warningPopup = new OpenCustomPopupWindowCommand(
+                parentWindow,
+                FontAwesomeIcon.Exclamation,
+                Properties.Resources.Dialog_UpdateProblemTitle,
+                new InfoPopup()
+                );
         }
 
         /// <inheritdoc/>

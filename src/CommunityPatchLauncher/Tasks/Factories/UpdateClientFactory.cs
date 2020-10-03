@@ -6,27 +6,51 @@ using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using CommunityPatchLauncherFramework.TaskPipeline.Factory;
 using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CommunityPatchLauncher.Tasks.Factories
 {
+    /// <summary>
+    /// This class will create all the tasks required to update the client
+    /// </summary>
     public class UpdateClientFactory : ITaskFactory
     {
+        /// <summary>
+        /// The setting manager to use
+        /// </summary>
         private readonly SettingManager manager;
+
+        /// <summary>
+        /// The branch to check
+        /// </summary>
         private readonly UpdateBranchEnum updateBranch;
+
+        /// <summary>
+        /// The parent window the factory was called in
+        /// </summary>
         private readonly Window parentWindow;
+
+        /// <summary>
+        /// Show if the local version is newer
+        /// </summary>
         private readonly bool showIfLocalIsNewer;
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="updateBranch">The update branch to use</param>
+        /// <param name="parentWindow">The parent window which was calling the factory</param>
         public UpdateClientFactory(UpdateBranchEnum updateBranch, Window parentWindow) : this(updateBranch, parentWindow, false)
         {
         }
 
-
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="updateBranch">The update branch to use</param>
+        /// <param name="parentWindow">The parent window which was calling the factory</param>
+        /// <param name="showIfLocalIsNewer">Show if local version is newer</param>
         public UpdateClientFactory(UpdateBranchEnum updateBranch, Window parentWindow, bool showIfLocalIsNewer)
         {
             ISettingFactory factory = new WpfPropertySettingManagerFactory();
@@ -36,6 +60,10 @@ namespace CommunityPatchLauncher.Tasks.Factories
             this.showIfLocalIsNewer = showIfLocalIsNewer;
         }
 
+        /// <summary>
+        /// Create the task list ready to use
+        /// </summary>
+        /// <returns>A list with all the tasks</returns>
         public List<ITask> GetTasks()
         {
             List<ITask> tasks = new List<ITask>();
