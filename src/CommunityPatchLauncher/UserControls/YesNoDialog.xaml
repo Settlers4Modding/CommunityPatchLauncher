@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
              xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
+             xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -21,8 +22,10 @@
         </Grid.RowDefinitions>
         <TextBlock Style="{StaticResource DefaultText}" Text="{Binding DialogText}"></TextBlock>
         <DockPanel Grid.Row="2" LastChildFill="False" Margin="0,5,0,0">
-            <Button Style="{StaticResource DefaultButton}" DockPanel.Dock="Right" Content="{x:Static p:Resources.Default_Ok}" Command="{Binding CloseWindowCommand}"></Button>
-            <Button Style="{StaticResource DefaultButton}" DockPanel.Dock="Left" Content="{x:Static p:Resources.Default_Abort}" Command="{Binding OKCommand}"></Button>
+            <Button Style="{StaticResource DefaultButton}" DockPanel.Dock="Right" Content="{x:Static p:Resources.Default_Yes}" Command="{Binding YesCommand}" CommandParameter="Yes">
+            </Button>
+            <Button Style="{StaticResource DefaultButton}" DockPanel.Dock="Left" Content="{x:Static p:Resources.Default_No}" Command="{Binding NoCommand}" CommandParameter="No">
+            </Button>
         </DockPanel>
     </Grid>
 </UserControl>

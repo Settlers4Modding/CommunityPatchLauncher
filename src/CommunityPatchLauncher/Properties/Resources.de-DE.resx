@@ -126,11 +126,17 @@
   <data name="Default_LanguageLabel" xml:space="preserve">
     <value>Sprache:</value>
   </data>
+  <data name="Default_No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="Default_Save" xml:space="preserve">
     <value>Speichern</value>
   </data>
   <data name="Default_UpdateApplication" xml:space="preserve">
     <value>Programm aktualisieren</value>
+  </data>
+  <data name="Default_Yes" xml:space="preserve">
+    <value>Ja</value>
   </data>
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>
@@ -173,6 +179,12 @@
   </data>
   <data name="MainWindow_WindowTitle" xml:space="preserve">
     <value>Community Patch Launcher</value>
+  </data>
+  <data name="Message_Update" xml:space="preserve">
+    <value>Remote version ist neuer, möchtest du aktuallisieren?
+
+Lokale version: {localVersion}
+Remote version: {remoteVersion}</value>
   </data>
   <data name="pl" xml:space="preserve">
     <value>Polnisch</value>

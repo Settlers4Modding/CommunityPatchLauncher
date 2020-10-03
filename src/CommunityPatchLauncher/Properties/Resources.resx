@@ -129,6 +129,9 @@
   <data name="Default_LanguagePl" xml:space="preserve">
     <value>Polish</value>
   </data>
+  <data name="Default_No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="Default_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Default_UpdateApplication" xml:space="preserve">
     <value>UpdateApplication</value>
+  </data>
+  <data name="Default_Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="MainWindow_About" xml:space="preserve">
     <value>About</value>
@@ -203,6 +209,12 @@
   </data>
   <data name="MainWindow_Tools" xml:space="preserve">
     <value>Tools</value>
+  </data>
+  <data name="Message_Update" xml:space="preserve">
+    <value>Remote version is newer do you want to upgrade?
+
+Local version: {localVersion}
+Remote version: {remoteVersion}</value>
   </data>
   <data name="PlayControl_FastSpeed" xml:space="preserve">
     <value>Fast Speed (2)</value>

@@ -1,4 +1,5 @@
-﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
+﻿using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncherFramework.Settings.Factories;

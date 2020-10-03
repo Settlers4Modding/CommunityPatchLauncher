@@ -185,7 +185,10 @@
     <Compile Include="Tasks\PatchGameSpeedTask.cs" />
     <Compile Include="Tasks\UnzipAndExtractCommunityPatchTask.cs" />
     <Compile Include="Tasks\Update\GetLocalVersion.cs" />
+    <Compile Include="Tasks\Update\GetLocalVersionFromSettings.cs" />
     <Compile Include="Tasks\Update\PatchLauncher.cs" />
+    <Compile Include="Tasks\Update\UpdatePopupTask.cs" />
+    <Compile Include="Tasks\Update\WriteCurrentVersionToSettings.cs" />
     <Compile Include="UserControls\BrowserUserControl.xaml.cs">
       <DependentUpon>BrowserUserControl.xaml</DependentUpon>
     </Compile>
@@ -214,6 +217,7 @@
       <DependentUpon>SettingsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SpecialTypes\IPopupContent.cs" />
+    <Compile Include="UserControls\SpecialTypes\IPopupReturnDataContent.cs" />
     <Compile Include="UserControls\TitleBarUseControl.xaml.cs">
       <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
     </Compile>

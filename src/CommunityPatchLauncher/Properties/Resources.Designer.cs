@@ -97,6 +97,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string Default_No {
+            get {
+                return ResourceManager.GetString("Default_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string Default_Ok {
@@ -120,6 +129,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string Default_UpdateApplication {
             get {
                 return ResourceManager.GetString("Default_UpdateApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Default_Yes {
+            get {
+                return ResourceManager.GetString("Default_Yes", resourceCulture);
             }
         }
         
@@ -318,6 +336,18 @@ namespace CommunityPatchLauncher.Properties {
         public static string MainWindow_Tools {
             get {
                 return ResourceManager.GetString("MainWindow_Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remote version is newer do you want to upgrade?
+        ///
+        ///Local version: {localVersion}
+        ///Remote version: {remoteVersion}.
+        /// </summary>
+        public static string Message_Update {
+            get {
+                return ResourceManager.GetString("Message_Update", resourceCulture);
             }
         }
         

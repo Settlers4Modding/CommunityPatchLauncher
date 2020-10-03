@@ -1,4 +1,5 @@
-﻿using CommunityPatchLauncher.Windows;
+﻿using CommunityPatchLauncher.UserControls.SpecialTypes;
+using CommunityPatchLauncher.Windows;
 using FontAwesome.WPF;
 using System.Collections.Generic;
 using System.Windows;
@@ -9,7 +10,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
     /// <summary>
     /// This command will open a custom popup window
     /// </summary>
-    internal class OpenCustomPopupWindowCommand : BaseCommand
+    internal class OpenCustomPopupWindowCommand : BaseDataCommand
     {
         /// <summary>
         /// Is the popup ready to show
@@ -121,8 +122,10 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
+            data = null;
             if (!CanExecute(parameter))
             {
+                ExecutionDone();
                 return;
             }
 
@@ -144,7 +147,12 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
             }
             windowToOpen?.ShowDialog();
 
+            if (controlToOpen.DataContext is IPopupReturnDataContent returnDataWindow)
+            {
+                data = returnDataWindow.getReturnData();
+            }
 
+            ExecutionDone();
             return;
         }
     }

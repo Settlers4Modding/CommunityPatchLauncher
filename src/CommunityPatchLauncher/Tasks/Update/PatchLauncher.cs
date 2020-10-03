@@ -23,7 +23,7 @@ namespace CommunityPatchLauncher.Tasks.Update
         public override bool Execute(bool previousTaskState)
         {
 
-            AddSetting<string>("LauncherUpdate", @"C:\Users\Xanat\AppData\Local\Temp\SIVLauncherUpdate.zip");
+            //AddSetting<string>("LauncherUpdate", @"C:\Users\Xanat\AppData\Local\Temp\SIVLauncherUpdate.zip");
             if (!previousTaskState)
             {
                 return previousTaskState;
