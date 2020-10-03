@@ -4,6 +4,7 @@ using CommunityPatchLauncherFramework.Settings.Writer;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Net.NetworkInformation;
 
 namespace CommunityPatchLauncherFramework.Settings.Manager
 {
@@ -110,6 +111,15 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
                 return;
             }
             loadedValue.ChangeValue(value);
+        }
+
+        /// <summary>
+        /// This will clear a value from the settings table
+        /// </summary>
+        /// <param name="key"></param>
+        public void ClearValue(string key)
+        {
+            settings?.RemoveWhere((pair) => pair.Key == key);
         }
 
         /// <summary>

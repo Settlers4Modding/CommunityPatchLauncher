@@ -96,6 +96,7 @@ namespace CommunityPatchLauncher.Tasks.Update
 
             if (releases.Count == 0)
             {
+                warningPopup?.Execute(Properties.Resources.Dialog_GetRemoteNoBuildsFound);
                 return false;
             }
 

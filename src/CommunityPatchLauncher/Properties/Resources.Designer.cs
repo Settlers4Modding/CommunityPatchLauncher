@@ -124,7 +124,7 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UpdateApplication.
+        ///   Looks up a localized string similar to Update Application.
         /// </summary>
         public static string Default_UpdateApplication {
             get {
@@ -138,6 +138,24 @@ namespace CommunityPatchLauncher.Properties {
         public static string Default_Yes {
             get {
                 return ResourceManager.GetString("Default_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest unstable.
+        /// </summary>
+        public static string Develop {
+            get {
+                return ResourceManager.GetString("Develop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find any builds on the given branch.
+        /// </summary>
+        public static string Dialog_GetRemoteNoBuildsFound {
+            get {
+                return ResourceManager.GetString("Dialog_GetRemoteNoBuildsFound", resourceCulture);
             }
         }
         
@@ -464,6 +482,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Release.
+        /// </summary>
+        public static string Release {
+            get {
+                return ResourceManager.GetString("Release", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom size.
         /// </summary>
         public static string ResizeWindow_CustomSize {
@@ -514,6 +541,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string ResizeWindow_WidthTooltip {
             get {
                 return ResourceManager.GetString("ResizeWindow_WidthTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Branch:.
+        /// </summary>
+        public static string SettingsWindow_UpdateBranch {
+            get {
+                return ResourceManager.GetString("SettingsWindow_UpdateBranch", resourceCulture);
             }
         }
         

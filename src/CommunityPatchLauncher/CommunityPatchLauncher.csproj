@@ -101,6 +101,8 @@
     </ApplicationDefinition>
     <Compile Include="BehaviorExtensions\BrowserBehavior.cs" />
     <Compile Include="BindingData\AvailableLanguages.cs" />
+    <Compile Include="BindingData\Container\UpdateChannelContainer.cs" />
+    <Compile Include="BindingData\Container\UpdateChannelModel.cs" />
     <Compile Include="BindingData\Container\LanguageItem.cs" />
     <Compile Include="BindingData\Container\Patch.cs" />
     <Compile Include="BindingData\Container\WindowSize.cs" />

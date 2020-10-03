@@ -1,4 +1,6 @@
-﻿using CommunityPatchLauncher.Tasks.Factories;
+﻿using CommunityPatchLauncher.BindingData.Container;
+using CommunityPatchLauncher.Enums;
+using CommunityPatchLauncher.Tasks.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using CommunityPatchLauncherFramework.TaskPipeline.Pipeline;
 using System.Windows;
@@ -26,12 +28,12 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
 
         public override bool CanExecute(object parameter)
         {
-            return settingManager != null && worker != null;
+            return settingManager != null && worker != null && parameter is UpdateChannelContainer;
         }
 
         public override void Execute(object parameter)
         {
-            worker.ExecuteTasks(new UpdateClientFactory(Enums.UpdateBranchEnum.Develop, parentWindow, showIfLocalIsNewer));
+            worker.ExecuteTasks(new UpdateClientFactory(((UpdateChannelContainer)parameter).UpdateBranch, parentWindow, showIfLocalIsNewer));
         }
     }
 }

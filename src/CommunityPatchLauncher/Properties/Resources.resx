@@ -139,10 +139,16 @@
     <value>Save</value>
   </data>
   <data name="Default_UpdateApplication" xml:space="preserve">
-    <value>UpdateApplication</value>
+    <value>Update Application</value>
   </data>
   <data name="Default_Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="Develop" xml:space="preserve">
+    <value>Latest unstable</value>
+  </data>
+  <data name="Dialog_GetRemoteNoBuildsFound" xml:space="preserve">
+    <value>Could not find any builds on the given branch</value>
   </data>
   <data name="Dialog_GetRemoteTimeout" xml:space="preserve">
     <value>Seems like there was a timeout or you did lost the Internet connection</value>
@@ -256,6 +262,9 @@ Is your computer offline?</value>
   <data name="PlayControl_VeryFastSpeed" xml:space="preserve">
     <value>Very Fast Speed (3)</value>
   </data>
+  <data name="Release" xml:space="preserve">
+    <value>Release</value>
+  </data>
   <data name="ResizeWindow_CustomSize" xml:space="preserve">
     <value>Custom size</value>
   </data>
@@ -273,6 +282,9 @@ Is your computer offline?</value>
   </data>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Enter window width</value>
+  </data>
+  <data name="SettingsWindow_UpdateBranch" xml:space="preserve">
+    <value>Update Branch:</value>
   </data>
   <data name="SettingWindow_DownloadFolder" xml:space="preserve">
     <value>Download folder:</value>
