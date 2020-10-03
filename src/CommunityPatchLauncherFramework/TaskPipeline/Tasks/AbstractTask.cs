@@ -2,6 +2,7 @@
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
 {
@@ -44,6 +45,16 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         {
             this.settingManager = settingManager;
             this.settings = settings;
+        }
+
+        /// <summary>
+        /// Add new settings to the setting pair
+        /// </summary>
+        /// <param name="key">They key of the setting to add</param>
+        /// <param name="value">The value of the setting to add</param>
+        public void AddSetting(string key, object value)
+        {
+            settings?.Add(new SettingPair(key, value));
         }
 
         /// <summary>
@@ -100,10 +111,10 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks
         /// <returns>True if adding was successful</returns>
         public bool AddSetting<T>(string key, T data, bool overrideEntry)
         {
-            bool entryExisting = settings.Where((obj) => obj.Key == key).ToList().Count > 0;
+            bool entryExisting = settings?.Where((obj) => obj.Key == key).ToList().Count > 0;
             if (!entryExisting)
             {
-                settings.Add(new SettingPair(key, data));
+                settings?.Add(new SettingPair(key, data));
                 return true;
             }
             if (overrideEntry)

@@ -126,8 +126,32 @@
   <data name="Default_LanguageLabel" xml:space="preserve">
     <value>Sprache:</value>
   </data>
+  <data name="Default_No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
   <data name="Default_Save" xml:space="preserve">
     <value>Speichern</value>
+  </data>
+  <data name="Default_UpdateApplication" xml:space="preserve">
+    <value>Programm aktualisieren</value>
+  </data>
+  <data name="Default_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Develop" xml:space="preserve">
+    <value>Neuste ungetestete Versionen</value>
+  </data>
+  <data name="Dialog_GetRemoteNoBuildsFound" xml:space="preserve">
+    <value>Es konnten keine Builds auf dem aktuellen Branch gefunden werden!</value>
+  </data>
+  <data name="Dialog_UpdateInformationTitle" xml:space="preserve">
+    <value>Updateinformation</value>
+  </data>
+  <data name="Dialog_UpdateProblemTitle" xml:space="preserve">
+    <value>Es gab ein Problem beim updaten</value>
+  </data>
+  <data name="Dialog_UpgradeTitle" xml:space="preserve">
+    <value>Möchtest du aktualisieren?</value>
   </data>
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>
@@ -171,6 +195,15 @@
   <data name="MainWindow_WindowTitle" xml:space="preserve">
     <value>Community Patch Launcher</value>
   </data>
+  <data name="Message_LocalVersionIsNewer" xml:space="preserve">
+    <value>Deine Lokale version ist neuer oder bereits aktuell</value>
+  </data>
+  <data name="Message_Update" xml:space="preserve">
+    <value>Remote Version ist neuer, möchtest du aktualisieren?
+
+Lokale version: {localVersion}
+Remote version: {remoteVersion}</value>
+  </data>
   <data name="pl" xml:space="preserve">
     <value>Polnisch</value>
   </data>
@@ -189,6 +222,9 @@
   <data name="PlayControl_VeryFastSpeed" xml:space="preserve">
     <value>Sehr schnelle Geschwindigkeit (3)</value>
   </data>
+  <data name="Release" xml:space="preserve">
+    <value>Offizelle Versionen</value>
+  </data>
   <data name="ResizeWindow_CustomSize" xml:space="preserve">
     <value>Eigene Größe</value>
   </data>
@@ -206,6 +242,9 @@
   </data>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Fenster breite eintragen</value>
+  </data>
+  <data name="SettingsWindow_UpdateBranch" xml:space="preserve">
+    <value>Update Quelle:</value>
   </data>
   <data name="SettingWindow_DownloadFolder" xml:space="preserve">
     <value>Download Ordner:</value>

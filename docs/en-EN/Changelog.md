@@ -15,6 +15,11 @@
 * Community DLC is getting installed for all patches
 * Support for pre installation steps
 
+#### Setting Window
+
+* Added a combobox to select the update branch
+* Added a button to update the application
+
 ### Fixed
 
 * Spelling mistakes

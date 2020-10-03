@@ -64,7 +64,7 @@ namespace CommunityPatchLauncher.ViewModels
 
             if (content.DataContext is IPopupContent popupContent)
             {
-                popupContent.Init(currentWindow, parameter);
+                popupContent.Init(currentWindow, fontAwesomeIcon, parameter);
             }
 
             if (controlDock is DockPanel dockPanel)

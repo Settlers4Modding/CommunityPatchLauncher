@@ -97,6 +97,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string Default_No {
+            get {
+                return ResourceManager.GetString("Default_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string Default_Ok {
@@ -111,6 +120,89 @@ namespace CommunityPatchLauncher.Properties {
         public static string Default_Save {
             get {
                 return ResourceManager.GetString("Default_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Application.
+        /// </summary>
+        public static string Default_UpdateApplication {
+            get {
+                return ResourceManager.GetString("Default_UpdateApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Default_Yes {
+            get {
+                return ResourceManager.GetString("Default_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest unstable.
+        /// </summary>
+        public static string Develop {
+            get {
+                return ResourceManager.GetString("Develop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find any builds on the given branch.
+        /// </summary>
+        public static string Dialog_GetRemoteNoBuildsFound {
+            get {
+                return ResourceManager.GetString("Dialog_GetRemoteNoBuildsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seems like there was a timeout or you did lost the Internet connection.
+        /// </summary>
+        public static string Dialog_GetRemoteTimeout {
+            get {
+                return ResourceManager.GetString("Dialog_GetRemoteTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error while getting the remote version
+        ///
+        ///{exception}.
+        /// </summary>
+        public static string Dialog_GetRemoteVersionError {
+            get {
+                return ResourceManager.GetString("Dialog_GetRemoteVersionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update information.
+        /// </summary>
+        public static string Dialog_UpdateInformationTitle {
+            get {
+                return ResourceManager.GetString("Dialog_UpdateInformationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problem while trying to update.
+        /// </summary>
+        public static string Dialog_UpdateProblemTitle {
+            get {
+                return ResourceManager.GetString("Dialog_UpdateProblemTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to upgrade?.
+        /// </summary>
+        public static string Dialog_UpgradeTitle {
+            get {
+                return ResourceManager.GetString("Dialog_UpgradeTitle", resourceCulture);
             }
         }
         
@@ -313,6 +405,38 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your local version is newer or up to date.
+        /// </summary>
+        public static string Message_LocalVersionIsNewer {
+            get {
+                return ResourceManager.GetString("Message_LocalVersionIsNewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remote version is newer do you want to upgrade?
+        ///
+        ///Local version: {localVersion}
+        ///Remote version: {remoteVersion}.
+        /// </summary>
+        public static string Message_Update {
+            get {
+                return ResourceManager.GetString("Message_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not get local or remote version!
+        ///
+        ///Is your computer offline?.
+        /// </summary>
+        public static string Message_VersionUpdateWarning {
+            get {
+                return ResourceManager.GetString("Message_VersionUpdateWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fast Speed (2).
         /// </summary>
         public static string PlayControl_FastSpeed {
@@ -354,6 +478,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string PlayControl_VeryFastSpeed {
             get {
                 return ResourceManager.GetString("PlayControl_VeryFastSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release.
+        /// </summary>
+        public static string Release {
+            get {
+                return ResourceManager.GetString("Release", resourceCulture);
             }
         }
         
@@ -408,6 +541,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string ResizeWindow_WidthTooltip {
             get {
                 return ResourceManager.GetString("ResizeWindow_WidthTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Branch:.
+        /// </summary>
+        public static string SettingsWindow_UpdateBranch {
+            get {
+                return ResourceManager.GetString("SettingsWindow_UpdateBranch", resourceCulture);
             }
         }
         
