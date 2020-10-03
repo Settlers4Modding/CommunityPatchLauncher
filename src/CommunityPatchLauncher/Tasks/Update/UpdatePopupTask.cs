@@ -11,15 +11,16 @@ namespace CommunityPatchLauncher.Tasks.Update
     class UpdatePopupTask : AbstractTask
     {
         private readonly IDataCommand popupCommand;
-        //private readonly IDataCommand infoPopup;
+        private readonly IDataCommand infoPopup;
         private readonly IDataCommand warningPopup;
+        private readonly bool showLocalIsNewer;
 
-
-        public UpdatePopupTask(Window parentWindow)
+        public UpdatePopupTask(Window parentWindow, bool showLocalIsNewer)
         {
-            popupCommand = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Question, "Do you want to upgrade?", new YesNoDialog());
-            //infoPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Warning, "Problem while trying to update", new InfoPopup());
-            warningPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Warning, "Problem while trying to update", new InfoPopup());
+            popupCommand = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Question, Properties.Resources.Dialog_UpgradeTitle, new YesNoDialog());
+            infoPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Warning, Properties.Resources.Dialog_UpdateInformationTitle, new InfoPopup());
+            warningPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Warning, Properties.Resources.Dialog_UpdateProblemTitle, new InfoPopup());
+            this.showLocalIsNewer = showLocalIsNewer;
         }
 
         public override bool Execute(bool previousTaskState)
@@ -45,6 +46,11 @@ namespace CommunityPatchLauncher.Tasks.Update
                 };
             }
 
+            if (showLocalIsNewer && localVersion >= remoteVersion)
+            {
+                infoPopup.Execute(Properties.Resources.Message_LocalVersionIsNewer);
+                return false;
+            }
             if (localVersion < remoteVersion)
             {
                 string text = Properties.Resources.Message_Update;

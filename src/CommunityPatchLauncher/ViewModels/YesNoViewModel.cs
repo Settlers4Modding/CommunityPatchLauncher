@@ -3,6 +3,7 @@ using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.DataCommands;
 using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.UserControls.SpecialTypes;
+using FontAwesome.WPF;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -49,7 +50,7 @@ namespace CommunityPatchLauncher.ViewModels
             NoDialog = YesNoEnum.No;
         }
 
-        public void Init(Window currentWindow, object parameter)
+        public void Init(Window currentWindow, FontAwesomeIcon icon, object parameter)
         {
             this.currentWindow = currentWindow;
 
@@ -57,7 +58,7 @@ namespace CommunityPatchLauncher.ViewModels
             IDataCommand yesNoCommand = new SetYesNoEnumCommand();
             yesNoCommand.Executed += (sender, content) =>
             {
-                object data =  content.GetData();
+                object data = content.GetData();
                 if (data is YesNoEnum yesNoData)
                 {
                     dialogResult = yesNoData;

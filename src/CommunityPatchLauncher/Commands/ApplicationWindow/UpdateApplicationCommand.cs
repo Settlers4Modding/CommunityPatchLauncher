@@ -9,13 +9,19 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
     {
         private readonly SettingManager settingManager;
         private readonly Window parentWindow;
+        private readonly bool showIfLocalIsNewer;
         private readonly QueueWorker worker;
 
-        public UpdateApplicationCommand(SettingManager settingManager, Window parentWindow)
+        public UpdateApplicationCommand(SettingManager settingManager, Window parentWindow) : this(settingManager, parentWindow, false)
+        {
+        }
+
+        public UpdateApplicationCommand(SettingManager settingManager, Window parentWindow, bool showIfLocalIsNewer)
         {
             worker = new QueueWorker(settingManager);
             this.settingManager = settingManager;
             this.parentWindow = parentWindow;
+            this.showIfLocalIsNewer = showIfLocalIsNewer;
         }
 
         public override bool CanExecute(object parameter)
@@ -25,7 +31,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
 
         public override void Execute(object parameter)
         {
-            worker.ExecuteTasks(new UpdateClientFactory(Enums.UpdateBranchEnum.Develop, parentWindow));
+            worker.ExecuteTasks(new UpdateClientFactory(Enums.UpdateBranchEnum.Develop, parentWindow, showIfLocalIsNewer));
         }
     }
 }

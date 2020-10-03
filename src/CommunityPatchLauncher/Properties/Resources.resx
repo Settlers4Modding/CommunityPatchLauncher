@@ -144,6 +144,23 @@
   <data name="Default_Yes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="Dialog_GetRemoteTimeout" xml:space="preserve">
+    <value>Seems like there was a timeout or you did lost the Internet connection</value>
+  </data>
+  <data name="Dialog_GetRemoteVersionError" xml:space="preserve">
+    <value>There was an error while getting the remote version
+
+{exception}</value>
+  </data>
+  <data name="Dialog_UpdateInformationTitle" xml:space="preserve">
+    <value>Update information</value>
+  </data>
+  <data name="Dialog_UpdateProblemTitle" xml:space="preserve">
+    <value>Problem while trying to update</value>
+  </data>
+  <data name="Dialog_UpgradeTitle" xml:space="preserve">
+    <value>Do you want to upgrade?</value>
+  </data>
   <data name="MainWindow_About" xml:space="preserve">
     <value>About</value>
   </data>
@@ -209,6 +226,9 @@
   </data>
   <data name="MainWindow_Tools" xml:space="preserve">
     <value>Tools</value>
+  </data>
+  <data name="Message_LocalVersionIsNewer" xml:space="preserve">
+    <value>Your local version is newer or up to date</value>
   </data>
   <data name="Message_Update" xml:space="preserve">
     <value>Remote version is newer do you want to upgrade?

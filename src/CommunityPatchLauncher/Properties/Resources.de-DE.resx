@@ -138,6 +138,15 @@
   <data name="Default_Yes" xml:space="preserve">
     <value>Ja</value>
   </data>
+  <data name="Dialog_UpdateInformationTitle" xml:space="preserve">
+    <value>Updateinformation</value>
+  </data>
+  <data name="Dialog_UpdateProblemTitle" xml:space="preserve">
+    <value>Es gab ein Problem beim updaten</value>
+  </data>
+  <data name="Dialog_UpgradeTitle" xml:space="preserve">
+    <value>Möchtest du aktualisieren?</value>
+  </data>
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>
   </data>
@@ -180,8 +189,11 @@
   <data name="MainWindow_WindowTitle" xml:space="preserve">
     <value>Community Patch Launcher</value>
   </data>
+  <data name="Message_LocalVersionIsNewer" xml:space="preserve">
+    <value>Deine Lokale version ist neuer oder bereits aktuell</value>
+  </data>
   <data name="Message_Update" xml:space="preserve">
-    <value>Remote version ist neuer, möchtest du aktuallisieren?
+    <value>Remote Version ist neuer, möchtest du aktualisieren?
 
 Lokale version: {localVersion}
 Remote version: {remoteVersion}</value>

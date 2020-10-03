@@ -4,10 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityPatchLauncher", "src\CommunityPatchLauncher\CommunityPatchLauncher.csproj", "{1531D2AE-96E8-4FA5-B325-092AB7F5EC06}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4CCC0BC2-46D3-4B50-8E6E-37AB6ADBD6D0} = {4CCC0BC2-46D3-4B50-8E6E-37AB6ADBD6D0}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunityPatchLauncherFramework", "src\CommunityPatchLauncherFramework\CommunityPatchLauncherFramework.csproj", "{846F883F-2C63-480F-9272-27F596B6B08C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityLauncherPatcher", "CommunityLauncherPatcher\CommunityLauncherPatcher.csproj", "{4CCC0BC2-46D3-4B50-8E6E-37AB6ADBD6D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityLauncherPatcher", "src\CommunityLauncherPatcher\CommunityLauncherPatcher.csproj", "{4CCC0BC2-46D3-4B50-8E6E-37AB6ADBD6D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,8 +4,10 @@ using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.Settings;
 using CommunityPatchLauncher.UserControls.SpecialTypes;
+using FontAwesome.WPF;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -141,7 +143,7 @@ namespace CommunityPatchLauncher.ViewModels
         }
 
         /// <inheritdoc/>
-        public void Init(Window currentWindow, object parameter)
+        public void Init(Window currentWindow, FontAwesomeIcon icon, object parameter)
         {
             CloseWindowCommand = new CloseWindowCommand(currentWindow);
             if (parameter is Window windowToResize)

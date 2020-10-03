@@ -184,6 +184,7 @@
     <Compile Include="Tasks\Factories\UpdateClientFactory.cs" />
     <Compile Include="Tasks\PatchGameSpeedTask.cs" />
     <Compile Include="Tasks\UnzipAndExtractCommunityPatchTask.cs" />
+    <Compile Include="Tasks\Update\GetGitHubVersion.cs" />
     <Compile Include="Tasks\Update\GetLocalVersion.cs" />
     <Compile Include="Tasks\Update\GetLocalVersionFromSettings.cs" />
     <Compile Include="Tasks\Update\PatchLauncher.cs" />
@@ -388,8 +389,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy /Y /E /I "$(SolutionDir)src\CommunityLauncherPatcher\bin\$(ConfigurationName)\*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>IF EXIST "$(ProjectDir)$(OutDir)docs" RMDIR /S /Q "$(ProjectDir)$(OutDir)docs"

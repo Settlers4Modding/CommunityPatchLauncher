@@ -6,7 +6,6 @@ using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using CommunityPatchLauncherFramework.TaskPipeline.Factory;
 using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
-using CommunityPatchLauncherFramework.TaskPipeline.Tasks.Update;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +20,20 @@ namespace CommunityPatchLauncher.Tasks.Factories
         private readonly SettingManager manager;
         private readonly UpdateBranchEnum updateBranch;
         private readonly Window parentWindow;
+        private readonly bool showIfLocalIsNewer;
 
-        public UpdateClientFactory(UpdateBranchEnum updateBranch, Window parentWindow)
+        public UpdateClientFactory(UpdateBranchEnum updateBranch, Window parentWindow) : this(updateBranch, parentWindow, false)
+        {
+        }
+
+
+        public UpdateClientFactory(UpdateBranchEnum updateBranch, Window parentWindow, bool showIfLocalIsNewer)
         {
             ISettingFactory factory = new WpfPropertySettingManagerFactory();
             manager = factory.GetSettingsManager();
             this.updateBranch = updateBranch;
             this.parentWindow = parentWindow;
+            this.showIfLocalIsNewer = showIfLocalIsNewer;
         }
 
         public List<ITask> GetTasks()
@@ -47,8 +53,8 @@ namespace CommunityPatchLauncher.Tasks.Factories
             string patchLauncher = manager.GetValue<string>("PatchAppName");
 
             tasks.Add(localVersionTask);
-            tasks.Add(new GetGitHubVersion(repositoryOwner, repositoryName, releaseFilter));
-            tasks.Add(new UpdatePopupTask(parentWindow));
+            tasks.Add(new GetGitHubVersion(repositoryOwner, repositoryName, releaseFilter, parentWindow));
+            tasks.Add(new UpdatePopupTask(parentWindow, showIfLocalIsNewer));
             tasks.Add(new DownloadLauncherUpdate());
             if (updateBranch == UpdateBranchEnum.Develop)
             {

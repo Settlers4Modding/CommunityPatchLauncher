@@ -1,17 +1,25 @@
-﻿using CommunityPatchLauncherFramework.Update;
+﻿using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.UserControls;
+using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
+using CommunityPatchLauncherFramework.Update;
+using FontAwesome.WPF;
 using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 
-namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks.Update
+namespace CommunityPatchLauncher.Tasks.Update
 {
     public class GetGitHubVersion : AbstractTask
     {
         private readonly string repositoryOwner;
         private readonly Regex filter;
+
+        private readonly IDataCommand warningPopup;
 
         public GetGitHubVersion(
             string repositoryOwner,
@@ -24,14 +32,17 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks.Update
             this.filter = filter;
         }
 
+        public string RepositoryName { get; }
+
         public GetGitHubVersion(
             string repositoryOwner,
             string repositoryName,
-            string filter
+            string filter,
+            Window parentWindow
             )
         {
             this.repositoryOwner = repositoryOwner;
-            this.RepositoryName = repositoryName;
+            RepositoryName = repositoryName;
             try
             {
                 this.filter = new Regex(filter);
@@ -41,10 +52,8 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks.Update
                 //Everything is okay the execution will just fail
             }
 
-            return;
+            warningPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesomeIcon.Exclamation, Properties.Resources.Dialog_UpdateProblemTitle, new InfoPopup());
         }
-
-        public string RepositoryName { get; }
 
         public override bool Execute(bool previousTaskState)
         {
@@ -57,11 +66,13 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks.Update
             }
             catch (Exception ex)
             {
+                warningPopup?.Execute(Properties.Resources.Dialog_GetRemoteVersionError.Replace("{exception}", ex.Message));
                 return false;
             }
 
             if (!releaseTask.IsCompleted && filter != null)
             {
+                warningPopup?.Execute(Properties.Resources.Dialog_GetRemoteTimeout);
                 return false;
             }
             IReadOnlyList<Release> releases = releaseTask.Result;
@@ -76,7 +87,7 @@ namespace CommunityPatchLauncherFramework.TaskPipeline.Tasks.Update
             }
 
             List<ArtifactRelease> artifactReleases = new List<ArtifactRelease>();
-            foreach(Release release in releases)
+            foreach (Release release in releases)
             {
                 artifactReleases.Add(new ArtifactRelease(release, filter));
             }

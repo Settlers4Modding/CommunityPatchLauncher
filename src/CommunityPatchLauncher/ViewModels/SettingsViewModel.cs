@@ -168,7 +168,7 @@ namespace CommunityPatchLauncher.ViewModels
             AutoDetectGameFolder = new InstallationFromRegistryCommand();
             ManuelSelectGameFolder = new InstallationFromManuelSelectionCommand();
             ResetSettingCommand = new ReloadObjectCommand(this);
-            UpdateApplicationCommand = new UpdateApplicationCommand(settingManager, window);
+            UpdateApplicationCommand = new UpdateApplicationCommand(settingManager, window, true);
             SelectFolder = new SelectFolderCommand();
             
             ResetAgreementCommand = new MultiCommand(new List<ICommand>()

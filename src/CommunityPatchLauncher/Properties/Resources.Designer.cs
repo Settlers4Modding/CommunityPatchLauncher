@@ -142,6 +142,53 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Seems like there was a timeout or you did lost the Internet connection.
+        /// </summary>
+        public static string Dialog_GetRemoteTimeout {
+            get {
+                return ResourceManager.GetString("Dialog_GetRemoteTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error while getting the remote version
+        ///
+        ///{exception}.
+        /// </summary>
+        public static string Dialog_GetRemoteVersionError {
+            get {
+                return ResourceManager.GetString("Dialog_GetRemoteVersionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update information.
+        /// </summary>
+        public static string Dialog_UpdateInformationTitle {
+            get {
+                return ResourceManager.GetString("Dialog_UpdateInformationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problem while trying to update.
+        /// </summary>
+        public static string Dialog_UpdateProblemTitle {
+            get {
+                return ResourceManager.GetString("Dialog_UpdateProblemTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to upgrade?.
+        /// </summary>
+        public static string Dialog_UpgradeTitle {
+            get {
+                return ResourceManager.GetString("Dialog_UpgradeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string MainWindow_About {
@@ -336,6 +383,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string MainWindow_Tools {
             get {
                 return ResourceManager.GetString("MainWindow_Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your local version is newer or up to date.
+        /// </summary>
+        public static string Message_LocalVersionIsNewer {
+            get {
+                return ResourceManager.GetString("Message_LocalVersionIsNewer", resourceCulture);
             }
         }
         
