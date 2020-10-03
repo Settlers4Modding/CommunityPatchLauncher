@@ -195,6 +195,9 @@
     <Compile Include="UserControls\ComingSoonControl.xaml.cs">
       <DependentUpon>ComingSoonControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\InfoPopup.xaml.cs">
+      <DependentUpon>InfoPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LaunchGameUserControl.xaml.cs">
       <DependentUpon>LaunchGameUserControl.xaml</DependentUpon>
     </Compile>
@@ -226,6 +229,7 @@
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BrowserModelView.cs" />
+    <Compile Include="ViewModels\InfoPopupViewModel.cs" />
     <Compile Include="ViewModels\LaunchGameModelView.cs" />
     <Compile Include="ViewModels\PatchVersionSelectionViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
@@ -250,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ComingSoonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\InfoPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

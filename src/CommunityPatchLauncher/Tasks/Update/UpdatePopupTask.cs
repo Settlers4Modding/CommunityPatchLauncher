@@ -11,11 +11,15 @@ namespace CommunityPatchLauncher.Tasks.Update
     class UpdatePopupTask : AbstractTask
     {
         private readonly IDataCommand popupCommand;
+        //private readonly IDataCommand infoPopup;
+        private readonly IDataCommand warningPopup;
 
 
         public UpdatePopupTask(Window parentWindow)
         {
             popupCommand = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Question, "Do you want to upgrade?", new YesNoDialog());
+            //infoPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Warning, "Problem while trying to update", new InfoPopup());
+            warningPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Warning, "Problem while trying to update", new InfoPopup());
         }
 
         public override bool Execute(bool previousTaskState)
@@ -26,6 +30,7 @@ namespace CommunityPatchLauncher.Tasks.Update
 
             if (localVersion == null || remoteVersion == null)
             {
+                warningPopup.Execute(Properties.Resources.Message_VersionUpdateWarning);
                 return false;
             }
             if (popupCommand != null)

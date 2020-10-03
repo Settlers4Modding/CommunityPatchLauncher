@@ -352,6 +352,17 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not get local or remote version!
+        ///
+        ///Is your computer offline?.
+        /// </summary>
+        public static string Message_VersionUpdateWarning {
+            get {
+                return ResourceManager.GetString("Message_VersionUpdateWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fast Speed (2).
         /// </summary>
         public static string PlayControl_FastSpeed {

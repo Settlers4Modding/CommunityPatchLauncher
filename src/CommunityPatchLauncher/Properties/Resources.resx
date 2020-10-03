@@ -216,6 +216,11 @@
 Local version: {localVersion}
 Remote version: {remoteVersion}</value>
   </data>
+  <data name="Message_VersionUpdateWarning" xml:space="preserve">
+    <value>Could not get local or remote version!
+
+Is your computer offline?</value>
+  </data>
   <data name="PlayControl_FastSpeed" xml:space="preserve">
     <value>Fast Speed (2)</value>
   </data>
