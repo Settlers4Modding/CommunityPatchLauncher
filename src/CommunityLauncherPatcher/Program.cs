@@ -31,7 +31,6 @@ namespace CommunityLauncherPatcher
             Console.WriteLine("fileToIgnore: " + fileToIgnore);
             int processId = -1;
             int.TryParse(callerId, out processId);
-            bool applicationClosed = false;
 
             if (!File.Exists(sourceFile) || !File.Exists(caller))
             {
@@ -49,7 +48,6 @@ namespace CommunityLauncherPatcher
             catch (Exception)
             {
                 Console.WriteLine("Application already stopped");
-                applicationClosed = true;
             }
             DirectoryInfo directoryInfo = null;
             if (Directory.Exists(targetFolder))

@@ -11,13 +11,29 @@ using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
 {
+    /// <summary>
+    /// Simple yes no dialog content
+    /// </summary>
     internal class YesNoViewModel : BaseViewModel, IPopupReturnDataContent
     {
+        /// <summary>
+        /// The result to return
+        /// </summary>
         private YesNoEnum dialogResult;
+
+        /// <summary>
+        /// The option to use in yes case
+        /// </summary>
         public YesNoEnum YesDialog;
+
+        /// <summary>
+        /// The option to use in no case
+        /// </summary>
         public YesNoEnum NoDialog;
 
-
+        /// <summary>
+        /// The command to use for the yes button
+        /// </summary>
         public ICommand YesCommand
         {
             get => yesCommand;
@@ -27,8 +43,14 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("YesCommand");
             }
         }
+        /// <summary>
+        /// Private accessor for the yes command
+        /// </summary>
         private ICommand yesCommand;
 
+        /// <summary>
+        /// The command to use for the no button
+        /// </summary>
         public ICommand NoCommand
         {
             get => noCommand;
@@ -38,10 +60,19 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("NoCommand");
             }
         }
+        /// <summary>
+        /// Private accessor for the no button
+        /// </summary>
         private ICommand noCommand;
 
+        /// <summary>
+        /// The text to show
+        /// </summary>
         public string DialogText { get; private set; }
 
+        /// <summary>
+        /// Create a new instance of this model
+        /// </summary>
         public YesNoViewModel()
         {
             DialogText = string.Empty;
@@ -50,6 +81,7 @@ namespace CommunityPatchLauncher.ViewModels
             NoDialog = YesNoEnum.No;
         }
 
+        /// <inheritdoc/>
         public void Init(Window currentWindow, FontAwesomeIcon icon, object parameter)
         {
             this.currentWindow = currentWindow;
@@ -77,12 +109,14 @@ namespace CommunityPatchLauncher.ViewModels
             DialogText = parameter?.ToString();
         }
 
+        /// <inheritdoc/>
         public T getReturnData<T>()
         {
             Type dataType = typeof(T);
             return dataType == typeof(YesNoEnum) ? (T)Convert.ChangeType(dialogResult, dataType) : default;
         }
 
+        /// <inheritdoc/>
         public object getReturnData()
         {
             return dialogResult;

@@ -14,26 +14,38 @@ using System.Windows;
 
 namespace CommunityPatchLauncher.Tasks.Update
 {
+    /// <summary>
+    /// Get the version from GitHub
+    /// </summary>
     public class GetGitHubVersion : AbstractTask
     {
+        /// <summary>
+        /// Name of the repository owner
+        /// </summary>
         private readonly string repositoryOwner;
+
+        /// <summary>
+        /// Filter to use to get the version
+        /// </summary>
         private readonly Regex filter;
 
+        /// <summary>
+        /// The warning popup to use
+        /// </summary>
         private readonly IDataCommand warningPopup;
 
-        public GetGitHubVersion(
-            string repositoryOwner,
-            string repositoryName,
-            Regex filter
-            )
-        {
-            this.repositoryOwner = repositoryOwner;
-            RepositoryName = repositoryName;
-            this.filter = filter;
-        }
-
+        /// <summary>
+        /// The name of the repository
+        /// </summary>
         public string RepositoryName { get; }
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="repositoryOwner">The name of the repository owner</param>
+        /// <param name="repositoryName">The name of the repository</param>
+        /// <param name="filter">Regex filter to use</param>
+        /// <param name="parentWindow">The parent window used for</param>
         public GetGitHubVersion(
             string repositoryOwner,
             string repositoryName,
@@ -55,6 +67,7 @@ namespace CommunityPatchLauncher.Tasks.Update
             warningPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesomeIcon.Exclamation, Properties.Resources.Dialog_UpdateProblemTitle, new InfoPopup());
         }
 
+        /// <inheritdoc/>
         public override bool Execute(bool previousTaskState)
         {
             GitHubClient client = new GitHubClient(new ProductHeaderValue(repositoryOwner));

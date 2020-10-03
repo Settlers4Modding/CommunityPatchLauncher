@@ -23,11 +23,11 @@ namespace CommunityPatchLauncher.Tasks.Update
             }
             if (File.Exists(downloadTarget))
             {
-                //File.Delete(downloadTarget);
+                File.Delete(downloadTarget);
             }
             using (WebClient client = new WebClient())
             {
-                //client.DownloadFile(latestArtifact.Artifacts[0].DownloadUri, downloadTarget);
+                client.DownloadFile(latestArtifact.Artifacts[0].DownloadUri, downloadTarget);
             }
             AddSetting("LauncherUpdate", downloadTarget);
             return true;

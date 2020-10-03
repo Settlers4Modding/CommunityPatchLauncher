@@ -3,8 +3,12 @@ using System;
 
 namespace CommunityPatchLauncher.Tasks.Update
 {
+    /// <summary>
+    /// This class will get the develop version from the local settings
+    /// </summary>
     internal class GetLocalVersionFromSettings : AbstractTask
     {
+        /// <inheritdoc/>
         public override bool Execute(bool previousTaskState)
         {
             string launcherVersionString = settingManager.GetValue<string>("LauncherVersion");

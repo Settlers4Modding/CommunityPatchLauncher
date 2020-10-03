@@ -6,10 +6,19 @@ using System.Windows.Media;
 
 namespace CommunityPatchLauncher.ViewModels
 {
+    /// <summary>
+    /// Simple popup info view model
+    /// </summary>
     internal class InfoPopupViewModel : BaseViewModel, IPopupContent
     {
+        /// <summary>
+        /// The text to show
+        /// </summary>
         public string DialogText { get; private set; }
 
+        /// <summary>
+        /// The icon to show
+        /// </summary>
         public FontAwesomeIcon BoxIcon
         {
             get => boxIcon;
@@ -19,8 +28,15 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("BoxIcon");
             }
         }
+
+        /// <summary>
+        /// Private accessor for icon to show
+        /// </summary>
         private FontAwesomeIcon boxIcon;
 
+        /// <summary>
+        /// The icon color to use
+        /// </summary>
         public Brush IconBrush
         {
             get => iconBrush;
@@ -30,13 +46,12 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("IconColor");
             }
         }
+        /// <summary>
+        /// Private accessor for icon color
+        /// </summary>
         private Brush iconBrush;
 
-        public InfoPopupViewModel()
-        {
-
-        }
-
+        /// <inheritdoc/>
         public void Init(Window currentWindow, FontAwesomeIcon icon, object parameter)
         {
             BoxIcon = icon;

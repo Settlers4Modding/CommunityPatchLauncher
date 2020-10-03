@@ -8,21 +8,45 @@ using System.Windows;
 
 namespace CommunityPatchLauncher.Tasks.Update
 {
+    /// <summary>
+    /// This class will show a popup if you should update the app
+    /// </summary>
     class UpdatePopupTask : AbstractTask
     {
-        private readonly IDataCommand popupCommand;
+        /// <summary>
+        /// The yes no popup
+        /// </summary>
+        private readonly IDataCommand yesNoPopup;
+
+        /// <summary>
+        /// The info popup to use
+        /// </summary>
         private readonly IDataCommand infoPopup;
+
+        /// <summary>
+        /// The warning popup to use
+        /// </summary>
         private readonly IDataCommand warningPopup;
+
+        /// <summary>
+        /// Show the local is newer popup
+        /// </summary>
         private readonly bool showLocalIsNewer;
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="parentWindow">The parent window to use</param>
+        /// <param name="showLocalIsNewer">Show if local is newer</param>
         public UpdatePopupTask(Window parentWindow, bool showLocalIsNewer)
         {
-            popupCommand = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Question, Properties.Resources.Dialog_UpgradeTitle, new YesNoDialog());
+            yesNoPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Question, Properties.Resources.Dialog_UpgradeTitle, new YesNoDialog());
             infoPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Warning, Properties.Resources.Dialog_UpdateInformationTitle, new InfoPopup());
             warningPopup = new OpenCustomPopupWindowCommand(parentWindow, FontAwesome.WPF.FontAwesomeIcon.Warning, Properties.Resources.Dialog_UpdateProblemTitle, new InfoPopup());
             this.showLocalIsNewer = showLocalIsNewer;
         }
 
+        /// <inheritdoc/>
         public override bool Execute(bool previousTaskState)
         {
             bool returnState = true;
@@ -34,9 +58,9 @@ namespace CommunityPatchLauncher.Tasks.Update
                 warningPopup.Execute(Properties.Resources.Message_VersionUpdateWarning);
                 return false;
             }
-            if (popupCommand != null)
+            if (yesNoPopup != null)
             {
-                popupCommand.Executed += (sender, content) =>
+                yesNoPopup.Executed += (sender, content) =>
                 {
                     object data = content.GetData();
                     if (data is YesNoEnum dialog)
@@ -56,7 +80,7 @@ namespace CommunityPatchLauncher.Tasks.Update
                 string text = Properties.Resources.Message_Update;
                 text = text.Replace("{remoteVersion}", remoteVersion.ToString());
                 text = text.Replace("{localVersion}", localVersion.ToString());
-                popupCommand?.Execute(text);
+                yesNoPopup?.Execute(text);
             }
 
             return returnState;

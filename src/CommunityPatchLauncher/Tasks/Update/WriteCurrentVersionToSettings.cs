@@ -1,14 +1,14 @@
 ﻿using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommunityPatchLauncher.Tasks.Update
 {
+    /// <summary>
+    /// Write the last patched version to the settings
+    /// </summary>
     class WriteCurrentVersionToSettings : AbstractTask
     {
+        /// <inheritdoc/>
         public override bool Execute(bool previousTaskState)
         {
             Version remoteVersion = GetSetting<Version>("RemoteVersion");

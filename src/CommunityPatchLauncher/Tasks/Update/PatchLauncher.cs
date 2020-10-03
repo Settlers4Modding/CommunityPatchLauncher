@@ -7,11 +7,25 @@ using System.Reflection;
 
 namespace CommunityPatchLauncher.Tasks.Update
 {
+    /// <summary>
+    /// Patch the launcher
+    /// </summary>
     internal class PatchLauncher : AbstractTask
     {
+        /// <summary>
+        /// The name of the launcher app
+        /// </summary>
         private readonly string launcherAppName;
+
+        /// <summary>
+        /// The path to the application to patch
+        /// </summary>
         private readonly string applicationPath;
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="launcherAppName">The name of the launcher app</param>
         public PatchLauncher(string launcherAppName)
         {
             this.launcherAppName = launcherAppName;
@@ -20,6 +34,7 @@ namespace CommunityPatchLauncher.Tasks.Update
             applicationPath = fileInfo.DirectoryName;
         }
 
+        /// <inheritdoc/>
         public override bool Execute(bool previousTaskState)
         {
 
