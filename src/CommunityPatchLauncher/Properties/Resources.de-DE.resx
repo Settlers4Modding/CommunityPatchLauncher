@@ -159,6 +159,9 @@
   <data name="MainWindow_About" xml:space="preserve">
     <value>Über</value>
   </data>
+  <data name="MainWindow_Help" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
   <data name="MainWindow_IntellectualProperty" xml:space="preserve">
     <value>Gestiges Eigentum</value>
   </data>
