@@ -69,7 +69,7 @@ namespace CommunityPatchLauncher.Tasks.Factories
             returnList.Add(new DownloadCommunityPatchTask(patchName));
             returnList.Add(new UnzipAndExtractCommunityPatchTask());
             returnList.Add(new PatchGameSpeedTask(speedMode));
-            returnList.Add(new StartGameTask());
+            //returnList.Add(new StartGameTask());
             return returnList;
         }
     }

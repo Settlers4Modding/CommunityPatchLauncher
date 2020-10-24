@@ -120,8 +120,10 @@
     <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\ReloadObjectCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\UpdateApplicationCommand.cs" />
+    <Compile Include="Commands\BaseProgressCommand.cs" />
     <Compile Include="Commands\DataCommands\SetYesNoEnumCommand.cs" />
     <Compile Include="Commands\DataContainer\PatchSelectionData.cs" />
+    <Compile Include="Commands\IProgressCommand.cs" />
     <Compile Include="Commands\Settings\SaveSettingsCommand.cs" />
     <Compile Include="Commands\Settings\AcceptAgreementCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />

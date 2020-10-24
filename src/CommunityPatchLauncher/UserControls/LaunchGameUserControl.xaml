@@ -18,8 +18,8 @@
     </UserControl.Resources>
     <Grid Margin="0,0,0,10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
@@ -27,12 +27,12 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <WebBrowser Grid.Row="0" Grid.Column="0" DockPanel.Dock="Top" behavior:BrowserBehavior.Html="{Binding PatchDescription, UpdateSourceTrigger=PropertyChanged}"></WebBrowser>
             <DockPanel Grid.Row="1" LastChildFill="False">
-                <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,5">
+                <StackPanel DockPanel.Dock="Bottom">
                     <StackPanel Margin="0,5,0,5">
                         <StackPanel.Resources>
                             <Style TargetType="{x:Type RadioButton}">
@@ -45,7 +45,8 @@
                         <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Faster}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_VeryFastSpeed}"></RadioButton>
                         <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Testing}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_TestingSpeed}"></RadioButton>
                     </StackPanel>
-                    <Button MinHeight="40" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.PlayControl_Launch}" Command="{Binding LaunchGameCommand}">
+                    <ProgressBar Margin="0,5,0,5" x:Name="PB_DownloadState" Style="{StaticResource DefaultProgressBar}" Value="{Binding ProgressValue}"></ProgressBar>
+                    <Button Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.PlayControl_Launch}" Command="{Binding LaunchGameCommand}">
                         <Button.Resources>
                             <conv:LaunchGameConverter x:Key="LaunchGameConverter"></conv:LaunchGameConverter>
                         </Button.Resources>
@@ -59,14 +60,13 @@
                 </StackPanel>
             </DockPanel>
         </Grid>
-        <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,0,10,0">
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="5,0,10,0">
             <TextBlock HorizontalAlignment="Center" Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
         </StackPanel>
-        <DockPanel Grid.Column="1" Grid.Row="1" Margin="5,0,5,10">
-            <Border  BorderThickness="2"  Grid.Row="1" BorderBrush="{StaticResource SelectedColor}">
-                <WebBrowser behavior:BrowserBehavior.Html="{Binding ChangelogContent, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></WebBrowser>
+        <DockPanel Grid.Column="1" Grid.Row="1" Margin="5,0,5,0">
+            <Border  BorderThickness="2" Grid.Row="1" BorderBrush="{StaticResource SelectedColor}">
+                <WebBrowser behavior:BrowserBehavior.Html="{Binding ChangelogContent, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></WebBrowser>
             </Border>
         </DockPanel>
-
     </Grid>
 </UserControl>

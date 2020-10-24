@@ -52,11 +52,14 @@ namespace CommunityPatchLauncher.Tasks
 
 				using (var extractedGame = ZipArchive.Open(innerArchive)) {
 					DoPreInstallSteps(extractedGame);
+					int currentProgress = 0;
 					foreach (var entry in extractedGame.Entries.Where(entry => !entry.IsDirectory)) {
 						entry.WriteToDirectory(targetFolder, new ExtractionOptions() {
 							ExtractFullPath = true,
 							Overwrite = true
 						});
+						currentProgress = (int)(0 / extractedGame.Entries.Count * 100);
+						ProgressHasChanged(currentProgress);
 					}
 				}
 			}

@@ -1,4 +1,5 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
+using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Documentation.Strategy;
@@ -104,6 +105,24 @@ namespace CommunityPatchLauncher.ViewModels
         private string patchDescription;
 
         /// <summary>
+        /// The progress value for the bar
+        /// </summary>
+        public int ProgressValue {
+            get => progressValue;
+            set
+            {
+                progressValue = value;
+                RaisePropertyChanged("ProgressValue");
+            }
+        }
+
+        /// <summary>
+        /// Private accessor for progress value
+        /// </summary>
+        private int progressValue;
+
+
+        /// <summary>
         /// The manager factory to use
         /// </summary>
         private readonly IDocumentManagerFactory managerFactory;
@@ -113,7 +132,13 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public LaunchGameModelView()
         {
-            LaunchGameCommand = new LaunchGameCommand(settingManager);
+            IProgressCommand launchGameCommand = new LaunchGameCommand(settingManager);
+            launchGameCommand.progressChanged += (sender, data) =>
+            {
+                float percent = (float)data.CurrentWorkload / (float)data.TotalWorkload;
+                ProgressValue = (int)(percent * 100);
+            };
+            LaunchGameCommand = launchGameCommand;
 
             managerFactory = new LocalDocumentManagerFactory();
         }
