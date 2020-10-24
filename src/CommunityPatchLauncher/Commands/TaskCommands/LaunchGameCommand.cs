@@ -52,6 +52,7 @@ namespace CommunityPatchLauncher.Commands.TaskCommands
                     gameData.Speed
                     );
                 QueueWorker worker = new QueueWorker(settingManager);
+                manager.SaveSettings();
                 Task<bool> startTask = worker.AsyncExecuteTasks(taskFactory);
             }
         }
