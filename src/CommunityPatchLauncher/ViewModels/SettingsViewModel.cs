@@ -109,6 +109,25 @@ namespace CommunityPatchLauncher.ViewModels
         private int selectedIndex;
 
         /// <summary>
+        /// Public accessor if we should check for update on startup
+        /// </summary>
+        public bool CheckForUpdateOnStartup
+        {
+            get => checkForUpdateOnStartup;
+            set
+            {
+                checkForUpdateOnStartup = value;
+                settingManager.AddValue("UpdateOnStartup", checkForUpdateOnStartup);
+                RaisePropertyChanged("CheckForUpdateOnStartup");
+            }
+        }
+
+        /// <summary>
+        /// Private accessor if we should check for update on startup
+        /// </summary>
+        private bool checkForUpdateOnStartup;
+
+        /// <summary>
         /// All the available update channels
         /// </summary>
         public IReadOnlyList<UpdateChannelContainer> UpdateChannels { get; private set; }
@@ -267,7 +286,14 @@ namespace CommunityPatchLauncher.ViewModels
         public override void Reload()
         {
             base.Reload();
-            string languageCode = settingManager?.GetValue<string>("Language");
+            string languageCode = string.Empty;
+            if (settingManager != null)
+            {
+                languageCode = settingManager.GetValue<string>("Language");
+                GameFolder = settingManager.GetValue<string>("GameFolder");
+                DownloadFolder = settingManager.GetValue<string>("DownloadFolder");
+                CheckForUpdateOnStartup = settingManager.GetValue<bool>("UpdateOnStartup");
+            }
             for (int i = 0; i < SelectableLanguages.Count; i++)
             {
                 if (SelectableLanguages[i].IsoCode == languageCode)
@@ -276,8 +302,6 @@ namespace CommunityPatchLauncher.ViewModels
                     break;
                 }
             }
-            GameFolder = settingManager?.GetValue<string>("GameFolder");
-            DownloadFolder = settingManager?.GetValue<string>("DownloadFolder");
 
             UpdateBranchEnum updateBranchEnum = UpdateBranchEnum.Release;
             string channelName = settingManager?.GetValue<string>("UpdateChannel");

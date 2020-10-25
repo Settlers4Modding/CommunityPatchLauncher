@@ -1,8 +1,11 @@
-﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
+﻿using CommunityPatchLauncher.BindingData.Container;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -50,12 +53,18 @@ namespace CommunityPatchLauncher.ViewModels
         private readonly DockPanel contentDock;
 
         /// <summary>
+        /// This will be set to true if the update was searched once
+        /// </summary>
+        private bool updateSearched;
+
+        /// <summary>
         /// Create a new instance of this model
         /// </summary>
         /// <param name="window"></param>
         public MainWindowModel(Window window) : base(window)
         {
             IconVisible = false;
+            updateSearched = false;
             CloseWindowCommand = new CloseApplicationCommand();
 
             object dockArea = window.FindName("DP_ContentDock");
@@ -74,6 +83,34 @@ namespace CommunityPatchLauncher.ViewModels
             }
 
             ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);
+            window.ContentRendered += (sender, data) =>
+            {
+                if (updateSearched)
+                {
+                    return;
+                }
+                updateSearched = true;
+                CheckForUpdateIfNeeded(window);
+            };
+
+        }
+
+        /// <summary>
+        /// This method will check for updates if needed
+        /// </summary>
+        private void CheckForUpdateIfNeeded(Window parentWindow)
+        {
+            if (settingManager?.GetValue<bool>("UpdateOnStartup") == true)
+            {
+                UpdateBranchEnum updateBranch = UpdateBranchEnum.Release;
+                string updateChannel = settingManager.GetValue<string>("UpdateChannel");
+                if (!Enum.TryParse(updateChannel, out updateBranch))
+                {
+                    return;
+                }
+                ICommand updateApplication = new UpdateApplicationCommand(settingManager, parentWindow);
+                updateApplication.Execute(new UpdateChannelContainer(updateBranch));
+            }
         }
     }
 }

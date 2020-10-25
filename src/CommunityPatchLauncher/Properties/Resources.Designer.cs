@@ -554,6 +554,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for update on Startup.
+        /// </summary>
+        public static string SettingWindow_CheckForUpdateOnStartup {
+            get {
+                return ResourceManager.GetString("SettingWindow_CheckForUpdateOnStartup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download folder:.
         /// </summary>
         public static string SettingWindow_DownloadFolder {

@@ -207,16 +207,12 @@
     <Compile Include="UserControls\LaunchGameUserControl.xaml.cs">
       <DependentUpon>LaunchGameUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MapsUserControl.xaml.cs" />
-    <Compile Include="UserControls\MatchmakingUserControl.xaml.cs" />
-    <Compile Include="UserControls\NewsUserControl.xaml.cs" />
     <Compile Include="UserControls\PatchVersionSelectionUserControl.xaml.cs">
       <DependentUpon>PatchVersionSelectionUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PopupTitleBarUserControl.xaml.cs">
       <DependentUpon>PopupTitleBarUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RankedUserControl.xaml.cs" />
     <Compile Include="Tasks\StartGameTask.cs" />
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
     <Compile Include="UserControls\ResizeWindowUserControl.xaml.cs">
@@ -271,18 +267,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\MapsUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\MatchmakingUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\NewsUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UserControls\PatchVersionSelectionUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -290,10 +274,6 @@
     <Page Include="UserControls\PopupTitleBarUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\RankedUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\ResizeWindowUserControl.xaml">
       <SubType>Designer</SubType>

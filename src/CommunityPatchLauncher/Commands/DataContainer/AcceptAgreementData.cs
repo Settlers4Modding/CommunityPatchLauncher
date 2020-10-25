@@ -23,6 +23,11 @@ namespace CommunityPatchLauncher.Commands.DataContainer
         public string GameFolder { get; }
 
         /// <summary>
+        /// Check for update on launcher startup
+        /// </summary>
+        public bool UpdateOnStartup { get; }
+
+        /// <summary>
         /// The language to use
         /// </summary>
         public LanguageItem Language { get; }
@@ -34,12 +39,14 @@ namespace CommunityPatchLauncher.Commands.DataContainer
         /// <param name="folderSet">Is the game folder which was set okay</param>
         /// <param name="gameFolder">The path to the game folder</param>
         /// <param name="language">The language to use</param>
-        public AcceptAgreementData(bool agreement, bool folderSet, string gameFolder, LanguageItem language)
+        /// <param name="checkOnStartup">Check for update on app startup</param>
+        public AcceptAgreementData(bool agreement, bool folderSet, string gameFolder, LanguageItem language, bool checkOnStartup)
         {
             Agreement = agreement;
             FolderSet = folderSet;
             GameFolder = gameFolder;
             Language = language;
+            UpdateOnStartup = checkOnStartup;
         }
     }
 }
