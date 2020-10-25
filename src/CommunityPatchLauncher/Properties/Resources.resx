@@ -286,6 +286,9 @@ Is your computer offline?</value>
   <data name="SettingsWindow_UpdateBranch" xml:space="preserve">
     <value>Update Branch:</value>
   </data>
+  <data name="SettingWindow_CheckForUpdateOnStartup" xml:space="preserve">
+    <value>Check for update on Startup</value>
+  </data>
   <data name="SettingWindow_DownloadFolder" xml:space="preserve">
     <value>Download folder:</value>
   </data>

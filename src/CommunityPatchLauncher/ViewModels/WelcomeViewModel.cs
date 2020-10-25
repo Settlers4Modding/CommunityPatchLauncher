@@ -79,10 +79,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public bool Agreement
         {
-            get
-            {
-                return aggreement;
-            }
+            get => aggreement;
             set
             {
                 aggreement = value;
