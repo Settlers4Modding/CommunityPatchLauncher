@@ -3,10 +3,8 @@ using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.Tasks.Factories;
 using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
-using CommunityPatchLauncherFramework.TaskPipeline.EventData;
 using CommunityPatchLauncherFramework.TaskPipeline.Factory;
 using CommunityPatchLauncherFramework.TaskPipeline.Pipeline;
-using System;
 using System.Threading.Tasks;
 
 namespace CommunityPatchLauncher.Commands.TaskCommands

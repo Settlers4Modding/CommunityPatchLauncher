@@ -77,7 +77,7 @@ namespace CommunityLauncherPatcher
         {
             using (ZipArchive archive = ZipFile.OpenRead(zipArchive))
             {
-                foreach(ZipArchiveEntry entry in archive.Entries)
+                foreach (ZipArchiveEntry entry in archive.Entries)
                 {
                     if (entry.Name == fileToIgnore)
                     {

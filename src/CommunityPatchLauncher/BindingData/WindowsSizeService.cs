@@ -1,5 +1,4 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -23,7 +22,7 @@ namespace CommunityPatchLauncher.BindingData
             {
                 if (stream == null)
                 {
-                    return default;   
+                    return default;
                 }
                 using (StreamReader reader = new StreamReader(stream))
                 {

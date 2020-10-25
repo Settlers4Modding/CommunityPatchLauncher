@@ -12,7 +12,7 @@ namespace CommunityPatchLauncher.Commands.Settings
         /// Check the settings before saving
         /// </summary>
         private readonly bool checkSettings;
-        
+
         /// <summary>
         /// The settings manager to use
         /// </summary>

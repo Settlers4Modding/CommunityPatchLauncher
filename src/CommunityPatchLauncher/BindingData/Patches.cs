@@ -16,7 +16,7 @@ namespace CommunityPatchLauncher.BindingData
         /// <returns>Returns a list with all the available patches</returns>
         public IReadOnlyList<Patch> GetPatches()
         {
-            List<Patch>  availablePatch = new List<Patch>();
+            List<Patch> availablePatch = new List<Patch>();
             foreach (AvailablePatches currentPatch in Enum.GetValues(typeof(AvailablePatches)))
             {
                 if (currentPatch == AvailablePatches.CommunityPatchDLC)

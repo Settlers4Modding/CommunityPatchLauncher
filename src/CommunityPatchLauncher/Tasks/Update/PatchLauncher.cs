@@ -29,7 +29,7 @@ namespace CommunityPatchLauncher.Tasks.Update
         public PatchLauncher(string launcherAppName)
         {
             this.launcherAppName = launcherAppName;
-            
+
             FileInfo fileInfo = new FileInfo(Assembly.GetExecutingAssembly().Location);
             applicationPath = fileInfo.DirectoryName;
         }
@@ -68,7 +68,7 @@ namespace CommunityPatchLauncher.Tasks.Update
             {
                 return false;
             }
-            
+
             if (File.Exists(destinationFile))
             {
                 string arguments = "\"" + Assembly.GetExecutingAssembly().Location + "\" ";

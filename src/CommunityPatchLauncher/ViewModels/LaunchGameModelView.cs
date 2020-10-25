@@ -76,9 +76,9 @@ namespace CommunityPatchLauncher.ViewModels
         /// Content of the changelog
         /// </summary>
         public string ChangelogContent
-        { 
-            get => changelogContent; 
-            private set 
+        {
+            get => changelogContent;
+            private set
             {
                 changelogContent = value;
                 RaisePropertyChanged("ChangelogContent");
@@ -109,7 +109,8 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// The progress value for the bar
         /// </summary>
-        public int ProgressValue {
+        public int ProgressValue
+        {
             get => progressValue;
             set
             {
@@ -181,7 +182,7 @@ namespace CommunityPatchLauncher.ViewModels
                 patchToUse.RealPatch.ToString() + ".md"
             );
             }
-            
+
         }
 
         /// <summary>

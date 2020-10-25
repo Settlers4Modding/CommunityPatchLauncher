@@ -65,10 +65,10 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
             Visibility targetVisiblity = ElementIsVisible(element) ? Visibility.Collapsed : Visibility.Visible;
             element.Dispatcher.Invoke(
                 new UpdateVisiblityCallback(this.UpdateVisibility),
-                new object[] {  element, targetVisiblity });
-            
+                new object[] { element, targetVisiblity });
+
         }
-        
+
         /// <summary>
         /// Callback method to thread safe update the element
         /// </summary>
