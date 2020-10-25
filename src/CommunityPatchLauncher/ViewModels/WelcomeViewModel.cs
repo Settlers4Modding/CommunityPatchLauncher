@@ -178,6 +178,24 @@ namespace CommunityPatchLauncher.ViewModels
         private readonly DocumentManager documentManager;
 
         /// <summary>
+        /// Public accessor if we should check for update on startup
+        /// </summary>
+        public bool CheckForUpdateOnStartup
+        {
+            get => checkForUpdateOnStartup;
+            set
+            {
+                checkForUpdateOnStartup = value;
+                RaisePropertyChanged("CheckForUpdateOnStartup");
+            }
+        }
+
+        /// <summary>
+        /// Private accessor if we should check for update on startup
+        /// </summary>
+        private bool checkForUpdateOnStartup;
+
+        /// <summary>
         /// Create a new instance of this class
         /// </summary>
         /// <param name="window">The window this view belongs to</param>
@@ -217,7 +235,9 @@ namespace CommunityPatchLauncher.ViewModels
             }
 
             string settingGameFolder = settingManager.GetValue<string>("GameFolder");
+            bool updateOnStartup = settingManager.GetValue<bool>("UpdateOnStartup");
             GameFolder = settingGameFolder ?? string.Empty;
+            CheckForUpdateOnStartup = updateOnStartup;
             Window mainWindow = new MainWindow();
             AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, mainWindow);
             bool accepted = settingManager.GetValue<bool>("AgreementAccepted");
