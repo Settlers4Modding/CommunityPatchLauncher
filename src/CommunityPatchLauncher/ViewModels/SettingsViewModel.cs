@@ -8,7 +8,6 @@ using CommunityPatchLauncher.Commands.Settings;
 using CommunityPatchLauncher.Enums;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Windows;
 using System.Windows.Input;
 
