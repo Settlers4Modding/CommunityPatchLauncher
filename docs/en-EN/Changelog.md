@@ -8,6 +8,7 @@
 
 * Changelog button is working now
 * Added user control as browser dock for specific files
+* Checking for new version on starup if setting is active
 
 #### Launch Game Window
 
@@ -20,6 +21,11 @@
 
 * Added a combobox to select the update branch
 * Added a button to update the application
+* Checkbox to check for new version on startup
+
+#### Welcome Window
+
+* Checkbox to check for new version on startup
 
 ### Fixed
 
