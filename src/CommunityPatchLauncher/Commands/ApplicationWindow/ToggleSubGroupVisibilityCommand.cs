@@ -7,7 +7,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
     /// <summary>
     /// This command will toggle the visiblity for a category on the main window
     /// </summary>
-    public class ToggleVisibilityCommand : BaseDataCommand
+    public class ToggleSubGroupVisibilityCommand : BaseDataCommand
     {
         /// <summary>
         /// The window to search the control on
@@ -18,7 +18,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// Create a new instance of this command
         /// </summary>
         /// <param name="windowToSearchOn">The window to search in</param>
-        public ToggleVisibilityCommand(Window windowToSearchOn)
+        public ToggleSubGroupVisibilityCommand(Window windowToSearchOn)
         {
             this.windowToSearchOn = windowToSearchOn;
         }

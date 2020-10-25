@@ -138,6 +138,7 @@ namespace CommunityPatchLauncher.ViewModels
                 float percent = (float)data.CurrentWorkload / (float)data.TotalWorkload;
                 ProgressValue = (int)(percent * 100);
             };
+            //launchGameCommand.Executed
             LaunchGameCommand = launchGameCommand;
 
             managerFactory = new LocalDocumentManagerFactory();

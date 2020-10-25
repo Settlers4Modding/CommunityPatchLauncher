@@ -153,7 +153,7 @@
     <Compile Include="Commands\Settings\SaveWindowSizeCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\SelectFolderCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\SwitchGuiLanguage.cs" />
-    <Compile Include="Commands\ApplicationWindow\ToggleVisibilityCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\ToggleSubGroupVisibilityCommand.cs" />
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlWithoutScrollStrategy.cs" />

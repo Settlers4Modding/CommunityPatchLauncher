@@ -74,7 +74,7 @@ namespace CommunityPatchLauncher.ViewModels
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 
-            ChangeGroupVisiblity = new ToggleVisibilityCommand(currentWindow);
+            ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);
         }
     }
 }
