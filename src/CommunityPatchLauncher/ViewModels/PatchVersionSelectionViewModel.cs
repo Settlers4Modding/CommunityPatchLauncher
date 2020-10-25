@@ -1,11 +1,8 @@
 ﻿using CommunityPatchLauncher.BindingData;
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
-using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncher.ViewModels.SpecialViews;
-using CommunityPatchLauncherFramework.Settings.Manager;
-using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;

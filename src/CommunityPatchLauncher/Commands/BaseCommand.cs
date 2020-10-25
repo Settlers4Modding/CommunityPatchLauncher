@@ -70,7 +70,7 @@ namespace CommunityPatchLauncher.Commands
                 }
                 return false;
             });
-            
+
         }
 
         /// <inheritdoc/>

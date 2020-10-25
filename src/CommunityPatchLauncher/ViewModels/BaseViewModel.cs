@@ -27,8 +27,8 @@ namespace CommunityPatchLauncher.ViewModels
         /// The command used to close the window
         /// </summary>
         public ICommand CloseWindowCommand
-        { 
-            get => closeWindowCommand; 
+        {
+            get => closeWindowCommand;
             protected set
             {
                 closeWindowCommand = value;
@@ -43,8 +43,8 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// The command used to maximize the window
         /// </summary>
-        public ICommand MaximizeWindowCommand 
-        { 
+        public ICommand MaximizeWindowCommand
+        {
             get => maximizeWindowCommand;
             protected set
             {
@@ -99,8 +99,9 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// Is the window icon visible
         /// </summary>
-        public bool IconVisible { 
-            get => iconVisible;  
+        public bool IconVisible
+        {
+            get => iconVisible;
             protected set
             {
                 iconVisible = value;
@@ -163,7 +164,7 @@ namespace CommunityPatchLauncher.ViewModels
             }
 
             CloseWindowCommand = new CloseWindowCommand(currentWindow);
-            
+
             MinimizeWindowCommand = new MinimizeWindowCommand(currentWindow);
             MaximizeWindowCommand = new MaximizeWindowCommand(currentWindow);
             IconVisible = true;

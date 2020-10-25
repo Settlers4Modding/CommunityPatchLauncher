@@ -1,5 +1,4 @@
 ﻿using CommunityPatchLauncher.ViewModels;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace CommunityPatchLauncher.UserControls

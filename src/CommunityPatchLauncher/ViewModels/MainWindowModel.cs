@@ -1,5 +1,4 @@
-﻿using CommunityPatchLauncher.Commands;
-using CommunityPatchLauncher.Commands.ApplicationWindow;
+﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncherFramework.Settings.Factories;
@@ -74,7 +73,7 @@ namespace CommunityPatchLauncher.ViewModels
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 
-            ChangeGroupVisiblity = new ToggleVisibilityCommand(currentWindow);
+            ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);
         }
     }
 }

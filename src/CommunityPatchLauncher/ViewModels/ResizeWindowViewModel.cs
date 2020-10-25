@@ -7,7 +7,6 @@ using CommunityPatchLauncher.UserControls.SpecialTypes;
 using FontAwesome.WPF;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -117,7 +116,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// <inheritdoc/>
         protected override void AddWindowResizeableCommand()
         {
-            
+
         }
 
         /// <summary>

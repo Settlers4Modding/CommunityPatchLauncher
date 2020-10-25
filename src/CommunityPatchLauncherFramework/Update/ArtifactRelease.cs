@@ -13,7 +13,7 @@ namespace CommunityPatchLauncherFramework.Update
         /// <summary>
         /// The author of the artifact
         /// </summary>
-        public string Author { get;  }
+        public string Author { get; }
 
         /// <summary>
         /// The summary for this artifact

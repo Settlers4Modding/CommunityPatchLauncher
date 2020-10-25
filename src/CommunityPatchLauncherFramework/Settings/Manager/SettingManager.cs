@@ -2,9 +2,8 @@
 using CommunityPatchLauncherFramework.Settings.Reader;
 using CommunityPatchLauncherFramework.Settings.Writer;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
-using System.Net.NetworkInformation;
+using System.Linq;
 
 namespace CommunityPatchLauncherFramework.Settings.Manager
 {

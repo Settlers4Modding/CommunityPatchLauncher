@@ -188,7 +188,7 @@ namespace CommunityPatchLauncher.ViewModels
                     downloadFolder = downloadFolder.Replace("\\", "/");
                     settingManager.AddValue("DownloadFolder", downloadFolder);
                 }
-                
+
                 RaisePropertyChanged("DownloadFolder");
             }
         }
@@ -218,7 +218,7 @@ namespace CommunityPatchLauncher.ViewModels
             ResetSettingCommand = new ReloadObjectCommand(this);
             UpdateApplicationCommand = new UpdateApplicationCommand(settingManager, window, true);
             SelectFolder = new SelectFolderCommand();
-            
+
             ResetAgreementCommand = new MultiCommand(new List<ICommand>()
             {
                 new ChangeSettingCommand(settingManager, "AgreementAccepted", true),
@@ -260,7 +260,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// <inheritdoc>/>
         protected override void AddWindowResizeableCommand()
         {
-            
+
         }
 
         /// <inheritdoc>/>

@@ -14,6 +14,7 @@
 * Describing texts for all versions added in german and english
 * Community DLC is getting installed for all patches
 * Support for pre installation steps
+* Progress bar for starting game
 
 #### Setting Window
 
@@ -26,6 +27,7 @@
 * All web content allows richt text now
 * All web content is loaded in the correct language now
 * All web content is using English as fallback now
+* Saving game speed if starting the game
 
 ### Changed
 

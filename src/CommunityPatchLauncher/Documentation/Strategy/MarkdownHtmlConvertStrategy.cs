@@ -1,7 +1,6 @@
 ﻿using Markdig;
 using System.IO;
 using System.Reflection;
-using System.Windows;
 
 namespace CommunityPatchLauncherFramework.Documentation.Strategy
 {

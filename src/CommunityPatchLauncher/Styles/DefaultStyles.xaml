@@ -33,6 +33,17 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="ProgressBar" x:Key="DefaultProgressBar">
+        <Setter Property="Minimum" Value="0"></Setter>
+        <Setter Property="Maximum" Value="100"></Setter>
+        <Setter Property="Value" Value="5"></Setter>
+        <Setter Property="MinHeight" Value="20"></Setter>
+        <Setter Property="Margin" Value="0"></Setter>
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource BrightSelectedColor}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource SelectedColor}"></Setter>
+        <Setter Property="BorderThickness" Value="2"></Setter>
+    </Style>
     <Style TargetType="Border" x:Key="DefaultBorder">
         <Setter Property="BorderBrush" Value="{StaticResource SelectedColor}"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>
