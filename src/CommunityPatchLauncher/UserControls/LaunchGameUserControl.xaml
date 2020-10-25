@@ -45,7 +45,7 @@
                         <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Faster}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_VeryFastSpeed}"></RadioButton>
                         <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Testing}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_TestingSpeed}"></RadioButton>
                     </StackPanel>
-                    <ProgressBar Margin="0,5,0,5" x:Name="PB_DownloadState" Style="{StaticResource DefaultProgressBar}" Value="{Binding ProgressValue}"></ProgressBar>
+                    <ProgressBar Visibility="Collapsed" Margin="0,5,0,5" x:Name="PB_DownloadState" Style="{StaticResource DefaultProgressBar}" Value="{Binding ProgressValue}"></ProgressBar>
                     <Button Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.PlayControl_Launch}" Command="{Binding LaunchGameCommand}">
                         <Button.Resources>
                             <conv:LaunchGameConverter x:Key="LaunchGameConverter"></conv:LaunchGameConverter>

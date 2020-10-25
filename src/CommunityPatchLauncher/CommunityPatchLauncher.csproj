@@ -155,6 +155,7 @@
     <Compile Include="Commands\ApplicationWindow\SwitchGuiLanguage.cs" />
     <Compile Include="Commands\ApplicationWindow\ToggleSubGroupVisibilityCommand.cs" />
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Commands\ApplicationWindow\ToggleVisiblityCommand.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlWithoutScrollStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />

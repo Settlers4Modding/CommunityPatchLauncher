@@ -1,5 +1,6 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Documentation.Strategy;
@@ -8,8 +9,9 @@ using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
 using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Threading;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -130,16 +132,23 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// Create a new instance of this view model
         /// </summary>
-        public LaunchGameModelView()
+        public LaunchGameModelView(UserControl parent)
         {
             IProgressCommand launchGameCommand = new LaunchGameCommand(settingManager);
+            ICommand toggleCommand = new ToggleVisiblityCommand(parent, "PB_DownloadState");
             launchGameCommand.progressChanged += (sender, data) =>
             {
                 float percent = (float)data.CurrentWorkload / (float)data.TotalWorkload;
                 ProgressValue = (int)(percent * 100);
             };
-            //launchGameCommand.Executed
-            LaunchGameCommand = launchGameCommand;
+            launchGameCommand.Executed += (sender, data) =>
+            {
+                toggleCommand.Execute(string.Empty);
+            };
+            LaunchGameCommand = new MultiCommand(new List<ICommand>() {
+                toggleCommand,
+                launchGameCommand,
+            });
 
             managerFactory = new LocalDocumentManagerFactory();
         }
