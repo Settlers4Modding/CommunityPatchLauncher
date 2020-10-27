@@ -33,6 +33,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand OpenSettingCommand { get; private set; }
 
         /// <summary>
+        /// This command will open the mod page
+        /// </summary>
+        public ICommand OpenModViewCommand { get; private set; }
+
+        /// <summary>
         /// The command used if something is coming soon
         /// </summary>
         public ICommand ComingSoonCommand { get; private set; }
@@ -77,6 +82,7 @@ namespace CommunityPatchLauncher.ViewModels
 
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl());
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
+                OpenModViewCommand = new OpenControlToPanel(contentDock, new ModUserControl(currentWindow));
                 OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
