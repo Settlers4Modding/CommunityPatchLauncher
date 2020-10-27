@@ -6,7 +6,106 @@
              xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CommunityPatchLauncher;component/Styles/DefaultStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Install">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox></CheckBox>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Name">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DisplayName}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Author">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Author}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Short Description">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ShortDescription}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="True"></CheckBox>
+                        <TextBlock Text="Static"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListViewItem></ListViewItem>
+        </ListView>
+        <Border Grid.Row="1" Margin="0,5,0,5" Style="{StaticResource DefaultBorder}" BorderThickness="0,2,0,2">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{StaticResource DefaultBorder}" BorderThickness="0,0,2,0" Margin="0,0,5,0">
+                    <StackPanel Margin="0,0,5,0">
+                        <DockPanel Margin="0,0,5,0" LastChildFill="False">
+                            <TextBlock DockPanel.Dock="Left" Style="{StaticResource DefaultText}" Text="Name:"></TextBlock>
+                            <TextBlock DockPanel.Dock="Right" Style="{StaticResource DefaultText}" Text="Something"></TextBlock>
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0" LastChildFill="False">
+                            <TextBlock DockPanel.Dock="Left" Style="{StaticResource DefaultText}" Text="Author:"></TextBlock>
+                            <TextBlock DockPanel.Dock="Right" Style="{StaticResource DefaultText}" Text="Name"></TextBlock>
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0" LastChildFill="False">
+                            <TextBlock DockPanel.Dock="Left" Style="{StaticResource DefaultText}" Text="License:"></TextBlock>
+                            <TextBlock DockPanel.Dock="Right" Style="{StaticResource DefaultText}" Text="MIT"></TextBlock>
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0" LastChildFill="False">
+                            <TextBlock DockPanel.Dock="Left" Style="{StaticResource DefaultText}" Text="Homepage:"></TextBlock>
+                            <TextBlock DockPanel.Dock="Right" Style="{StaticResource SubCategoryString}" Text="Some awesome link">
+                                <Hyperlink NavigateUri="www.google.com/"></Hyperlink>
+                            </TextBlock>
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0" LastChildFill="False">
+                            <TextBlock DockPanel.Dock="Left" Style="{StaticResource DefaultText}" Text="Repository:"></TextBlock>
+                            <TextBlock DockPanel.Dock="Right" Style="{StaticResource SubCategoryString}" Text="Some repository link">
+                                <Hyperlink NavigateUri="www.google.com/"></Hyperlink>
+                            </TextBlock>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+                <StackPanel Margin="0,5,0,0" Grid.Column="1">
+                    <TextBlock Style="{StaticResource DefaultText}" Text="Description"></TextBlock>
+                    <WebBrowser Margin="0,5,0,0" Grid.Column="1"></WebBrowser>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <DockPanel Grid.Row="2" Margin="0,0,5,5" LastChildFill="False">
+            <Button Style="{StaticResource DefaultButton}" DockPanel.Dock="Left" Content="Apply Changes"></Button>
+            <Button Style="{StaticResource DefaultButton}" DockPanel.Dock="Right" Content="Cancel"></Button>
+        </DockPanel>
     </Grid>
 </UserControl>
