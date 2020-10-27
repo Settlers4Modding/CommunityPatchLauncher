@@ -202,5 +202,17 @@ namespace CommunityPatchLauncher.Properties {
                 this["PatchAppName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public float WindowMoveDistance {
+            get {
+                return ((float)(this["WindowMoveDistance"]));
+            }
+            set {
+                this["WindowMoveDistance"] = value;
+            }
+        }
     }
 }

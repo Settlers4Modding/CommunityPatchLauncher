@@ -1,4 +1,5 @@
 ﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.DataContainers;
 using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Settings.Factories;
@@ -52,6 +53,7 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("MaximizeWindowCommand");
             }
         }
+
         /// <summary>
         /// The command used to maximize the window
         /// </summary>
@@ -69,6 +71,7 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("MaximizeWindowCommand");
             }
         }
+
         /// <summary>
         /// The command used to minimize the window
         /// </summary>
@@ -86,6 +89,7 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("MaximizeWindowCommand");
             }
         }
+
         /// <summary>
         /// The command used to change the window size
         /// </summary>
@@ -108,11 +112,11 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("IconVisible");
             }
         }
+
         /// <summary>
         /// Is the window icon visible
         /// </summary>
         private bool iconVisible;
-
 
         /// <summary>
         /// Property has changed event
@@ -130,10 +134,16 @@ namespace CommunityPatchLauncher.ViewModels
         protected SettingManager settingManager;
 
         /// <summary>
+        /// The last position of the mouse
+        /// </summary>
+        private Position lastMousePosition;
+
+        /// <summary>
         /// Create a new instance of this class without a attached window
         /// </summary>
         public BaseViewModel() : this(null)
         {
+            
         }
 
         /// <summary>
@@ -158,6 +168,9 @@ namespace CommunityPatchLauncher.ViewModels
                 AddWindowResizeableCommand();
                 RefreshGuiCommand = new RefreshGuiLanguageCommand(currentWindow);
                 currentWindow.MouseDown += CurrentWindow_MouseDown;
+                currentWindow.MouseUp += CurrentWindow_MouseUp;
+                currentWindow.MouseMove += CurrentWindow_MouseMove;
+                
                 SetDefaultWindowStyle();
                 SwitchGuiLanguage();
                 WindowTitle = currentWindow.Title;
@@ -238,13 +251,46 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="e">The event arguments</param>
         private void CurrentWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 if (currentWindow.WindowState == WindowState.Maximized)
                 {
-                    currentWindow.WindowState = WindowState.Normal;
+                    
+                    lastMousePosition = new Position(e.GetPosition(currentWindow));
                 }
                 currentWindow.DragMove();
+            }
+        }
+
+        /// <summary>
+        /// Mouse up event
+        /// </summary>
+        /// <param name="sender">The sender of the event</param>
+        /// <param name="e">The event parameters</param>
+        private void CurrentWindow_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            lastMousePosition = null;
+        }
+
+        /// <summary>
+        /// Event if the mouse is moved on the form
+        /// </summary>
+        /// <param name="sender">The sender of the event</param>
+        /// <param name="e">The event data</param>
+        private void CurrentWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                if (currentWindow.WindowState == WindowState.Maximized && lastMousePosition != null)
+                {
+                    Position currentPosition = new Position(e.GetPosition(currentWindow));
+                    if (currentPosition.DistanceTo(lastMousePosition) > Properties.Settings.Default.WindowMoveDistance)
+                    {
+                        lastMousePosition = null;
+                        currentWindow.WindowState = WindowState.Normal;
+                        currentWindow.DragMove();
+                    }
+                }
             }
         }
 
