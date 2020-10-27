@@ -47,5 +47,8 @@
     <Setting Name="PatchAppName" Type="System.String" Scope="User">
       <Value Profile="(Default)">CommunityLauncherPatcher.exe</Value>
     </Setting>
+    <Setting Name="WindowMoveDistance" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

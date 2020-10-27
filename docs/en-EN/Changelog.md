@@ -9,6 +9,7 @@
 * Changelog button is working now
 * Added user control as browser dock for specific files
 * Checking for new version on starup if setting is active
+* Fixed problem with maximized form
 
 #### Launch Game Window
 
