@@ -12,6 +12,8 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// </summary>
         private readonly Window windowToClose;
 
+        private delegate void CloseWindowCallback(Window windowToClose);
+
         /// <summary>
         /// Create a new instance of this class
         /// </summary>
@@ -30,7 +32,17 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
+            windowToClose.Dispatcher.Invoke(
+                new CloseWindowCallback(this.CloseWindow),
+                new object[] { windowToClose }
+                );
+            //windowToClose?.Close();
+        }
+
+        public void CloseWindow(Window windowToClose)
+        {
             windowToClose?.Close();
         }
+
     }
 }

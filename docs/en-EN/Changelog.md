@@ -17,6 +17,7 @@
 * Community DLC is getting installed for all patches
 * Support for pre installation steps
 * Progress bar for starting game
+* Adding button to download all the patches
 
 #### Setting Window
 

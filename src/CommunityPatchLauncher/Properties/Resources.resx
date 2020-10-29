@@ -247,6 +247,9 @@ Remote version: {remoteVersion}</value>
 
 Is your computer offline?</value>
   </data>
+  <data name="PlayControl_DownloadAllPatchesTooltip" xml:space="preserve">
+    <value>Download all the patches for the offline mode</value>
+  </data>
   <data name="PlayControl_FastSpeed" xml:space="preserve">
     <value>Fast Speed (2)</value>
   </data>

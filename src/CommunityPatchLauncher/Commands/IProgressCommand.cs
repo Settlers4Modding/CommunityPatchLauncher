@@ -8,6 +8,6 @@ namespace CommunityPatchLauncher.Commands
     /// </summary>
     internal interface IProgressCommand : IDataCommand
     {
-        event EventHandler<TaskProgressChanged> progressChanged;
+        event EventHandler<TaskProgressChanged> ProgressChanged;
     }
 }

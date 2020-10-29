@@ -210,6 +210,9 @@ Remote version: {remoteVersion}</value>
   <data name="pl" xml:space="preserve">
     <value>Polnisch</value>
   </data>
+  <data name="PlayControl_DownloadAllPatchesTooltip" xml:space="preserve">
+    <value>Lade alle patches für den Offline Modus herunter</value>
+  </data>
   <data name="PlayControl_FastSpeed" xml:space="preserve">
     <value>Schnelle Geschwindigkeit (2)</value>
   </data>

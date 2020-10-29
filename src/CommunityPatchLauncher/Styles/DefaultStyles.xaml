@@ -162,6 +162,35 @@
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
     </Style>
+    <Style TargetType="Button" x:Key="InvertedDefaultButton">
+        <Style.Resources>
+            <Style TargetType="ToolTip">
+                <Setter Property="Background" Value="{StaticResource BackgroundColor}"></Setter>
+                <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
+                <Setter Property="BorderBrush" Value="{StaticResource BrightSelectedColor}"></Setter>
+            </Style>
+        </Style.Resources>
+        <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="MinWidth" Value="50"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Padding="5" Margin="0,0,2,0" Background="{TemplateBinding Background}" BorderBrush="{StaticResource BrightSelectedColor}" BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource BrightSelectedColor}"></Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DarkerDisabledColor}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="Button" x:Key="DefaultButton">
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
         <Setter Property="Background" Value="{StaticResource SelectedColor}"></Setter>

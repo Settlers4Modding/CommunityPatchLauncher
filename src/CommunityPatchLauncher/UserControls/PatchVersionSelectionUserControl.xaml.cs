@@ -1,4 +1,5 @@
 ﻿using CommunityPatchLauncher.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CommunityPatchLauncher.UserControls
@@ -8,10 +9,10 @@ namespace CommunityPatchLauncher.UserControls
     /// </summary>
     public partial class PatchVersionSelectionUserControl : UserControl
     {
-        public PatchVersionSelectionUserControl()
+        public PatchVersionSelectionUserControl(Window parentWindow)
         {
             InitializeComponent();
-            DataContext = new PatchVersionSelectionViewModel(this);
+            DataContext = new PatchVersionSelectionViewModel(parentWindow, this);
         }
 
         /// <summary>
