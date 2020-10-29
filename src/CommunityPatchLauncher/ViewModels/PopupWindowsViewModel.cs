@@ -82,7 +82,7 @@ namespace CommunityPatchLauncher.ViewModels
                 dockPanelToFill = dockPanel;
                 dockPanelToFill.Children.Add(Content);
             }
-            
+
             if (!closeable)
             {
                 CloseWindowCommand = null;

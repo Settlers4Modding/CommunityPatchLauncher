@@ -44,7 +44,6 @@ namespace CommunityPatchLauncher.ViewModels
             AllPatches = patches.GetPatches();
 
             IProgressCommand downloadPatchesCommand = new DownloadAllPatchesCommand(settingManager);
-            //DownloadAllPatches = downloadPatchesCommand;
             ProgressBarDialog dialog = new ProgressBarDialog();
             if (dialog.DataContext is ProgressBarDialogViewModel progressViewModel)
             {
@@ -61,7 +60,7 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 downloadPatchesCommand,
                  new OpenCustomPopupWindowCommand(currentWindow, FontAwesomeIcon.Hourglass, "Downloading all patches", dialog, false, null)
-                 
+
             });
 
             object dockArea = control.FindName("DP_InnerDock");

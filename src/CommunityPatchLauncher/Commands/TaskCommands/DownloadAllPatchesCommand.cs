@@ -6,10 +6,20 @@ using System.Threading.Tasks;
 
 namespace CommunityPatchLauncher.Commands.TaskCommands
 {
+    /// <summary>
+    /// This command will allow you to download all the patches
+    /// </summary>
     internal class DownloadAllPatchesCommand : BaseProgressCommand
     {
+        /// <summary>
+        /// The worker to use to do the tasks
+        /// </summary>
         private readonly QueueWorker worker;
 
+        /// <summary>
+        /// Create a new instance of this command
+        /// </summary>
+        /// <param name="settingManager">The setting manager to use</param>
         public DownloadAllPatchesCommand(SettingManager settingManager)
         {
             worker = new QueueWorker(settingManager);

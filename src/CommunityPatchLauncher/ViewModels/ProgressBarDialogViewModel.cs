@@ -5,6 +5,9 @@ using System.Windows;
 
 namespace CommunityPatchLauncher.ViewModels
 {
+    /// <summary>
+    /// The model view for the progress bar dialog
+    /// </summary>
     class ProgressBarDialogViewModel : BaseViewModel, IPopupContent
     {
         /// <summary>
