@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
              xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.Converter"
              xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
              mc:Ignorable="d" 
@@ -20,28 +21,34 @@
             <RowDefinition Height="70"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ItemsControl x:Name="IC_PatchSelectionControl" Grid.Row="0" ItemsSource="{Binding Path=AllPatches}">
-            <ItemsControl.Resources>
-                <conv:PatchSelectionConverter x:Key="PatchSelectionConverter"></conv:PatchSelectionConverter>
-            </ItemsControl.Resources>
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" VerticalAlignment="Stretch"></WrapPanel>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <ToggleButton Content="{Binding Name}" Tag="ControlButton" Style="{StaticResource DefaultToggleButton}" Command="{Binding ElementName=root, Path=DataContext.OpenLaunchGameCommand}">
-                        <ToggleButton.CommandParameter>
-                            <MultiBinding Converter="{StaticResource PatchSelectionConverter}">
-                                <Binding Path="RealPatch"></Binding>
-                                <Binding RelativeSource="{RelativeSource self}"></Binding>
-                            </MultiBinding>
-                        </ToggleButton.CommandParameter>
-                    </ToggleButton>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <ItemsControl x:Name="IC_PatchSelectionControl" ItemsSource="{Binding Path=AllPatches}">
+                <ItemsControl.Resources>
+                    <conv:PatchSelectionConverter x:Key="PatchSelectionConverter"></conv:PatchSelectionConverter>
+                </ItemsControl.Resources>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" VerticalAlignment="Stretch"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ToggleButton Content="{Binding Name}" Tag="ControlButton" Style="{StaticResource DefaultToggleButton}" Command="{Binding ElementName=root, Path=DataContext.OpenLaunchGameCommand}">
+                            <ToggleButton.CommandParameter>
+                                <MultiBinding Converter="{StaticResource PatchSelectionConverter}">
+                                    <Binding Path="RealPatch"></Binding>
+                                    <Binding RelativeSource="{RelativeSource self}"></Binding>
+                                </MultiBinding>
+                            </ToggleButton.CommandParameter>
+                        </ToggleButton>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Button Style="{StaticResource InvertedDefaultButton}" ToolTip="{x:Static p:Resources.PlayControl_DownloadAllPatchesTooltip}" VerticalAlignment="Top" Height="28" Command="{Binding DownloadAllPatches}">
+                <fa:FontAwesome Icon="Download"></fa:FontAwesome>
+            </Button>
+        </StackPanel>
+        
         <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" x:Name="DP_InnerDock"></DockPanel>
     </Grid>
 </UserControl>

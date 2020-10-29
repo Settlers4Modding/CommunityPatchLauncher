@@ -80,7 +80,7 @@ namespace CommunityPatchLauncher.ViewModels
 
                 contentDock = panel;
 
-                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl());
+                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 OpenModViewCommand = new OpenControlToPanel(contentDock, new ModUserControl(currentWindow));
                 OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));

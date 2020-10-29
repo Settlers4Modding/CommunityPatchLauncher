@@ -143,7 +143,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public BaseViewModel() : this(null)
         {
-            
+
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace CommunityPatchLauncher.ViewModels
                 currentWindow.MouseDown += CurrentWindow_MouseDown;
                 currentWindow.MouseUp += CurrentWindow_MouseUp;
                 currentWindow.MouseMove += CurrentWindow_MouseMove;
-                
+
                 SetDefaultWindowStyle();
                 SwitchGuiLanguage();
                 WindowTitle = currentWindow.Title;
@@ -255,7 +255,7 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 if (currentWindow.WindowState == WindowState.Maximized)
                 {
-                    
+
                     lastMousePosition = new Position(e.GetPosition(currentWindow));
                 }
                 currentWindow.DragMove();
