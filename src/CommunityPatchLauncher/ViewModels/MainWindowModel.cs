@@ -75,7 +75,7 @@ namespace CommunityPatchLauncher.ViewModels
 
                 contentDock = panel;
 
-                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl());
+                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));

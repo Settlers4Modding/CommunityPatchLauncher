@@ -437,6 +437,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download all the patches for the offline mode.
+        /// </summary>
+        public static string PlayControl_DownloadAllPatchesTooltip {
+            get {
+                return ResourceManager.GetString("PlayControl_DownloadAllPatchesTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fast Speed (2).
         /// </summary>
         public static string PlayControl_FastSpeed {

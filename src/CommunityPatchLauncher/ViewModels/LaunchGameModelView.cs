@@ -137,7 +137,7 @@ namespace CommunityPatchLauncher.ViewModels
         {
             IProgressCommand launchGameCommand = new LaunchGameCommand(settingManager);
             ICommand toggleCommand = new ToggleVisiblityCommand(parent, "PB_DownloadState");
-            launchGameCommand.progressChanged += (sender, data) =>
+            launchGameCommand.ProgressChanged += (sender, data) =>
             {
                 float percent = (float)data.CurrentWorkload / (float)data.TotalWorkload;
                 ProgressValue = (int)(percent * 100);

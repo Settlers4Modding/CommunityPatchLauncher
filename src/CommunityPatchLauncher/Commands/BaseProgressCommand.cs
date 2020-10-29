@@ -9,25 +9,25 @@ namespace CommunityPatchLauncher.Commands
     abstract class BaseProgressCommand : BaseDataCommand, IProgressCommand
     {
         /// <inheritdoc/>
-        public event EventHandler<TaskProgressChanged> progressChanged;
+        public event EventHandler<TaskProgressChanged> ProgressChanged;
 
         /// <summary>
         /// This method will trigger the progress changed event
         /// </summary>
         /// <param name="currentWorkload">The current workload</param>
         /// <param name="totalWorkload">The total workload</param>
-        protected void ProgressChanged(int currentWorkload, int totalWorkload)
+        protected void TriggerProgressChanged(int currentWorkload, int totalWorkload)
         {
-            ProgressChanged(new TaskProgressChanged(totalWorkload, currentWorkload));
+            TriggerProgressChanged(new TaskProgressChanged(totalWorkload, currentWorkload));
         }
 
         /// <summary>
         /// This method will trigger the progress changed event
         /// </summary>
         /// <param name="progressChange">The progress changed data set</param>
-        protected void ProgressChanged(TaskProgressChanged progressChange)
+        protected void TriggerProgressChanged(TaskProgressChanged progressChange)
         {
-            EventHandler<TaskProgressChanged> handler = progressChanged;
+            EventHandler<TaskProgressChanged> handler = ProgressChanged;
             handler?.Invoke(this, progressChange);
         }
     }

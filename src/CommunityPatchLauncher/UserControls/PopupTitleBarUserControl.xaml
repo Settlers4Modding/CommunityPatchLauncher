@@ -16,7 +16,7 @@
     </UserControl.Resources>
     <Border Margin="0,0,0,5" BorderThickness="0,0,0,1" Style="{StaticResource DefaultBorder}">
         <DockPanel Grid.Row="0" x:Name="TitleBar">
-            <Button Command="{Binding CloseWindowCommand}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
+            <Button Visibility="{Binding CloseVisible}" Command="{Binding CloseWindowCommand}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButton}">
                 <fa:ImageAwesome Icon="Close" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
             <fa:ImageAwesome Icon="{Binding TitleBarIcon}" Style="{StaticResource TitleBarImageAwesomeIcon}" DockPanel.Dock="Left"></fa:ImageAwesome>

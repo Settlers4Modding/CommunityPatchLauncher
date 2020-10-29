@@ -54,7 +54,7 @@ namespace CommunityPatchLauncher.Commands.TaskCommands
                 QueueWorker worker = new QueueWorker(settingManager);
                 worker.ProgressChanged += (sender, data) =>
                 {
-                    ProgressChanged(data);
+                    TriggerProgressChanged(data);
                 };
                 manager.SaveSettings();
                 Task<bool> startTask = worker.AsyncExecuteTasks(taskFactory);
