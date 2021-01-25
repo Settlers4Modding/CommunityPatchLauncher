@@ -32,7 +32,7 @@ Diese Plugins fallen entweder unter die GPLizenz oder LPGLizenz und sind somit k
 Nyfrk Mod API - https://github.com/nyfrk/S4ModApi
 
 Verwendete Plugins : 
-Nexusmod: LINK
+Nexusmod: https://www.nexusmods.com/thesettlers4/mods/
 
 ##  "Editor+"
 - MuffinMario 
