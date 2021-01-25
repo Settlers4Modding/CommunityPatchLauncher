@@ -10,3 +10,8 @@ Changelog: https://github.com/LitzeYT/Settlers4Patch/blob/master/ChangeLogEN.md
 
 # Intellectual Property
 All graphics and text content, as well as all other information in this application, are subject to the applicable intellectual property laws of Blue Byte, Ubisoft or the creators of this modification. All graphics and text content, as well as all other information of this application, may not be reproduced or used in part or in whole without the permission of the respective author or copyright holder. Registered trademark rights were not separately marked as such in the context of the modification or its documentation.
+
+# Spaceholder Plugins
+Blabliblup
+
+Nexusmod Link: https://www.nexusmods.com/thesettlers4/mods/
