@@ -145,7 +145,7 @@
     <value>Yes</value>
   </data>
   <data name="Develop" xml:space="preserve">
-    <value>Latest unstable</value>
+    <value>Newest unstable</value>
   </data>
   <data name="Dialog_GetRemoteNoBuildsFound" xml:space="preserve">
     <value>Could not find any builds on the given branch</value>
@@ -308,7 +308,7 @@ Is your computer offline?</value>
     <value>Reset agreement</value>
   </data>
   <data name="WelcomeWindow_Agree" xml:space="preserve">
-    <value>I did read the aggrement</value>
+    <value>I did read the agreement</value>
   </data>
   <data name="WelcomeWindow_AutoDetect" xml:space="preserve">
     <value>Auto detect</value>
