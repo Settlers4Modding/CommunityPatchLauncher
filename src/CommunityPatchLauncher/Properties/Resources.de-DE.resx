@@ -145,7 +145,7 @@
     <value>Es konnten keine Builds auf dem aktuellen Branch gefunden werden!</value>
   </data>
   <data name="Dialog_UpdateInformationTitle" xml:space="preserve">
-    <value>Updateinformation</value>
+    <value>Updateinformationen</value>
   </data>
   <data name="Dialog_UpdateProblemTitle" xml:space="preserve">
     <value>Es gab ein Problem beim updaten</value>
@@ -163,7 +163,7 @@
     <value>Hilfe</value>
   </data>
   <data name="MainWindow_IntellectualProperty" xml:space="preserve">
-    <value>Gestiges Eigentum</value>
+    <value>Geistiges Eigentum</value>
   </data>
   <data name="MainWindow_Maps" xml:space="preserve">
     <value>Karten</value>
@@ -199,7 +199,7 @@
     <value>Community Patch Launcher</value>
   </data>
   <data name="Message_LocalVersionIsNewer" xml:space="preserve">
-    <value>Deine Lokale version ist neuer oder bereits aktuell</value>
+    <value>Deine lokale Version ist neuer oder bereits aktuelle</value>
   </data>
   <data name="Message_Update" xml:space="preserve">
     <value>Remote Version ist neuer, möchtest du aktualisieren?
@@ -211,7 +211,7 @@ Remote version: {remoteVersion}</value>
     <value>Polnisch</value>
   </data>
   <data name="PlayControl_DownloadAllPatchesTooltip" xml:space="preserve">
-    <value>Lade alle patches für den Offline Modus herunter</value>
+    <value>Lade alle Patches für den Offline Modus herunter</value>
   </data>
   <data name="PlayControl_FastSpeed" xml:space="preserve">
     <value>Schnelle Geschwindigkeit (2)</value>
@@ -229,7 +229,7 @@ Remote version: {remoteVersion}</value>
     <value>Sehr schnelle Geschwindigkeit (3)</value>
   </data>
   <data name="Release" xml:space="preserve">
-    <value>Offizelle Versionen</value>
+    <value>Offizielle Versionen</value>
   </data>
   <data name="ResizeWindow_CustomSize" xml:space="preserve">
     <value>Eigene Größe</value>
