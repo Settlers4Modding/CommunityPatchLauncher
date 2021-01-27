@@ -69,6 +69,6 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
            upload_url: ${{ steps.create_release.outputs.upload_url }}
-           asset_path: ..\Artifacts\LatestDevelopment_CommunityPatchLauncher.zip
+           asset_path: dist/LatestDevelopment_CommunityPatchLauncher.zip
            asset_name: LatestDevelopment_CommunityPatchLauncher.zip
            asset_content_type: application/zip
