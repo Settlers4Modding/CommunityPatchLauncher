@@ -118,7 +118,6 @@ jobs:
           path: |
             upload-artifacts/
    uploadRelease:
-     if: true == false
      name: Upload release
      needs: ["createZip", "createInstaller"]
      runs-on: ubuntu-latest
@@ -149,7 +148,7 @@ jobs:
            draft: true
            prerelease: false
        - name: Upload CommunityPatchLauncher release artifact
-         id: upload-application-release-asset 
+         id: upload-application-release-asset-zip
          uses: actions/upload-release-asset@v1
          env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -158,3 +157,13 @@ jobs:
            asset_path: dist/ZipArtifact/${{ env.ARTIFACT_NAME }}
            asset_name: ${{ env.ARTIFACT_NAME }}
            asset_content_type: application/zip
+       - name: Upload CommunityPatchLauncher release artifact
+         id: upload-application-release-asset-setup
+         uses: actions/upload-release-asset@v1
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+           upload_url: ${{ steps.create_release.outputs.upload_url }}
+           asset_path: dist/InstallerArtifact/setup-CommunityPatchLauncher-v${{ env.RELEASE_VERSION }}.exe
+           asset_name: setup-CommunityPatchLauncher-v${{ env.RELEASE_VERSION }}.exe
+           asset_content_type: application/octet-stream
