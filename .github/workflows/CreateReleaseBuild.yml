@@ -103,7 +103,7 @@ jobs:
          run: echo "RELEASE_VERSION=$(($env:GITHUB_REF -split '/')[-1] -replace ' ','')" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
        - name: Check release version
          run: echo ${{ env.RELEASE_VERSION }}
-       - name: Check release version
+       - name: Create installation file
          run: |
           cd Installer
           iscc /dMyAppVersion="${{ env.RELEASE_VERSION }}" .\InstallationScript.iss
