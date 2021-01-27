@@ -23,7 +23,7 @@ jobs:
        - name: prepare version
          run: |
            echo $RELEASE_VERSION > .\src\CommunityPatchLauncher\Version.txt
-           gc .\src\CommunityPatchLauncher\Version.txt
+           echo (gc .\src\CommunityPatchLauncher\Version.txt)
          shell: powershell
        - name: Build project
          run: |
