@@ -1,12 +1,12 @@
 name: Latest unstable build
 
-on:
-  pull_request:
-    types: [closed] 
+on: push
+  #push:
+    #branches:
+      #- develop
 
 jobs:
-   build:
-     if: github.event.pull_request.merged == true
+   createBuild:
      name: Create latest build artifact
      runs-on: windows-latest
      steps:
@@ -23,15 +23,34 @@ jobs:
            nuget restore
            msbuild /t:Build /p:Configuration=Release
          shell: powershell
-       - name: Create artifacts
+       - name: Move artifact files  
          run: |
-           mkdir ..\Artifacts
-           mkdir ..\Artifacts\CommunityPatchLauncher\
-           mv .\src\CommunityPatchLauncher\bin\Release\** ..\Artifacts\CommunityPatchLauncher\
-           mv LICENSE ..\Artifacts\CommunityPatchLauncher\
-           cd ..\Artifacts\
-           7z a LatestDevelopment_CommunityPatchLauncher.zip .\CommunityPatchLauncher\**
+           mkdir upload-artifacts\
+           mkdir upload-artifacts\CommunityPatchLauncher\
+           mv .\src\CommunityPatchLauncher\bin\Release\** upload-artifacts\CommunityPatchLauncher\
+           mv LICENSE upload-artifacts\CommunityPatchLauncher\
+           mv README.md upload-artifacts\CommunityPatchLauncher\
          shell: powershell
+       - name: Upload build artifact
+         uses: actions/upload-artifact@v2
+         with:
+          name: BuildArtifacts
+          path: |
+            upload-artifacts/
+   uploadRelease:
+     name: Upload release
+     needs: ["createBuild"]
+     runs-on: ubuntu-latest
+     steps:
+       - name: Download artifacts
+         uses: actions/download-artifact@v2
+         with:
+           name: BuildArtifacts
+           path: dist
+       - name: Create zip
+         run: |
+           cd dist/
+           zip -r LatestDevelopment_CommunityPatchLauncher.zip .
        - name: Create Release
          id: create_release
          uses: actions/create-release@v1
@@ -41,7 +60,7 @@ jobs:
            tag_name: ${{ github.ref }}-${{ GITHUB.RUN_NUMBER }}
            release_name: Latest unstable
            body: You cannot update this version from within the application!
-           draft: false
+           draft: true
            prerelease: true
        - name: Upload CommunityPatchLauncher Release Asset
          id: upload-application-release-asset 
