@@ -23,7 +23,7 @@ jobs:
        - name: Setup msbuild
          uses: microsoft/setup-msbuild@v1.0.2
        - name: Prepare version
-         run: echo ${{ env.RELEASE_VERSION }} > | Out-File -FilePath .\src\CommunityPatchLauncher\Version.txt -Encoding utf-8
+         run: echo ${{ env.RELEASE_VERSION }} | Out-File -FilePath .\src\CommunityPatchLauncher\Version.txt -Encoding utf-8
          shell: powershell
        - name: Read version.txt
          id: version-file
