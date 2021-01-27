@@ -17,15 +17,13 @@ jobs:
        - name: Get release tag
          run: echo "RELEASE_VERSION=$(($env:GITHUB_REF -split '/')[-1] -replace ' ','')" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
        - name: Check release version
-         run: |
-           echo $RELEASE_VERSION
-           echo ${{ env.RELEASE_VERSION }}
+         run: echo ${{ env.RELEASE_VERSION }}
        - name: Install nuget
          uses: nuget/setup-nuget@v1
        - name: Setup msbuild
          uses: microsoft/setup-msbuild@v1.0.2
        - name: Prepare version
-         run: echo $RELEASE_VERSION > .\src\CommunityPatchLauncher\Version.txt
+         run: echo ${{ env.RELEASE_VERSION }} > | Out-File -FilePath .\src\CommunityPatchLauncher\Version.txt -Encoding utf-8
          shell: powershell
        - name: Read version.txt
          id: version-file
