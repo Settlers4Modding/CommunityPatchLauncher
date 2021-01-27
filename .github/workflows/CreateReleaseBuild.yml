@@ -20,11 +20,11 @@ jobs:
          uses: nuget/setup-nuget@v1
        - name: Setup msbuild
          uses: microsoft/setup-msbuild@v1.0.2
-       - name: prepare version
-         run: |
-           echo $RELEASE_VERSION > .\src\CommunityPatchLauncher\Version.txt
-           echo (gc .\src\CommunityPatchLauncher\Version.txt)
+       - name: Prepare version
+         run: echo $RELEASE_VERSION > .\src\CommunityPatchLauncher\Version.txt
          shell: powershell
+       - name: Check version
+         run: gc .\src\CommunityPatchLauncher\Version.txt
        - name: Build project
          run: |
            nuget restore
