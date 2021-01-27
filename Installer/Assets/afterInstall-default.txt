@@ -1,1 +1,8 @@
-After install
+After install (EN)
+
+You have successfully installed the Settlers 4 Community Patch Launcher.
+
+We wish you a lot of fun playing Settlers 4 and checking out the new features from the patch.
+To install the Settlers 4 Community Patch please start the Community Patch Launcher and select the version you want to use.
+
+In case there are any issues feel free to contact us here:
