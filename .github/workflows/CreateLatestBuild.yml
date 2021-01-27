@@ -37,7 +37,7 @@ jobs:
           path: |
             upload-artifacts/
    createZip:
-     name: Upload release
+     name: Create zip
      needs: ["createBuild"]
      runs-on: ubuntu-latest   
      steps:
