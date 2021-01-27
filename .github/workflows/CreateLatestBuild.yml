@@ -59,7 +59,7 @@ jobs:
          with:
           name: ZipArtifact
           path: |
-            upload-artifacts/    
+            upload-artifacts/
    uploadRelease:
      name: Upload release
      needs: ["createZip"]
