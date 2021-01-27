@@ -3,9 +3,10 @@ name: Live build
 on:
   push:
     branches:
-     - master
-    tags:
-     - '*.*.*'
+     - feature/adding-installer-support
+    # - master
+    #tags:
+    # - '*.*.*'
 
 jobs:
    createBuild:
@@ -14,8 +15,8 @@ jobs:
      steps:
        - name: Clone repository
          uses: actions/checkout@v2
-         with: 
-           ref: master
+         #with: 
+           #ref: master
        - name: Get release tag
          run: echo "RELEASE_VERSION=$(($env:GITHUB_REF -split '/')[-1] -replace ' ','')" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
        - name: Check release version
@@ -87,9 +88,42 @@ jobs:
           name: ZipArtifact
           path: |
             upload-artifacts/
+   createInstaller:
+     name: Create installer
+     needs: ["createBuild"]
+     runs-on: windows-latest
+     steps:
+       - name: Clone repository
+         uses: actions/checkout@v2
+         #with: 
+           #ref: master
+       - name: Download artifacts
+         uses: actions/download-artifact@v2
+         with:
+           name: BuildArtifact
+           path: dist
+       - name: Get release tag
+         run: echo "RELEASE_VERSION=$(($env:GITHUB_REF -split '/')[-1] -replace ' ','')" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+       - name: Check release version
+         run: echo ${{ env.RELEASE_VERSION }}
+       - name: Check release version
+         run: |
+          cd Installer
+          iscc /dMyAppVersion="${{ env.RELEASE_VERSION }}" .\InstallationScript.iss
+       - name: Move artifact
+         run: |
+           mkdir upload-artifacts/
+           mv dist/Output/* upload-artifacts/
+       - name: Upload build artifact
+         uses: actions/upload-artifact@v2
+         with:
+          name: InstallerArtifact
+          path: |
+            upload-artifacts/
    uploadRelease:
+     if: true == false
      name: Upload release
-     needs: ["createZip"]
+     needs: ["createZip", "createInstaller"]
      runs-on: ubuntu-latest
      steps:
        - name: Download artifacts
