@@ -24,6 +24,7 @@ jobs:
          run: |
            nuget restore
            echo $RELEASE_VERSION > .\src\CommunityPatchLauncher\Version.txt
+           gc .\src\CommunityPatchLauncher\Version.txt
            msbuild /t:Build /p:Configuration=Release
          shell: powershell
        - name: Move artifact files  
