@@ -113,7 +113,7 @@ jobs:
        - name: Move artifact
          run: |
            mkdir upload-artifacts/
-           mv dist/Output/* upload-artifacts/
+           mv Installer/Output/* upload-artifacts/
        - name: Upload build artifact
          uses: actions/upload-artifact@v2
          with:
