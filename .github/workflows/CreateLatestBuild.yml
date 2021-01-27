@@ -1,9 +1,9 @@
 name: Latest unstable build
 
-on: push
-  #push:
-    #branches:
-      #- develop
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
    createBuild:
@@ -78,7 +78,7 @@ jobs:
            tag_name: ${{ github.ref }}-${{ GITHUB.RUN_NUMBER }}
            release_name: Latest unstable
            body: You cannot update this version from within the application!
-           draft: true
+           draft: false
            prerelease: true
        - name: Upload CommunityPatchLauncher develop artifact
          id: upload-application-release-asset 
