@@ -20,11 +20,14 @@ jobs:
          uses: nuget/setup-nuget@v1
        - name: Setup msbuild
          uses: microsoft/setup-msbuild@v1.0.2
+       - name: prepare version
+         run: |
+           echo $RELEASE_VERSION > .\src\CommunityPatchLauncher\Version.txt
+           gc .\src\CommunityPatchLauncher\Version.txt
+         shell: powershell
        - name: Build project
          run: |
            nuget restore
-           echo $RELEASE_VERSION > .\src\CommunityPatchLauncher\Version.txt
-           gc .\src\CommunityPatchLauncher\Version.txt
            msbuild /t:Build /p:Configuration=Release
          shell: powershell
        - name: Move artifact files  
