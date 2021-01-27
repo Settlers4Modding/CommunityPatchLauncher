@@ -1,9 +1,9 @@
 name: Live build
 
-on:
-  push:
-    tags:
-     - '*.*.*'
+on: push
+  #push:
+    #tags:
+     #- '*.*.*'
 
 jobs:
    createBuild:
