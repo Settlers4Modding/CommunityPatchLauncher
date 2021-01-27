@@ -5,8 +5,8 @@ on:
     branches:
      - feature/adding-installer-support
     # - master
-    #tags:
-    # - '*.*.*'
+    tags:
+     - '*.*.*'
 
 jobs:
    createBuild:
