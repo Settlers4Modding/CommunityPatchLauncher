@@ -51,10 +51,10 @@ jobs:
           name: BuildArtifacts
           path: |
             upload-artifacts/
-   uploadRelease:
-     name: Upload release
+   createZip:
+     name: Create zip
      needs: ["createBuild"]
-     runs-on: ubuntu-latest
+     runs-on: ubuntu-latest   
      steps:
        - name: Download artifacts
          uses: actions/download-artifact@v2
@@ -75,6 +75,35 @@ jobs:
          run: |
            cd dist/
            zip -r $ARTIFACT_NAME .
+       - name: Move artifact
+         run: |
+           mkdir upload-artifacts/
+           mv dist/* upload-artifacts/
+       - name: Upload build artifact
+         uses: actions/upload-artifact@v2
+         with:
+          name: ZipArtifact
+          path: |
+            upload-artifacts/
+   uploadRelease:
+     name: Upload release
+     needs: ["createZip"]
+     runs-on: ubuntu-latest
+     steps:
+       - name: Download artifacts
+         uses: actions/download-artifact@v2
+         with:
+           path: dist
+       - name: Get release tag
+         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+       - name: Create zip artifact name
+         run: echo "ARTIFACT_NAME=${RELEASE_VERSION}_CommunityPatchLauncher.zip" >> $GITHUB_ENV
+       - name: Check release version
+         run: |
+           echo $RELEASE_VERSION
+           echo ${{ env.RELEASE_VERSION }}
+           echo $ARTIFACT_NAME
+           echo ${{ env.ARTIFACT_NAME }}
        - name: Create Release
          id: create_release
          uses: actions/create-release@v1
@@ -93,6 +122,6 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
            upload_url: ${{ steps.create_release.outputs.upload_url }}
-           asset_path: dist/${{ env.ARTIFACT_NAME }}
+           asset_path: dist/ZipArtifact/${{ env.ARTIFACT_NAME }}
            asset_name: ${{ env.ARTIFACT_NAME }}
            asset_content_type: application/zip
