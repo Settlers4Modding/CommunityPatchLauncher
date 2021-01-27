@@ -2,9 +2,6 @@ name: Live build
 
 on:
   push:
-    branches:
-     - feature/adding-installer-support
-    # - master
     tags:
      - '*.*.*'
 
