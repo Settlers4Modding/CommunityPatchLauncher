@@ -41,7 +41,6 @@ jobs:
        - name: Move artifact files  
          run: |
            mkdir upload-artifacts\
-           mv .\src\CommunityPatchLauncher\Version.txt upload-artifacts\
            mv .\src\CommunityPatchLauncher\bin\Release\** upload-artifacts\
            mv LICENSE upload-artifacts\
            mv README.md upload-artifacts\
