@@ -4,7 +4,7 @@ on: push #[pull_request]
 
 jobs:
    checkBuild:
-     name: Check pull request - Build
+     name: Check Build
      runs-on: windows-latest
      steps:
        - name: Clone repository
@@ -33,7 +33,7 @@ jobs:
           path: |
             upload-artifacts/
    checkInstaller:
-     name: Check pull request - Build
+     name: Check Installer
      needs: ["checkBuild"]
      runs-on: windows-latest
      steps:
