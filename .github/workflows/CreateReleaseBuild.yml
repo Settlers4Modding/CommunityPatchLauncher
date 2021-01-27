@@ -82,5 +82,5 @@ jobs:
          with:
            upload_url: ${{ steps.create_release.outputs.upload_url }}
            asset_path: dist/${{ env.ARTIFACT_NAME }}
-           asset_name: ${{ $ARTIFACT_NAME }}
+           asset_name: ${{ env.ARTIFACT_NAME }}
            asset_content_type: application/zip
