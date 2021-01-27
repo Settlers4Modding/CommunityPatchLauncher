@@ -22,9 +22,9 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\The Settlers IV Community Patch
 DefaultGroupName=The Settlers IV
 AllowNoIcons=yes
-InfoBeforeFile=.\Assets\beforeInstall-default.txt
-InfoAfterFile=.\Assets\afterInstall-default.txt
-OutputBaseFilename=Setup-{#MyProjectName}-{#MyAppVersion}
+InfoBeforeFile=.\assets\beforeInstall-default.txt
+InfoAfterFile=.\assets\afterInstall-default.txt
+OutputBaseFilename=setup-{#MyProjectName}-v{#MyAppVersion}
 SetupIconFile=..\src\CommunityPatchLauncher\s4communitypatch.ico
 Compression=lzma
 SolidCompression=yes
@@ -33,7 +33,7 @@ DisableWelcomePage=False
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
-Name: "german"; MessagesFile: "compiler:Languages\German.isl"; InfoBeforeFile: "Assets\beforeInstall-german.txt"; InfoAfterFile: "Assets\afterInstall-german.txt"   
+Name: "german"; MessagesFile: "compiler:Languages\German.isl"; InfoBeforeFile: "assets\beforeInstall-german.txt"; InfoAfterFile: "assets\afterInstall-german.txt"   
 Name: "polish"; MessagesFile: "compiler:Languages\Polish.isl"
 
 
