@@ -8,4 +8,4 @@ With the Community Patch Launcher you can download and install the latest versio
 
 In case of technical issues with the installation or the launcher please check on https://github.com/Settlers4Modding/CommunityPatchLauncher/issues if the problem is already known!
 
-In case of questions, suggestions or issues the community behind the patch is always happy to support!
+In case of questions, suggestions or issues the community behind the patch is always happy to support here: https://discord.gg/Vhs3e5N

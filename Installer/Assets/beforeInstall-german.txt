@@ -8,4 +8,4 @@ Mit dem Community Patch Launcher kann die aktuellste Version des Siedler 4 Commu
 
 Im Falle eines technischen Problems mit der Installation sollte zunächst auf der Seite https://github.com/Settlers4Modding/CommunityPatchLauncher/issues geprüft werden, ob dieses bereits bekannt ist.
 
-Bei Fragen, Vorschlägen oder Problemen ist die Community hinter dem Patch gerne zum Helfen bereit!
+Bei Fragen, Vorschlägen oder Problemen ist die Community hinter dem Patch hier gerne zum Helfen bereit: https://discord.gg/Vhs3e5N
