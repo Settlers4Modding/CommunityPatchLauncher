@@ -61,7 +61,7 @@ jobs:
            body: You cannot update this version from within the application!
            draft: false
            prerelease: true
-       - name: Upload CommunityPatchLauncher Release Asset
+       - name: Upload CommunityPatchLauncher develop artifact
          id: upload-application-release-asset 
          uses: actions/upload-release-asset@v1
          env:
