@@ -70,7 +70,7 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
            tag_name: ${{ github.ref }}-${{ GITHUB.RUN_NUMBER }}
-           release_name: Release - Version ${{ $RELEASE_VERSION }}
+           release_name: Release - Version ${{ env.RELEASE_VERSION }}
            body: Body goes here!
            draft: true
            prerelease: false
