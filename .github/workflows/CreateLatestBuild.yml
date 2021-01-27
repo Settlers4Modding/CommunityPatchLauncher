@@ -1,12 +1,12 @@
 name: Latest unstable build
 
 on:
-  pull_request:
-    types: [closed] 
+  push:
+    branches:
+      - develop
 
 jobs:
-   build:
-     if: github.event.pull_request.merged == true
+   createBuild:
      name: Create latest build artifact
      runs-on: windows-latest
      steps:
@@ -23,15 +23,52 @@ jobs:
            nuget restore
            msbuild /t:Build /p:Configuration=Release
          shell: powershell
-       - name: Create artifacts
+       - name: Move artifact files  
          run: |
-           mkdir ..\Artifacts
-           mkdir ..\Artifacts\CommunityPatchLauncher\
-           mv .\src\CommunityPatchLauncher\bin\Release\** ..\Artifacts\CommunityPatchLauncher\
-           mv LICENSE ..\Artifacts\CommunityPatchLauncher\
-           cd ..\Artifacts\
-           7z a LatestDevelopment_CommunityPatchLauncher.zip .\CommunityPatchLauncher\**
+           mkdir upload-artifacts\
+           mv .\src\CommunityPatchLauncher\bin\Release\** upload-artifacts\
+           mv LICENSE upload-artifacts\
+           mv README.md upload-artifacts\
          shell: powershell
+       - name: Upload build artifact
+         uses: actions/upload-artifact@v2
+         with:
+          name: BuildArtifact
+          path: |
+            upload-artifacts/
+   createZip:
+     name: Create zip
+     needs: ["createBuild"]
+     runs-on: ubuntu-latest   
+     steps:
+       - name: Download artifacts
+         uses: actions/download-artifact@v2
+         with:
+           name: BuildArtifact
+           path: dist
+       - name: Create zip
+         run: |
+           cd dist/
+           zip -r LatestDevelopment_CommunityPatchLauncher.zip .
+       - name: Move artifact
+         run: |
+           mkdir upload-artifacts/
+           mv dist/LatestDevelopment_CommunityPatchLauncher.zip upload-artifacts/
+       - name: Upload build artifact
+         uses: actions/upload-artifact@v2
+         with:
+          name: ZipArtifact
+          path: |
+            upload-artifacts/
+   uploadRelease:
+     name: Upload release
+     needs: ["createZip"]
+     runs-on: ubuntu-latest
+     steps:
+       - name: Download artifacts
+         uses: actions/download-artifact@v2
+         with:
+           path: dist
        - name: Create Release
          id: create_release
          uses: actions/create-release@v1
@@ -43,13 +80,13 @@ jobs:
            body: You cannot update this version from within the application!
            draft: false
            prerelease: true
-       - name: Upload CommunityPatchLauncher Release Asset
+       - name: Upload CommunityPatchLauncher develop artifact
          id: upload-application-release-asset 
          uses: actions/upload-release-asset@v1
          env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
            upload_url: ${{ steps.create_release.outputs.upload_url }}
-           asset_path: ..\Artifacts\LatestDevelopment_CommunityPatchLauncher.zip
+           asset_path: dist/ZipArtifact/LatestDevelopment_CommunityPatchLauncher.zip
            asset_name: LatestDevelopment_CommunityPatchLauncher.zip
            asset_content_type: application/zip
