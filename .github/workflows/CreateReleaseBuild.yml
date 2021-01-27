@@ -1,9 +1,9 @@
 name: Live build
 
-on: push
-  #push:
-    #tags:
-     #- '*.*.*'
+on:
+  push:
+    tags:
+     - '*.*.*'
 
 jobs:
    createBuild:
@@ -23,8 +23,14 @@ jobs:
        - name: Prepare version
          run: echo $RELEASE_VERSION > .\src\CommunityPatchLauncher\Version.txt
          shell: powershell
-       - name: Check version
-         run: gc .\src\CommunityPatchLauncher\Version.txt
+       - name: Read version.txt
+         id: version-file
+         uses: juliangruber/read-file-action@v1
+         with:
+           path: .\src\CommunityPatchLauncher\Version.txt
+       - name: Show version
+         run: echo ${{ steps.version-file.outputs.content }}
+         shell: powershell
        - name: Build project
          run: |
            nuget restore
