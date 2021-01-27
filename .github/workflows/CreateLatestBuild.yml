@@ -1,9 +1,9 @@
 name: Latest unstable build
 
-on:
-  push:
-    branches:
-      - develop
+on: push
+  #push:
+    #branches:
+      #- develop
 
 jobs:
    createBuild:
@@ -36,10 +36,10 @@ jobs:
           name: BuildArtifacts
           path: |
             upload-artifacts/
-   uploadRelease:
+   createZip:
      name: Upload release
      needs: ["createBuild"]
-     runs-on: ubuntu-latest
+     runs-on: ubuntu-latest   
      steps:
        - name: Download artifacts
          uses: actions/download-artifact@v2
@@ -50,6 +50,25 @@ jobs:
          run: |
            cd dist/
            zip -r LatestDevelopment_CommunityPatchLauncher.zip .
+       - name: Move artifact
+         run: |
+           mkdir upload-artifacts/
+           mv LatestDevelopment_CommunityPatchLauncher.zip upload-artifacts/
+       - name: Upload build artifact
+         uses: actions/upload-artifact@v2
+         with:
+          name: ZipArtifact
+          path: |
+            upload-artifacts/    
+   uploadRelease:
+     name: Upload release
+     needs: ["createZip"]
+     runs-on: ubuntu-latest
+     steps:
+       - name: Download artifacts
+         uses: actions/download-artifact@v2
+         with:
+           path: dist
        - name: Create Release
          id: create_release
          uses: actions/create-release@v1
@@ -59,7 +78,7 @@ jobs:
            tag_name: ${{ github.ref }}-${{ GITHUB.RUN_NUMBER }}
            release_name: Latest unstable
            body: You cannot update this version from within the application!
-           draft: false
+           draft: true
            prerelease: true
        - name: Upload CommunityPatchLauncher develop artifact
          id: upload-application-release-asset 
@@ -68,6 +87,6 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
            upload_url: ${{ steps.create_release.outputs.upload_url }}
-           asset_path: dist/LatestDevelopment_CommunityPatchLauncher.zip
+           asset_path: dist/ZipArtifact/LatestDevelopment_CommunityPatchLauncher.zip
            asset_name: LatestDevelopment_CommunityPatchLauncher.zip
            asset_content_type: application/zip
