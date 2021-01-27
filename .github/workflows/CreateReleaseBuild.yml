@@ -15,7 +15,7 @@ jobs:
          #with: 
            #ref: master
        - name: Get release tag
-         run: echo "RELEASE_VERSION=$(($env:GITHUB_REF -split '/')[-1] -replace ' ','')" >> $GITHUB_ENV
+         run: echo "RELEASE_VERSION=$(($env:GITHUB_REF -split '/')[-1] -replace ' ','')" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
        - name: Check release version
          run: |
            echo $RELEASE_VERSION
