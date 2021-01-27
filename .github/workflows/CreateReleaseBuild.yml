@@ -16,6 +16,10 @@ jobs:
            #ref: master
        - name: Get release tag
          run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+       - name: Check release version
+         run: |
+           echo $RELEASE_VERSION
+           echo ${{ env.RELEASE_VERSION }}
        - name: Install nuget
          uses: nuget/setup-nuget@v1
        - name: Setup msbuild
@@ -39,6 +43,7 @@ jobs:
        - name: Move artifact files  
          run: |
            mkdir upload-artifacts\
+           mv .\src\CommunityPatchLauncher\Version.txt upload-artifacts\
            mv .\src\CommunityPatchLauncher\bin\Release\** upload-artifacts\
            mv LICENSE upload-artifacts\
            mv README.md upload-artifacts\
