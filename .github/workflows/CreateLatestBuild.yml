@@ -26,10 +26,9 @@ jobs:
        - name: Move artifact files  
          run: |
            mkdir upload-artifacts\
-           mkdir upload-artifacts\CommunityPatchLauncher\
-           mv .\src\CommunityPatchLauncher\bin\Release\** upload-artifacts\CommunityPatchLauncher\
-           mv LICENSE upload-artifacts\CommunityPatchLauncher\
-           mv README.md upload-artifacts\CommunityPatchLauncher\
+           mv .\src\CommunityPatchLauncher\bin\Release\** upload-artifacts\
+           mv LICENSE upload-artifacts\
+           mv README.md upload-artifacts\
          shell: powershell
        - name: Upload build artifact
          uses: actions/upload-artifact@v2
