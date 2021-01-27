@@ -1,7 +1,7 @@
 name: Check build
 
 on: [push, workflow_dispatch]
-  - #[pull_request]:
+  #- [pull_request]:
 
 jobs:
    checkBuild:
