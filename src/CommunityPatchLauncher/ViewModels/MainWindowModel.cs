@@ -23,6 +23,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand OpenChangelogCommand { get; private set; }
 
         /// <summary>
+        /// The command used to open the about page
+        /// </summary>
+        public ICommand OpenAboutCommand { get; private set; }
+
+        /// <summary>
         /// The command used to open the disclamer
         /// </summary>
         public ICommand OpenDisclamerCommand { get; private set; }
@@ -84,6 +89,7 @@ namespace CommunityPatchLauncher.ViewModels
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
                 OpenDisclamerCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Agreement.md"));
+                OpenAboutCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("About.md"));
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
