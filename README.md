@@ -1,7 +1,24 @@
+![Live build](https://github.com/Settlers4Modding/CommunityPatchLauncher/workflows/Live%20build/badge.svg)
+![Latest unstable build](https://github.com/Settlers4Modding/CommunityPatchLauncher/workflows/Latest%20unstable%20build/badge.svg)
+
+- [Community Patch Launcher](#community-patch-launcher)
+  - [FAQ](#faq)
+  - [How to install this application](#how-to-install-this-application)
+    - [Pre-Requirements](#pre-requirements)
+    - [Installation](#installation)
+      - [Video Installation guide](#video-installation-guide)
+      - [Written installation guide](#written-installation-guide)
+  - [Login functionality](#login-functionality)
+  - [Social Media and Support](#social-media-and-support)
+  - [Have fun playing!](#have-fun-playing)
 # Community Patch Launcher
 
 This project is a launcher application for the Settler IV Community patch.
 The whole source code can be found in our [Git].
+
+## FAQ
+
+Please find a list of frequently asked questions [here](https://github.com/Settlers4Modding/CommunityPatchLauncher/wiki/FAQ)!
 
 ## How to install this application
 
@@ -20,7 +37,7 @@ If you prefer a written guide you can find it directly after.
 
 This video currently demonstrates the installation with the old launcher which will be replaced soon.
 Currently, this is the only possibility to use the Community Patch. Once the new launcher is released officially, there will be a new video.
-[![Settlers 4 Community Patch Installation Guide](/.github/Assets/VideoGuideold.JPG)](https://www.youtube.com/watch?v=145BOFN9m2s "Settlers 4 Community Patch Installation Guide")
+[![Settlers 4 Community Patch Installation Guide](/.github/assets/VideoGuideold.JPG)](https://www.youtube.com/watch?v=145BOFN9m2s "Settlers 4 Community Patch Installation Guide")
 Download of the [old Launcher].
 
 #### Written installation guide
@@ -35,15 +52,11 @@ Download of the [old Launcher].
 
 **Step 5:** Select the Installation folder of your Settlers 4 History Edition. This should normally work by hitting the "auto detect" button.
 
-![Agreement.JPG](/.github/Assets/Agreement.JPG "Settlers 5 is not a real Settlers game!")
+![Agreement.JPG](/.github/assets/Agreement.JPG "Settlers 5 is not a real Settlers game!")
 
 If not you can click on the "three dots" button and select the location yourself.
 
 Step 6: Press OK ;-)
-
-## FAQ
-
-Please find a list of frequently asked questions [here](https://github.com/Settlers4Modding/CommunityPatchLauncher/wiki/FAQ)!
 
 ## Login functionality
 
@@ -61,7 +74,9 @@ You can log in by hitting the button *(Coming soon)*.
 
 ## Social Media and Support
 
-You can find other players and most of the devs in our Discord: [![Join the chat at https://discord.gg/Vhs3e5N](https://img.shields.io/discord/644571557276155905?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Vhs3e5N)
+You can find other players and most of the devs in our Discord: 
+
+[![Join the chat at https://discord.gg/Vhs3e5N](https://img.shields.io/discord/644571557276155905?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Vhs3e5N)
 
 If you want to help us working on the Community Patch meet us there and let us know!
 If you find any bug or want to request a new feature please check our [issue tracker] and add it if you can't find it already or join us in Discord. There we have a dedicated chat for suggestions and discussion.
