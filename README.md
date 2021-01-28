@@ -61,7 +61,9 @@ You can log in by hitting the button *(Coming soon)*.
 
 ## Social Media and Support
 
-You can find other players and most of the devs in our Discord: [![Join the chat at https://discord.gg/Vhs3e5N](https://img.shields.io/discord/644571557276155905?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Vhs3e5N)
+You can find other players and most of the devs in our Discord: 
+
+[![Join the chat at https://discord.gg/Vhs3e5N](https://img.shields.io/discord/644571557276155905?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Vhs3e5N)
 
 If you want to help us working on the Community Patch meet us there and let us know!
 If you find any bug or want to request a new feature please check our [issue tracker] and add it if you can't find it already or join us in Discord. There we have a dedicated chat for suggestions and discussion.
