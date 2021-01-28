@@ -1,3 +1,6 @@
+![Live build](https://github.com/Settlers4Modding/CommunityPatchLauncher/workflows/Live%20build/badge.svg?branch=0.0.0)
+![Latest unstable build](https://github.com/Settlers4Modding/CommunityPatchLauncher/workflows/Latest%20unstable%20build/badge.svg)
+
 # Community Patch Launcher
 
 This project is a launcher application for the Settler IV Community patch.
