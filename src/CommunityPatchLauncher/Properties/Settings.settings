@@ -1,0 +1,54 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CommunityPatchLauncher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="VersionInformation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://raw.githubusercontent.com/LitzeYT/Settlers4Patch/master/Version.ini</Value>
+    </Setting>
+    <Setting Name="Normal" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Fast" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="Faster" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="Testing" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="PatchPosition" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">1124076</Value>
+    </Setting>
+    <Setting Name="GamePathRegKeyPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Ubisoft\Launcher\Installs\11785</Value>
+    </Setting>
+    <Setting Name="GamePathRegKeyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">InstallDir</Value>
+    </Setting>
+    <Setting Name="ReportIssueLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/Settlers4Modding/CommunityPatchLauncher/issues</Value>
+    </Setting>
+    <Setting Name="PreInstall" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PreInstall.txt</Value>
+    </Setting>
+    <Setting Name="ReporistoryOwner" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Settlers4Modding</Value>
+    </Setting>
+    <Setting Name="RepositoryName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CommunityPatchLauncher</Value>
+    </Setting>
+    <Setting Name="DevelopFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">develop-([0-9]+)</Value>
+    </Setting>
+    <Setting Name="ReleaseFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">v(\d+\.\d+\.\d+)</Value>
+    </Setting>
+    <Setting Name="PatchAppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CommunityLauncherPatcher.exe</Value>
+    </Setting>
+    <Setting Name="WindowMoveDistance" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

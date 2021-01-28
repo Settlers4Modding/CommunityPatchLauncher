@@ -1,0 +1,60 @@
+name: Check build
+
+on: [workflow_dispatch, pull_request]
+
+jobs:
+   checkBuild:
+     name: Check Build
+     runs-on: windows-latest
+     steps:
+       - name: Clone repository
+         uses: actions/checkout@v2
+       - name: Install nuget
+         uses: nuget/setup-nuget@v1
+       - name: Nuget restore
+         run: nuget restore
+         shell: powershell
+       - name: Setup msbuild
+         uses: microsoft/setup-msbuild@v1.0.2
+       - name: Build project
+         run: msbuild /t:Build /p:Configuration=Release
+         shell: powershell
+       - name: Move artifact files  
+         run: |
+           mkdir upload-artifacts\
+           mv .\src\CommunityPatchLauncher\bin\Release\** upload-artifacts\
+           mv LICENSE upload-artifacts\
+           mv README.md upload-artifacts\
+         shell: powershell
+       - name: Upload build artifact
+         uses: actions/upload-artifact@v2
+         with:
+          name: BuildArtifact
+          path: |
+            upload-artifacts/
+   checkInstaller:
+     name: Check Installer
+     needs: ["checkBuild"]
+     runs-on: windows-latest
+     steps:
+       - name: Clone repository
+         uses: actions/checkout@v2
+       - name: Download artifacts
+         uses: actions/download-artifact@v2
+         with:
+           name: BuildArtifact
+           path: dist
+       - name: Create installation file
+         run: |
+          cd Installer
+          iscc /dMyAppVersion="0.0.0" .\InstallationScript.iss
+       - name: Move artifact
+         run: |
+           mkdir upload-artifacts/
+           mv Installer/Output/* upload-artifacts/
+       - name: Upload build artifact
+         uses: actions/upload-artifact@v2
+         with:
+          name: InstallerArtifact
+          path: |
+            upload-artifacts/
