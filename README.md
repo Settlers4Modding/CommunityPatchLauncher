@@ -22,7 +22,7 @@ If you prefer a written guide you can find it directly after.
 
 This video currently demonstrates the installation with the old launcher which will be replaced soon.
 Currently, this is the only possibility to use the Community Patch. Once the new launcher is released officially, there will be a new video.
-[![Settlers 4 Community Patch Installation Guide](/.github/Assets/VideoGuideold.JPG)](https://www.youtube.com/watch?v=145BOFN9m2s "Settlers 4 Community Patch Installation Guide")
+[![Settlers 4 Community Patch Installation Guide](/.github/assets/VideoGuideold.JPG)](https://www.youtube.com/watch?v=145BOFN9m2s "Settlers 4 Community Patch Installation Guide")
 Download of the [old Launcher].
 
 #### Written installation guide
@@ -37,7 +37,7 @@ Download of the [old Launcher].
 
 **Step 5:** Select the Installation folder of your Settlers 4 History Edition. This should normally work by hitting the "auto detect" button.
 
-![Agreement.JPG](/.github/Assets/Agreement.JPG "Settlers 5 is not a real Settlers game!")
+![Agreement.JPG](/.github/assets/Agreement.JPG "Settlers 5 is not a real Settlers game!")
 
 If not you can click on the "three dots" button and select the location yourself.
 
