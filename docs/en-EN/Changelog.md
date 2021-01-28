@@ -1,8 +1,12 @@
 # Changelog
 
-## Showcase - Version 0.0.2
+## Version 0.0.1 (WIP)
 
 ### New
+
+#### Installer
+
+* We did create a installer for the launcher
 
 #### Main Window
 
@@ -39,6 +43,9 @@
 
 ### Changed
 
+#### Welcome Window
+
+* Agreement placeholder is replaced
 #### Play window
 
 * The tab control on top will now highlight the last clicked patch version
