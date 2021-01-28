@@ -56,6 +56,9 @@
     <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Octokit, Version=0.48.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octokit.0.48.0\lib\net46\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="SharpCompress, Version=0.26.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpCompress.0.26.0\lib\net46\SharpCompress.dll</HintPath>
     </Reference>
@@ -98,6 +101,8 @@
     </ApplicationDefinition>
     <Compile Include="BehaviorExtensions\BrowserBehavior.cs" />
     <Compile Include="BindingData\AvailableLanguages.cs" />
+    <Compile Include="BindingData\Container\UpdateChannelContainer.cs" />
+    <Compile Include="BindingData\Container\UpdateChannelModel.cs" />
     <Compile Include="BindingData\Container\LanguageItem.cs" />
     <Compile Include="BindingData\Container\Patch.cs" />
     <Compile Include="BindingData\Container\WindowSize.cs" />
@@ -106,12 +111,20 @@
     <Compile Include="BindingData\Converter\InvertBoolConverter.cs" />
     <Compile Include="BindingData\Converter\LaunchGameConverter.cs" />
     <Compile Include="BindingData\Converter\MultiBoolConverter.cs" />
+    <Compile Include="BindingData\Converter\PatchSelectionConverter.cs" />
     <Compile Include="BindingData\Converter\ResizeWindowConverter.cs" />
     <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="BindingData\WindowsSizeService.cs" />
+    <Compile Include="Commands\TaskCommands\DownloadAllPatchesCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenLinkCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\ReloadObjectCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\UpdateApplicationCommand.cs" />
+    <Compile Include="Commands\BaseProgressCommand.cs" />
+    <Compile Include="Commands\DataCommands\SetYesNoEnumCommand.cs" />
+    <Compile Include="Commands\DataContainer\PatchSelectionData.cs" />
+    <Compile Include="Commands\IProgressCommand.cs" />
     <Compile Include="Commands\Settings\SaveSettingsCommand.cs" />
     <Compile Include="Commands\Settings\AcceptAgreementCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
@@ -141,12 +154,16 @@
     <Compile Include="Commands\Settings\SaveWindowSizeCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\SelectFolderCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\SwitchGuiLanguage.cs" />
-    <Compile Include="Commands\ApplicationWindow\ToggleVisibilityCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\ToggleSubGroupVisibilityCommand.cs" />
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Commands\ApplicationWindow\ToggleVisiblityCommand.cs" />
+    <Compile Include="DataContainers\Position.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlWithoutScrollStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />
     <Compile Include="Enums\SpeedModes.cs" />
+    <Compile Include="Enums\UpdateBranchEnum.cs" />
+    <Compile Include="Enums\YesNoEnum.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
     <Compile Include="Documentation\Factories\LocalDocumentManagerFactory.cs" />
     <Compile Include="Properties\Resources.pl.Designer.cs">
@@ -162,33 +179,47 @@
     <Compile Include="Settings\Factories\WpfPropertySettingManagerFactory.cs" />
     <Compile Include="Settings\Reader\IniStringReader.cs" />
     <Compile Include="Settings\Reader\WpfPropertyReader.cs" />
+    <Compile Include="Tasks\CloseApplicationTask.cs" />
     <Compile Include="Tasks\CopyFileToGameFolder.cs" />
     <Compile Include="Tasks\DownloadAllPatches.cs" />
     <Compile Include="Tasks\DownloadCommunityPatchTask.cs" />
     <Compile Include="Tasks\DownloadFileTask.cs" />
+    <Compile Include="Tasks\Update\DownloadLauncherUpdate.cs" />
     <Compile Include="Tasks\DownloadVersionInformation.cs" />
     <Compile Include="Tasks\Factories\DownloadOfflineFilesFactory.cs" />
     <Compile Include="Tasks\Factories\LaunchGameFactory.cs" />
+    <Compile Include="Tasks\Factories\UpdateClientFactory.cs" />
     <Compile Include="Tasks\PatchGameSpeedTask.cs" />
     <Compile Include="Tasks\UnzipAndExtractCommunityPatchTask.cs" />
+    <Compile Include="Tasks\Update\GetGitHubVersion.cs" />
+    <Compile Include="Tasks\Update\GetLocalVersion.cs" />
+    <Compile Include="Tasks\Update\GetLocalVersionFromSettings.cs" />
+    <Compile Include="Tasks\Update\PatchLauncher.cs" />
+    <Compile Include="Tasks\Update\UpdatePopupTask.cs" />
+    <Compile Include="Tasks\Update\WriteCurrentVersionToSettings.cs" />
+    <Compile Include="UserControls\BrowserUserControl.xaml.cs">
+      <DependentUpon>BrowserUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ComingSoonControl.xaml.cs">
       <DependentUpon>ComingSoonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InfoPopup.xaml.cs">
+      <DependentUpon>InfoPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\LaunchGameUserControl.xaml.cs">
       <DependentUpon>LaunchGameUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MapsUserControl.xaml.cs" />
-    <Compile Include="UserControls\MatchmakingUserControl.xaml.cs" />
-    <Compile Include="UserControls\NewsUserControl.xaml.cs" />
     <Compile Include="UserControls\PatchVersionSelectionUserControl.xaml.cs">
       <DependentUpon>PatchVersionSelectionUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PopupTitleBarUserControl.xaml.cs">
       <DependentUpon>PopupTitleBarUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RankedUserControl.xaml.cs" />
     <Compile Include="Tasks\StartGameTask.cs" />
     <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
+    <Compile Include="UserControls\ProgressBarDialog.xaml.cs">
+      <DependentUpon>ProgressBarDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ResizeWindowUserControl.xaml.cs">
       <DependentUpon>ResizeWindowUserControl.xaml</DependentUpon>
     </Compile>
@@ -196,18 +227,26 @@
       <DependentUpon>SettingsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SpecialTypes\IPopupContent.cs" />
+    <Compile Include="UserControls\SpecialTypes\IPopupReturnDataContent.cs" />
     <Compile Include="UserControls\TitleBarUseControl.xaml.cs">
       <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\YesNoDialog.xaml.cs">
+      <DependentUpon>YesNoDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BrowserModelView.cs" />
+    <Compile Include="ViewModels\InfoPopupViewModel.cs" />
     <Compile Include="ViewModels\LaunchGameModelView.cs" />
     <Compile Include="ViewModels\PatchVersionSelectionViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="ViewModels\PopupWindowsViewModel.cs" />
+    <Compile Include="ViewModels\ProgressBarDialogViewModel.cs" />
     <Compile Include="ViewModels\ResizeWindowViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SpecialViews\IViewModelReloadable.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
+    <Compile Include="ViewModels\YesNoViewModel.cs" />
     <Compile Include="Windows\PopupWindow.xaml.cs">
       <DependentUpon>PopupWindow.xaml</DependentUpon>
     </Compile>
@@ -218,25 +257,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\BrowserUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ComingSoonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\InfoPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\LaunchGameUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\MapsUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\MatchmakingUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\NewsUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\PatchVersionSelectionUserControl.xaml">
       <SubType>Designer</SubType>
@@ -246,9 +281,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\RankedUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="UserControls\ProgressBarDialog.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ResizeWindowUserControl.xaml">
       <SubType>Designer</SubType>
@@ -259,6 +294,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\TitleBarUseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\YesNoDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -297,6 +336,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Version.txt" />
     <EmbeddedResource Include="Properties\Resources.pl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.pl.Designer.cs</LastGenOutput>
@@ -344,8 +384,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy /Y /E /I "$(SolutionDir)src\CommunityLauncherPatcher\bin\$(ConfigurationName)\*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>IF EXIST "$(ProjectDir)$(OutDir)docs" RMDIR /S /Q "$(ProjectDir)$(OutDir)docs"

@@ -9,10 +9,14 @@ namespace CommunityPatchLauncher.UserControls
     /// </summary>
     public partial class PatchVersionSelectionUserControl : UserControl
     {
-        public PatchVersionSelectionUserControl()
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="parentWindow">The parent window for this class</param>
+        public PatchVersionSelectionUserControl(Window parentWindow)
         {
             InitializeComponent();
-            DataContext = new PatchVersionSelectionViewModel(this);
+            DataContext = new PatchVersionSelectionViewModel(parentWindow, this);
         }
 
         /// <summary>

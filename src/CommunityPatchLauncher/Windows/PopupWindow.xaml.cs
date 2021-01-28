@@ -37,11 +37,16 @@ namespace CommunityPatchLauncher.Windows
         /// <param name="title">The title of the window</param>
         /// <param name="icon">The icon to use in the titlebar</param>
         /// <param name="parameter">The parameter to use</param>
-        public PopupWindow(UserControl content, string title, FontAwesomeIcon icon, object parameter)
+        public PopupWindow(UserControl content, string title, FontAwesomeIcon icon, object parameter) : this(content, title, FontAwesomeIcon.None, true, parameter)
+        {
+
+        }
+
+        public PopupWindow(UserControl content, string title, FontAwesomeIcon icon, bool closeable, object parameter)
         {
             InitializeComponent();
             Title = title;
-            DataContext = new PopupWindowsViewModel(this, content, icon, parameter);
+            DataContext = new PopupWindowsViewModel(this, content, icon, closeable, parameter);
             this.Closing += PopupWindow_Closing;
         }
 

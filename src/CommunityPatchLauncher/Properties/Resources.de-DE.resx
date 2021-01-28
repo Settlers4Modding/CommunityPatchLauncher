@@ -126,8 +126,32 @@
   <data name="Default_LanguageLabel" xml:space="preserve">
     <value>Sprache:</value>
   </data>
+  <data name="Default_No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
   <data name="Default_Save" xml:space="preserve">
     <value>Speichern</value>
+  </data>
+  <data name="Default_UpdateApplication" xml:space="preserve">
+    <value>Programm aktualisieren</value>
+  </data>
+  <data name="Default_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Develop" xml:space="preserve">
+    <value>Neuste ungetestete Versionen</value>
+  </data>
+  <data name="Dialog_GetRemoteNoBuildsFound" xml:space="preserve">
+    <value>Es konnten keine Builds auf dem aktuellen Branch gefunden werden!</value>
+  </data>
+  <data name="Dialog_UpdateInformationTitle" xml:space="preserve">
+    <value>Updateinformationen</value>
+  </data>
+  <data name="Dialog_UpdateProblemTitle" xml:space="preserve">
+    <value>Es gab ein Problem beim updaten</value>
+  </data>
+  <data name="Dialog_UpgradeTitle" xml:space="preserve">
+    <value>Möchtest du aktualisieren?</value>
   </data>
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>
@@ -135,8 +159,11 @@
   <data name="MainWindow_About" xml:space="preserve">
     <value>Über</value>
   </data>
+  <data name="MainWindow_Help" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
   <data name="MainWindow_IntellectualProperty" xml:space="preserve">
-    <value>Gestiges Eigentum</value>
+    <value>Geistiges Eigentum</value>
   </data>
   <data name="MainWindow_Maps" xml:space="preserve">
     <value>Karten</value>
@@ -156,8 +183,14 @@
   <data name="MainWindow_Ranked" xml:space="preserve">
     <value>Ranked</value>
   </data>
+  <data name="MainWindow_ReportIssue" xml:space="preserve">
+    <value>Fehler melden</value>
+  </data>
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="MainWindow_StartSettle" xml:space="preserve">
+    <value>Siedeln</value>
   </data>
   <data name="MainWindow_Tools" xml:space="preserve">
     <value>Extras</value>
@@ -165,29 +198,44 @@
   <data name="MainWindow_WindowTitle" xml:space="preserve">
     <value>Community Patch Launcher</value>
   </data>
+  <data name="Message_LocalVersionIsNewer" xml:space="preserve">
+    <value>Deine lokale Version ist neuer oder bereits aktuelle</value>
+  </data>
+  <data name="Message_Update" xml:space="preserve">
+    <value>Remote Version ist neuer, möchtest du aktualisieren?
+
+Lokale version: {localVersion}
+Remote version: {remoteVersion}</value>
+  </data>
   <data name="pl" xml:space="preserve">
     <value>Polnisch</value>
   </data>
+  <data name="PlayControl_DownloadAllPatchesTooltip" xml:space="preserve">
+    <value>Lade alle Patches für den Offline Modus herunter</value>
+  </data>
   <data name="PlayControl_FastSpeed" xml:space="preserve">
-    <value>Schnelle Spielgeschwindigkeit (2)</value>
+    <value>Schnelle Geschwindigkeit (2)</value>
   </data>
   <data name="PlayControl_Launch" xml:space="preserve">
     <value>Spiel starten</value>
   </data>
   <data name="PlayControl_NormalSpeed" xml:space="preserve">
-    <value>Normale Spielgeschwindigkeit (1)</value>
+    <value>Normale Geschwindigkeit (1)</value>
   </data>
   <data name="PlayControl_TestingSpeed" xml:space="preserve">
-    <value>Test Spielgeschwindigkeit (60)</value>
+    <value>Test Geschwindigkeit (60)</value>
   </data>
   <data name="PlayControl_VeryFastSpeed" xml:space="preserve">
-    <value>Sehr schnelle Spielgeschwindigkeit (3)</value>
+    <value>Sehr schnelle Geschwindigkeit (3)</value>
+  </data>
+  <data name="Release" xml:space="preserve">
+    <value>Offizielle Versionen</value>
   </data>
   <data name="ResizeWindow_CustomSize" xml:space="preserve">
     <value>Eigene Größe</value>
   </data>
   <data name="ResizeWindow_HeightTooltip" xml:space="preserve">
-    <value>Fenster höhe eintragen</value>
+    <value>Fenster Höhe eintragen</value>
   </data>
   <data name="ResizeWindow_NewSize" xml:space="preserve">
     <value>Eigene Größe angeben</value>
@@ -200,6 +248,12 @@
   </data>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Fenster breite eintragen</value>
+  </data>
+  <data name="SettingsWindow_UpdateBranch" xml:space="preserve">
+    <value>Update Quelle:</value>
+  </data>
+  <data name="SettingWindow_DownloadFolder" xml:space="preserve">
+    <value>Download Ordner:</value>
   </data>
   <data name="SettingWindow_OpenDownloadFolder" xml:space="preserve">
     <value>Downloads Ordner öffnen</value>
@@ -224,5 +278,8 @@
   </data>
   <data name="WelcomeWindow_Title" xml:space="preserve">
     <value>Willkommen</value>
+  </data>
+  <data name="WelcomWindow_GameFolder" xml:space="preserve">
+    <value>Spielverzeichnis:</value>
   </data>
 </root>

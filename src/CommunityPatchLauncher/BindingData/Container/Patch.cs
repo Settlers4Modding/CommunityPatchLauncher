@@ -24,7 +24,7 @@ namespace CommunityPatchLauncher.BindingData.Container
         /// <param name="realPatch">The real patch to use</param>
         public Patch(AvailablePatches realPatch)
         {
-            
+
             char lastChar = ' ';
             int currentPosition = 0;
             List<int> spacePositions = new List<int>();

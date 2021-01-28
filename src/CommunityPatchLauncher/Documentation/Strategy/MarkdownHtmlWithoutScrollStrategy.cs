@@ -15,7 +15,8 @@ namespace CommunityPatchLauncher.Documentation.Strategy
             html += "<meta http-equiv='X - UA - Compatible' content='IE = edge'>";
             html += GetCssLink();
             html += "</head><body scroll='no'>";
-            html += Markdown.ToHtml(rawData);
+            MarkdownPipeline pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
+            html += Markdown.ToHtml(rawData, pipeline);
             html += "</body>";
             return html;
         }

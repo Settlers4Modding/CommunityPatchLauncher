@@ -1,6 +1,5 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using System.IO;
-using System.Windows.Forms;
 
 namespace CommunityPatchLauncher.Commands.DataCommands
 {
@@ -18,15 +17,16 @@ namespace CommunityPatchLauncher.Commands.DataCommands
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
-			CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-			dialog.IsFolderPicker = true;
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
 
-			CommonFileDialogResult result = dialog.ShowDialog();
-			if (result == CommonFileDialogResult.Ok) {
-				string filePath = dialog.FileName + "\\";
-				data = File.Exists(filePath + "S4_Main.exe") ? filePath : "";
-				ExecutionDone();
-			}
-		}
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result == CommonFileDialogResult.Ok)
+            {
+                string filePath = dialog.FileName + "\\";
+                data = File.Exists(filePath + "S4_Main.exe") ? filePath : "";
+                ExecutionDone();
+            }
+        }
     }
 }

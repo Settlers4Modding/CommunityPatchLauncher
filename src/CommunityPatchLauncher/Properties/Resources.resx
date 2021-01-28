@@ -129,11 +129,43 @@
   <data name="Default_LanguagePl" xml:space="preserve">
     <value>Polish</value>
   </data>
+  <data name="Default_No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="Default_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="Default_Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="Default_UpdateApplication" xml:space="preserve">
+    <value>Update Application</value>
+  </data>
+  <data name="Default_Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Develop" xml:space="preserve">
+    <value>Newest unstable</value>
+  </data>
+  <data name="Dialog_GetRemoteNoBuildsFound" xml:space="preserve">
+    <value>Could not find any builds on the given branch</value>
+  </data>
+  <data name="Dialog_GetRemoteTimeout" xml:space="preserve">
+    <value>Seems like there was a timeout or you did lost the Internet connection</value>
+  </data>
+  <data name="Dialog_GetRemoteVersionError" xml:space="preserve">
+    <value>There was an error while getting the remote version
+
+{exception}</value>
+  </data>
+  <data name="Dialog_UpdateInformationTitle" xml:space="preserve">
+    <value>Update information</value>
+  </data>
+  <data name="Dialog_UpdateProblemTitle" xml:space="preserve">
+    <value>Problem while trying to update</value>
+  </data>
+  <data name="Dialog_UpgradeTitle" xml:space="preserve">
+    <value>Do you want to upgrade?</value>
   </data>
   <data name="MainWindow_About" xml:space="preserve">
     <value>About</value>
@@ -180,11 +212,17 @@
   <data name="MainWindow_Ranked" xml:space="preserve">
     <value>Ranked</value>
   </data>
+  <data name="MainWindow_ReportIssue" xml:space="preserve">
+    <value>Report issue</value>
+  </data>
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="MainWindow_SocialMedia" xml:space="preserve">
     <value>Social Media</value>
+  </data>
+  <data name="MainWindow_StartSettle" xml:space="preserve">
+    <value>Settle</value>
   </data>
   <data name="MainWindow_Team" xml:space="preserve">
     <value>Team</value>
@@ -194,6 +232,23 @@
   </data>
   <data name="MainWindow_Tools" xml:space="preserve">
     <value>Tools</value>
+  </data>
+  <data name="Message_LocalVersionIsNewer" xml:space="preserve">
+    <value>Your local version is newer or up to date</value>
+  </data>
+  <data name="Message_Update" xml:space="preserve">
+    <value>Remote version is newer do you want to upgrade?
+
+Local version: {localVersion}
+Remote version: {remoteVersion}</value>
+  </data>
+  <data name="Message_VersionUpdateWarning" xml:space="preserve">
+    <value>Could not get local or remote version!
+
+Is your computer offline?</value>
+  </data>
+  <data name="PlayControl_DownloadAllPatchesTooltip" xml:space="preserve">
+    <value>Download all the patches for the offline mode</value>
   </data>
   <data name="PlayControl_FastSpeed" xml:space="preserve">
     <value>Fast Speed (2)</value>
@@ -209,6 +264,9 @@
   </data>
   <data name="PlayControl_VeryFastSpeed" xml:space="preserve">
     <value>Very Fast Speed (3)</value>
+  </data>
+  <data name="Release" xml:space="preserve">
+    <value>Release</value>
   </data>
   <data name="ResizeWindow_CustomSize" xml:space="preserve">
     <value>Custom size</value>
@@ -228,6 +286,12 @@
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Enter window width</value>
   </data>
+  <data name="SettingsWindow_UpdateBranch" xml:space="preserve">
+    <value>Update Branch:</value>
+  </data>
+  <data name="SettingWindow_CheckForUpdateOnStartup" xml:space="preserve">
+    <value>Check for update on Startup</value>
+  </data>
   <data name="SettingWindow_DownloadFolder" xml:space="preserve">
     <value>Download folder:</value>
   </data>
@@ -244,7 +308,7 @@
     <value>Reset agreement</value>
   </data>
   <data name="WelcomeWindow_Agree" xml:space="preserve">
-    <value>I did read the aggrement</value>
+    <value>I did read the agreement</value>
   </data>
   <data name="WelcomeWindow_AutoDetect" xml:space="preserve">
     <value>Auto detect</value>

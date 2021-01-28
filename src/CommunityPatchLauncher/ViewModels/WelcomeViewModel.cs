@@ -9,8 +9,6 @@ using CommunityPatchLauncher.Windows;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
-using CommunityPatchLauncherFramework.Settings.Factories;
-using CommunityPatchLauncherFramework.Settings.Manager;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -44,7 +42,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// Command to use if you accept the agreement
         /// </summary>
         public ICommand AcceptAgreement { get; set; }
-        
+
         /// <summary>
         /// The game folder to use
         /// </summary>
@@ -66,7 +64,7 @@ namespace CommunityPatchLauncher.ViewModels
                         gameFolder += "/";
                     }
                 }
-                
+
                 FolderSet = Directory.Exists(gameFolder) && File.Exists(gameFolder + "S4_Main.exe");
                 RaisePropertyChanged("GameFolder");
             }
@@ -81,10 +79,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public bool Agreement
         {
-            get
-            {
-                return aggreement;
-            }
+            get => aggreement;
             set
             {
                 aggreement = value;
@@ -124,7 +119,8 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// The currently selected language
         /// </summary>
-        public LanguageItem SelectedLanguage {
+        public LanguageItem SelectedLanguage
+        {
             get => selectedLanguage;
             set
             {
@@ -162,14 +158,14 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// The text to display in the agreement web browser
         /// </summary>
-        public string AgreementText 
+        public string AgreementText
         {
             get => agreementText;
-            set 
+            set
             {
                 agreementText = value;
                 RaisePropertyChanged("AgreementText");
-            } 
+            }
         }
         /// <summary>
         /// Private variable for the text to show in the agreement web browser
@@ -180,6 +176,24 @@ namespace CommunityPatchLauncher.ViewModels
         /// The current manager to use for loading documents
         /// </summary>
         private readonly DocumentManager documentManager;
+
+        /// <summary>
+        /// Public accessor if we should check for update on startup
+        /// </summary>
+        public bool CheckForUpdateOnStartup
+        {
+            get => checkForUpdateOnStartup;
+            set
+            {
+                checkForUpdateOnStartup = value;
+                RaisePropertyChanged("CheckForUpdateOnStartup");
+            }
+        }
+
+        /// <summary>
+        /// Private accessor if we should check for update on startup
+        /// </summary>
+        private bool checkForUpdateOnStartup;
 
         /// <summary>
         /// Create a new instance of this class
@@ -199,7 +213,7 @@ namespace CommunityPatchLauncher.ViewModels
             RegexSearch = new InstallationFromRegistryCommand();
 
             CloseWindow = new CloseApplicationCommand();
-            
+
 
             FolderSearch.Executed += GameFolderChanged_Executed;
             RegexSearch.Executed += GameFolderChanged_Executed;
@@ -221,7 +235,9 @@ namespace CommunityPatchLauncher.ViewModels
             }
 
             string settingGameFolder = settingManager.GetValue<string>("GameFolder");
+            bool updateOnStartup = settingManager.GetValue<bool>("UpdateOnStartup");
             GameFolder = settingGameFolder ?? string.Empty;
+            CheckForUpdateOnStartup = updateOnStartup;
             Window mainWindow = new MainWindow();
             AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, mainWindow);
             bool accepted = settingManager.GetValue<bool>("AgreementAccepted");

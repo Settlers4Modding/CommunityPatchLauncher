@@ -1,17 +1,17 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
+using CommunityPatchLauncher.Commands;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Documentation.Strategy;
 using CommunityPatchLauncher.Enums;
-using CommunityPatchLauncher.ViewModels.SpecialViews;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
-using CommunityPatchLauncherFramework.Settings.Factories;
-using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Threading;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -76,9 +76,9 @@ namespace CommunityPatchLauncher.ViewModels
         /// Content of the changelog
         /// </summary>
         public string ChangelogContent
-        { 
-            get => changelogContent; 
-            private set 
+        {
+            get => changelogContent;
+            private set
             {
                 changelogContent = value;
                 RaisePropertyChanged("ChangelogContent");
@@ -107,11 +107,51 @@ namespace CommunityPatchLauncher.ViewModels
         private string patchDescription;
 
         /// <summary>
+        /// The progress value for the bar
+        /// </summary>
+        public int ProgressValue
+        {
+            get => progressValue;
+            set
+            {
+                progressValue = value;
+                RaisePropertyChanged("ProgressValue");
+            }
+        }
+
+        /// <summary>
+        /// Private accessor for progress value
+        /// </summary>
+        private int progressValue;
+
+
+        /// <summary>
+        /// The manager factory to use
+        /// </summary>
+        private readonly IDocumentManagerFactory managerFactory;
+
+        /// <summary>
         /// Create a new instance of this view model
         /// </summary>
-        public LaunchGameModelView()
+        public LaunchGameModelView(UserControl parent)
         {
-            LaunchGameCommand = new LaunchGameCommand(settingManager);
+            IProgressCommand launchGameCommand = new LaunchGameCommand(settingManager);
+            ICommand toggleCommand = new ToggleVisiblityCommand(parent, "PB_DownloadState");
+            launchGameCommand.ProgressChanged += (sender, data) =>
+            {
+                float percent = (float)data.CurrentWorkload / (float)data.TotalWorkload;
+                ProgressValue = (int)(percent * 100);
+            };
+            launchGameCommand.Executed += (sender, data) =>
+            {
+                toggleCommand.Execute(string.Empty);
+            };
+            LaunchGameCommand = new MultiCommand(new List<ICommand>() {
+                toggleCommand,
+                launchGameCommand,
+            });
+
+            managerFactory = new LocalDocumentManagerFactory();
         }
 
         /// <summary>
@@ -130,20 +170,19 @@ namespace CommunityPatchLauncher.ViewModels
             }
             Speed = newMode;
 
-            IDocumentManagerFactory managerFactory = new LocalDocumentManagerFactory();
-            DocumentManager documentManager = managerFactory.GetDocumentManager(
-                "en-EN",
-                new MarkdownHtmlConvertStrategy()
-                );
             DocumentManager scrollLessDocumentManager = managerFactory.GetDocumentManager(
                 "en-EN",
                 new MarkdownHtmlWithoutScrollStrategy()
-                );
-            PatchDescription = scrollLessDocumentManager.ReadConvertedDocument(
-                Thread.CurrentThread.CurrentCulture.Name,
+            );
+            string language = settingManager.GetValue<string>("Language");
+            if (language != null)
+            {
+                PatchDescription = scrollLessDocumentManager.ReadConvertedDocument(
+                language,
                 patchToUse.RealPatch.ToString() + ".md"
-                );
-            ChangelogContent = documentManager.ReadConvertedDocument("en-EN", "Placeholder.md");
+            );
+            }
+
         }
 
         /// <summary>
@@ -166,6 +205,12 @@ namespace CommunityPatchLauncher.ViewModels
         public override void Reload()
         {
             settingManager.Reload();
+
+            DocumentManager documentManager = managerFactory.GetDocumentManager(
+                "en-EN",
+                new MarkdownHtmlConvertStrategy()
+                );
+            ChangelogContent = documentManager.ReadConvertedDocument(Thread.CurrentThread.CurrentCulture.Name, "Placeholder.md");
         }
     }
 }

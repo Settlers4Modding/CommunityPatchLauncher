@@ -1,5 +1,11 @@
-﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
+﻿using CommunityPatchLauncher.BindingData.Container;
+using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Enums;
+using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.UserControls;
+using CommunityPatchLauncherFramework.Settings.Factories;
+using CommunityPatchLauncherFramework.Settings.Manager;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,6 +17,11 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     internal class MainWindowModel : BaseViewModel
     {
+        /// <summary>
+        /// The command used to open the changelog
+        /// </summary>
+        public ICommand OpenChangelogCommand { get; private set; }
+
         /// <summary>
         /// The command used if you click on launch game
         /// </summary>
@@ -32,9 +43,19 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand ChangeGroupVisiblity { get; private set; }
 
         /// <summary>
+        /// The command to report a issue
+        /// </summary>
+        public ICommand ReportIssueCommand { get; private set; }
+
+        /// <summary>
         /// The content dock to use
         /// </summary>
         private readonly DockPanel contentDock;
+
+        /// <summary>
+        /// This will be set to true if the update was searched once
+        /// </summary>
+        private bool updateSearched;
 
         /// <summary>
         /// Create a new instance of this model
@@ -43,19 +64,53 @@ namespace CommunityPatchLauncher.ViewModels
         public MainWindowModel(Window window) : base(window)
         {
             IconVisible = false;
+            updateSearched = false;
             CloseWindowCommand = new CloseApplicationCommand();
 
             object dockArea = window.FindName("DP_ContentDock");
             if (dockArea is DockPanel panel)
             {
+                ISettingFactory settingFactory = new WpfPropertySettingManagerFactory();
+                SettingManager wpfSettings = settingFactory.GetSettingsManager();
+
                 contentDock = panel;
 
-                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl());
+                LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
+                OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
+                ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
 
-            ChangeGroupVisiblity = new ToggleVisibilityCommand(currentWindow);
+            ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);
+            window.ContentRendered += (sender, data) =>
+            {
+                if (updateSearched)
+                {
+                    return;
+                }
+                updateSearched = true;
+                CheckForUpdateIfNeeded(window);
+            };
+
+        }
+
+        /// <summary>
+        /// This method will check for updates if needed
+        /// </summary>
+        private void CheckForUpdateIfNeeded(Window parentWindow)
+        {
+            if (settingManager?.GetValue<bool>("UpdateOnStartup") == true)
+            {
+                UpdateBranchEnum updateBranch = UpdateBranchEnum.Release;
+                string updateChannel = settingManager.GetValue<string>("UpdateChannel");
+                if (!Enum.TryParse(updateChannel, out updateBranch))
+                {
+                    return;
+                }
+                ICommand updateApplication = new UpdateApplicationCommand(settingManager, parentWindow);
+                updateApplication.Execute(new UpdateChannelContainer(updateBranch));
+            }
         }
     }
 }

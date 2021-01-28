@@ -15,12 +15,13 @@ namespace CommunityPatchLauncher.BindingData.Converter
         /// <inheritdoc/>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Length != 4)
+            if (values.Length != 5)
             {
                 return null;
             }
             bool agreement = false;
             bool folderSet = false;
+            bool checkForUpdate = false;
             string gameFolder = string.Empty;
             LanguageItem language = null;
 
@@ -44,7 +45,12 @@ namespace CommunityPatchLauncher.BindingData.Converter
                 language = languageItem;
             }
 
-            return new AcceptAgreementData(agreement, folderSet, gameFolder, language);
+            if (values[4] is bool updateCheck)
+            {
+                checkForUpdate = updateCheck;
+            }
+
+            return new AcceptAgreementData(agreement, folderSet, gameFolder, language, checkForUpdate);
         }
 
         /// <inheritdoc/>
