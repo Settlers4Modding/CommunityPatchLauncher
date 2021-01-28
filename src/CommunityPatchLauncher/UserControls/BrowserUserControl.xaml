@@ -16,6 +16,6 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <WebBrowser behavior:BrowserBehavior.Html="{Binding BrowserContent}"></WebBrowser>
+        <WebBrowser x:Name="WB_browser" behavior:BrowserBehavior.Html="{Binding BrowserContent}"></WebBrowser>
     </Grid>
 </UserControl>
