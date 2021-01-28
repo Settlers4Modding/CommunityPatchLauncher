@@ -2,8 +2,6 @@ name: Live build
 
 on:
   push:
-    branches:
-     - master
     tags:
      - '*.*.*'
 
@@ -87,9 +85,41 @@ jobs:
           name: ZipArtifact
           path: |
             upload-artifacts/
+   createInstaller:
+     name: Create installer
+     needs: ["createBuild"]
+     runs-on: windows-latest
+     steps:
+       - name: Clone repository
+         uses: actions/checkout@v2
+         with: 
+           ref: master
+       - name: Download artifacts
+         uses: actions/download-artifact@v2
+         with:
+           name: BuildArtifact
+           path: dist
+       - name: Get release tag
+         run: echo "RELEASE_VERSION=$(($env:GITHUB_REF -split '/')[-1] -replace ' ','')" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+       - name: Check release version
+         run: echo ${{ env.RELEASE_VERSION }}
+       - name: Create installation file
+         run: |
+          cd Installer
+          iscc /dMyAppVersion="${{ env.RELEASE_VERSION }}" .\InstallationScript.iss
+       - name: Move artifact
+         run: |
+           mkdir upload-artifacts/
+           mv Installer/Output/* upload-artifacts/
+       - name: Upload build artifact
+         uses: actions/upload-artifact@v2
+         with:
+          name: InstallerArtifact
+          path: |
+            upload-artifacts/
    uploadRelease:
      name: Upload release
-     needs: ["createZip"]
+     needs: ["createZip", "createInstaller"]
      runs-on: ubuntu-latest
      steps:
        - name: Download artifacts
@@ -118,7 +148,7 @@ jobs:
            draft: true
            prerelease: false
        - name: Upload CommunityPatchLauncher release artifact
-         id: upload-application-release-asset 
+         id: upload-application-release-asset-zip
          uses: actions/upload-release-asset@v1
          env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -127,3 +157,13 @@ jobs:
            asset_path: dist/ZipArtifact/${{ env.ARTIFACT_NAME }}
            asset_name: ${{ env.ARTIFACT_NAME }}
            asset_content_type: application/zip
+       - name: Upload CommunityPatchLauncher release artifact
+         id: upload-application-release-asset-setup
+         uses: actions/upload-release-asset@v1
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+           upload_url: ${{ steps.create_release.outputs.upload_url }}
+           asset_path: dist/InstallerArtifact/setup-CommunityPatchLauncher-v${{ env.RELEASE_VERSION }}.exe
+           asset_name: setup-CommunityPatchLauncher-v${{ env.RELEASE_VERSION }}.exe
+           asset_content_type: application/octet-stream

@@ -11,8 +11,10 @@ using CommunityPatchLauncherFramework.Documentation.Strategy;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace CommunityPatchLauncher.ViewModels
 {
@@ -124,6 +126,8 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private int progressValue;
 
+        private UserControl parent;
+
 
         /// <summary>
         /// The manager factory to use
@@ -135,6 +139,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public LaunchGameModelView(UserControl parent)
         {
+            this.parent = parent;
             IProgressCommand launchGameCommand = new LaunchGameCommand(settingManager);
             ICommand toggleCommand = new ToggleVisiblityCommand(parent, "PB_DownloadState");
             launchGameCommand.ProgressChanged += (sender, data) =>
@@ -150,6 +155,30 @@ namespace CommunityPatchLauncher.ViewModels
                 toggleCommand,
                 launchGameCommand,
             });
+
+            IEnumerable<WebBrowser> browserObjects = FindVisualChildren<WebBrowser>((DependencyObject)parent.Content);
+            foreach (WebBrowser browser in browserObjects)
+            {
+                browser.PreviewKeyDown += (sender, eventArgs) =>
+                {
+                    eventArgs.Handled = eventArgs.Key == Key.F5;
+                };
+                browser.Navigating += (sender, eventArgs) =>
+                {
+                    if (eventArgs.Uri == null)
+                    {
+                        return;
+                    }
+                    string url = eventArgs.Uri.ToString();
+                    url = url.ToLower();
+                    if (url.StartsWith("http"))
+                    {
+                        eventArgs.Cancel = true;
+                        ICommand openLink = new OpenLinkCommand(url);
+                        openLink.Execute(null);
+                    }
+                };
+            }
 
             managerFactory = new LocalDocumentManagerFactory();
         }
@@ -182,7 +211,32 @@ namespace CommunityPatchLauncher.ViewModels
                 patchToUse.RealPatch.ToString() + ".md"
             );
             }
+        }
 
+        /// <summary>
+        /// Find all elements which are child of the depobj with a specific type
+        /// </summary>
+        /// <typeparam name="T">The type to search for</typeparam>
+        /// <param name="depObj">The base object to crawl on</param>
+        /// <returns>A list with all elements of type T</returns>
+        private IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
         }
 
         /// <summary>

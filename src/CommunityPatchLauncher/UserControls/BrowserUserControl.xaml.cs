@@ -15,7 +15,7 @@ namespace CommunityPatchLauncher.UserControls
         public BrowserUserControl(string fileToOpen)
         {
             InitializeComponent();
-            DataContext = new BrowserModelView(fileToOpen);
+            DataContext = new BrowserModelView(fileToOpen, this);
         }
     }
 }

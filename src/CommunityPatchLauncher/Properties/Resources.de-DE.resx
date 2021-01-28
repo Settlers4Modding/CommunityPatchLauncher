@@ -252,6 +252,9 @@ Remote version: {remoteVersion}</value>
   <data name="SettingsWindow_UpdateBranch" xml:space="preserve">
     <value>Update Quelle:</value>
   </data>
+  <data name="SettingWindow_CheckForUpdateOnStartup" xml:space="preserve">
+    <value>Beim Starten nach Updates überprüfen</value>
+  </data>
   <data name="SettingWindow_DownloadFolder" xml:space="preserve">
     <value>Download Ordner:</value>
   </data>

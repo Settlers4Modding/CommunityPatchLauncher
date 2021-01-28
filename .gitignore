@@ -18,6 +18,8 @@
 mono_crash.*
 
 # Build results
+[Dd]ist/
+[iI]nstaller/Output/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
