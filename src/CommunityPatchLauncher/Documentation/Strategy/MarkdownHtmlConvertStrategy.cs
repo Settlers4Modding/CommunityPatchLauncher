@@ -33,7 +33,7 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             string html = "<head><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
             html += "<meta http-equiv='X - UA - Compatible' content='IE = edge'>";
             html += GetCssLink();
-            html += "</head><body>";
+            html += "</head><body oncontextmenu='return false;'>";
             MarkdownPipeline pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
             html += Markdown.ToHtml(rawData, pipeline);
             html += "</body>";
