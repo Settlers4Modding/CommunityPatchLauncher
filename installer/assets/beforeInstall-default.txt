@@ -1,6 +1,4 @@
-Before install (EN)
-
-This assistant will install the Settlers 4 Community Patch Launcher on your computer. This software is not made for commercial purpose. The code is open source and can be found at https://github.com/LitzeYT/Settlers4Patch/.
+﻿This assistant will install the Settlers 4 Community Patch Launcher on your computer. This software is not made for commercial purpose. The code is open source and can be found at https://github.com/LitzeYT/Settlers4Patch/.
 
 The Settlers 4 Community Patch Launcher only works in combination with an installed copy of The Settlers 4 History Edition.
 

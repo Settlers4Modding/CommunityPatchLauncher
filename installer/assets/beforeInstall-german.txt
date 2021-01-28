@@ -1,6 +1,4 @@
-Before install (DE)
-
-Dieser Assistent wird den Siedler 4 Community Patch Launcher auf Ihrem Computer installieren. Die Software ist nicht für die kommerzielle Nutzung vorgesehen. Der Code der Software ist unter https://github.com/LitzeYT/Settlers4Patch/ frei zugänglich.
+﻿Dieser Assistent wird den Siedler 4 Community Patch Launcher auf Ihrem Computer installieren. Die Software ist nicht für die kommerzielle Nutzung vorgesehen. Der Code der Software ist unter https://github.com/LitzeYT/Settlers4Patch/ frei zugänglich.
 
 Der Siedler 4 Community Patch Launcher funktioniert nur in Kombination mit einer installierten Version der Siedler 4 History Edition.
 
