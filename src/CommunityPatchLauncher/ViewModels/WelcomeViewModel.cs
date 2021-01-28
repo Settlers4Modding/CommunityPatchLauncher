@@ -211,17 +211,21 @@ namespace CommunityPatchLauncher.ViewModels
             DependencyObject agreementDisplay = (DependencyObject)window.FindName("WB_Agreement");
             if (agreementDisplay is WebBrowser browser)
             {
-                browser.Navigating += (sender, eventData) =>
+                browser.PreviewKeyDown += (sender, eventArgs) =>
                 {
-                    if (eventData.Uri == null)
+                    eventArgs.Handled = eventArgs.Key == Key.F5;
+                };
+                browser.Navigating += (sender, eventArgs) =>
+                {
+                    if (eventArgs.Uri == null)
                     {
                         return;
                     }
-                    string url = eventData.Uri.ToString();
+                    string url = eventArgs.Uri.ToString();
                     url = url.ToLower();
                     if (url.StartsWith("http"))
                     {
-                        eventData.Cancel = true;
+                        eventArgs.Cancel = true;
                         ICommand openLink = new OpenLinkCommand(url);
                         openLink.Execute(null);
                     }
