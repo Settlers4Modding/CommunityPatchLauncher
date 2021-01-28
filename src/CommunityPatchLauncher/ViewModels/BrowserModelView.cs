@@ -1,7 +1,11 @@
-﻿using CommunityPatchLauncher.Documentation.Factories;
+﻿using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
 {
@@ -42,11 +46,35 @@ namespace CommunityPatchLauncher.ViewModels
         /// Create a new instance of this view model
         /// </summary>
         /// <param name="documentToShow"></param>
-        public BrowserModelView(string documentToShow)
+        public BrowserModelView(string documentToShow, UserControl control)
         {
             IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
             documentManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
             this.documentToShow = documentToShow;
+
+            DependencyObject browserObject = (DependencyObject)control.FindName("WB_browser");
+            if (browserObject is WebBrowser browser)
+            {
+                browser.PreviewKeyDown += (sender, eventArgs) =>
+                {
+                    eventArgs.Handled = eventArgs.Key == Key.F5;
+                };
+                browser.Navigating += (sender, eventArgs) =>
+                {
+                    if (eventArgs.Uri == null)
+                    {
+                        return;
+                    }
+                    string url = eventArgs.Uri.ToString();
+                    url = url.ToLower();
+                    if (url.StartsWith("http"))
+                    {
+                        eventArgs.Cancel = true;
+                        ICommand openLink = new OpenLinkCommand(url);
+                        openLink.Execute(null);
+                    }
+                };
+            }
         }
 
         /// <inheritdoc/>

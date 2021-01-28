@@ -14,6 +14,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -205,7 +206,31 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 new SaveSettingsCommand(settingManager),
                 new RefreshGuiLanguageCommand(currentWindow)
-            }); ;
+            });
+
+            DependencyObject agreementDisplay = (DependencyObject)window.FindName("WB_Agreement");
+            if (agreementDisplay is WebBrowser browser)
+            {
+                browser.PreviewKeyDown += (sender, eventArgs) =>
+                {
+                    eventArgs.Handled = eventArgs.Key == Key.F5;
+                };
+                browser.Navigating += (sender, eventArgs) =>
+                {
+                    if (eventArgs.Uri == null)
+                    {
+                        return;
+                    }
+                    string url = eventArgs.Uri.ToString();
+                    url = url.ToLower();
+                    if (url.StartsWith("http"))
+                    {
+                        eventArgs.Cancel = true;
+                        ICommand openLink = new OpenLinkCommand(url);
+                        openLink.Execute(null);
+                    }
+                };
+            }
 
             firstStart = true;
             CloseWindowCommand = new CloseApplicationCommand();
