@@ -213,6 +213,12 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
 
+        /// <summary>
+        /// Find all elements which are child of the depobj with a specific type
+        /// </summary>
+        /// <typeparam name="T">The type to search for</typeparam>
+        /// <param name="depObj">The base object to crawl on</param>
+        /// <returns>A list with all elements of type T</returns>
         private IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)
