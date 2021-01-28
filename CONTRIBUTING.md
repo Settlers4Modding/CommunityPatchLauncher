@@ -1,6 +1,3 @@
-![Live build](https://github.com/Settlers4Modding/CommunityPatchLauncher/workflows/Live%20build/badge.svg)
-![Latest unstable build](https://github.com/Settlers4Modding/CommunityPatchLauncher/workflows/Latest%20unstable%20build/badge.svg)
-
 # Contributing to Community Patch Launcher
 
 This project is called _**Community Patch**_ and _**Community Patch Launcher**_ and the _Community_ within the name is meant!
