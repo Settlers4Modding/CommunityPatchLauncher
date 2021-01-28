@@ -5,7 +5,8 @@ using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.DataCommands;
 using CommunityPatchLauncher.Commands.Os;
 using CommunityPatchLauncher.Commands.Settings;
-using CommunityPatchLauncherFramework.Settings.Manager;
+using CommunityPatchLauncher.Enums;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
@@ -46,6 +47,11 @@ namespace CommunityPatchLauncher.ViewModels
         /// Command to reset the settings
         /// </summary>
         public ICommand ResetSettingCommand { get; private set; }
+
+        /// <summary>
+        /// This command will update the application
+        /// </summary>
+        public ICommand UpdateApplicationCommand { get; private set; }
 
         /// <summary>
         /// Command to auto detect the game folder
@@ -103,6 +109,69 @@ namespace CommunityPatchLauncher.ViewModels
         private int selectedIndex;
 
         /// <summary>
+        /// Public accessor if we should check for update on startup
+        /// </summary>
+        public bool CheckForUpdateOnStartup
+        {
+            get => checkForUpdateOnStartup;
+            set
+            {
+                checkForUpdateOnStartup = value;
+                settingManager.AddValue("UpdateOnStartup", checkForUpdateOnStartup);
+                RaisePropertyChanged("CheckForUpdateOnStartup");
+            }
+        }
+
+        /// <summary>
+        /// Private accessor if we should check for update on startup
+        /// </summary>
+        private bool checkForUpdateOnStartup;
+
+        /// <summary>
+        /// All the available update channels
+        /// </summary>
+        public IReadOnlyList<UpdateChannelContainer> UpdateChannels { get; private set; }
+
+        /// <summary>
+        /// Currently selected update channel
+        /// </summary>
+        public UpdateChannelContainer SelectedUpdateChannel
+        {
+            get => selectedUpdateChannel;
+            set
+            {
+                selectedUpdateChannel = value;
+                settingManager.AddValue("UpdateChannel", SelectedUpdateChannel.UpdateBranch.ToString());
+                if (selectedUpdateChannel.UpdateBranch == UpdateBranchEnum.Release)
+                {
+                    settingManager.ClearValue("LauncherVersion");
+                }
+                RaisePropertyChanged("SelectedUpdateChannel");
+            }
+        }
+        /// <summary>
+        /// Currently selected private accessor for update channel
+        /// </summary>
+        private UpdateChannelContainer selectedUpdateChannel;
+
+        /// <summary>
+        /// The public accessor for the selected update index
+        /// </summary>
+        public int SelectedUpdateIndex
+        {
+            get => selecteUpdateIndex;
+            set
+            {
+                selecteUpdateIndex = value;
+                RaisePropertyChanged("SelectedUpdateIndex");
+            }
+        }
+        /// <summary>
+        /// The private accessor for the current update index
+        /// </summary>
+        private int selecteUpdateIndex;
+
+        /// <summary>
         /// The path to the game folder
         /// </summary>
         public string GameFolder
@@ -138,7 +207,7 @@ namespace CommunityPatchLauncher.ViewModels
                     downloadFolder = downloadFolder.Replace("\\", "/");
                     settingManager.AddValue("DownloadFolder", downloadFolder);
                 }
-                
+
                 RaisePropertyChanged("DownloadFolder");
             }
         }
@@ -157,14 +226,18 @@ namespace CommunityPatchLauncher.ViewModels
             SelectableLanguages = availableLanguages.GetAvailableLanguages();
             Reload();
 
+            UpdateChannelModel updateChannels = new UpdateChannelModel();
+            UpdateChannels = updateChannels.GetUpdateChannels();
+
             OpenSettingFolderCommand = new OpenFolderCommand(settingManager.SettingFolderPath);
             OpenDownloadFolderCommand = new OpenFolderCommand(DownloadFolder);
             OpenGameFolderCommand = new OpenFolderCommand(GameFolder);
             AutoDetectGameFolder = new InstallationFromRegistryCommand();
             ManuelSelectGameFolder = new InstallationFromManuelSelectionCommand();
             ResetSettingCommand = new ReloadObjectCommand(this);
+            UpdateApplicationCommand = new UpdateApplicationCommand(settingManager, window, true);
             SelectFolder = new SelectFolderCommand();
-            
+
             ResetAgreementCommand = new MultiCommand(new List<ICommand>()
             {
                 new ChangeSettingCommand(settingManager, "AgreementAccepted", true),
@@ -206,14 +279,21 @@ namespace CommunityPatchLauncher.ViewModels
         /// <inheritdoc>/>
         protected override void AddWindowResizeableCommand()
         {
-            
+
         }
 
         /// <inheritdoc>/>
         public override void Reload()
         {
             base.Reload();
-            string languageCode = settingManager?.GetValue<string>("Language");
+            string languageCode = string.Empty;
+            if (settingManager != null)
+            {
+                languageCode = settingManager.GetValue<string>("Language");
+                GameFolder = settingManager.GetValue<string>("GameFolder");
+                DownloadFolder = settingManager.GetValue<string>("DownloadFolder");
+                CheckForUpdateOnStartup = settingManager.GetValue<bool>("UpdateOnStartup");
+            }
             for (int i = 0; i < SelectableLanguages.Count; i++)
             {
                 if (SelectableLanguages[i].IsoCode == languageCode)
@@ -222,8 +302,31 @@ namespace CommunityPatchLauncher.ViewModels
                     break;
                 }
             }
-            GameFolder = settingManager?.GetValue<string>("GameFolder");
-            DownloadFolder = settingManager?.GetValue<string>("DownloadFolder");
+
+            UpdateBranchEnum updateBranchEnum = UpdateBranchEnum.Release;
+            string channelName = settingManager?.GetValue<string>("UpdateChannel");
+            channelName = channelName ?? updateBranchEnum.ToString();
+
+            Enum.TryParse(channelName, out updateBranchEnum);
+            if (UpdateChannels == null)
+            {
+                return;
+            }
+
+            if (updateBranchEnum == UpdateBranchEnum.Release)
+            {
+                settingManager.ClearValue("LauncherVersion");
+                settingManager.SaveSettings();
+            }
+
+            for (int i = 0; i < UpdateChannels.Count; i++)
+            {
+                if (UpdateChannels[i].UpdateBranch == updateBranchEnum)
+                {
+                    SelectedUpdateIndex = i;
+                    break;
+                }
+            }
         }
     }
 }

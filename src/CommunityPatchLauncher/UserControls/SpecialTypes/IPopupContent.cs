@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FontAwesome.WPF;
 using System.Windows;
 
 namespace CommunityPatchLauncher.UserControls.SpecialTypes
 {
     interface IPopupContent
     {
-        void Init(Window currentWindow, object parameter);
+        void Init(Window currentWindow, FontAwesomeIcon icon, object parameter);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
 using System;
+using System.IO;
 using System.Net;
 
 namespace CommunityPatchLauncher.Tasks
@@ -68,7 +69,7 @@ namespace CommunityPatchLauncher.Tasks
                 using (WebClient client = new WebClient())
                 {
                     client.DownloadProgressChanged += Client_DownloadProgressChanged;
-                    client.DownloadFileTaskAsync(url, targetFile).GetAwaiter().GetResult();
+                    client.DownloadFileTaskAsync(sourceFile, targetFile).GetAwaiter().GetResult();
                 }
             }
             catch (Exception)
@@ -82,7 +83,9 @@ namespace CommunityPatchLauncher.Tasks
         /// <inheritdoc/>
         public override bool Execute(bool previousTaskState)
         {
-            DownloadFile(url, @"C:\Users\Xanat\AppData\Local\Temp\testload.txt");
+            string downloadTarget = Path.GetTempPath() + Path.GetRandomFileName();
+            DownloadFile(url, downloadTarget);
+            AddSetting<string>("LatestDownload", downloadTarget);
             TaskDone();
 
             return true;

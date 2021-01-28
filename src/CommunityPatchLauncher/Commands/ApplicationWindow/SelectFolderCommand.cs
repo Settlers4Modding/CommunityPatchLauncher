@@ -1,6 +1,5 @@
-﻿using System.IO;
-using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System.IO;
 
 namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
@@ -18,21 +17,24 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
-			CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-			dialog.IsFolderPicker = true;
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
 
-			if (parameter != null && parameter is string stringParameter) {
-				if (Directory.Exists(stringParameter)) {
-					dialog.DefaultDirectory = stringParameter;
-				}
-			}
+            if (parameter != null && parameter is string stringParameter)
+            {
+                if (Directory.Exists(stringParameter))
+                {
+                    dialog.DefaultDirectory = stringParameter;
+                }
+            }
 
-			CommonFileDialogResult result = dialog.ShowDialog();
-			if (result == CommonFileDialogResult.Ok) {
-				string filePath = dialog.FileName + "\\";
-				data = Directory.Exists(filePath) ? filePath : string.Empty;
-				ExecutionDone();
-			}
-		}
-	}
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result == CommonFileDialogResult.Ok)
+            {
+                string filePath = dialog.FileName + "\\";
+                data = Directory.Exists(filePath) ? filePath : string.Empty;
+                ExecutionDone();
+            }
+        }
+    }
 }

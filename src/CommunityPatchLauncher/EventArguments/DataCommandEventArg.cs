@@ -31,6 +31,15 @@ namespace CommunityPatchLauncher.EventArguments
         }
 
         /// <summary>
+        /// Return the data without any conversion
+        /// </summary>
+        /// <returns>The data object</returns>
+        public virtual object GetData()
+        {
+            return data;
+        }
+
+        /// <summary>
         /// Return the data of this event
         /// </summary>
         /// <typeparam name="T">The type of the data to cast to</typeparam>
@@ -40,6 +49,5 @@ namespace CommunityPatchLauncher.EventArguments
             Type type = typeof(T);
             return data != null && type == data.GetType() ? (T)Convert.ChangeType(data, type) : default(T);
         }
-
     }
 }

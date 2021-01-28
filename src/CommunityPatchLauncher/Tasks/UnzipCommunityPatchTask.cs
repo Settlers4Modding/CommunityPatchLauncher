@@ -1,5 +1,4 @@
-﻿using CommunityPatchLauncherFramework.Settings.Container;
-using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
+﻿using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
 using System;
 using System.IO;
 using System.IO.Compression;
@@ -60,7 +59,7 @@ namespace CommunityPatchLauncher.Tasks
                 }
             }
 
-            Settings.Add(new SettingPair("ExtractPath", unzipFolder));
+            AddSetting("ExtractPath", unzipFolder);
             TaskDone();
             return true;
         }

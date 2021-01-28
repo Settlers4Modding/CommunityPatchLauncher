@@ -39,6 +39,11 @@ namespace CommunityPatchLauncher.ViewModels
         public UserControl Content { get; }
 
         /// <summary>
+        /// Should the close button be visible
+        /// </summary>
+        public Visibility CloseVisible { get; private set; }
+
+        /// <summary>
         /// Create a new instance of this class
         /// </summary>
         /// <param name="window">The window this popup was opened in</param>
@@ -55,7 +60,12 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="content">The content for the popup window</param>
         /// <param name="fontAwesomeIcon">The icon to use for the title bar</param>
         /// <param name="parameter">The parameter for the popup window</param>
-        public PopupWindowsViewModel(Window window, UserControl content, FontAwesomeIcon fontAwesomeIcon, object parameter) : base(window)
+        public PopupWindowsViewModel(Window window, UserControl content, FontAwesomeIcon fontAwesomeIcon, object parameter) : this(window, content, fontAwesomeIcon, true, parameter)
+        {
+
+        }
+
+        public PopupWindowsViewModel(Window window, UserControl content, FontAwesomeIcon fontAwesomeIcon, bool closeable, object parameter) : base(window)
         {
             TitleBarIcon = fontAwesomeIcon;
             Content = content;
@@ -64,7 +74,7 @@ namespace CommunityPatchLauncher.ViewModels
 
             if (content.DataContext is IPopupContent popupContent)
             {
-                popupContent.Init(currentWindow, parameter);
+                popupContent.Init(currentWindow, fontAwesomeIcon, parameter);
             }
 
             if (controlDock is DockPanel dockPanel)
@@ -72,6 +82,14 @@ namespace CommunityPatchLauncher.ViewModels
                 dockPanelToFill = dockPanel;
                 dockPanelToFill.Children.Add(Content);
             }
+
+            if (!closeable)
+            {
+                CloseWindowCommand = null;
+                CloseVisible = Visibility.Collapsed;
+                return;
+            }
+            CloseVisible = Visibility.Visible;
         }
 
         /// <inheritdoc/>

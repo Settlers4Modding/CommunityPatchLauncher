@@ -26,5 +26,29 @@
     <Setting Name="GamePathRegKeyName" Type="System.String" Scope="User">
       <Value Profile="(Default)">InstallDir</Value>
     </Setting>
+    <Setting Name="ReportIssueLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/Settlers4Modding/CommunityPatchLauncher/issues</Value>
+    </Setting>
+    <Setting Name="PreInstall" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PreInstall.txt</Value>
+    </Setting>
+    <Setting Name="ReporistoryOwner" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Settlers4Modding</Value>
+    </Setting>
+    <Setting Name="RepositoryName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CommunityPatchLauncher</Value>
+    </Setting>
+    <Setting Name="DevelopFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">develop-([0-9]+)</Value>
+    </Setting>
+    <Setting Name="ReleaseFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">v(\d+\.\d+\.\d+)</Value>
+    </Setting>
+    <Setting Name="PatchAppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CommunityLauncherPatcher.exe</Value>
+    </Setting>
+    <Setting Name="WindowMoveDistance" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

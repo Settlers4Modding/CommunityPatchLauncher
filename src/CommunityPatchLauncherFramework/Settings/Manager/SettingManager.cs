@@ -2,8 +2,8 @@
 using CommunityPatchLauncherFramework.Settings.Reader;
 using CommunityPatchLauncherFramework.Settings.Writer;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
+using System.Linq;
 
 namespace CommunityPatchLauncherFramework.Settings.Manager
 {
@@ -113,11 +113,20 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
         }
 
         /// <summary>
+        /// This will clear a value from the settings table
+        /// </summary>
+        /// <param name="key"></param>
+        public void ClearValue(string key)
+        {
+            settings?.RemoveWhere((pair) => pair.Key == key);
+        }
+
+        /// <summary>
         /// Reload all the settings
         /// </summary>
         public void Reload()
         {
-            settings = reader.LoadSettings(SettingFilePath);
+            settings = reader?.LoadSettings(SettingFilePath);
             settingsLoaded = true;
         }
 

@@ -18,12 +18,16 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="245*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <uC:TitleBarUseControl></uC:TitleBarUseControl>
-        <Grid Grid.Row="1">
+        <uC:TitleBarUseControl Grid.ColumnSpan="2"></uC:TitleBarUseControl>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".9*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -45,7 +49,7 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenChangelogCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Bullhorn" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
@@ -67,7 +71,7 @@
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Play_Group">
                             <ItemsControl Style="{StaticResource MainCategoryGrid}">
                                 <fa:FontAwesome Icon="Play" Style="{StaticResource MainCategoryFontAwesome}" />
-                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
+                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_StartSettle}"></TextBlock>
                             </ItemsControl>
                         </Button>
                         <StackPanel Visibility="Collapsed" Tag="SubGroup" x:Name="Play_Group">
@@ -145,11 +149,17 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_About}"></TextBlock>
                                 </ItemsControl>
                             </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ReportIssueCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Bug" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_ReportIssue}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </Border>
-            
+
             <DockPanel x:Name="DP_ContentDock" Grid.Column="1"></DockPanel>
         </Grid>
     </Grid>

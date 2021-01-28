@@ -12,7 +12,7 @@ namespace CommunityPatchLauncher.Commands.TaskCommands
     /// <summary>
     /// This command will launch the game
     /// </summary>
-    internal class LaunchGameCommand : BaseDataCommand
+    internal class LaunchGameCommand : BaseProgressCommand
     {
         /// <summary>
         /// The setting manager to use to read the version information from
@@ -52,7 +52,16 @@ namespace CommunityPatchLauncher.Commands.TaskCommands
                     gameData.Speed
                     );
                 QueueWorker worker = new QueueWorker(settingManager);
+                worker.ProgressChanged += (sender, data) =>
+                {
+                    TriggerProgressChanged(data);
+                };
+                manager.SaveSettings();
                 Task<bool> startTask = worker.AsyncExecuteTasks(taskFactory);
+                startTask.ContinueWith((result) =>
+                {
+                    ExecutionDone();
+                });
             }
         }
     }

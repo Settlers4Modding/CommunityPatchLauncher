@@ -1,6 +1,9 @@
-﻿using CommunityPatchLauncher.Enums;
+﻿using CommunityPatchLauncher.Commands.DataContainer;
 using CommunityPatchLauncher.UserControls;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
@@ -10,27 +13,44 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
     internal class OpenLaunchUserControlToPanel : OpenControlToPanel
     {
         /// <summary>
+        /// The container to search the buttons in
+        /// </summary>
+        private readonly DependencyObject container;
+
+        /// <summary>
         /// Create a new instance of this class
         /// </summary>
         /// <param name="panelToUse">The panel to add the control to</param>
         /// <param name="userControl">The user control to add</param>
-        public OpenLaunchUserControlToPanel(DockPanel panelToUse, UserControl userControl) : base(panelToUse, userControl)
+        public OpenLaunchUserControlToPanel(
+            DockPanel panelToUse,
+            UserControl userControl,
+            DependencyObject container
+            ) : base(panelToUse, userControl)
         {
+            this.container = container;
         }
 
         /// <inheritdoc/>
         public override bool CanExecute(object parameter)
         {
-            return userControl is LaunchGameUserControl;
+            return userControl is LaunchGameUserControl && parameter is PatchSelectionData;
         }
 
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
             base.Execute(parameter);
-            if (userControl is LaunchGameUserControl launchGameUserControl && parameter is AvailablePatches patch)
+            if (userControl is LaunchGameUserControl launchGameUserControl && parameter is PatchSelectionData data)
             {
-                launchGameUserControl.SetPatch(patch);
+                IEnumerable<ToggleButton> buttons = FindElementsOfType<ToggleButton>(container, "ControlButton");
+                foreach (ToggleButton button in buttons)
+                {
+                    bool valueToSet = button == data.Button;
+
+                    button.IsChecked = valueToSet;
+                }
+                launchGameUserControl.SetPatch(data.Patch);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using CommunityPatchLauncher.Windows;
+﻿using CommunityPatchLauncher.UserControls.SpecialTypes;
+using CommunityPatchLauncher.Windows;
 using FontAwesome.WPF;
 using System.Collections.Generic;
 using System.Windows;
@@ -9,7 +10,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
     /// <summary>
     /// This command will open a custom popup window
     /// </summary>
-    internal class OpenCustomPopupWindowCommand : BaseCommand
+    internal class OpenCustomPopupWindowCommand : BaseDataCommand
     {
         /// <summary>
         /// Is the popup ready to show
@@ -35,6 +36,11 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// The control to include
         /// </summary>
         private readonly UserControl controlToOpen;
+
+        /// <summary>
+        /// This will tell us if the window should be closeable or not
+        /// </summary>
+        private readonly bool closeable;
 
         /// <summary>
         /// The parameter for the window
@@ -98,7 +104,27 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
             string title,
             UserControl controlToOpen,
             object parameter
-            )
+            ) : this(parentWindow, fontAwesomeIcon, title, controlToOpen, true, parameter)
+        {
+
+        }
+
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="parentWindow">The parent window</param>
+        /// <param name="fontAwesomeIcon">The icon to use for the title bar</param>
+        /// <param name="title">The title to use</param>
+        /// <param name="controlToOpen">The control to open</param>
+        /// <param name="closeable">Should the popup be closeable</param>
+        /// <param name="parameter">The parameter to send to the popup window</param>
+        public OpenCustomPopupWindowCommand(
+            Window parentWindow,
+            FontAwesomeIcon fontAwesomeIcon,
+            string title,
+            UserControl controlToOpen,
+            bool closeable,
+            object parameter)
         {
             if (parentWindow == null || controlToOpen == null)
             {
@@ -109,6 +135,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
             this.fontAwesomeIcon = fontAwesomeIcon;
             this.title = title;
             this.controlToOpen = controlToOpen;
+            this.closeable = closeable;
             this.parameter = parameter;
         }
 
@@ -121,8 +148,10 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
+            data = null;
             if (!CanExecute(parameter))
             {
+                ExecutionDone();
                 return;
             }
 
@@ -136,7 +165,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
                 realParameter = parameterList;
             }
 
-            Window windowToOpen = new PopupWindow(controlToOpen, title, fontAwesomeIcon, realParameter);
+            Window windowToOpen = new PopupWindow(controlToOpen, title, fontAwesomeIcon, closeable, realParameter);
             if (parentWindow.ShowActivated)
             {
                 windowToOpen.Owner = Window.GetWindow(parentWindow);
@@ -144,7 +173,12 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
             }
             windowToOpen?.ShowDialog();
 
+            if (controlToOpen.DataContext is IPopupReturnDataContent returnDataWindow)
+            {
+                data = returnDataWindow.getReturnData();
+            }
 
+            ExecutionDone();
             return;
         }
     }
