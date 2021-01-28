@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="CommunityPatchLauncher.UserControls.ResizeWindowUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
+             xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
+             xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CommunityPatchLauncher;component/Styles/DefaultStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <conv:InvertBoolConverter x:Key="InvertBoolConverter"></conv:InvertBoolConverter>
+            <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"></conv:BoolToVisibilityConverter>
+            <conv:ResizeWindowConverter x:Key="ResizeWindowConverter"></conv:ResizeWindowConverter>
+            <conv:StringToIntConverter x:Key="StringToIntConverter"></conv:StringToIntConverter>
+        </Grid.Resources>
+        <StackPanel Grid.Row="0">
+            <DockPanel Margin="0,0,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource DefaultText}" Text="{x:Static p:Resources.ResizeWindow_SelectNewSize}"></TextBlock>
+                <ComboBox SelectedItem="{Binding SelectedSize}" SelectedIndex="{Binding SelectedIndex}" ItemsSource="{Binding AvailableSizes}" DockPanel.Dock="Right" IsEnabled="{Binding ElementName=CB_CustomStyle, Path=IsChecked, Converter={StaticResource InvertBoolConverter}}" Margin="5,0,0,0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayName}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </DockPanel>
+            <CheckBox x:Name="CB_CustomStyle" IsChecked="{Binding CustomValues}" Content="{x:Static p:Resources.ResizeWindow_CustomSize}" Style="{StaticResource DefaultCheckbox}"></CheckBox>
+            <Border Margin="5" Visibility="{Binding ElementName=CB_CustomStyle, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                <StackPanel Margin="0,5,0,5">
+                    <TextBlock Text="{x:Static p:Resources.ResizeWindow_NewSize}" Style="{StaticResource DefaultText}"></TextBlock>
+                    <Grid Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBox ToolTip="{x:Static p:Resources.ResizeWindow_WidthTooltip}" Text="{Binding CustomWidth, Converter={StaticResource StringToIntConverter}}" x:Name="TB_Width" Grid.Column="0" HorizontalAlignment="Stretch" Style="{StaticResource DefaultTextBox}">
+
+                        </TextBox>
+                        <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="x" Margin="5,0,5,0" Style="{StaticResource DefaultText}"></TextBlock>
+                        <TextBox ToolTip="{x:Static p:Resources.ResizeWindow_HeightTooltip}" Text="{Binding CustomHeight, Converter={StaticResource StringToIntConverter}}" x:Name="TB_Height" Grid.Column="2" HorizontalAlignment="Stretch" Style="{StaticResource DefaultTextBox}"></TextBox>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <DockPanel Grid.Row="2" LastChildFill="False" Margin="0,5,0,0">
+            <Button Content="{x:Static p:Resources.Default_Abort}" Command="{Binding CloseWindowCommand}" DockPanel.Dock="Left" Style="{StaticResource DefaultButton}">
+            </Button>
+            <Button Content="{x:Static p:Resources.Default_Ok}" Command="{Binding ResizeWindowCommand}" DockPanel.Dock="Right" Style="{StaticResource DefaultButton}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource ResizeWindowConverter}">
+                        <Binding ElementName="CB_CustomStyle" Path="IsChecked"></Binding>
+                        <Binding ElementName="TB_Width" Path="Text"></Binding>
+                        <Binding ElementName="TB_Height" Path="Text"></Binding>
+                        <Binding Path="SelectedSize" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+        </DockPanel>
+    </Grid>
+</UserControl>

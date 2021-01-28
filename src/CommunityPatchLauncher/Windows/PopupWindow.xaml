@@ -1,0 +1,27 @@
+﻿<Window x:Class="CommunityPatchLauncher.Windows.PopupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CommunityPatchLauncher.Windows"
+        xmlns:uC="clr-namespace:CommunityPatchLauncher.UserControls"
+        mc:Ignorable="d"
+        Title="PopupWindow" MinHeight="50" MinWidth="300">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CommunityPatchLauncher;component/Styles/DefaultStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border BorderBrush="{StaticResource BrightSelectedColor}" BorderThickness="3">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <uC:PopupTitleBarUserControl Grid.Row="0"></uC:PopupTitleBarUserControl>
+        <DockPanel Grid.Row="1" x:Name="DP_ControlDock" Margin="5"></DockPanel>
+    </Grid>
+    </Border>
+</Window>
