@@ -23,6 +23,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand OpenChangelogCommand { get; private set; }
 
         /// <summary>
+        /// The command used to open the disclamer
+        /// </summary>
+        public ICommand OpenDisclamerCommand { get; private set; }
+
+        /// <summary>
         /// The command used if you click on launch game
         /// </summary>
         public ICommand LaunchGameCommand { get; private set; }
@@ -78,6 +83,7 @@ namespace CommunityPatchLauncher.ViewModels
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
+                OpenDisclamerCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Agreement.md"));
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
             }
