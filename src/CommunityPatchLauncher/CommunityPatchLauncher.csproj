@@ -116,6 +116,7 @@
     <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="BindingData\WindowsSizeService.cs" />
+    <Compile Include="Commands\Os\MoveFolderCommand.cs" />
     <Compile Include="Commands\TaskCommands\DownloadAllPatchesCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenLinkCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />

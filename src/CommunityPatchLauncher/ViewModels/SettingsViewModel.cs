@@ -246,6 +246,7 @@ namespace CommunityPatchLauncher.ViewModels
             });
             SaveSettingCommand = new MultiCommand(new List<ICommand>()
             {
+                new MoveFolderCommand(settingManager.GetValue<string>("DownloadFolder"), false),
                 new SaveSettingsCommand(settingManager),
                 new SwitchGuiLanguage(settingManager),
                 new RefreshGuiLanguageCommand(window)
