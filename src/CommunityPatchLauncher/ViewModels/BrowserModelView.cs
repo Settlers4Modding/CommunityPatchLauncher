@@ -66,8 +66,7 @@ namespace CommunityPatchLauncher.ViewModels
                         return;
                     }
                     string url = eventArgs.Uri.ToString();
-                    url = url.ToLower();
-                    if (url.StartsWith("http"))
+                    if (url.ToLower().StartsWith("http"))
                     {
                         eventArgs.Cancel = true;
                         ICommand openLink = new OpenLinkCommand(url);
