@@ -6,7 +6,7 @@
     public enum AvailablePatches
     {
         HistoryEdition,
-        CommunityPatchLight,
+        HistoryEditionPlus,
         CommunityPatch,
         CommunityPatchPTR,
         CommunityPatchDLC
