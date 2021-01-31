@@ -228,6 +228,10 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
 
+        /// <summary>
+        /// Load the changelog file
+        /// </summary>
+        /// <param name="availablePatch">Load the changelog for the following patch</param>
         private void LoadChangelog(Patch availablePatch)
         {
             string language = settingManager.GetValue<string>("Language");
