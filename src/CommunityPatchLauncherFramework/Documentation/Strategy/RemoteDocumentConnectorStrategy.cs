@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -16,19 +17,14 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
         private string cacheFolder;
 
         /// <summary>
-        /// The last loaded file
-        /// </summary>
-        private string lastFile;
-
-        /// <summary>
         /// Seconds until we request the file again
         /// </summary>
         private readonly int secondsUntilRequest;
 
         /// <summary>
-        /// The last time the file got requested
+        /// Dictionary with the last request times
         /// </summary>
-        private DateTime lastTimeRequested;
+        private readonly Dictionary<string, DateTime> latestRequestDictionary;
 
         /// <summary>
         /// Create a new instance of this class
@@ -36,6 +32,7 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
         public RemoteDocumentConnectorStrategy(int secondsUntilRequest)
         {
             this.secondsUntilRequest = secondsUntilRequest;
+            latestRequestDictionary = new Dictionary<string, DateTime>();
             cacheFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             cacheFolder += "\\SIVCommunityPatchLauncher\\Cache\\";
             if (!Directory.Exists(cacheFolder))
@@ -63,14 +60,15 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             path += "/" + document;
             localFile += "\\" + document;
 
-            if (lastFile != path)
+            if (!latestRequestDictionary.ContainsKey(path))
             {
-                lastFile = path;
-                lastTimeRequested = new DateTime();
+                latestRequestDictionary.Add(path, new DateTime());
             }
-            double diffInSeconds = (lastTimeRequested - DateTime.Now).TotalSeconds;
 
-            if (lastTimeRequested.Year != 1 && diffInSeconds < 60 && diffInSeconds != 0)
+            DateTime lastTimeRequested = latestRequestDictionary[path];
+
+            double diffInSeconds = (DateTime.Now - lastTimeRequested).TotalSeconds;
+            if (lastTimeRequested.Year != 1 && diffInSeconds < secondsUntilRequest && diffInSeconds != 0)
             {
                 returnData = LoadCachedFile(localFile);
                 if (returnData != string.Empty)
@@ -84,7 +82,7 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
                 try
                 {
                     returnData = client.DownloadString(path);
-                    lastTimeRequested = DateTime.Now;
+                    latestRequestDictionary[path] = DateTime.Now;
                 }
                 catch (WebException ex)
                 {
