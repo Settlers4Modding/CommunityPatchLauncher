@@ -38,7 +38,8 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             this.secondsUntilRequest = secondsUntilRequest;
             cacheFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             cacheFolder += "\\SIVCommunityPatchLauncher\\Cache\\";
-            if (!Directory.Exists(cacheFolder)) {
+            if (!Directory.Exists(cacheFolder))
+            {
                 Directory.CreateDirectory(cacheFolder);
             }
         }
@@ -115,7 +116,7 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             return returnData;
         }
 
-        
+
         /// <summary>
         /// Load the cached file
         /// </summary>

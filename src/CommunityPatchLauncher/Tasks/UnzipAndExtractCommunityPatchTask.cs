@@ -6,7 +6,6 @@ using SharpCompress.Archives;
 using SharpCompress.Archives.SevenZip;
 using SharpCompress.Archives.Zip;
 using SharpCompress.Common;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -140,12 +139,12 @@ namespace CommunityPatchLauncher.Tasks
                 return;
             }
 
-            foreach(string directory in Directory.GetDirectories(rootPath))
+            foreach (string directory in Directory.GetDirectories(rootPath))
             {
                 DeleteFolder(directory);
             }
 
-            foreach(string file in Directory.GetFiles(rootPath))
+            foreach (string file in Directory.GetFiles(rootPath))
             {
                 File.Delete(file);
             }

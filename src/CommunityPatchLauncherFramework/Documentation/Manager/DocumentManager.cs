@@ -1,5 +1,4 @@
 ﻿using CommunityPatchLauncherFramework.Documentation.Strategy;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CommunityPatchLauncherFramework.Documentation.Manager
