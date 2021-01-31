@@ -103,7 +103,11 @@ namespace CommunityPatchLauncherFramework.Documentation.Manager
         /// <param name="document">The name of the document to load</param>
         /// <param name="convertStrategy">The convert strategy to use</param>
         /// <returns>The whole document converted with the convert startegy</returns>
-        public string ReadConvertedDocument(string language, string document, IDocumentConvertStrategy convertStrategy)
+        public string ReadConvertedDocument(
+            string language,
+            string document,
+            IDocumentConvertStrategy convertStrategy
+            )
         {
             return convertStrategy?.GetConverted(ReadDocument(language, document));
         }
@@ -115,7 +119,11 @@ namespace CommunityPatchLauncherFramework.Documentation.Manager
         /// <param name="document">The name of the document to load</param>
         /// <param name="convertStrategy">The convert strategy to use</param>
         /// <returns>The whole document converted with the convert startegy</returns>
-        public async Task<string> ReadConvertedDocumentAsync(string language, string document, IDocumentConvertStrategy convertStrategy)
+        public async Task<string> ReadConvertedDocumentAsync(
+            string language,
+            string document,
+            IDocumentConvertStrategy convertStrategy
+            )
         {
             Task<string> returnTask = Task.Run(() =>
             {

@@ -240,12 +240,21 @@ namespace CommunityPatchLauncher.ViewModels
                 "en-EN",
                 new MarkdownHtmlConvertStrategy()
                 );
-            ChangelogContent = localDocumentManager.ReadConvertedDocument(language, Properties.Settings.Default.FileLoading);
+            ChangelogContent = localDocumentManager.ReadConvertedDocument(
+                language,
+                Properties.Settings.Default.FileLoading
+                );
+
             string fileName = availablePatch.RealPatch + Properties.Settings.Default.PatchChangelogFileName;
             Task<string> fileContent = remoteDocumentManager.ReadConvertedDocumentAsync(language, fileName);
             fileContent.ContinueWith((data) =>
             {
-                ChangelogContent = data.Result == string.Empty ? localDocumentManager.ReadConvertedDocument(language, Properties.Settings.Default.NotReadableFile) : data.Result;
+                ChangelogContent = data.Result == string.Empty ? 
+                                    localDocumentManager.ReadConvertedDocument(
+                                        language,
+                                        Properties.Settings.Default.NotReadableFile
+                                        ) : 
+                                    data.Result;
             });
         }
 
