@@ -81,6 +81,7 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             {
                 try
                 {
+                    client.Encoding = System.Text.Encoding.UTF8;
                     returnData = client.DownloadString(path);
                     latestRequestDictionary[path] = DateTime.Now;
                 }
