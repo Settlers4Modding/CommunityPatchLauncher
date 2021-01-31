@@ -46,10 +46,17 @@ namespace CommunityPatchLauncher.ViewModels
         /// Create a new instance of this view model
         /// </summary>
         /// <param name="documentToShow"></param>
-        public BrowserModelView(string documentToShow, UserControl control)
+        public BrowserModelView(string documentToShow, UserControl control) : this(documentToShow, control, new LocalDocumentManagerFactory())
         {
-            IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
-            documentManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
+        }
+
+        /// <summary>
+        /// Create a new instance of this view model
+        /// </summary>
+        /// <param name="documentToShow"></param>
+        public BrowserModelView(string documentToShow, UserControl control, IDocumentManagerFactory factoryToUse)
+        {
+            documentManager = factoryToUse.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
             this.documentToShow = documentToShow;
 
             DependencyObject browserObject = (DependencyObject)control.FindName("WB_browser");

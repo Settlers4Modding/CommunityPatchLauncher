@@ -14,7 +14,7 @@ namespace CommunityPatchLauncher.Documentation.Factories
         /// <summary>
         /// The directory this assembly is in
         /// </summary>
-        protected readonly string assemblyPath;
+        protected string assemblyPath;
 
         /// <summary>
         /// Create a new instance of this factory

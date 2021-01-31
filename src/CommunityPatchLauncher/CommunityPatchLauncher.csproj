@@ -158,6 +158,7 @@
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Commands\ApplicationWindow\ToggleVisiblityCommand.cs" />
     <Compile Include="DataContainers\Position.cs" />
+    <Compile Include="Documentation\Factories\RemoteDocumentManagerFactory.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlWithoutScrollStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />

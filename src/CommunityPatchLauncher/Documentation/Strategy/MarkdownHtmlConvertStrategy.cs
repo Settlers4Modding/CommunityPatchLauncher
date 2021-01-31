@@ -30,6 +30,10 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
 
         protected virtual string GetHtml(string rawData)
         {
+            if (rawData == string.Empty)
+            {
+                return rawData;
+            }
             string html = "<head><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
             html += "<meta http-equiv='X - UA - Compatible' content='IE = edge'>";
             html += GetCssLink();
