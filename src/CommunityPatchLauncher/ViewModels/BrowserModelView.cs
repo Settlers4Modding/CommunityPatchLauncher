@@ -46,7 +46,8 @@ namespace CommunityPatchLauncher.ViewModels
         /// Create a new instance of this view model
         /// </summary>
         /// <param name="documentToShow"></param>
-        public BrowserModelView(string documentToShow, UserControl control) : this(documentToShow, control, new LocalDocumentManagerFactory())
+        public BrowserModelView(string documentToShow, UserControl control)
+            : this(documentToShow, control, new LocalDocumentManagerFactory())
         {
         }
 
