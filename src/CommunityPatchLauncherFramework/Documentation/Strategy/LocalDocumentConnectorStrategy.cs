@@ -1,30 +1,21 @@
 ﻿using System.IO;
+using System.Linq;
 
 namespace CommunityPatchLauncherFramework.Documentation.Strategy
 {
     /// <summary>
     /// This connector will read the document from the local disc
     /// </summary>
-    public class LocalDocumentConnectorStrategy : IDocumentConnectorStrategy
+    public class LocalDocumentConnectorStrategy : BaseDocumentConnectorStrategy
     {
-        /// <summary>
-        /// The fallback language to use
-        /// </summary>
-        private string fallbackLanguage;
-
         /// <inheritdoc/>
-        public void SetFallbackLanguage(string fallbackLanguage)
+        protected override string CorrectBasePath(string basePath)
         {
-            this.fallbackLanguage = fallbackLanguage;
+            return basePath.Last() == '\\' ? basePath : basePath + "\\";
         }
 
         /// <inheritdoc/>
-        public string ReadDocument(string basePath, string language, string document)
-        {
-            return ReadDocument(basePath, language, document, true);
-        }
-
-        protected string ReadDocument(string basePath, string language, string document, bool initialCall)
+        protected override string ReadDocument(string basePath, string language, string document, bool initialCall)
         {
             string path = basePath + language;
             if (!Directory.Exists(path))
@@ -34,7 +25,7 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             path += "\\" + document; ;
             if (!File.Exists(path))
             {
-                if (initialCall)
+                if (initialCall && language != fallbackLanguage)
                 {
                     return ReadDocument(basePath, fallbackLanguage, document, false);
                 }

@@ -3,6 +3,7 @@ using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -43,13 +44,26 @@ namespace CommunityPatchLauncher.ViewModels
         private readonly string documentToShow;
 
         /// <summary>
+        /// Fallback manager to use
+        /// </summary>
+        private DocumentManager fallbackManager;
+
+        /// <summary>
         /// Create a new instance of this view model
         /// </summary>
         /// <param name="documentToShow"></param>
         public BrowserModelView(string documentToShow, UserControl control)
+            : this(documentToShow, control, new LocalDocumentManagerFactory())
         {
-            IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
-            documentManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
+        }
+
+        /// <summary>
+        /// Create a new instance of this view model
+        /// </summary>
+        /// <param name="documentToShow"></param>
+        public BrowserModelView(string documentToShow, UserControl control, IDocumentManagerFactory factoryToUse)
+        {
+            documentManager = factoryToUse.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
             this.documentToShow = documentToShow;
 
             DependencyObject browserObject = (DependencyObject)control.FindName("WB_browser");
@@ -85,7 +99,37 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 return;
             }
+            Task<string> contentData = documentManager?.ReadConvertedDocumentAsync(currentLanguage, documentToShow);
+            contentData.ContinueWith((data) =>
+            {
+                string dataToShow = data.Result;
+                if (dataToShow == string.Empty)
+                {
+                    BrowserContent = data.Result == string.Empty ?
+                                    GetFallbackManager().ReadConvertedDocument(
+                                        currentLanguage,
+                                        Properties.Settings.Default.NotReadableFile
+                                    ) :
+                                    data.Result;
+                }
+            });
+
             BrowserContent = documentManager?.ReadConvertedDocument(currentLanguage, documentToShow);
+        }
+
+        /// <summary>
+        /// Get the fallback managers
+        /// </summary>
+        /// <returns>A fallback document manager</returns>
+        private DocumentManager GetFallbackManager()
+        {
+            if (fallbackManager != null)
+            {
+                return fallbackManager;
+            }
+
+            IDocumentManagerFactory factory = new RemoteDocumentManagerFactory();
+            return factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
         }
     }
 }

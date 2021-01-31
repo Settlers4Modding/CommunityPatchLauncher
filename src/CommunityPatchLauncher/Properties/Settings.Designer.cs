@@ -12,7 +12,7 @@ namespace CommunityPatchLauncher.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -212,6 +212,54 @@ namespace CommunityPatchLauncher.Properties {
             }
             set {
                 this["WindowMoveDistance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/LitzeYT/Settlers4Patch/master/")]
+        public string MarkdownOnlineBasePath {
+            get {
+                return ((string)(this["MarkdownOnlineBasePath"]));
+            }
+            set {
+                this["MarkdownOnlineBasePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ChangeLog.md")]
+        public string PatchChangelogFileName {
+            get {
+                return ((string)(this["PatchChangelogFileName"]));
+            }
+            set {
+                this["PatchChangelogFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NotReadable.md")]
+        public string NotReadableFile {
+            get {
+                return ((string)(this["NotReadableFile"]));
+            }
+            set {
+                this["NotReadableFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Loading.md")]
+        public string FileLoading {
+            get {
+                return ((string)(this["FileLoading"]));
+            }
+            set {
+                this["FileLoading"] = value;
             }
         }
     }
