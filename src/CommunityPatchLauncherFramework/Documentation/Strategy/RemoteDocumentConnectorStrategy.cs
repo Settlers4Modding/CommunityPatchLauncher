@@ -66,6 +66,7 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             if (lastFile != path)
             {
                 lastFile = path;
+                lastTimeRequested = new DateTime();
             }
             double diffInSeconds = (lastTimeRequested - DateTime.Now).TotalSeconds;
 
@@ -78,34 +79,21 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
                 }
             }
 
-            WebRequest request = WebRequest.Create(path);
-            request.Timeout = 5000;
-
-            WebResponse response;
-            try
-            {
-                response = request.GetResponse();
-            }
-            catch (Exception ex)
-            {
-                if (initialCall && language != fallbackLanguage)
-                {
-                    return ReadDocument(basePath, fallbackLanguage, document, false);
-                }
-                returnData = LoadCachedFile(localFile);
-                returnData = returnData == string.Empty ? returnData : "# This data is loaded from cached!" + returnData;
-                return returnData;
-            }
-
             using (WebClient client = new WebClient())
             {
                 try
                 {
-                    returnData = client.DownloadString(response.ResponseUri);
+                    returnData = client.DownloadString(path);
                     lastTimeRequested = DateTime.Now;
                 }
                 catch (WebException ex)
                 {
+                    if (initialCall && language != fallbackLanguage)
+                    {
+                        return ReadDocument(basePath, fallbackLanguage, document, false);
+                    }
+                    returnData = LoadCachedFile(localFile);
+                    returnData = returnData == string.Empty ? returnData : "# This data is loaded from cached!" + returnData;
                     return returnData;
                 }
                 using (StreamWriter writer = new StreamWriter(localFile))
