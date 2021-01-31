@@ -260,11 +260,12 @@ namespace CommunityPatchLauncher.ViewModels
         {
             settingManager.Reload();
 
+            string language = settingManager.GetValue<string>("Language");
             DocumentManager documentManager = managerFactory.GetDocumentManager(
                 "en-EN",
                 new MarkdownHtmlConvertStrategy()
                 );
-            ChangelogContent = documentManager.ReadConvertedDocument(Thread.CurrentThread.CurrentCulture.Name, "Placeholder.md");
+            ChangelogContent = documentManager.ReadConvertedDocument(language, "PatchChangelog.md");
         }
     }
 }

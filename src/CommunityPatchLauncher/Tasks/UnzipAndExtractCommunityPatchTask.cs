@@ -6,6 +6,7 @@ using SharpCompress.Archives;
 using SharpCompress.Archives.SevenZip;
 using SharpCompress.Archives.Zip;
 using SharpCompress.Common;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -61,6 +62,10 @@ namespace CommunityPatchLauncher.Tasks
                     int currentProgress = 0;
                     foreach (var entry in extractedGame.Entries.Where(entry => !entry.IsDirectory))
                     {
+                        if (entry.Key == "PreInstall.txt")
+                        {
+                            continue;
+                        }
                         entry.WriteToDirectory(targetFolder, new ExtractionOptions()
                         {
                             ExtractFullPath = true,
@@ -116,10 +121,35 @@ namespace CommunityPatchLauncher.Tasks
                         if (File.Exists(fullPath))
                         {
                             File.Delete(fullPath);
+                            continue;
                         }
+                        DeleteFolder(fullPath);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Delete a complete folder
+        /// </summary>
+        /// <param name="rootPath">The root path to the folder</param>
+        private void DeleteFolder(string rootPath)
+        {
+            if (!Directory.Exists(rootPath))
+            {
+                return;
+            }
+
+            foreach(string directory in Directory.GetDirectories(rootPath))
+            {
+                DeleteFolder(directory);
+            }
+
+            foreach(string file in Directory.GetFiles(rootPath))
+            {
+                File.Delete(file);
+            }
+            Directory.Delete(rootPath);
         }
     }
 }

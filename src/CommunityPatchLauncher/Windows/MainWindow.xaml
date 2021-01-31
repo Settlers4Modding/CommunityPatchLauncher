@@ -34,7 +34,8 @@
             </Grid.ColumnDefinitions>
             <Border BorderThickness="0,0,1,0" Margin="0,-5,5,0" Style="{StaticResource DefaultBorder}">
                 <StackPanel Grid.Column="0">
-                    <Image Margin="0,5,0,0" MaxHeight="80" x:Name="Img_MainLogo" Source="../Assets/Images/CP_Logo1.png"></Image>
+                    <Image Margin="0,5,0,0" MaxHeight="150" x:Name="Img_MainLogo" Source="../Assets/Images/CP_Logo1.png"></Image>
+                    <Border Style="{StaticResource DefaultBorder}" Opacity="0.4" BorderThickness="0, 2, 0, 0" Margin="0,5,0,5"></Border>
                     <StackPanel Orientation="Vertical">
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Home_Group">
                             <ItemsControl Style="{StaticResource MainCategoryGrid}">
@@ -119,7 +120,7 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Settings}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenDisclamerCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Bookmark" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Disclaimer}"></TextBlock>
@@ -143,7 +144,7 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Tools}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenAboutCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Question" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_About}"></TextBlock>
