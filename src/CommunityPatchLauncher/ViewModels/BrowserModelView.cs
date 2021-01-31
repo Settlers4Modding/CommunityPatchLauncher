@@ -3,6 +3,7 @@ using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -41,6 +42,11 @@ namespace CommunityPatchLauncher.ViewModels
         /// The name of the document to show
         /// </summary>
         private readonly string documentToShow;
+
+        /// <summary>
+        /// Fallback manager to use
+        /// </summary>
+        private DocumentManager fallbackManager;
 
         /// <summary>
         /// Create a new instance of this view model
@@ -93,7 +99,37 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 return;
             }
+            Task<string> contentData = documentManager?.ReadConvertedDocumentAsync(currentLanguage, documentToShow);
+            contentData.ContinueWith((data) =>
+            {
+                string dataToShow = data.Result;
+                if (dataToShow == string.Empty)
+                {
+                    BrowserContent = data.Result == string.Empty ?
+                                    GetFallbackManager().ReadConvertedDocument(
+                                        currentLanguage,
+                                        Properties.Settings.Default.NotReadableFile
+                                    ) :
+                                    data.Result;
+                }
+            });
+
             BrowserContent = documentManager?.ReadConvertedDocument(currentLanguage, documentToShow);
+        }
+
+        /// <summary>
+        /// Get the fallback managers
+        /// </summary>
+        /// <returns>A fallback document manager</returns>
+        private DocumentManager GetFallbackManager()
+        {
+            if (fallbackManager != null)
+            {
+                return fallbackManager;
+            }
+
+            IDocumentManagerFactory factory = new RemoteDocumentManagerFactory();
+            return factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
         }
     }
 }
