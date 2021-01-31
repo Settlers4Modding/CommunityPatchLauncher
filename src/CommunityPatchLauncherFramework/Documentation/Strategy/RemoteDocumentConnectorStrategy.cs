@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommunityPatchLauncherFramework.Documentation.Strategy
 {
@@ -46,11 +43,13 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             }
         }
 
+        /// <inheritdoc/>
         protected override string CorrectBasePath(string basePath)
         {
             return basePath.Last() == '/' ? basePath : basePath + "/";
         }
 
+        /// <inheritdoc/>
         protected override string ReadDocument(string basePath, string language, string document, bool initialCall)
         {
             string path = basePath + language;
@@ -121,7 +120,7 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
         /// Load the cached file
         /// </summary>
         /// <param name="fileName">the filename to load</param>
-        /// <returns></returns>
+        /// <returns>The from cache loaded file data</returns>
         private string LoadCachedFile(string fileName)
         {
             string returnData = "";
