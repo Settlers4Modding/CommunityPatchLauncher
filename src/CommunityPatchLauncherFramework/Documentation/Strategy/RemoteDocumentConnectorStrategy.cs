@@ -12,6 +12,11 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
     public class RemoteDocumentConnectorStrategy : BaseDocumentConnectorStrategy
     {
         /// <summary>
+        /// The notice to use if cached
+        /// </summary>
+        private readonly string cacheNotice;
+
+        /// <summary>
         /// The cache folder to use
         /// </summary>
         private string cacheFolder;
@@ -29,9 +34,10 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
         /// <summary>
         /// Create a new instance of this class
         /// </summary>
-        public RemoteDocumentConnectorStrategy(TimeSpan timeSpanUntilRepeat)
+        public RemoteDocumentConnectorStrategy(TimeSpan timeSpanUntilRepeat, string cacheNotice)
         {
             this.timeSpanUntilRepeat = timeSpanUntilRepeat;
+            this.cacheNotice = cacheNotice;
             latestRequestDictionary = new Dictionary<string, DateTime>();
             cacheFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             cacheFolder += "\\SIVCommunityPatchLauncher\\Cache\\";
@@ -57,8 +63,8 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
                 Directory.CreateDirectory(localFile);
             }
             string returnData = string.Empty;
-            path += "/" + document;
-            localFile += "\\" + document;
+            path += Path.DirectorySeparatorChar + document;
+            localFile += Path.DirectorySeparatorChar + document;
 
             if (!latestRequestDictionary.ContainsKey(path))
             {
@@ -66,7 +72,6 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             }
 
             DateTime lastTimeRequested = latestRequestDictionary[path];
-
             DateTime repeatTime = DateTime.Now - timeSpanUntilRepeat;
 
             if (lastTimeRequested.Year != 1 && lastTimeRequested > repeatTime)
@@ -87,12 +92,20 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
                 }
                 catch (WebException ex)
                 {
-                    if (initialCall && language != fallbackLanguage)
+                    if (initialCall)
                     {
-                        return ReadDocument(basePath, fallbackLanguage, document, false);
+                        if (language != fallbackLanguage)
+                        {
+                            returnData = ReadDocument(basePath, fallbackLanguage, document, false);
+                        }
+                        returnData = returnData == string.Empty ? LoadCachedFile(localFile, true) : returnData;
+                        if (returnData == string.Empty)
+                        {
+                            string localFallbackFile = cacheFolder + fallbackLanguage + "/" + document;
+                            returnData = LoadCachedFile(localFallbackFile, true);
+                        }
+                        return returnData;
                     }
-                    returnData = LoadCachedFile(localFile);
-                    returnData = returnData == string.Empty ? returnData : "# This data is loaded from cached!" + returnData;
                     return returnData;
                 }
                 using (StreamWriter writer = new StreamWriter(localFile))
@@ -103,23 +116,34 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             return returnData;
         }
 
+        /// <summary>
+        /// Load the cached file
+        /// </summary>
+        /// <param name="filePath">The filename to load</param>
+        /// <returns>The from cache loaded file data</returns>
+        private string LoadCachedFile(string filePath)
+        {
+            return LoadCachedFile(filePath, false);
+        }
 
         /// <summary>
         /// Load the cached file
         /// </summary>
-        /// <param name="fileName">the filename to load</param>
+        /// <param name="filePath">The filename to load</param>
+        /// <param name="addNotice">Add a notice that it was loaded from cache</param>
         /// <returns>The from cache loaded file data</returns>
-        private string LoadCachedFile(string fileName)
+        private string LoadCachedFile(string filePath, bool addNotice)
         {
-            string returnData = "";
-            if (File.Exists(fileName))
+            string returnData = string.Empty;
+            if (File.Exists(filePath))
             {
-                using (StreamReader reader = new StreamReader(fileName))
+                using (StreamReader reader = new StreamReader(filePath))
                 {
                     returnData = reader.ReadToEnd();
                 }
             }
 
+            returnData = addNotice ? "# " + cacheNotice + returnData : returnData;
             return returnData;
         }
     }

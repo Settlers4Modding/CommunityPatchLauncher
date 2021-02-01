@@ -19,7 +19,7 @@ namespace CommunityPatchLauncher.Documentation.Factories
         /// <inheritdoc/>
         protected override IDocumentConnectorStrategy GetConvertStrategy()
         {
-            return new RemoteDocumentConnectorStrategy(new TimeSpan(1, 0, 0));
+            return new RemoteDocumentConnectorStrategy(new TimeSpan(1, 0, 0), Properties.Resources.DocumentCacheNotice);
         }
     }
 }
