@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -107,6 +109,7 @@ namespace CommunityPatchLauncher.ViewModels
                 RaisePropertyChanged("FolderSet");
             }
         }
+
         /// <summary>
         /// Private variable if the selected folder is correct
         /// </summary>
@@ -197,6 +200,24 @@ namespace CommunityPatchLauncher.ViewModels
         private bool checkForUpdateOnStartup;
 
         /// <summary>
+        /// Current checksum
+        /// </summary>
+        public string Checksum
+        {
+            get => checksum;
+            set
+            {
+                checksum = value;
+                RaisePropertyChanged("Checksum");
+            }
+        }
+
+    /// <summary>
+    /// Private checksum accessor
+    /// </summary>
+    private string checksum;
+
+        /// <summary>
         /// Create a new instance of this class
         /// </summary>
         /// <param name="window">The window this view belongs to</param>
@@ -267,19 +288,22 @@ namespace CommunityPatchLauncher.ViewModels
             AcceptAgreement = new AcceptAgreementCommand(settingManager, currentWindow, mainWindow);
             bool accepted = settingManager.GetValue<bool>("AgreementAccepted");
 
-            if (accepted && FolderSet)
-            {
-                currentWindow.Close();
-                mainWindow.Show();
-            }
-
             IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
-            documentManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
+            documentManager = factory.GetDocumentManager(Properties.Settings.Default.FallbackLanguage, new MarkdownHtmlConvertStrategy());
+            string checkSumAgreement = documentManager.ReadConvertedDocument(Properties.Settings.Default.FallbackLanguage, "Agreement.md");
+            Checksum = CreateChecksum(checkSumAgreement);
             PropertyChanged += (sender, data) =>
             {
                 if (data.PropertyName == "SelectedLanguage")
                 {
-                    AgreementText = documentManager.ReadConvertedDocument(selectedLanguage.IsoCode, "Agreement.md");
+                    string agreementText = documentManager.ReadConvertedDocument(selectedLanguage.IsoCode, "Agreement.md");
+                    string loadedChecksum = settingManager.GetValue<string>("AgreementChecksum");
+                    AgreementText = agreementText;
+                    if (accepted && FolderSet && Checksum == loadedChecksum)
+                    {
+                        currentWindow.Close();
+                        mainWindow.Show();
+                    }
                     if (!firstStart)
                     {
                         SwitchGuiLanguage(selectedLanguage.IsoCode);
@@ -287,6 +311,31 @@ namespace CommunityPatchLauncher.ViewModels
                     firstStart = false;
                 }
             };
+        }
+
+        /// <summary>
+        /// Create a checksum from a given string
+        /// </summary>
+        /// <param name="inputData">The input string</param>
+        /// <returns>The hashed output</returns>
+        private string CreateChecksum(string inputData)
+        {
+            string returnString = string.Empty;
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(inputData);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+
+                returnString = sb.ToString();
+            }
+
+            return returnString;
         }
 
         /// <summary>

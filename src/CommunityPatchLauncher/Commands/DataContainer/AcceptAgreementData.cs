@@ -33,6 +33,11 @@ namespace CommunityPatchLauncher.Commands.DataContainer
         public LanguageItem Language { get; }
 
         /// <summary>
+        /// Checksum of the agreement text
+        /// </summary>
+        public string Checksum { get;  }
+
+        /// <summary>
         /// Create a new instance of this class
         /// </summary>
         /// <param name="agreement">Was the agreement accepted</param>
@@ -40,13 +45,22 @@ namespace CommunityPatchLauncher.Commands.DataContainer
         /// <param name="gameFolder">The path to the game folder</param>
         /// <param name="language">The language to use</param>
         /// <param name="checkOnStartup">Check for update on app startup</param>
-        public AcceptAgreementData(bool agreement, bool folderSet, string gameFolder, LanguageItem language, bool checkOnStartup)
+        /// <param name="checksum">The Checksum generated from the fallback language agreement</param>
+        public AcceptAgreementData(
+            bool agreement,
+            bool folderSet,
+            string gameFolder,
+            LanguageItem language,
+            bool checkOnStartup,
+            string checksum
+            )
         {
             Agreement = agreement;
             FolderSet = folderSet;
             GameFolder = gameFolder;
             Language = language;
             UpdateOnStartup = checkOnStartup;
+            Checksum = checksum;
         }
     }
 }
