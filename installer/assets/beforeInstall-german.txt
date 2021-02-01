@@ -1,0 +1,9 @@
+﻿Dieser Assistent wird den Siedler 4 Community Patch Launcher auf Ihrem Computer installieren. Die Software ist nicht für die kommerzielle Nutzung vorgesehen. Der Code der Software ist unter https://github.com/LitzeYT/Settlers4Patch/ frei zugänglich.
+
+Der Siedler 4 Community Patch Launcher funktioniert nur in Kombination mit einer installierten Version der Siedler 4 History Edition.
+
+Mit dem Community Patch Launcher kann die aktuellste Version des Siedler 4 Community Patch heruntergeladen werden. Außerdem kann die Siedler 4 History Edition mit dem Launcher auf Community Patch Level gepatcht werden oder die gepatchte Version auf die originale History Edition rückgepatch werden. Zusätzlich bietet der Launcher einige weitere Funktionen, die nach der Installation ersichtlich werden.
+
+Im Falle eines technischen Problems mit der Installation sollte zunächst auf der Seite https://github.com/Settlers4Modding/CommunityPatchLauncher/issues geprüft werden, ob dieses bereits bekannt ist.
+
+Bei Fragen, Vorschlägen oder Problemen ist die Community hinter dem Patch hier gerne zum Helfen bereit: https://discord.gg/Vhs3e5N

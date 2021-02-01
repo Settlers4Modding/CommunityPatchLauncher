@@ -1,0 +1,20 @@
+﻿html {
+    overflow:hidden;
+}
+body {
+    background-color: #232027;
+    color: Snow;
+}
+
+a:link {
+    color: #585062
+}
+
+
+a:hover {
+    color: #7e738c;
+}
+
+a:visited {
+    color: #585062;
+}

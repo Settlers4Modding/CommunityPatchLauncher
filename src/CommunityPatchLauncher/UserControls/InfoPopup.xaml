@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="CommunityPatchLauncher.UserControls.InfoPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
+             xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CommunityPatchLauncher;component/Styles/DefaultStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <fa:ImageAwesome Grid.Column="0" DockPanel.Dock="Left" Style="{StaticResource DialogBoxImageAwesome}" Foreground="{Binding IconBrush}" Icon="{Binding BoxIcon}"></fa:ImageAwesome>
+            <TextBlock Grid.Column="1" DockPanel.Dock="Right" Style="{StaticResource DefaultText}" Text="{Binding DialogText}"></TextBlock>
+        </Grid>
+        <DockPanel Grid.Row="2" LastChildFill="False" Margin="0,5,0,0">
+            <Button DockPanel.Dock="Right" Content="{x:Static p:Resources.Default_Ok}" Style="{StaticResource DefaultButton}" Command="{Binding CloseWindowCommand}"></Button>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1531D2AE-96E8-4FA5-B325-092AB7F5EC06}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CommunityPatchLauncher</RootNamespace>
+    <AssemblyName>CommunityPatchLauncher</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>s4communitypatch.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Markdig, Version=0.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Markdig.0.20.0\lib\netstandard2.0\Markdig.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit, Version=0.48.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octokit.0.48.0\lib\net46\Octokit.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress, Version=0.26.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpCompress.0.26.0\lib\net46\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BehaviorExtensions\BrowserBehavior.cs" />
+    <Compile Include="BindingData\AvailableLanguages.cs" />
+    <Compile Include="BindingData\Container\UpdateChannelContainer.cs" />
+    <Compile Include="BindingData\Container\UpdateChannelModel.cs" />
+    <Compile Include="BindingData\Container\LanguageItem.cs" />
+    <Compile Include="BindingData\Container\Patch.cs" />
+    <Compile Include="BindingData\Container\WindowSize.cs" />
+    <Compile Include="BindingData\Converter\AcceptAgreementConverter.cs" />
+    <Compile Include="BindingData\Converter\GameSpeedConverter.cs" />
+    <Compile Include="BindingData\Converter\InvertBoolConverter.cs" />
+    <Compile Include="BindingData\Converter\LaunchGameConverter.cs" />
+    <Compile Include="BindingData\Converter\MultiBoolConverter.cs" />
+    <Compile Include="BindingData\Converter\PatchSelectionConverter.cs" />
+    <Compile Include="BindingData\Converter\ResizeWindowConverter.cs" />
+    <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
+    <Compile Include="BindingData\Patches.cs" />
+    <Compile Include="BindingData\WindowsSizeService.cs" />
+    <Compile Include="Commands\TaskCommands\DownloadAllPatchesCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenLinkCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\ReloadObjectCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\UpdateApplicationCommand.cs" />
+    <Compile Include="Commands\BaseProgressCommand.cs" />
+    <Compile Include="Commands\DataCommands\SetYesNoEnumCommand.cs" />
+    <Compile Include="Commands\DataContainer\PatchSelectionData.cs" />
+    <Compile Include="Commands\IProgressCommand.cs" />
+    <Compile Include="Commands\Settings\SaveSettingsCommand.cs" />
+    <Compile Include="Commands\Settings\AcceptAgreementCommand.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\Settings\ChangeSettingCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\CloseApplicationCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\CloseWindowCommand.cs" />
+    <Compile Include="Commands\DataContainer\AcceptAgreementData.cs" />
+    <Compile Include="Commands\DataContainer\LaunchGameData.cs" />
+    <Compile Include="Commands\BaseDataCommand.cs" />
+    <Compile Include="Commands\DataContainer\ResizeWindowData.cs" />
+    <Compile Include="Commands\Settings\GetCurrentLanguageCommand.cs" />
+    <Compile Include="Commands\Settings\GetSettingManagerCommand.cs" />
+    <Compile Include="Commands\IDataCommand.cs" />
+    <Compile Include="Commands\DataCommands\InstallationFromManuelSelectionCommand.cs" />
+    <Compile Include="Commands\DataCommands\InstallationFromRegistryCommand.cs" />
+    <Compile Include="Commands\TaskCommands\LaunchGameCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\MaximizeWindowCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\MinimizeWindowCommand.cs" />
+    <Compile Include="Commands\MultiCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenControlToPanel.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenCustomPopupWindowCommand.cs" />
+    <Compile Include="Commands\Os\OpenFolderCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\OpenLaunchUserControlToPanel.cs" />
+    <Compile Include="Commands\ApplicationWindow\RefreshGuiLanguageCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\ResizeWindowCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\RestartApplicationCommand.cs" />
+    <Compile Include="Commands\Settings\SaveWindowSizeCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\SelectFolderCommand.cs" />
+    <Compile Include="Commands\ApplicationWindow\SwitchGuiLanguage.cs" />
+    <Compile Include="Commands\ApplicationWindow\ToggleSubGroupVisibilityCommand.cs" />
+    <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Commands\ApplicationWindow\ToggleVisiblityCommand.cs" />
+    <Compile Include="DataContainers\Position.cs" />
+    <Compile Include="Documentation\Factories\RemoteDocumentManagerFactory.cs" />
+    <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
+    <Compile Include="Documentation\Strategy\MarkdownHtmlWithoutScrollStrategy.cs" />
+    <Compile Include="Enums\AvailablePatches.cs" />
+    <Compile Include="Enums\SpeedModes.cs" />
+    <Compile Include="Enums\UpdateBranchEnum.cs" />
+    <Compile Include="Enums\YesNoEnum.cs" />
+    <Compile Include="EventArguments\DataCommandEventArg.cs" />
+    <Compile Include="Documentation\Factories\LocalDocumentManagerFactory.cs" />
+    <Compile Include="Properties\Resources.pl.Designer.cs">
+      <DependentUpon>Resources.pl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.de-DE.Designer.cs">
+      <DependentUpon>Resources.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Settings\Factories\WpfPropertySettingManagerFactory.cs" />
+    <Compile Include="Settings\Reader\IniStringReader.cs" />
+    <Compile Include="Settings\Reader\WpfPropertyReader.cs" />
+    <Compile Include="Tasks\CloseApplicationTask.cs" />
+    <Compile Include="Tasks\CopyFileToGameFolder.cs" />
+    <Compile Include="Tasks\DownloadAllPatches.cs" />
+    <Compile Include="Tasks\DownloadCommunityPatchTask.cs" />
+    <Compile Include="Tasks\DownloadFileTask.cs" />
+    <Compile Include="Tasks\Update\DownloadLauncherUpdate.cs" />
+    <Compile Include="Tasks\DownloadVersionInformation.cs" />
+    <Compile Include="Tasks\Factories\DownloadOfflineFilesFactory.cs" />
+    <Compile Include="Tasks\Factories\LaunchGameFactory.cs" />
+    <Compile Include="Tasks\Factories\UpdateClientFactory.cs" />
+    <Compile Include="Tasks\PatchGameSpeedTask.cs" />
+    <Compile Include="Tasks\UnzipAndExtractCommunityPatchTask.cs" />
+    <Compile Include="Tasks\Update\GetGitHubVersion.cs" />
+    <Compile Include="Tasks\Update\GetLocalVersion.cs" />
+    <Compile Include="Tasks\Update\GetLocalVersionFromSettings.cs" />
+    <Compile Include="Tasks\Update\PatchLauncher.cs" />
+    <Compile Include="Tasks\Update\UpdatePopupTask.cs" />
+    <Compile Include="Tasks\Update\WriteCurrentVersionToSettings.cs" />
+    <Compile Include="UserControls\BrowserUserControl.xaml.cs">
+      <DependentUpon>BrowserUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ComingSoonControl.xaml.cs">
+      <DependentUpon>ComingSoonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InfoPopup.xaml.cs">
+      <DependentUpon>InfoPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LaunchGameUserControl.xaml.cs">
+      <DependentUpon>LaunchGameUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PatchVersionSelectionUserControl.xaml.cs">
+      <DependentUpon>PatchVersionSelectionUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PopupTitleBarUserControl.xaml.cs">
+      <DependentUpon>PopupTitleBarUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\StartGameTask.cs" />
+    <Compile Include="Tasks\UnzipCommunityPatchTask.cs" />
+    <Compile Include="UserControls\ProgressBarDialog.xaml.cs">
+      <DependentUpon>ProgressBarDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ResizeWindowUserControl.xaml.cs">
+      <DependentUpon>ResizeWindowUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SettingsUserControl.xaml.cs">
+      <DependentUpon>SettingsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SpecialTypes\IPopupContent.cs" />
+    <Compile Include="UserControls\SpecialTypes\IPopupReturnDataContent.cs" />
+    <Compile Include="UserControls\TitleBarUseControl.xaml.cs">
+      <DependentUpon>TitleBarUseControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\YesNoDialog.xaml.cs">
+      <DependentUpon>YesNoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BrowserModelView.cs" />
+    <Compile Include="ViewModels\InfoPopupViewModel.cs" />
+    <Compile Include="ViewModels\LaunchGameModelView.cs" />
+    <Compile Include="ViewModels\PatchVersionSelectionViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowModel.cs" />
+    <Compile Include="ViewModels\PopupWindowsViewModel.cs" />
+    <Compile Include="ViewModels\ProgressBarDialogViewModel.cs" />
+    <Compile Include="ViewModels\ResizeWindowViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\SpecialViews\IViewModelReloadable.cs" />
+    <Compile Include="ViewModels\WelcomeViewModel.cs" />
+    <Compile Include="ViewModels\YesNoViewModel.cs" />
+    <Compile Include="Windows\PopupWindow.xaml.cs">
+      <DependentUpon>PopupWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WelcomeWindow.xaml.cs">
+      <DependentUpon>WelcomeWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Styles\DefaultStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\BrowserUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComingSoonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\InfoPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LaunchGameUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PatchVersionSelectionUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PopupTitleBarUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ProgressBarDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ResizeWindowUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SettingsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TitleBarUseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\YesNoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Windows\PopupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WelcomeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Version.txt" />
+    <EmbeddedResource Include="Properties\Resources.pl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.pl.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="s4communitypatch.ico" />
+    <EmbeddedResource Include="Assets\Resources\PredefinedWindowSizes.txt" />
+    <Content Include="Styles\DefaultBrowserStyle.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommunityPatchLauncherFramework\CommunityPatchLauncherFramework.csproj">
+      <Project>{846f883f-2c63-480f-9272-27f596b6b08c}</Project>
+      <Name>CommunityPatchLauncherFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Capture.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\CP_ComingSoon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\CP_Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\CP_Logo2.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y /E /I "$(SolutionDir)src\CommunityLauncherPatcher\bin\$(ConfigurationName)\*" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>IF EXIST "$(ProjectDir)$(OutDir)docs" RMDIR /S /Q "$(ProjectDir)$(OutDir)docs"
+xcopy /E /I "$(SolutionDir)docs" "$(ProjectDir)$(OutDir)docs"</PreBuildEvent>
+  </PropertyGroup>
+</Project>
