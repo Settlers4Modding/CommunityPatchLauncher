@@ -262,5 +262,17 @@ namespace CommunityPatchLauncher.Properties {
                 this["FileLoading"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en-EN")]
+        public string FallbackLanguage {
+            get {
+                return ((string)(this["FallbackLanguage"]));
+            }
+            set {
+                this["FallbackLanguage"] = value;
+            }
+        }
     }
 }
