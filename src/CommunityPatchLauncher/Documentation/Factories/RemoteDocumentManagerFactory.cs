@@ -1,4 +1,5 @@
 ﻿using CommunityPatchLauncherFramework.Documentation.Strategy;
+using System;
 
 namespace CommunityPatchLauncher.Documentation.Factories
 {
@@ -18,7 +19,7 @@ namespace CommunityPatchLauncher.Documentation.Factories
         /// <inheritdoc/>
         protected override IDocumentConnectorStrategy GetConvertStrategy()
         {
-            return new RemoteDocumentConnectorStrategy(60);
+            return new RemoteDocumentConnectorStrategy(new TimeSpan(1, 0, 0));
         }
     }
 }
