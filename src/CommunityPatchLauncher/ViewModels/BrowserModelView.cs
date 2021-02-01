@@ -63,7 +63,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="documentToShow"></param>
         public BrowserModelView(string documentToShow, UserControl control, IDocumentManagerFactory factoryToUse)
         {
-            documentManager = factoryToUse.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
+            documentManager = factoryToUse.GetDocumentManager(Properties.Settings.Default.FallbackLanguage, new MarkdownHtmlConvertStrategy());
             this.documentToShow = documentToShow;
 
             DependencyObject browserObject = (DependencyObject)control.FindName("WB_browser");
@@ -129,7 +129,7 @@ namespace CommunityPatchLauncher.ViewModels
             }
 
             IDocumentManagerFactory factory = new RemoteDocumentManagerFactory();
-            return factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
+            return factory.GetDocumentManager(Properties.Settings.Default.FallbackLanguage, new MarkdownHtmlConvertStrategy());
         }
     }
 }

@@ -188,7 +188,7 @@ namespace CommunityPatchLauncher.ViewModels
             localDocumentManagerFactory = new LocalDocumentManagerFactory();
             IDocumentManagerFactory remoteDocumentManagerFactory = new RemoteDocumentManagerFactory();
             remoteDocumentManager = remoteDocumentManagerFactory.GetDocumentManager(
-                "en-EN",
+                Properties.Settings.Default.FallbackLanguage,
                 new MarkdownHtmlConvertStrategy()
                 );
         }
@@ -215,7 +215,7 @@ namespace CommunityPatchLauncher.ViewModels
             Speed = newMode;
 
             DocumentManager scrollLessDocumentManager = localDocumentManagerFactory.GetDocumentManager(
-                "en-EN",
+                Properties.Settings.Default.FallbackLanguage,
                 new MarkdownHtmlWithoutScrollStrategy()
             );
             string language = settingManager.GetValue<string>("Language");
@@ -237,7 +237,7 @@ namespace CommunityPatchLauncher.ViewModels
             string language = settingManager.GetValue<string>("Language");
 
             DocumentManager localDocumentManager = localDocumentManagerFactory.GetDocumentManager(
-                "en-EN",
+                Properties.Settings.Default.FallbackLanguage,
                 new MarkdownHtmlConvertStrategy()
                 );
             ChangelogContent = localDocumentManager.ReadConvertedDocument(

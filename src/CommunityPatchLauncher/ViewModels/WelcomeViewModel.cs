@@ -289,8 +289,8 @@ namespace CommunityPatchLauncher.ViewModels
             bool accepted = settingManager.GetValue<bool>("AgreementAccepted");
 
             IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
-            documentManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
-            string checkSumAgreement = documentManager.ReadConvertedDocument("en-EN", "Agreement.md");
+            documentManager = factory.GetDocumentManager(Properties.Settings.Default.FallbackLanguage, new MarkdownHtmlConvertStrategy());
+            string checkSumAgreement = documentManager.ReadConvertedDocument(Properties.Settings.Default.FallbackLanguage, "Agreement.md");
             Checksum = CreateChecksum(checkSumAgreement);
             PropertyChanged += (sender, data) =>
             {
