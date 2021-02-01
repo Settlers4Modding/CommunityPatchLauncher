@@ -35,7 +35,7 @@
                 <DockPanel Grid.Row="1" MaxHeight="30">
                     <StackPanel DockPanel.Dock="Right" VerticalAlignment="Top" Orientation="Horizontal" MaxHeight="30">
                         <TextBlock Style="{StaticResource DefaultText}" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static p:Resources.Default_LanguageLabel}"></TextBlock>
-                        <ComboBox SelectedIndex="{Binding SelectedIndex}" SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Languages}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Name="CB_LanguageSelector" MinWidth="200">
+                        <ComboBox Style="{StaticResource DefaultComboBox}" SelectedIndex="{Binding SelectedIndex}" SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Languages}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Name="CB_LanguageSelector" MinWidth="200">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding TranslatedName}"></TextBlock>
