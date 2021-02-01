@@ -252,6 +252,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editor.
+        /// </summary>
+        public static string MainWindow_Editor {
+            get {
+                return ResourceManager.GetString("MainWindow_Editor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FAQ.
         /// </summary>
         public static string MainWindow_FAQ {
@@ -392,6 +401,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string MainWindow_Team {
             get {
                 return ResourceManager.GetString("MainWindow_Team", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Texture Changer.
+        /// </summary>
+        public static string MainWindow_TextureChanger {
+            get {
+                return ResourceManager.GetString("MainWindow_TextureChanger", resourceCulture);
             }
         }
         
