@@ -51,9 +51,9 @@
     <Style TargetType="TextBox" x:Key="DefaultTextBox">
         <Setter Property="Background" Value="{StaticResource SelectedColor}"></Setter>
         <Setter Property="Foreground" Value="{StaticResource DefaultStringColor}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource BrightSelectedColor}"></Setter>
     </Style>
     <Style TargetType="TextBox" x:Key="SettingTextBox" BasedOn="{StaticResource DefaultTextBox}">
-        <Setter Property="MaxWidth" Value="285"></Setter>
         <Setter Property="Margin" Value="0,0,5,0"></Setter>
     </Style>
     <Style TargetType="StackPanel" x:Key="DockMenu">
