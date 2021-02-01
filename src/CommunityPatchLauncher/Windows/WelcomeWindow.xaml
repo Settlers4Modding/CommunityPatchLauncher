@@ -81,6 +81,7 @@
                                     <Binding Path="GameFolder" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
                                     <Binding Path="SelectedLanguage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
                                     <Binding Path="CheckForUpdateOnStartup" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                    <Binding Path="Checksum"  Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
                                 </MultiBinding>
                             </Button.CommandParameter>
                         </Button>
