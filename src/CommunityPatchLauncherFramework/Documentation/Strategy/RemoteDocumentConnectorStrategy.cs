@@ -17,9 +17,9 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
         private string cacheFolder;
 
         /// <summary>
-        /// Seconds until we request the file again
+        /// Timespan until loading again from source
         /// </summary>
-        private readonly int secondsUntilRequest;
+        private readonly TimeSpan timeSpanUntilRepeat;
 
         /// <summary>
         /// Dictionary with the last request times
@@ -29,9 +29,9 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
         /// <summary>
         /// Create a new instance of this class
         /// </summary>
-        public RemoteDocumentConnectorStrategy(int secondsUntilRequest)
+        public RemoteDocumentConnectorStrategy(TimeSpan timeSpanUntilRepeat)
         {
-            this.secondsUntilRequest = secondsUntilRequest;
+            this.timeSpanUntilRepeat = timeSpanUntilRepeat;
             latestRequestDictionary = new Dictionary<string, DateTime>();
             cacheFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             cacheFolder += "\\SIVCommunityPatchLauncher\\Cache\\";
@@ -67,8 +67,9 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
 
             DateTime lastTimeRequested = latestRequestDictionary[path];
 
-            double diffInSeconds = (DateTime.Now - lastTimeRequested).TotalSeconds;
-            if (lastTimeRequested.Year != 1 && diffInSeconds < secondsUntilRequest && diffInSeconds != 0)
+            DateTime repeatTime = DateTime.Now - timeSpanUntilRepeat;
+
+            if (lastTimeRequested.Year != 1 && lastTimeRequested > repeatTime)
             {
                 returnData = LoadCachedFile(localFile);
                 if (returnData != string.Empty)
@@ -76,7 +77,6 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
                     return returnData;
                 }
             }
-
             using (WebClient client = new WebClient())
             {
                 try
