@@ -52,15 +52,6 @@ namespace CommunityPatchLauncher.ViewModels
         /// Create a new instance of this view model
         /// </summary>
         /// <param name="documentToShow"></param>
-        public BrowserModelView(string documentToShow, UserControl control)
-            : this(documentToShow, control, new LocalDocumentManagerFactory())
-        {
-        }
-
-        /// <summary>
-        /// Create a new instance of this view model
-        /// </summary>
-        /// <param name="documentToShow"></param>
         public BrowserModelView(string documentToShow, UserControl control, IDocumentManagerFactory factoryToUse)
         {
             documentManager = factoryToUse.GetDocumentManager(Properties.Settings.Default.FallbackLanguage, new MarkdownHtmlConvertStrategy());
@@ -102,19 +93,15 @@ namespace CommunityPatchLauncher.ViewModels
             Task<string> contentData = documentManager?.ReadConvertedDocumentAsync(currentLanguage, documentToShow);
             contentData.ContinueWith((data) =>
             {
-                string dataToShow = data.Result;
-                if (dataToShow == string.Empty)
-                {
-                    BrowserContent = data.Result == string.Empty ?
-                                    GetFallbackManager().ReadConvertedDocument(
-                                        currentLanguage,
-                                        Properties.Settings.Default.NotReadableFile
-                                    ) :
-                                    data.Result;
-                }
+                BrowserContent = data.Result == string.Empty ?
+                GetFallbackManager().ReadConvertedDocument(
+                    currentLanguage,
+                    Properties.Settings.Default.NotReadableFile
+                ) :
+                data.Result;
             });
 
-            BrowserContent = documentManager?.ReadConvertedDocument(currentLanguage, documentToShow);
+            BrowserContent = GetFallbackManager()?.ReadConvertedDocument(currentLanguage, "Loading.md");
         }
 
         /// <summary>
