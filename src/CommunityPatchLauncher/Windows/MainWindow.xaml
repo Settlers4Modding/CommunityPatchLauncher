@@ -44,7 +44,7 @@
                             </ItemsControl>
                         </Button>
                         <StackPanel Tag="SubGroup" x:Name="Home_Group">
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenNewsCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="NewspaperOutline" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>

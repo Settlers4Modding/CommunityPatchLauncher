@@ -1,6 +1,7 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.Os;
+using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.UserControls;
@@ -18,6 +19,11 @@ namespace CommunityPatchLauncher.ViewModels
     /// </summary>
     internal class MainWindowModel : BaseViewModel
     {
+        /// <summary>
+        /// Open the news to the window
+        /// </summary>
+        public ICommand OpenNewsCommand { get; private set; }
+
         /// <summary>
         /// The command used to open the changelog
         /// </summary>
@@ -96,6 +102,7 @@ namespace CommunityPatchLauncher.ViewModels
 
                 contentDock = panel;
 
+                OpenNewsCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("News.md", new RemoteDocumentManagerFactory()));
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
