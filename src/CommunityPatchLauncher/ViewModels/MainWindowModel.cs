@@ -1,5 +1,6 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.Os;
 using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.Settings.Factories;
 using CommunityPatchLauncher.UserControls;
@@ -58,6 +59,16 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand ReportIssueCommand { get; private set; }
 
         /// <summary>
+        /// Open the s4 editor
+        /// </summary>
+        public ICommand OpenEditorCommand { get; private set; }
+
+        /// <summary>
+        /// Oopen the texture changer tool
+        /// </summary>
+        public ICommand OpenTextureChangerCommand { get; private set; }
+
+        /// <summary>
         /// The content dock to use
         /// </summary>
         private readonly DockPanel contentDock;
@@ -92,6 +103,12 @@ namespace CommunityPatchLauncher.ViewModels
                 OpenAboutCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("About.md"));
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
+
+                OpenEditorCommand = new StartEditorCommand(settingManager);
+
+                string gameFolder = settingManager.GetValue<string>("GameFolder");
+                string textureChange = gameFolder + "Texturenwechsler.bat";
+                OpenTextureChangerCommand = new StartProgramCommand(textureChange);
             }
 
             ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);
