@@ -36,14 +36,14 @@
             </DockPanel>
             <DockPanel Margin="0,0,0,5" Style="{StaticResource SettingDockPanel}">
                 <TextBlock Style="{StaticResource SettingText}" Text="{x:Static p:Resources.WelcomWindow_GameFolder}"></TextBlock>
-                <TextBox x:Name="TB_GameFolder" Style="{StaticResource SettingTextBox}"  Text="{Binding GameFolder}"></TextBox>
-                <Button Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}" Command="{Binding ManuelSelectGameFolder}"></Button>
+                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}" Command="{Binding ManuelSelectGameFolder}"></Button>
+                <TextBox DockPanel.Dock="Left" x:Name="TB_GameFolder" Style="{StaticResource SettingTextBox}"  Text="{Binding GameFolder}"></TextBox>
             </DockPanel>
             <Button Margin="0,0,0,15" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.WelcomeWindow_AutoDetect}" Command="{Binding AutoDetectGameFolder}"></Button>
             <DockPanel Style="{StaticResource SettingDockPanel}">
                 <TextBlock Style="{StaticResource SettingText}" Text="{x:Static p:Resources.SettingWindow_DownloadFolder}"></TextBlock>
-                <TextBox x:Name="TB_DownloadFolder" Style="{StaticResource SettingTextBox}" Text="{Binding DownloadFolder}"></TextBox>
-                <Button Style="{StaticResource DefaultButton}" Command="{Binding SelectFolder}" CommandParameter="{Binding ElementName=TB_DownloadFolder, Path=Text}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}"></Button>
+                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultButton}" Command="{Binding SelectFolder}" CommandParameter="{Binding ElementName=TB_DownloadFolder, Path=Text}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}"></Button>
+                <TextBox DockPanel.Dock="Left" x:Name="TB_DownloadFolder" Style="{StaticResource SettingTextBox}" HorizontalAlignment="Stretch" Text="{Binding DownloadFolder}"></TextBox>
             </DockPanel>
 
             <DockPanel Style="{StaticResource SettingDockPanel}">
