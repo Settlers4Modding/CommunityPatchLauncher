@@ -167,6 +167,9 @@
   <data name="Dialog_UpgradeTitle" xml:space="preserve">
     <value>Do you want to upgrade?</value>
   </data>
+  <data name="DocumentCacheNotice" xml:space="preserve">
+    <value>The Document was loaded from cache</value>
+  </data>
   <data name="MainWindow_About" xml:space="preserve">
     <value>About</value>
   </data>
