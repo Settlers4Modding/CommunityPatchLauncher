@@ -153,6 +153,9 @@
   <data name="Dialog_UpgradeTitle" xml:space="preserve">
     <value>Möchtest du aktualisieren?</value>
   </data>
+  <data name="DocumentCacheNotice" xml:space="preserve">
+    <value>Das Dokument wurde aus dem Cache geladen</value>
+  </data>
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>
   </data>
