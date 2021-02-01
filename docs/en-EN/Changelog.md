@@ -10,6 +10,7 @@
   * Cache the files and only download if last loading is older than n seconds
   * Show a placeholder while loading
   * Show a generic file if offline or source not available and not cached
+* Adding new style for combo boxen
 
 #### Installer
 
@@ -24,6 +25,8 @@
 * Checking for new version on startup if setting is active
 * Fixed problem with maximized form
 * Report bug button working now
+* Added button for S4Editor
+* Added button for texture change
 
 #### Launch Game Window
 
@@ -67,6 +70,7 @@
 #### Welcome Window
 
 * Agreement placeholder is replaced
+* Show agreement again if something changed
 #### Play window
 
 * The tab control on top will now highlight the last clicked patch version
@@ -116,6 +120,7 @@
 * Select download and game folder
 * Open setting/download or game folder
 * Reset agreement
+* Changed layout
 
 #### Resize window
 

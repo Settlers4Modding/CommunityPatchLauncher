@@ -100,6 +100,18 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Chat}"></TextBlock>
                                 </ItemsControl>
                             </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenTextureChangerCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Exchange" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_TextureChanger}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenEditorCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Edit" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Editor}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
                             <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="MapMarker" Style="{StaticResource SubCategoryFontAwesome}" />

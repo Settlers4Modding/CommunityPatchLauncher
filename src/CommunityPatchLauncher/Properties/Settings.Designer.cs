@@ -274,5 +274,29 @@ namespace CommunityPatchLauncher.Properties {
                 this["FallbackLanguage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Bluebyte\\Settlers4\\S4Editor\\")]
+        public string EditorRegKey {
+            get {
+                return ((string)(this["EditorRegKey"]));
+            }
+            set {
+                this["EditorRegKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Editor/")]
+        public string EditorBaseFolder {
+            get {
+                return ((string)(this["EditorBaseFolder"]));
+            }
+            set {
+                this["EditorBaseFolder"] = value;
+            }
+        }
     }
 }

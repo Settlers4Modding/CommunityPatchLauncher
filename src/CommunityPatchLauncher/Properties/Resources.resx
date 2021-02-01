@@ -182,6 +182,9 @@
   <data name="MainWindow_Disclaimer" xml:space="preserve">
     <value>Disclaimer</value>
   </data>
+  <data name="MainWindow_Editor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
   <data name="MainWindow_FAQ" xml:space="preserve">
     <value>FAQ</value>
   </data>
@@ -229,6 +232,9 @@
   </data>
   <data name="MainWindow_Team" xml:space="preserve">
     <value>Team</value>
+  </data>
+  <data name="MainWindow_TextureChanger" xml:space="preserve">
+    <value>Texture Changer</value>
   </data>
   <data name="MainWindow_Title" xml:space="preserve">
     <value>Community Patch Launcher</value>

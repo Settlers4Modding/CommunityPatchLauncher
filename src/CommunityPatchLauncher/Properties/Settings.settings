@@ -65,5 +65,11 @@
     <Setting Name="FallbackLanguage" Type="System.String" Scope="User">
       <Value Profile="(Default)">en-EN</Value>
     </Setting>
+    <Setting Name="EditorRegKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Bluebyte\Settlers4\S4Editor\</Value>
+    </Setting>
+    <Setting Name="EditorBaseFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Editor/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

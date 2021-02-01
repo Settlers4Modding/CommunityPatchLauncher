@@ -195,6 +195,9 @@
   <data name="MainWindow_StartSettle" xml:space="preserve">
     <value>Siedeln</value>
   </data>
+  <data name="MainWindow_TextureChanger" xml:space="preserve">
+    <value>Texturen wechsler</value>
+  </data>
   <data name="MainWindow_Tools" xml:space="preserve">
     <value>Extras</value>
   </data>
