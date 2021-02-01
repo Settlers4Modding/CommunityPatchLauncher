@@ -35,6 +35,7 @@
 * Progress bar for starting game
 * Adding button to download all the patches
 * Patch changelog loaded from [Settlers4Patch][patchChangelogSource]
+  * Cache the patch for 1 Hour if launcher is not getting closed
 
 #### Setting Window
 
