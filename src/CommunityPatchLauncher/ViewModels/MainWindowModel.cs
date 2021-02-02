@@ -116,6 +116,8 @@ namespace CommunityPatchLauncher.ViewModels
                 string gameFolder = settingManager.GetValue<string>("GameFolder");
                 string textureChange = gameFolder + "Texturenwechsler.bat";
                 OpenTextureChangerCommand = new StartProgramCommand(textureChange);
+
+                OpenNewsCommand.Execute(null);
             }
 
             ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);
