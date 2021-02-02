@@ -34,6 +34,7 @@ namespace CommunityPatchLauncher.Tasks
             }
 
             string targetFolder = settingManager.GetValue<string>("GameFolder");
+            targetFolder = Path.GetFullPath(targetFolder);
 
             using (MemoryStream innerArchive = new MemoryStream())
             {
@@ -62,6 +63,13 @@ namespace CommunityPatchLauncher.Tasks
                     foreach (var entry in extractedGame.Entries.Where(entry => !entry.IsDirectory))
                     {
                         if (entry.Key == "PreInstall.txt")
+                        {
+                            continue;
+                        }
+                        string targetPath = Path.Combine(targetFolder, entry.Key);
+                        FileInfo fileInfo = new FileInfo(targetPath);
+                        string mainDirectory = fileInfo.DirectoryName + Path.DirectorySeparatorChar;
+                        if (!mainDirectory.StartsWith(targetFolder))
                         {
                             continue;
                         }
@@ -111,14 +119,14 @@ namespace CommunityPatchLauncher.Tasks
                 {
                     string line = string.Empty;
                     string gameFolder = settingManager.GetValue<string>("GameFolder");
+                    gameFolder = Path.GetFullPath(gameFolder);
                     while ((line = fileReader.ReadLine()) != null)
                     {
-                        
                         string fullPath = gameFolder + line;
                         fullPath = Path.GetFullPath(fullPath);
                         FileInfo fileInfo = new FileInfo(fullPath);
-
-                        if (!File.Exists(gameFolder + "S4_Main.exe") || fileInfo.DirectoryName != gameFolder)
+                        string targetFolder = fileInfo.DirectoryName + Path.DirectorySeparatorChar;
+                        if (!File.Exists(gameFolder + "S4_Main.exe") || !targetFolder.StartsWith(gameFolder))
                         {
                             continue;
                         }
