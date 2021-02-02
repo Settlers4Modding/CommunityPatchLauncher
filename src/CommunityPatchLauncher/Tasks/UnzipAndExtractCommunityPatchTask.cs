@@ -34,6 +34,7 @@ namespace CommunityPatchLauncher.Tasks
             }
 
             string targetFolder = settingManager.GetValue<string>("GameFolder");
+            targetFolder = Path.GetFullPath(targetFolder);
 
             using (MemoryStream innerArchive = new MemoryStream())
             {
@@ -62,6 +63,13 @@ namespace CommunityPatchLauncher.Tasks
                     foreach (var entry in extractedGame.Entries.Where(entry => !entry.IsDirectory))
                     {
                         if (entry.Key == "PreInstall.txt")
+                        {
+                            continue;
+                        }
+                        string targetPath = Path.Combine(targetFolder, entry.Key);
+                        FileInfo fileInfo = new FileInfo(targetPath);
+                        string mainDirectory = fileInfo.DirectoryName + Path.DirectorySeparatorChar;
+                        if (!mainDirectory.StartsWith(targetFolder))
                         {
                             continue;
                         }
@@ -110,13 +118,19 @@ namespace CommunityPatchLauncher.Tasks
                 using (StreamReader fileReader = new StreamReader(preInstall.OpenEntryStream()))
                 {
                     string line = string.Empty;
+                    string gameFolder = settingManager.GetValue<string>("GameFolder");
+                    gameFolder = Path.GetFullPath(gameFolder);
                     while ((line = fileReader.ReadLine()) != null)
                     {
-                        //TODO: IMPORTANT: Check if this is enough protection so that nobody can escape the game folder!
-                        line = line.Replace("../", "");
-                        line = line.Replace("..\\", "");
-                        string gameFolder = settingManager.GetValue<string>("GameFolder");
                         string fullPath = gameFolder + line;
+                        fullPath = Path.GetFullPath(fullPath);
+                        FileInfo fileInfo = new FileInfo(fullPath);
+                        string targetFolder = fileInfo.DirectoryName + Path.DirectorySeparatorChar;
+                        if (!File.Exists(gameFolder + "S4_Main.exe") || !targetFolder.StartsWith(gameFolder))
+                        {
+                            continue;
+                        }
+
                         if (File.Exists(fullPath))
                         {
                             File.Delete(fullPath);

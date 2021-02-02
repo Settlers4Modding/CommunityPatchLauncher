@@ -25,7 +25,9 @@ namespace CommunityPatchLauncher.Tasks
                 TaskDone();
                 return false;
             }
-            string unzipFolder = Path.GetTempPath() + Guid.NewGuid() + "\\";
+            string unzipFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            FileInfo fileInfo = new FileInfo(unzipFolder);
+            string targetDirectory = fileInfo.DirectoryName + Path.DirectorySeparatorChar;
 
             using (ZipArchive archive = new ZipArchive(new FileStream(zipFilePath, FileMode.Open), ZipArchiveMode.Read))
             {
@@ -35,7 +37,13 @@ namespace CommunityPatchLauncher.Tasks
                 {
                     currentFile++;
                     int currentProgress = (int)(currentFile / (float)filesToUnzip * 100);
-                    FileInfo info = new FileInfo(unzipFolder + entry.FullName);
+                    string targetFile = Path.Combine(targetDirectory, entry.FullName);
+                    FileInfo info = new FileInfo(targetFile);
+                    string targetFileDirectory = info.DirectoryName + Path.DirectorySeparatorChar;
+                    if (!targetFileDirectory.StartsWith(targetDirectory))
+                    {
+                        continue;
+                    }
                     if (!Directory.Exists(info.DirectoryName))
                     {
                         Directory.CreateDirectory(info.DirectoryName);

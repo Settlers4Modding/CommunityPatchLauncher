@@ -84,7 +84,15 @@ namespace CommunityLauncherPatcher
                         Console.WriteLine("Ignore file " + fileToIgnore);
                         continue;
                     }
-                    string targetFile = targetFolder.FullName + "\\" + entry.FullName;
+                    string targetFile = Path.Combine(targetFolder.FullName, entry.FullName);
+                    FileInfo fileInfo = new FileInfo(targetFile);
+                    if (!fileInfo.DirectoryName.StartsWith(targetFolder.FullName))
+                    {
+                        Console.WriteLine("Tried to extract file to wrong directory! Extraction of file canceled!");
+                        Console.WriteLine("Filename: " + targetFile);
+                        Thread.Sleep(1000);
+                        continue;
+                    }
                     Console.WriteLine("Extracts file " + entry.FullName + " to " + targetFile);
                     try
                     {
