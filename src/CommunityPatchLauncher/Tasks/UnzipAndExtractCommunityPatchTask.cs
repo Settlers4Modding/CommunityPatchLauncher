@@ -110,14 +110,15 @@ namespace CommunityPatchLauncher.Tasks
                 using (StreamReader fileReader = new StreamReader(preInstall.OpenEntryStream()))
                 {
                     string line = string.Empty;
+                    string gameFolder = settingManager.GetValue<string>("GameFolder");
                     while ((line = fileReader.ReadLine()) != null)
                     {
-                        string gameFolder = settingManager.GetValue<string>("GameFolder");
+                        
                         string fullPath = gameFolder + line;
                         fullPath = Path.GetFullPath(fullPath);
                         FileInfo fileInfo = new FileInfo(fullPath);
 
-                        if (fileInfo.DirectoryName != gameFolder)
+                        if (!File.Exists(gameFolder + "S4_Main.exe") || fileInfo.DirectoryName != gameFolder)
                         {
                             continue;
                         }
