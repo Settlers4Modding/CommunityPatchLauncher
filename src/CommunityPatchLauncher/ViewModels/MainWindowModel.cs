@@ -102,7 +102,7 @@ namespace CommunityPatchLauncher.ViewModels
 
                 contentDock = panel;
 
-                OpenNewsCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("News.md", new RemoteDocumentManagerFactory()));
+                OpenNewsCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("News.md", new RemoteDocumentManagerFactory(new TimeSpan(0, 30, 0))));
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
@@ -116,6 +116,8 @@ namespace CommunityPatchLauncher.ViewModels
                 string gameFolder = settingManager.GetValue<string>("GameFolder");
                 string textureChange = gameFolder + "Texturenwechsler.bat";
                 OpenTextureChangerCommand = new StartProgramCommand(textureChange);
+
+                OpenNewsCommand.Execute(null);
             }
 
             ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);

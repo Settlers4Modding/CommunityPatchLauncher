@@ -9,17 +9,37 @@ namespace CommunityPatchLauncher.Documentation.Factories
     public class RemoteDocumentManagerFactory : LocalDocumentManagerFactory
     {
         /// <summary>
+        /// The timespan beween request times
+        /// </summary>
+        private readonly TimeSpan requestTimeSpan;
+
+        /// <summary>
         /// Create a new instance of this class
         /// </summary>
-        public RemoteDocumentManagerFactory()
+        public RemoteDocumentManagerFactory() : this(new TimeSpan(1, 0, 0))
         {
-            assemblyPath = Properties.Settings.Default.MarkdownOnlineBasePath;
+        }
+
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        public RemoteDocumentManagerFactory(TimeSpan timeSpan) : this(timeSpan, Properties.Settings.Default.MarkdownOnlineBasePath)
+        {
+            requestTimeSpan = timeSpan;
+        }
+
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        public RemoteDocumentManagerFactory(TimeSpan timeSpan, string basePath) : base(basePath)
+        {
+            requestTimeSpan = timeSpan;
         }
 
         /// <inheritdoc/>
         protected override IDocumentConnectorStrategy GetConvertStrategy()
         {
-            return new RemoteDocumentConnectorStrategy(new TimeSpan(1, 0, 0), Properties.Resources.DocumentCacheNotice);
+            return new RemoteDocumentConnectorStrategy(requestTimeSpan, Properties.Settings.Default.MarkdownOnlineBasePath);
         }
     }
 }
