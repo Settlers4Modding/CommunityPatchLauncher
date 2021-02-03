@@ -44,13 +44,13 @@ Download of the [old Launcher].
 
 **Step 1:** Download the newest zip file from the [Release].
 
-**Step 2:** Unpack the zip file to a location you prefer. We recommend to create a new folder for this in program files directory.
+**Step 2:** Unpack the zip file to a location you prefer. We recommend creating a new folder for this in program files directory.
 
 **Step 3:** Double click CommunityPatchLauncher.exe.
 
 **Step 4:** Before using the Community Patch you have to accept the agreement.
 
-**Step 5:** Select the Installation folder of your Settlers 4 History Edition. This should normally work by hitting the "auto detect" button.
+**Step 5:** Select the Installation folder of your Settlers 4 History Edition. This should normally work by hitting the "auto-detect" button.
 
 ![Agreement.JPG](/.github/assets/Agreement.JPG "Settlers 5 is not a real Settlers game!")
 
@@ -60,7 +60,7 @@ Step 6: Press OK ;-)
 
 ## Login functionality
 
-It is **not** necessary for playing settlers 4 with the Community Patch to make use of the login functionality!
+It is **not** necessary for playing Settlers 4 with the Community Patch to make use of the login functionality!
 
 It is also not necessary to create an account for logging in. The launcher will just take your Uplay ID without fetching your password.
 For players who make use of the login functionality we offer additional functionality such as

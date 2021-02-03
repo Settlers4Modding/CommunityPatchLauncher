@@ -8,7 +8,7 @@ What did you change.
 
 As example type `closes #` or `fixing #`.
 
-** How hat this been tested? **
+** How has this been tested? **
 
 Which tests did you run to verify your changes?
 
