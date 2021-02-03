@@ -12,33 +12,7 @@ Changelog: https://github.com/LitzeYT/Settlers4Patch/blob/master/ChangeLog.md
 # Geistiges Eigentum
 Sämtliche Grafiken und Textinhalte, sowie alle anderen Informationen dieser Anwendung, unterliegen dem jeweils anwendbaren Recht zum Schutz des Geistigen Eigentums von Blue Byte, Ubisoft oder den Erstellern dieser Modifikation. Sämtliche Grafiken und Textinhalte, sowie alle anderen Informationen dieser Anwendung dürfen ohne Genehmigung des jeweiligen Autors bzw. den jeweiligen Rechteinhabern weder vervielfältigt, noch auszugsweise weiterverwendet werden. Eingetragene Markenrechte wurden im Rahmen der Modifikation oder deren Dokumentation nicht als solche gesondert gekennzeichnet.
 
-# Community Patch Team
-- LitZe   
-- Xanatos  
-- oberstrike  
-- Bierdeckel  
-- Vendetta  
-- Gimli  
-- AyJayKay  
-- WizzardMaker  
-- Earthwalker  
-- Relentless  
-
 
 ## "Plugins"
 Der Siedler IV Community Patch verwendet entweder eigens geschriebene Plugins oder von externen Moddern, zur Programmierung und Verwendung wird die Mod-API von Nyfrk benutzt. 
 Diese Plugins fallen entweder unter die GPLizenz oder LPGLizenz und sind somit komplett OpenSource und stehen euch zur Verfügung. 
-
-Nyfrk Mod API - https://github.com/nyfrk/S4ModApi
-
-Verwendete Plugins : 
-Nexusmod: https://www.nexusmods.com/thesettlers4/mods/
-
-##  "Editor+"
-- MuffinMario 
-
-## "Texturenwechsler"
-- Cybertom 
-
-## "Musik"
-- UltimateSpinDash 

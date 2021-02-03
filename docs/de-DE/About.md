@@ -7,6 +7,7 @@ Ein früherer Launcher, der nicht mehr weiter entwickelt wurde sollte durch ein 
 Zu Beginn des Projekts kamen dann noch einige zusätzliche Ideen auf, die man mit einem neuen Launcher umsetzen könnte. So ist zum Beispiel geplant ein Ranked System umzusetzen, für das aber eine eindeutige Identifizierung des Spielers nötigt ist.
 
 Ziele des Projektes sind also:
+* Erstellung eines Tools mit dem Die Siedler 4 History Edition auf Community Patch Level patchbar ist und umgekehrt.
 * Fehler vermeiden, die mit dem alten Launcher nicht behebbar waren.
 * Die technische Grundlage für neue Features schaffen.
 * Der Community die bessere Mitarbeit auf GitHub ermöglichen.
@@ -24,8 +25,8 @@ Aktuell arbeiten an dem Launcher:
 
 ### Die Contributer und Tester
 Natürlich gibt es auch viele Leute, die uns mit Testen oder Tipps unterstützen:
-* Name 1, Tester
-* Name 2, Contributer
+* Flofus, Tester & Contributor
+* Name 2, Tester
 * ...
 
 ## Die Unterstützer
