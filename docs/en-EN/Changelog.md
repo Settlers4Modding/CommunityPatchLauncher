@@ -27,6 +27,7 @@
 * Report bug button working now
 * Added button for S4Editor
 * Added button for texture change
+* Maximize/Minimize on menu bar double click
 
 #### Launch Game Window
 
@@ -39,12 +40,14 @@
 * Adding button to download all the patches
 * Patch changelog loaded from [Settlers4Patch][patchChangelogSource]
   * Cache the patch for 1 Hour if launcher is not getting closed
+* Minimize launcher on game start (Option)
 
 #### Setting Window
 
 * Added a combobox to select the update branch
 * Added a button to update the application
 * Checkbox to check for new version on startup
+* Checkbox to set if launcher should minimize on game start
 
 #### Welcome Window
 

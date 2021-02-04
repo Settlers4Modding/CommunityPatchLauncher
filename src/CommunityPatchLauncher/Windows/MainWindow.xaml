@@ -26,7 +26,7 @@
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <uC:TitleBarUseControl Grid.ColumnSpan="2"></uC:TitleBarUseControl>
+        <uC:TitleBarUseControl x:Name="TitleBar" Grid.ColumnSpan="3"></uC:TitleBarUseControl>
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".9*"></ColumnDefinition>
@@ -136,12 +136,6 @@
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Bookmark" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Disclaimer}"></TextBlock>
-                                </ItemsControl>
-                            </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
-                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
-                                    <fa:FontAwesome Icon="Users" Style="{StaticResource SubCategoryFontAwesome}" />
-                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Team}"></TextBlock>
                                 </ItemsControl>
                             </Button>
                             <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">

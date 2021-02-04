@@ -110,6 +110,14 @@ namespace CommunityPatchLauncher.ViewModels
                 OpenAboutCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("About.md"));
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
+                object titleBarObject = currentWindow.FindName("TitleBar");
+                if (titleBarObject is TitleBarUseControl titleBar)
+                {
+                    titleBar.MouseDoubleClick += (sender, data) =>
+                    {
+                        MaximizeWindowCommand?.Execute(null);
+                    };
+                }
 
                 OpenEditorCommand = new StartEditorCommand(settingManager);
 

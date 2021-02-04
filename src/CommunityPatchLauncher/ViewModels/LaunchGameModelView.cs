@@ -1,6 +1,7 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.Condition;
 using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Documentation.Strategy;
@@ -126,8 +127,6 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private int progressValue;
 
-        private UserControl parent;
-
 
         /// <summary>
         /// The local manager factory to use
@@ -142,11 +141,18 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// Create a new instance of this view model
         /// </summary>
-        public LaunchGameModelView(UserControl parent)
+        public LaunchGameModelView(UserControl parent, Window mainWindow)
         {
-            this.parent = parent;
             IProgressCommand launchGameCommand = new LaunchGameCommand(settingManager);
             ICommand toggleCommand = new ToggleVisiblityCommand(parent, "PB_DownloadState");
+            ICommand minimizeCommand = new MinimizeWindowCommand(
+                                            mainWindow,
+                                            new SpecificSettingSetCondition(
+                                                            settingManager,
+                                                            "minimizeOnGameStart"
+                                                            )
+                                            );
+
             launchGameCommand.ProgressChanged += (sender, data) =>
             {
                 float percent = (float)data.CurrentWorkload / (float)data.TotalWorkload;
@@ -155,10 +161,12 @@ namespace CommunityPatchLauncher.ViewModels
             launchGameCommand.Executed += (sender, data) =>
             {
                 toggleCommand.Execute(string.Empty);
+                minimizeCommand.Execute(null);
             };
             LaunchGameCommand = new MultiCommand(new List<ICommand>() {
                 toggleCommand,
                 launchGameCommand,
+                
             });
 
             IEnumerable<WebBrowser> browserObjects = FindVisualChildren<WebBrowser>((DependencyObject)parent.Content);

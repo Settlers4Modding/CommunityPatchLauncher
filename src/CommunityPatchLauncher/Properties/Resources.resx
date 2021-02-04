@@ -295,6 +295,9 @@ Is your computer offline?</value>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Enter window width</value>
   </data>
+  <data name="SettingsWindow_MinimizeOnGameStart" xml:space="preserve">
+    <value>Minimize launcher on game start</value>
+  </data>
   <data name="SettingsWindow_UpdateBranch" xml:space="preserve">
     <value>Update Branch:</value>
   </data>
