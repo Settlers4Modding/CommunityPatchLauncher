@@ -26,7 +26,7 @@
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <uC:TitleBarUseControl Grid.ColumnSpan="2"></uC:TitleBarUseControl>
+        <uC:TitleBarUseControl x:Name="TitleBar" Grid.ColumnSpan="3"></uC:TitleBarUseControl>
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".9*"></ColumnDefinition>
