@@ -255,6 +255,9 @@ Remote version: {remoteVersion}</value>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Fenster breite eintragen</value>
   </data>
+  <data name="SettingsWindow_MinimizeOnGameStart" xml:space="preserve">
+    <value>Launcher beim Spielstart minimieren</value>
+  </data>
   <data name="SettingsWindow_UpdateBranch" xml:space="preserve">
     <value>Update Quelle:</value>
   </data>
