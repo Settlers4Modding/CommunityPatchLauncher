@@ -71,7 +71,7 @@ namespace CommunityPatchLauncher.ViewModels
                 panelToUse = panel;
                 OpenLaunchGameCommand = new OpenLaunchUserControlToPanel(
                     panelToUse,
-                    new LaunchGameUserControl(),
+                    new LaunchGameUserControl(parentWindow),
                     controller
                     );
             }
