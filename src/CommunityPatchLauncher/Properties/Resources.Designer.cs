@@ -581,6 +581,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimize launcher on game start.
+        /// </summary>
+        public static string SettingsWindow_MinimizeOnGameStart {
+            get {
+                return ResourceManager.GetString("SettingsWindow_MinimizeOnGameStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Branch:.
         /// </summary>
         public static string SettingsWindow_UpdateBranch {
