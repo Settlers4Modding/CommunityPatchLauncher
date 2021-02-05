@@ -69,6 +69,7 @@
 #### Main Window
 
 * The icon on the left side is larger now
+* Show launcher version on title bar
 
 #### Welcome Window
 
