@@ -1,5 +1,5 @@
 ﻿# Informationen
-* Klick hier für [Downloads und Releases]
+* Klick hier für Downloads und [Releases]
 * Neuigkeiten gibt es unter [News] und im [ChangeLog]
 * Bei Problemen und Fragen bitte im [FAQ] schauen!
 
@@ -19,4 +19,4 @@ Diese Plugins fallen entweder unter die GPLizenz oder LPGLizenz und sind somit k
 [News]: https://github.com/LitzeYT/Settlers4Patch/blob/master/News.md
 [FAQ]: https://github.com/LitzeYT/Settlers4Patch/blob/master/FAQ.md
 [ChangeLog]: https://github.com/LitzeYT/Settlers4Patch/blob/master/ChangeLog.md
-[Downloads and Releases]: https://github.com/LitzeYT/Settlers4Patch/releases
+[Releases]: https://github.com/LitzeYT/Settlers4Patch/releases

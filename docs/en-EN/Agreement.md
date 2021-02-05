@@ -1,6 +1,6 @@
 # Information
 
-* Click here for [Downloads und Releases]
+* Click here for Downloads und [Releases]
 * Any news can be found in [News] or the [ChangeLog]
 * In case of questions or issues please check our [FAQ]!
 
@@ -17,4 +17,4 @@ All these plug-ins fall under GPLicense or LPGLicense and are fully open source.
 [News]: https://github.com/LitzeYT/Settlers4Patch/blob/master/NewsEN.md
 [FAQ]: https://github.com/LitzeYT/Settlers4Patch/blob/master/FAQEN.md
 [ChangeLog]: https://github.com/LitzeYT/Settlers4Patch/blob/master/ChangeLogEN.md
-[Downloads and Releases]: https://github.com/LitzeYT/Settlers4Patch/releases
+[Releases]: https://github.com/LitzeYT/Settlers4Patch/releases
