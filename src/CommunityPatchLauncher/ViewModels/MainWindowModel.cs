@@ -8,6 +8,8 @@ using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
+using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -94,6 +96,8 @@ namespace CommunityPatchLauncher.ViewModels
             updateSearched = false;
             CloseWindowCommand = new CloseApplicationCommand();
 
+            SetWindowTitle();
+
             object dockArea = window.FindName("DP_ContentDock");
             if (dockArea is DockPanel panel)
             {
@@ -138,7 +142,25 @@ namespace CommunityPatchLauncher.ViewModels
                 updateSearched = true;
                 CheckForUpdateIfNeeded(window);
             };
+        }
 
+        /// <summary>
+        /// Add the version to the window title
+        /// </summary>
+        private void SetWindowTitle()
+        {
+            string version = settingManager.GetValue<string>("LauncherVersion");
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string versionString = "0.0.0";
+            using (Stream stream = assembly.GetManifestResourceStream("CommunityPatchLauncher.Version.txt"))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    versionString = reader.ReadLine();
+                }
+            }
+            version = version == null ? versionString : "Unstable " + version;
+            WindowTitle += " - Version " + version;
         }
 
         /// <summary>
