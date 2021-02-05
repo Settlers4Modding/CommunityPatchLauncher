@@ -26,7 +26,7 @@ Aktuell arbeiten an dem Launcher:
 ### Die Contributer und Tester
 Natürlich gibt es auch viele Leute, die uns mit Testen oder Tipps unterstützen:
 * Flofus, Tester & Contributor
-* Name 2, Tester
+* oOXatorionOo, Tester
 * ...
 
 ## Die Unterstützer
@@ -54,9 +54,10 @@ Nexusmod: https://www.nexusmods.com/thesettlers4/mods/
 ### Musik
 - UltimateSpinDash 
 
-### Dark Tribe Patch
+### Playable Dark Tribe Patch
 - Viciten
 
 ### HD-Patch (coming soon)
 - WizzardMaker
+- knobs#6545
 
