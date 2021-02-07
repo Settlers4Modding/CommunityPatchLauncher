@@ -8,11 +8,11 @@
 
 
 # Geistiges Eigentum
-Sämtliche Grafiken und Textinhalte, sowie alle anderen Informationen dieser Anwendung, unterliegen dem jeweils anwendbaren Recht zum Schutz des Geistigen Eigentums von Blue Byte, Ubisoft oder den Erstellern dieser Modifikation. Sämtliche Grafiken und Textinhalte, sowie alle anderen Informationen dieser Anwendung dürfen ohne Genehmigung des jeweiligen Autors bzw. den jeweiligen Rechteinhabern weder vervielfältigt, noch auszugsweise weiterverwendet werden. Eingetragene Markenrechte wurden im Rahmen der Modifikation oder deren Dokumentation nicht als solche gesondert gekennzeichnet.
+Sämtliche Grafiken und Textinhalte, sowie alle anderen Informationen dieser Anwendung, unterliegen dem jeweils anwendbaren Recht zum Schutz des geistigen Eigentums von Blue Byte, Ubisoft oder den Erstellern dieser Modifikation. Sämtliche Grafiken und Textinhalte, sowie alle anderen Informationen dieser Anwendung dürfen ohne Genehmigung des jeweiligen Autors bzw. den jeweiligen Rechteinhabern weder vervielfältigt, noch auszugsweise weiterverwendet werden. Eingetragene Markenrechte wurden im Rahmen der Modifikation oder deren Dokumentation nicht als solche gesondert gekennzeichnet.
 
 
-## "Plugins"
-Der Siedler IV Community Patch verwendet entweder eigens geschriebene Plugins oder von externen Moddern, zur Programmierung und Verwendung wird die Mod-API von Nyfrk benutzt. 
+## "Plug-ins"
+Der Siedler IV Community Patch verwendet entweder eigens geschriebene Plug-ins oder von externen Moddern, zur Programmierung und Verwendung wird die Mod-API von Nyfrk benutzt. 
 Diese Plugins fallen entweder unter die GPLizenz oder LPGLizenz und sind somit komplett OpenSource und stehen euch zur Verfügung. 
 
 

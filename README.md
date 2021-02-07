@@ -58,12 +58,12 @@ If not you can click on the "three dots" button and select the location yourself
 
 Step 6: Press OK ;-)
 
-## Login functionality
+## Login functionality *Coming Soon*
 
 It is **not** necessary for playing Settlers 4 with the Community Patch to make use of the login functionality!
 
 It is also not necessary to create an account for logging in. The launcher will just take your Uplay ID without fetching your password.
-For players who make use of the login functionality we offer additional functionality such as
+For players who make use of the login functionality, we offer additional functionality such as:
 * Ranked Mode - Compete with other Players in the ranked system. New seasons will be started frequently, so it is never too late to begin! *(Coming soon)*
 * Match searching functionality for the ranked mode - No need for searching players in forums and discords to compete! *(Coming soon)*
 * Voting on Maps - You really liked a singleplayer or multiplayer map? Let others know and rate the map with 5 stars! *(Coming soon)*
@@ -78,7 +78,7 @@ You can find other players and most of the devs in our Discord:
 
 [![Join the chat at https://discord.gg/Vhs3e5N](https://img.shields.io/discord/644571557276155905?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Vhs3e5N)
 
-If you want to help us working on the Community Patch meet us there and let us know!
+If you want to help us working on the Community Patch, meet us there and let us know!
 If you find any bug or want to request a new feature please check our [issue tracker] and add it if you can't find it already or join us in Discord. There we have a dedicated chat for suggestions and discussion.
 
 

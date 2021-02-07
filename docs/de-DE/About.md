@@ -1,10 +1,10 @@
 # About (DE)
 
 ## Intentionen
-Dieses Projekt ist entstanden um Spielern ein Tool zur Verfügung zu stellen, mit dem der Siedler 4 Community Patch automatisch installiert und geupdated werden kann.
+Dieses Projekt ist entstanden, um Spielern ein Tool zur Verfügung zu stellen, mit dem der Siedler 4 Community Patch automatisch installiert und geupdated werden kann.
 Außerdem soll der Launcher es möglich machen zwischen dem Community Patch und der Vanilla Version des Spieles beliebig umschalten zu können.
 Ein früherer Launcher, der nicht mehr weiter entwickelt wurde sollte durch ein besseres, moderneres Tool ersetzt werden. So ließen sich mit der bisher genutzten Technologie zwar neue Patch Versionen installieren, allerdings konnten einmal ausgelieferte Plug-ins nicht mehr gelöscht werden. Dies führte immer wieder zu Problemen, die man zwar per manuellem Löschen beheben konnte, die allerdings für den unerfahrenen Nutzer unangenehm und natürlich auch völlig unnötig waren.
-Zu Beginn des Projekts kamen dann noch einige zusätzliche Ideen auf, die man mit einem neuen Launcher umsetzen könnte. So ist zum Beispiel geplant ein Ranked System umzusetzen, für das aber eine eindeutige Identifizierung des Spielers nötigt ist.
+Zu Beginn des Projekts kamen dann noch einige zusätzliche Ideen auf, die man mit einem neuen Launcher umsetzen könnte. So ist zum Beispiel geplant ein Ranked System umzusetzen, für das aber eine eindeutige Identifizierung des Spielers nötigt wird.
 
 Ziele des Projektes sind also:
 * Erstellung eines Tools mit dem Die Siedler 4 History Edition auf Community Patch Level patchbar ist und umgekehrt.
@@ -32,14 +32,14 @@ Natürlich gibt es auch viele Leute, die uns mit Testen oder Tipps unterstützen
 ## Die Unterstützer
 Der Launcher alleine wäre sicherlich keine große Sache, wenn es da nicht die Unterstützer gäbe, deren Siedler 4 Mods, Plug-ins und Tools in den Launcher integriert sind.
 
-Der Siedler IV Community Patch verwendet entweder eigens geschriebene Plugins oder von externen Moddern.
-Diese Plugins fallen entweder unter die GPLizenz oder LPGLizenz und sind somit komplett OpenSource und stehen euch zur Verfügung. 
+Der Siedler IV Community Patch verwendet entweder eigens geschriebene Plug-ins oder von externen Moddern.
+Diese Plug-ins fallen entweder unter die GPLizenz oder LPGLizenz und sind somit komplett OpenSource und stehen euch zur Verfügung. 
 
 ### Mod-API
 Zur Programmierung und Verwendung wird die Mod-API von Nyfrk benutzt. 
 Nyfrk Mod API - https://github.com/nyfrk/S4ModApi
 
-Verwendete Plug-ins : 
+Verwendete Plug-ins: 
 Nexusmod: https://www.nexusmods.com/thesettlers4/mods/
 
 ### Community Patch und Balancing
