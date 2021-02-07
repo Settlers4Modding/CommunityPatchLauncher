@@ -2,8 +2,8 @@
 
 The Settlers 4 Community Patch Launcher only works in combination with an installed copy of The Settlers 4 History Edition.
 
-With the Community Patch Launcher you can download and install the latest version of the Settlers 4 Community Patch. Additionally, you can switch between the patched version and the original Settlers 4 History Edition. Other than that the launcher offers some more features that can be found after the installation.
+With the Community Patch Launcher, you can download and install the latest version of the Settlers 4 Community Patch. Additionally, you can switch between the patched version and the original Settlers 4 History Edition. Other than that the launcher offers some more features that can be found after the installation.
 
 In case of technical issues with the installation or the launcher please check on https://github.com/Settlers4Modding/CommunityPatchLauncher/issues if the problem is already known!
 
-In case of questions, suggestions or issues the community behind the patch is always happy to support here: https://discord.gg/Vhs3e5N
+In case of questions, suggestions or issues, the community behind the patch is always happy to support here: https://discord.gg/Vhs3e5N

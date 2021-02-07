@@ -25,7 +25,7 @@ How to send us requests for enhancement/improvement?
 ## How Can I contribute to the Community Patch?
 
 If you are a modder and have already worked on some features to improve the game The Settlers 4 we can add your changes to our Community Patch. We have a PTR version of the Community Patch that is meant to test such new features.
-If the change is well-tested and liked by the community we can also add it to the main Community Patch.
+If the change is well-tested and liked by the community, we can also add it to the main Community Patch.
 Please contact us on our Discord:
 
 [![Join the chat at https://discord.gg/Vhs3e5N](https://img.shields.io/discord/644571557276155905?color=%237289DA&label=LitZeYT&logo=discord&logoColor=white)](https://discord.gg/Vhs3e5N)
