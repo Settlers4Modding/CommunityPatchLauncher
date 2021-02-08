@@ -205,7 +205,7 @@
     <value>Community Patch Launcher</value>
   </data>
   <data name="Message_LocalVersionIsNewer" xml:space="preserve">
-    <value>Deine lokale Version ist bereits aktuell</value>
+    <value>Der Launcher ist bereits auf dem aktuellen Stand</value>
   </data>
   <data name="Message_Update" xml:space="preserve">
     <value>Remote Version ist neuer, möchtest du aktualisieren?
