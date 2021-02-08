@@ -1,4 +1,4 @@
-# About (DE)
+# About
 
 ## Intentionen
 Dieses Projekt ist entstanden, um Spielern ein Tool zur Verfügung zu stellen, mit dem der Siedler 4 Community Patch automatisch installiert und geupdated werden kann.

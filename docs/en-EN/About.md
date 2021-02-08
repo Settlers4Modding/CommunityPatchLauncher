@@ -1,4 +1,4 @@
-# About (DE)
+# About
 
 ## Intentions
 This project was started to provide the players a tool which is able to automatically install the Settlers 4 Community Patch and apply updates.
