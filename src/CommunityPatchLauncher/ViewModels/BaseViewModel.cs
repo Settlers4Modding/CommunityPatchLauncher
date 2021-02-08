@@ -158,6 +158,8 @@ namespace CommunityPatchLauncher.ViewModels
             currentWindow = window;
             if (currentWindow != null)
             {
+                currentWindow.MaxHeight = SystemParameters.WorkArea.Height;
+                currentWindow.MaxWidth = SystemParameters.WorkArea.Width;
                 int currentWidth = settingManager.GetValue<int>("Width");
                 int currentHeight = settingManager.GetValue<int>("Height");
                 if (currentWidth != 0 && currentHeight != 0)
