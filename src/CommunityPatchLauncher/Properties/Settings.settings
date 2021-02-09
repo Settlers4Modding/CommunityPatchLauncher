@@ -50,5 +50,26 @@
     <Setting Name="WindowMoveDistance" Type="System.Single" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
+    <Setting Name="MarkdownOnlineBasePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://raw.githubusercontent.com/LitzeYT/Settlers4Patch/master/</Value>
+    </Setting>
+    <Setting Name="PatchChangelogFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ChangeLog.md</Value>
+    </Setting>
+    <Setting Name="NotReadableFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NotReadable.md</Value>
+    </Setting>
+    <Setting Name="FileLoading" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Loading.md</Value>
+    </Setting>
+    <Setting Name="FallbackLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">en-EN</Value>
+    </Setting>
+    <Setting Name="EditorRegKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Bluebyte\Settlers4\S4Editor\</Value>
+    </Setting>
+    <Setting Name="EditorBaseFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Editor/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

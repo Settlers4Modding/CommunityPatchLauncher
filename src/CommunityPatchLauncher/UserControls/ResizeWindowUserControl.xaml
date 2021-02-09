@@ -30,7 +30,7 @@
         <StackPanel Grid.Row="0">
             <DockPanel Margin="0,0,0,5">
                 <TextBlock DockPanel.Dock="Left" Style="{StaticResource DefaultText}" Text="{x:Static p:Resources.ResizeWindow_SelectNewSize}"></TextBlock>
-                <ComboBox SelectedItem="{Binding SelectedSize}" SelectedIndex="{Binding SelectedIndex}" ItemsSource="{Binding AvailableSizes}" DockPanel.Dock="Right" IsEnabled="{Binding ElementName=CB_CustomStyle, Path=IsChecked, Converter={StaticResource InvertBoolConverter}}" Margin="5,0,0,0">
+                <ComboBox Style="{StaticResource DefaultComboBox}" SelectedItem="{Binding SelectedSize}" SelectedIndex="{Binding SelectedIndex}" ItemsSource="{Binding AvailableSizes}" DockPanel.Dock="Right" IsEnabled="{Binding ElementName=CB_CustomStyle, Path=IsChecked, Converter={StaticResource InvertBoolConverter}}" Margin="5,0,0,0">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DisplayName}"></TextBlock>

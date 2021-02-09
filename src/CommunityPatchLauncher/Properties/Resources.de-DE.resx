@@ -153,6 +153,9 @@
   <data name="Dialog_UpgradeTitle" xml:space="preserve">
     <value>Möchtest du aktualisieren?</value>
   </data>
+  <data name="DocumentCacheNotice" xml:space="preserve">
+    <value>Das Dokument wurde aus dem Cache geladen</value>
+  </data>
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>
   </data>
@@ -192,6 +195,9 @@
   <data name="MainWindow_StartSettle" xml:space="preserve">
     <value>Siedeln</value>
   </data>
+  <data name="MainWindow_TextureChanger" xml:space="preserve">
+    <value>Texturen wechsler</value>
+  </data>
   <data name="MainWindow_Tools" xml:space="preserve">
     <value>Extras</value>
   </data>
@@ -199,7 +205,7 @@
     <value>Community Patch Launcher</value>
   </data>
   <data name="Message_LocalVersionIsNewer" xml:space="preserve">
-    <value>Deine lokale Version ist neuer oder bereits aktuelle</value>
+    <value>Der Launcher ist bereits auf dem aktuellen Stand</value>
   </data>
   <data name="Message_Update" xml:space="preserve">
     <value>Remote Version ist neuer, möchtest du aktualisieren?
@@ -248,6 +254,9 @@ Remote version: {remoteVersion}</value>
   </data>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Fenster breite eintragen</value>
+  </data>
+  <data name="SettingsWindow_MinimizeOnGameStart" xml:space="preserve">
+    <value>Launcher beim Spielstart minimieren</value>
   </data>
   <data name="SettingsWindow_UpdateBranch" xml:space="preserve">
     <value>Update Quelle:</value>

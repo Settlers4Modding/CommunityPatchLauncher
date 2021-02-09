@@ -1,4 +1,6 @@
-﻿using CommunityPatchLauncher.ViewModels;
+﻿using CommunityPatchLauncher.Documentation.Factories;
+using CommunityPatchLauncher.ViewModels;
+using CommunityPatchLauncherFramework.Documentation.Factory;
 using System.Windows.Controls;
 
 namespace CommunityPatchLauncher.UserControls
@@ -12,10 +14,18 @@ namespace CommunityPatchLauncher.UserControls
         /// A user control containing a full size webbrowser to display content
         /// </summary>
         /// <param name="fileToOpen"></param>
-        public BrowserUserControl(string fileToOpen)
+        public BrowserUserControl(string fileToOpen) : this(fileToOpen, new LocalDocumentManagerFactory())
+        {
+        }
+
+        /// <summary>
+        /// A user control containing a full size webbrowser to display content
+        /// </summary>
+        /// <param name="fileToOpen"></param>
+        public BrowserUserControl(string fileToOpen, IDocumentManagerFactory managerFactory)
         {
             InitializeComponent();
-            DataContext = new BrowserModelView(fileToOpen, this);
+            DataContext = new BrowserModelView(fileToOpen, this, managerFactory);
         }
     }
 }

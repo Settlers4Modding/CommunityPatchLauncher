@@ -3,6 +3,7 @@ using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -43,13 +44,17 @@ namespace CommunityPatchLauncher.ViewModels
         private readonly string documentToShow;
 
         /// <summary>
+        /// Fallback manager to use
+        /// </summary>
+        private DocumentManager fallbackManager;
+
+        /// <summary>
         /// Create a new instance of this view model
         /// </summary>
         /// <param name="documentToShow"></param>
-        public BrowserModelView(string documentToShow, UserControl control)
+        public BrowserModelView(string documentToShow, UserControl control, IDocumentManagerFactory factoryToUse)
         {
-            IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
-            documentManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlConvertStrategy());
+            documentManager = factoryToUse.GetDocumentManager(Properties.Settings.Default.FallbackLanguage, new MarkdownHtmlConvertStrategy());
             this.documentToShow = documentToShow;
 
             DependencyObject browserObject = (DependencyObject)control.FindName("WB_browser");
@@ -66,8 +71,7 @@ namespace CommunityPatchLauncher.ViewModels
                         return;
                     }
                     string url = eventArgs.Uri.ToString();
-                    url = url.ToLower();
-                    if (url.StartsWith("http"))
+                    if (url.ToLower().StartsWith("http"))
                     {
                         eventArgs.Cancel = true;
                         ICommand openLink = new OpenLinkCommand(url);
@@ -86,7 +90,33 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 return;
             }
-            BrowserContent = documentManager?.ReadConvertedDocument(currentLanguage, documentToShow);
+            Task<string> contentData = documentManager?.ReadConvertedDocumentAsync(currentLanguage, documentToShow);
+            contentData.ContinueWith((data) =>
+            {
+                BrowserContent = data.Result == string.Empty ?
+                GetFallbackManager().ReadConvertedDocument(
+                    currentLanguage,
+                    Properties.Settings.Default.NotReadableFile
+                ) :
+                data.Result;
+            });
+
+            BrowserContent = GetFallbackManager()?.ReadConvertedDocument(currentLanguage, "Loading.md");
+        }
+
+        /// <summary>
+        /// Get the fallback managers
+        /// </summary>
+        /// <returns>A fallback document manager</returns>
+        private DocumentManager GetFallbackManager()
+        {
+            if (fallbackManager != null)
+            {
+                return fallbackManager;
+            }
+
+            IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
+            return factory.GetDocumentManager(Properties.Settings.Default.FallbackLanguage, new MarkdownHtmlConvertStrategy());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace CommunityPatchLauncher.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -212,6 +212,90 @@ namespace CommunityPatchLauncher.Properties {
             }
             set {
                 this["WindowMoveDistance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/LitzeYT/Settlers4Patch/master/")]
+        public string MarkdownOnlineBasePath {
+            get {
+                return ((string)(this["MarkdownOnlineBasePath"]));
+            }
+            set {
+                this["MarkdownOnlineBasePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ChangeLog.md")]
+        public string PatchChangelogFileName {
+            get {
+                return ((string)(this["PatchChangelogFileName"]));
+            }
+            set {
+                this["PatchChangelogFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NotReadable.md")]
+        public string NotReadableFile {
+            get {
+                return ((string)(this["NotReadableFile"]));
+            }
+            set {
+                this["NotReadableFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Loading.md")]
+        public string FileLoading {
+            get {
+                return ((string)(this["FileLoading"]));
+            }
+            set {
+                this["FileLoading"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en-EN")]
+        public string FallbackLanguage {
+            get {
+                return ((string)(this["FallbackLanguage"]));
+            }
+            set {
+                this["FallbackLanguage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Bluebyte\\Settlers4\\S4Editor\\")]
+        public string EditorRegKey {
+            get {
+                return ((string)(this["EditorRegKey"]));
+            }
+            set {
+                this["EditorRegKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Editor/")]
+        public string EditorBaseFolder {
+            get {
+                return ((string)(this["EditorBaseFolder"]));
+            }
+            set {
+                this["EditorBaseFolder"] = value;
             }
         }
     }

@@ -116,6 +116,11 @@
     <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="BindingData\WindowsSizeService.cs" />
+    <Compile Include="Commands\Condition\BaseCondition.cs" />
+    <Compile Include="Commands\Condition\ICondition.cs" />
+    <Compile Include="Commands\Condition\SpecificSettingSetCondition.cs" />
+    <Compile Include="Commands\Os\StartEditorCommand.cs" />
+    <Compile Include="Commands\Os\StartProgramCommand.cs" />
     <Compile Include="Commands\Os\MoveFolderCommand.cs" />
     <Compile Include="Commands\TaskCommands\DownloadAllPatchesCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenLinkCommand.cs" />
@@ -159,6 +164,7 @@
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Commands\ApplicationWindow\ToggleVisiblityCommand.cs" />
     <Compile Include="DataContainers\Position.cs" />
+    <Compile Include="Documentation\Factories\RemoteDocumentManagerFactory.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlWithoutScrollStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />

@@ -1,6 +1,7 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.Condition;
 using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Documentation.Strategy;
@@ -10,7 +11,7 @@ using CommunityPatchLauncherFramework.Documentation.Manager;
 using CommunityPatchLauncherFramework.Documentation.Strategy;
 using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -126,22 +127,32 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private int progressValue;
 
-        private UserControl parent;
-
 
         /// <summary>
-        /// The manager factory to use
+        /// The local manager factory to use
         /// </summary>
-        private readonly IDocumentManagerFactory managerFactory;
+        private readonly IDocumentManagerFactory localDocumentManagerFactory;
+
+        /// <summary>
+        /// The remote manager factory to use
+        /// </summary>
+        private readonly DocumentManager remoteDocumentManager;
 
         /// <summary>
         /// Create a new instance of this view model
         /// </summary>
-        public LaunchGameModelView(UserControl parent)
+        public LaunchGameModelView(UserControl parent, Window mainWindow)
         {
-            this.parent = parent;
             IProgressCommand launchGameCommand = new LaunchGameCommand(settingManager);
             ICommand toggleCommand = new ToggleVisiblityCommand(parent, "PB_DownloadState");
+            ICommand minimizeCommand = new MinimizeWindowCommand(
+                                            mainWindow,
+                                            new SpecificSettingSetCondition(
+                                                            settingManager,
+                                                            "minimizeOnGameStart"
+                                                            )
+                                            );
+
             launchGameCommand.ProgressChanged += (sender, data) =>
             {
                 float percent = (float)data.CurrentWorkload / (float)data.TotalWorkload;
@@ -150,10 +161,12 @@ namespace CommunityPatchLauncher.ViewModels
             launchGameCommand.Executed += (sender, data) =>
             {
                 toggleCommand.Execute(string.Empty);
+                minimizeCommand.Execute(null);
             };
             LaunchGameCommand = new MultiCommand(new List<ICommand>() {
                 toggleCommand,
                 launchGameCommand,
+                
             });
 
             IEnumerable<WebBrowser> browserObjects = FindVisualChildren<WebBrowser>((DependencyObject)parent.Content);
@@ -180,7 +193,12 @@ namespace CommunityPatchLauncher.ViewModels
                 };
             }
 
-            managerFactory = new LocalDocumentManagerFactory();
+            localDocumentManagerFactory = new LocalDocumentManagerFactory();
+            IDocumentManagerFactory remoteDocumentManagerFactory = new RemoteDocumentManagerFactory();
+            remoteDocumentManager = remoteDocumentManagerFactory.GetDocumentManager(
+                Properties.Settings.Default.FallbackLanguage,
+                new MarkdownHtmlConvertStrategy()
+                );
         }
 
         /// <summary>
@@ -189,6 +207,11 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="availablePatch">The patch to use</param>
         public void SetPatch(Patch availablePatch)
         {
+            if (PatchToUse != null && availablePatch != null && availablePatch.RealPatch == PatchToUse.RealPatch)
+            {
+                return;
+            }
+            LoadChangelog(availablePatch);
             PatchToUse = availablePatch;
             currentSpeedPath = patchToUse.RealPatch.ToString() + "/Speed";
             string speedString = settingManager.GetValue<string>(currentSpeedPath);
@@ -199,8 +222,8 @@ namespace CommunityPatchLauncher.ViewModels
             }
             Speed = newMode;
 
-            DocumentManager scrollLessDocumentManager = managerFactory.GetDocumentManager(
-                "en-EN",
+            DocumentManager scrollLessDocumentManager = localDocumentManagerFactory.GetDocumentManager(
+                Properties.Settings.Default.FallbackLanguage,
                 new MarkdownHtmlWithoutScrollStrategy()
             );
             string language = settingManager.GetValue<string>("Language");
@@ -211,6 +234,36 @@ namespace CommunityPatchLauncher.ViewModels
                 patchToUse.RealPatch.ToString() + ".md"
             );
             }
+        }
+
+        /// <summary>
+        /// Load the changelog file
+        /// </summary>
+        /// <param name="availablePatch">Load the changelog for the following patch</param>
+        private void LoadChangelog(Patch availablePatch)
+        {
+            string language = settingManager.GetValue<string>("Language");
+
+            DocumentManager localDocumentManager = localDocumentManagerFactory.GetDocumentManager(
+                Properties.Settings.Default.FallbackLanguage,
+                new MarkdownHtmlConvertStrategy()
+                );
+            ChangelogContent = localDocumentManager.ReadConvertedDocument(
+                language,
+                Properties.Settings.Default.FileLoading
+                );
+
+            string fileName = availablePatch.RealPatch + Properties.Settings.Default.PatchChangelogFileName;
+            Task<string> fileContent = remoteDocumentManager.ReadConvertedDocumentAsync(language, fileName);
+            fileContent.ContinueWith((data) =>
+            {
+                ChangelogContent = data.Result == string.Empty ? 
+                                    localDocumentManager.ReadConvertedDocument(
+                                        language,
+                                        Properties.Settings.Default.NotReadableFile
+                                        ) : 
+                                    data.Result;
+            });
         }
 
         /// <summary>
@@ -259,12 +312,6 @@ namespace CommunityPatchLauncher.ViewModels
         public override void Reload()
         {
             settingManager.Reload();
-
-            DocumentManager documentManager = managerFactory.GetDocumentManager(
-                "en-EN",
-                new MarkdownHtmlConvertStrategy()
-                );
-            ChangelogContent = documentManager.ReadConvertedDocument(Thread.CurrentThread.CurrentCulture.Name, "Placeholder.md");
         }
     }
 }

@@ -108,6 +108,27 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private int selectedIndex;
 
+        //MinimizeGameOnStartup
+
+        /// <summary>
+        /// Public accessor if we should minimize the launcher on start
+        /// </summary>
+        public bool MinimizeOnGameStart
+        {
+            get => minimizeOnGameStart;
+            set
+            {
+                minimizeOnGameStart = value;
+                settingManager.AddValue("minimizeOnGameStart", minimizeOnGameStart);
+                RaisePropertyChanged("MinimizeGameOnGameStart");
+            }
+        }
+
+        /// <summary>
+        /// Private accessor if we should minimize the launcher on start
+        /// </summary>
+        private bool minimizeOnGameStart;
+
         /// <summary>
         /// Public accessor if we should check for update on startup
         /// </summary>
@@ -294,6 +315,7 @@ namespace CommunityPatchLauncher.ViewModels
                 GameFolder = settingManager.GetValue<string>("GameFolder");
                 DownloadFolder = settingManager.GetValue<string>("DownloadFolder");
                 CheckForUpdateOnStartup = settingManager.GetValue<bool>("UpdateOnStartup");
+                MinimizeOnGameStart = settingManager.GetValue<bool>("minimizeOnGameStart");
             }
             for (int i = 0; i < SelectableLanguages.Count; i++)
             {

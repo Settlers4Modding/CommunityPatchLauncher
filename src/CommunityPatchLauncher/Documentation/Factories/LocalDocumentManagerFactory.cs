@@ -14,7 +14,7 @@ namespace CommunityPatchLauncher.Documentation.Factories
         /// <summary>
         /// The directory this assembly is in
         /// </summary>
-        protected readonly string assemblyPath;
+        protected string basePath;
 
         /// <summary>
         /// Create a new instance of this factory
@@ -22,7 +22,16 @@ namespace CommunityPatchLauncher.Documentation.Factories
         public LocalDocumentManagerFactory()
         {
             FileInfo fileInfo = new FileInfo(Assembly.GetExecutingAssembly().Location);
-            assemblyPath = fileInfo.DirectoryName + "\\docs";
+            basePath = fileInfo.DirectoryName + "\\docs";
+        }
+
+        /// <summary>
+        /// Create a new instance of this factory
+        /// </summary>
+        /// <param name="basePath">The base path to use</param>
+        public LocalDocumentManagerFactory(string basePath)
+        {
+            this.basePath = basePath;
         }
 
         /// <summary>
@@ -38,7 +47,7 @@ namespace CommunityPatchLauncher.Documentation.Factories
         public DocumentManager GetDocumentManager(string fallbackLanguage, IDocumentConvertStrategy convertStrategy)
         {
             return new DocumentManager(
-                assemblyPath,
+                basePath,
                 fallbackLanguage,
                 convertStrategy,
                 GetConvertStrategy());

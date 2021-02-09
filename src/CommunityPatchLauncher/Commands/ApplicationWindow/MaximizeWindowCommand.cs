@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
@@ -13,12 +14,32 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         private readonly Window window;
 
         /// <summary>
+        /// Last time we changed the state
+        /// </summary>
+        private DateTime lastStateChange;
+
+        /// <summary>
+        /// The cooldown in milliseconds
+        /// </summary>
+        private int cooldown;
+
+        /// <summary>
         /// Create a new instance of this class
         /// </summary>
         /// <param name="window">The window to work on</param>
-        public MaximizeWindowCommand(Window window)
+        public MaximizeWindowCommand(Window window) : this(window, 500)
+        {
+        }
+
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="window">The window to work on</param>
+        public MaximizeWindowCommand(Window window, int cooldownInMilliseconds)
         {
             this.window = window;
+            lastStateChange = DateTime.Now;
+            cooldown = cooldownInMilliseconds;
         }
 
         /// <inheritdoc/>
@@ -30,10 +51,16 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
-            if (!CanExecute(parameter))
+            if (!CanExecute(parameter) )
             {
                 return;
             }
+            TimeSpan timeSpan = DateTime.Now - lastStateChange;
+            if (timeSpan.TotalMilliseconds < cooldown)
+            {
+                return;
+            }
+            lastStateChange = DateTime.Now;
             WindowState newState = WindowState.Maximized;
             if (window.WindowState == newState)
             {

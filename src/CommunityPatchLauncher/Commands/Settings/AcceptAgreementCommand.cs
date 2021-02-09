@@ -63,6 +63,7 @@ namespace CommunityPatchLauncher.Commands.Settings
             settingManager.AddValue("GameFolder", agreementData.GameFolder);
             settingManager.AddValue("Language", agreementData.Language.IsoCode);
             settingManager.AddValue("UpdateOnStartup", agreementData.UpdateOnStartup);
+            settingManager.AddValue("AgreementChecksum", agreementData.Checksum);
             if (settingManager.GetValue<string>("DownloadFolder") == null)
             {
                 string downloadFolder = settingManager.SettingFolderPath + "\\Downloads";
