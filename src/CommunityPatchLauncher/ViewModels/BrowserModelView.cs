@@ -80,6 +80,18 @@ namespace CommunityPatchLauncher.ViewModels
                         ICommand openLink = new OpenLinkCommand(url);
                         openLink.Execute(null);
                     }
+                    if (url.ToLower().StartsWith("about") && url.ToLower().EndsWith(".md"))
+                    {
+                        string currentLanguage = settingManager.GetValue<string>("Language");
+                        string target = url.Replace("about:", "");
+                        Task<string> contentData = documentManager?.ReadConvertedDocumentAsync(currentLanguage, target);
+                        contentData.ContinueWith((data) =>
+                        {
+                            ChangeBrowserData(data, currentLanguage);
+                        });
+
+                        BrowserContent = GetFallbackManager()?.ReadConvertedDocument(currentLanguage, "Loading.md");
+                    }
                 };
             }
         }
@@ -96,15 +108,20 @@ namespace CommunityPatchLauncher.ViewModels
             Task<string> contentData = documentManager?.ReadConvertedDocumentAsync(currentLanguage, documentToShow);
             contentData.ContinueWith((data) =>
             {
-                BrowserContent = data.Result == string.Empty ?
-                GetFallbackManager().ReadConvertedDocument(
-                    currentLanguage,
-                    Properties.Settings.Default.NotReadableFile
-                ) :
-                data.Result;
+                ChangeBrowserData(data, currentLanguage);
             });
 
             BrowserContent = GetFallbackManager()?.ReadConvertedDocument(currentLanguage, "Loading.md");
+        }
+
+        private void ChangeBrowserData(Task<string> data, string currentLanguage)
+        {
+            BrowserContent = data.Result == string.Empty ?
+            GetFallbackManager().ReadConvertedDocument(
+                currentLanguage,
+                Properties.Settings.Default.NotReadableFile
+            ) :
+            data.Result;
         }
 
         /// <summary>
