@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using CommunityPatchLauncher.Commands.Condition;
 using System.IO;
 
 namespace CommunityPatchLauncher.Commands.Os
@@ -6,55 +6,57 @@ namespace CommunityPatchLauncher.Commands.Os
     class MoveFolderCommand : BaseCommand
     {
         /// <summary>
-        /// Later target folder
-        /// </summary>
-        private string targetFolder;
-
-        /// <summary>
         /// Folder before it got changed
         /// </summary>
-        private string lastFolder;
+        private string sourceFolder;
 
         /// <summary>
-        /// Target folder has to be Empty?
-        /// Yes: true, No: False
+        /// The condition to meet for the source folder
         /// </summary>
-        private bool hasToEmpty;
+        private ICondition sourceCondition;
+
+        /// <summary>
+        /// The condition to meet for the target folder
+        /// </summary>
+        private ICondition targetCondition;
 
         /// <summary>
         /// Moves a Folder to a Folder
         /// </summary>
-        /// <param name="moveFrom"></param>
-        /// <param name="hasToEmpty"></param>
-        public MoveFolderCommand(string moveFrom, bool hasToEmpty)
+        /// <param name="sourceFolder">The source folder</param>
+        public MoveFolderCommand(string sourceFolder) : this(sourceFolder, null, null)
         {
-
-            this.lastFolder = moveFrom;
-            this.hasToEmpty = hasToEmpty;
-
         }
 
         /// <summary>
-        /// Check if the Folder is empty,
-        /// returns true when folder exists and there are no Files given,
-        /// false when one is not true
+        /// Moves a Folder to a Folder
         /// </summary>
-        /// <param name="targetFolder"></param>
-        /// <returns></returns>
-        private bool IsEmpty(string targetFolder)
+        /// <param name="sourceFolder">The source folder</param>
+        public MoveFolderCommand(string sourceFolder, ICondition sourceCondition) : this(sourceFolder, sourceCondition, null)
         {
-            if (Directory.Exists(targetFolder) && Directory.GetFiles(targetFolder).Length <= 0)
-            {
-                return true;
-            }
-            return false;
+        }
+
+        /// <summary>
+        /// Moves a Folder to a Folder
+        /// </summary>
+        /// <param name="sourceFolder">The source</param>
+        /// <param name="sourceCondition">The source condition to meet</param>
+        /// <param name="targetCondition">The target condition to meet</param>
+        public MoveFolderCommand(string sourceFolder, ICondition sourceCondition, ICondition targetCondition)
+        {
+            this.sourceFolder = sourceFolder;
+            this.sourceCondition = sourceCondition;
+            this.targetCondition = targetCondition;
         }
 
         /// <inheritdoc/>
         public override bool CanExecute(object parameter)
         {
-
-            return Directory.Exists(GetRealFolder(parameter));
+            if (parameter is string targetFolder)
+            {
+                return Directory.Exists(sourceFolder) && Directory.Exists(targetFolder);
+            }
+            return false;
         }
 
         /// <inheritdoc/>
@@ -64,33 +66,43 @@ namespace CommunityPatchLauncher.Commands.Os
             {
                 return;
             }
-                if (parameter != null && parameter is string targetFolder)
+            if (parameter != null && parameter is string targetFolder)
             {
-                    if (!Directory.Exists(targetFolder)) Directory.CreateDirectory(targetFolder);
-                if (hasToEmpty == true)
+                if (targetCondition != null && targetCondition.ConditionFailed(targetFolder))
                 {
-                    if (IsEmpty(targetFolder))
+                    return;
+                }
+                Directory.CreateDirectory(targetFolder);
+
+                string[] files = Directory.GetFiles(sourceFolder);
+                foreach (string file in files)
+                {
+                    if (!File.Exists(file))
                     {
-                        Directory.Move(lastFolder, targetFolder);
+                        continue;
+                    }
+
+                    if (sourceCondition != null && sourceCondition.ConditionFailed(file))
+                    {
+                        continue;
+                    }
+                    FileInfo fileInfo = new FileInfo(file);
+                    string targetFile = Path.Combine(targetFolder, fileInfo.Name);
+
+                    File.Copy(file, targetFile);
+                    if (File.Exists(targetFile))
+                    {
+                        File.Delete(file);
                     }
                 }
-                else
-                {
-                    Directory.Move(lastFolder, targetFolder);
-                }
-            }
-        
-            //Process.Start(GetRealFolder(parameter));
-        }
-        private string GetRealFolder(object parameter)
-        {
-            string folderToCheck = targetFolder;
-            if (parameter != null && parameter is string realFolder)
-            {
-                folderToCheck = realFolder;
-            }
-            return folderToCheck;
-        }
 
+                if (Directory.Exists(sourceFolder) && Directory.GetFiles(sourceFolder).Length == 0 && Directory.GetDirectories(sourceFolder).Length == 0)
+                {
+                    Directory.Delete(sourceFolder);
+                }
+
+                sourceFolder = targetFolder;
+            }
+        }
     }
 }
