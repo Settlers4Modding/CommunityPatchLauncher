@@ -1,26 +1,23 @@
-# Changelog
+# Version 0.0.1 (WIP)
 
-- [Changelog](#changelog)
-  - [Version 0.0.1 (WIP)](#version-001-wip)
-    - [New](#new)
-      - [General](#general)
-      - [Installer](#installer)
-      - [Main Window](#main-window)
-      - [Launch Game Window](#launch-game-window)
-      - [Setting Window](#setting-window)
-      - [Welcome Window](#welcome-window)
-    - [Fixed](#fixed)
-    - [Changed](#changed)
-      - [Main Window](#main-window-1)
-      - [Welcome Window](#welcome-window-1)
-      - [Play window](#play-window)
+- [Version 0.0.1 (WIP)](#version-001-wip)
+  - [New](#new)
+    - [General](#general)
+    - [Installer](#installer)
+    - [Main Window](#main-window)
+    - [Launch Game Window](#launch-game-window)
+    - [Setting Window](#setting-window)
+    - [Welcome Window](#welcome-window)
+  - [Fixed](#fixed)
+  - [Changed](#changed)
+    - [Main Window](#main-window-1)
+    - [Welcome Window](#welcome-window-1)
+    - [Play window](#play-window)
 - [Old Changelogs](#old-changelogs)
 
-## Version 0.0.1 (WIP)
+## New
 
-### New
-
-#### General
+### General
 
 * Add the possibility to download markdown files from the internet
   * Cache the files and only download if last loading is older than n seconds
@@ -31,11 +28,11 @@
 * Add possibility to start the texture changer
 * Using same method for selecting folders
 
-#### Installer
+### Installer
 
 * Create a installer for the launcher  
 
-#### Main Window
+### Main Window
 
 * Changelog button is working now
 * About button is working now
@@ -48,7 +45,7 @@
 * Added button for texture change
 * Maximize/Minimize on menu bar double click
 
-#### Launch Game Window
+### Launch Game Window
 
 * Describing texts for all versions added in german and english
 * Community DLC is getting installed for all patches
@@ -61,7 +58,7 @@
   * Cache the patch for 1 Hour if launcher is not getting closed
 * Minimize launcher on game start (Option)
 
-#### Setting Window
+### Setting Window
 
 * Added a combobox to select the update branch
 * Added a button to update the application
@@ -71,12 +68,12 @@
 * Error message if a non empty download folder is selected
 * Error message if a folder without a Settler installation is selected
 
-#### Welcome Window
+### Welcome Window
 
 * Checkbox to check for new version on startup
 * Error message if a folder without a Settler installation is selected
 
-### Fixed
+## Fixed
 
 * Spelling mistakes
 * F5 Browser error
@@ -87,18 +84,18 @@
 * All web content is using English as fallback now
 * Saving game speed if starting the game
 
-### Changed
+## Changed
 
-#### Main Window
+### Main Window
 
 * The icon on the left side is larger now
 * Show launcher version on title bar
 
-#### Welcome Window
+### Welcome Window
 
 * Agreement placeholder is replaced
 * Show agreement again if something changed
-#### Play window
+### Play window
 
 * The tab control on top will now highlight the last clicked patch version
 * The design is changed

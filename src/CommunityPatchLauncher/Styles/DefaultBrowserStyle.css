@@ -6,15 +6,22 @@ body {
     color: Snow;
 }
 
-a:link {
-    color: #585062
+* {
+    font-family: "Segoe UI";
 }
 
+ul {
+    list-style-type: inherit;
+}
+
+a:link {
+    color: #00C9A6;
+}
 
 a:hover {
-    color: #7e738c;
+    color: #00AFA5;
 }
 
 a:visited {
-    color: #585062;
+    color: #98B0A9;
 }
