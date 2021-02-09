@@ -25,8 +25,8 @@
                 <ColumnDefinition Width="75"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <fa:ImageAwesome Grid.Column="0" DockPanel.Dock="Left" Style="{StaticResource DialogBoxImageAwesome}" Foreground="{Binding IconBrush}" Icon="{Binding BoxIcon}"></fa:ImageAwesome>
-            <TextBlock Grid.Column="1" DockPanel.Dock="Right" Style="{StaticResource DefaultText}" Text="{Binding DialogText}"></TextBlock>
+            <fa:ImageAwesome Grid.Column="0" DockPanel.Dock="Left" Style="{StaticResource DialogBoxImageAwesome}" Foreground="{Binding IconBrush, UpdateSourceTrigger=PropertyChanged}" Icon="{Binding BoxIcon, UpdateSourceTrigger=PropertyChanged}"></fa:ImageAwesome>
+            <TextBlock Grid.Column="1" DockPanel.Dock="Right" Style="{StaticResource DefaultText}" Text="{Binding DialogText, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,20,0"></TextBlock>
         </Grid>
         <DockPanel Grid.Row="2" LastChildFill="False" Margin="0,5,0,0">
             <Button DockPanel.Dock="Right" Content="{x:Static p:Resources.Default_Ok}" Style="{StaticResource DefaultButton}" Command="{Binding CloseWindowCommand}"></Button>

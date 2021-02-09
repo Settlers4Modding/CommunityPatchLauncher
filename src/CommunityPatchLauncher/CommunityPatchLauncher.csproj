@@ -122,6 +122,7 @@
     <Compile Include="Commands\Condition\IsAvailablePatchCondition.cs" />
     <Compile Include="Commands\Condition\SettlerFolderCondition.cs" />
     <Compile Include="Commands\Condition\SpecificSettingSetCondition.cs" />
+    <Compile Include="Commands\Os\SelectFolderCommand.cs" />
     <Compile Include="Commands\Os\StartEditorCommand.cs" />
     <Compile Include="Commands\Os\StartProgramCommand.cs" />
     <Compile Include="Commands\Os\MoveFolderCommand.cs" />
@@ -147,7 +148,6 @@
     <Compile Include="Commands\Settings\GetCurrentLanguageCommand.cs" />
     <Compile Include="Commands\Settings\GetSettingManagerCommand.cs" />
     <Compile Include="Commands\IDataCommand.cs" />
-    <Compile Include="Commands\DataCommands\InstallationFromManuelSelectionCommand.cs" />
     <Compile Include="Commands\DataCommands\InstallationFromRegistryCommand.cs" />
     <Compile Include="Commands\TaskCommands\LaunchGameCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\MaximizeWindowCommand.cs" />
@@ -161,7 +161,6 @@
     <Compile Include="Commands\ApplicationWindow\ResizeWindowCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\RestartApplicationCommand.cs" />
     <Compile Include="Commands\Settings\SaveWindowSizeCommand.cs" />
-    <Compile Include="Commands\ApplicationWindow\SelectFolderCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\SwitchGuiLanguage.cs" />
     <Compile Include="Commands\ApplicationWindow\ToggleSubGroupVisibilityCommand.cs" />
     <Compile Include="BindingData\Converter\BoolToVisibilityConverter.cs" />

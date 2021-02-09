@@ -2,9 +2,12 @@
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.Condition;
 using CommunityPatchLauncher.Commands.DataCommands;
+using CommunityPatchLauncher.Commands.Os;
 using CommunityPatchLauncher.Commands.Settings;
 using CommunityPatchLauncher.Documentation.Factories;
+using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncher.Windows;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
@@ -212,10 +215,12 @@ namespace CommunityPatchLauncher.ViewModels
             }
         }
 
-    /// <summary>
-    /// Private checksum accessor
-    /// </summary>
-    private string checksum;
+        private ICommand errorPopup;
+
+        /// <summary>
+        /// Private checksum accessor
+        /// </summary>
+        private string checksum;
 
         /// <summary>
         /// Create a new instance of this class
@@ -253,9 +258,20 @@ namespace CommunityPatchLauncher.ViewModels
                 };
             }
 
+            errorPopup = new OpenCustomPopupWindowCommand(
+                             window,
+                             FontAwesome.WPF.FontAwesomeIcon.Exclamation,
+                             Properties.Resources.Default_FolderSelectionError,
+                             new InfoPopup()
+                             );
+
             firstStart = true;
             CloseWindowCommand = new CloseApplicationCommand();
-            FolderSearch = new InstallationFromManuelSelectionCommand();
+            FolderSearch = new SelectFolderCommand(new SettlerFolderCondition());
+            FolderSearch.Error += (sender, data) =>
+            {
+                errorPopup?.Execute(data.Message);
+            };
             RegexSearch = new InstallationFromRegistryCommand();
 
             CloseWindow = new CloseApplicationCommand();
