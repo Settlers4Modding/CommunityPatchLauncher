@@ -1,5 +1,21 @@
 # Changelog
 
+- [Changelog](#changelog)
+  - [Version 0.0.1 (WIP)](#version-001-wip)
+    - [New](#new)
+      - [General](#general)
+      - [Installer](#installer)
+      - [Main Window](#main-window)
+      - [Launch Game Window](#launch-game-window)
+      - [Setting Window](#setting-window)
+      - [Welcome Window](#welcome-window)
+    - [Fixed](#fixed)
+    - [Changed](#changed)
+      - [Main Window](#main-window-1)
+      - [Welcome Window](#welcome-window-1)
+      - [Play window](#play-window)
+- [Old Changelogs](#old-changelogs)
+
 ## Version 0.0.1 (WIP)
 
 ### New
@@ -85,55 +101,9 @@
 * The tab control on top will now highlight the last clicked patch version
 * The design is changed
 
-## Showcase - Version 0.0.1
+# Old Changelogs
 
-### New
-
-#### Translations
-
-* German language
-* English language
-* Polish language
-
-#### Welcome Window
-
-* Placeholder agreement
-* Accept Agreement button
-* Gamepath textbox
-* Button to detect game folder
-* Button to select game folder by hand
-
-#### Main Window
-
-* Side bar
-* Coming soon window
-* Launch game window
-* Setting window
-
-##### Custom title bar
-
-* Close button
-* Minimize button
-* Maximize button
-* Resize window button
-
-##### Launch game window
-
-* Download newest patch
-* Unzip z7 files
-* Launch game with selected speed
-
-##### Setting window
-
-* Select language
-* Select download and game folder
-* Open setting/download or game folder
-* Reset agreement
-* Changed layout
-
-#### Resize window
-
-* Selection of predefined resolutions
-* Custom resolutions
+* [Showcase - Version 0.0.1][showcase]
 
 [patchChangelogSource]: https://github.com/LitzeYT/Settlers4Patch
+[showcase]: Changelogs/Showcase.md
