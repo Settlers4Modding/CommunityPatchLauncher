@@ -1,5 +1,16 @@
 ## Showcase - Version 0.0.1
 
+- [Showcase - Version 0.0.1](#showcase---version-001)
+  - [New](#new)
+    - [Translations](#translations)
+    - [Welcome Window](#welcome-window)
+    - [Main Window](#main-window)
+      - [Custom title bar](#custom-title-bar)
+      - [Launch game window](#launch-game-window)
+      - [Setting window](#setting-window)
+    - [Resize window](#resize-window)
+
+[Back][back]
 ### New
 
 #### Translations
