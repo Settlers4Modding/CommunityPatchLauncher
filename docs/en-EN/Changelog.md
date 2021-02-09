@@ -11,6 +11,7 @@
   * Show a placeholder while loading
   * Show a generic file if offline or source not available and not cached
 * Adding new style for combo boxen
+* Using same method for selecting folders
 
 #### Installer
 
@@ -48,10 +49,14 @@
 * Added a button to update the application
 * Checkbox to check for new version on startup
 * Checkbox to set if launcher should minimize on game start
+* Move downloaded files to new download folder if selection changed
+* Error message if a non empty download folder is selected
+* Error message if a folder without a Settler installation is selected
 
 #### Welcome Window
 
 * Checkbox to check for new version on startup
+* Error message if a folder without a Settler installation is selected
 
 ### Fixed
 
