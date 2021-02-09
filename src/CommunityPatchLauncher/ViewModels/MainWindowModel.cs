@@ -77,6 +77,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand OpenTextureChangerCommand { get; private set; }
 
         /// <summary>
+        /// Open the launcher license
+        /// </summary>
+        public ICommand OpenLicenseCommand { get; private set; }
+
+        /// <summary>
         /// The content dock to use
         /// </summary>
         private readonly DockPanel contentDock;
@@ -114,6 +119,7 @@ namespace CommunityPatchLauncher.ViewModels
                 OpenAboutCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("About.md"));
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
+                OpenLicenseCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("License.md"));
                 object titleBarObject = currentWindow.FindName("TitleBar");
                 if (titleBarObject is TitleBarUseControl titleBar)
                 {

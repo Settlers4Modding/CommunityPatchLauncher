@@ -206,6 +206,9 @@
   <data name="MainWindow_IntellectualProperty" xml:space="preserve">
     <value>Intellectual property</value>
   </data>
+  <data name="MainWindow_License" xml:space="preserve">
+    <value>License</value>
+  </data>
   <data name="MainWindow_Maps" xml:space="preserve">
     <value>Maps</value>
   </data>
