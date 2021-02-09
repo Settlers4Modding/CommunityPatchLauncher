@@ -13,5 +13,10 @@ namespace CommunityPatchLauncher.Commands
         /// Was the command executed
         /// </summary>
         event EventHandler<DataCommandEventArg> Executed;
+
+        /// <summary>
+        /// Was there an error
+        /// </summary>
+        event EventHandler<DataCommandErrorEventArg> Error;
     }
 }

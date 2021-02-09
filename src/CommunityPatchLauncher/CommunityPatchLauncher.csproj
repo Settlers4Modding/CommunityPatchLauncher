@@ -168,9 +168,11 @@
     <Compile Include="Documentation\Strategy\MarkdownHtmlConvertStrategy.cs" />
     <Compile Include="Documentation\Strategy\MarkdownHtmlWithoutScrollStrategy.cs" />
     <Compile Include="Enums\AvailablePatches.cs" />
+    <Compile Include="Enums\ErrorSeverityEnum.cs" />
     <Compile Include="Enums\SpeedModes.cs" />
     <Compile Include="Enums\UpdateBranchEnum.cs" />
     <Compile Include="Enums\YesNoEnum.cs" />
+    <Compile Include="EventArguments\DataCommandErrorEventArg.cs" />
     <Compile Include="EventArguments\DataCommandEventArg.cs" />
     <Compile Include="Documentation\Factories\LocalDocumentManagerFactory.cs" />
     <Compile Include="Properties\Resources.pl.Designer.cs">
