@@ -25,7 +25,7 @@ namespace CommunityPatchLauncher.Commands.Condition
             this.settingManager = settingManager;
             this.settingToCheck = settingToCheck;
         }
-        
+
         /// <inheritdoc/>
         public override bool ConditionFullfilled(object parameter)
         {

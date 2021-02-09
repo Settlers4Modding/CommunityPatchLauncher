@@ -35,7 +35,7 @@ namespace CommunityPatchLauncher.Commands.DataContainer
         /// <summary>
         /// Checksum of the agreement text
         /// </summary>
-        public string Checksum { get;  }
+        public string Checksum { get; }
 
         /// <summary>
         /// Create a new instance of this class

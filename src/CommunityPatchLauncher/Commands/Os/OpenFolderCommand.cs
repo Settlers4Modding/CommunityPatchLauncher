@@ -25,7 +25,6 @@ namespace CommunityPatchLauncher.Commands.Os
         /// <inheritdoc/>
         public override bool CanExecute(object parameter)
         {
-
             return Directory.Exists(GetRealFolder(parameter));
         }
 

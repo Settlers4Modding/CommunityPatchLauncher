@@ -16,7 +16,7 @@ namespace CommunityPatchLauncher.Commands.Os
         /// <summary>
         /// Create a new instance of this class
         /// </summary>
-        public StartProgramCommand() : this (null)
+        public StartProgramCommand() : this(null)
         {
         }
 

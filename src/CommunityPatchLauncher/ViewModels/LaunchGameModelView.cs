@@ -166,7 +166,7 @@ namespace CommunityPatchLauncher.ViewModels
             LaunchGameCommand = new MultiCommand(new List<ICommand>() {
                 toggleCommand,
                 launchGameCommand,
-                
+
             });
 
             IEnumerable<WebBrowser> browserObjects = FindVisualChildren<WebBrowser>((DependencyObject)parent.Content);
@@ -257,11 +257,11 @@ namespace CommunityPatchLauncher.ViewModels
             Task<string> fileContent = remoteDocumentManager.ReadConvertedDocumentAsync(language, fileName);
             fileContent.ContinueWith((data) =>
             {
-                ChangelogContent = data.Result == string.Empty ? 
+                ChangelogContent = data.Result == string.Empty ?
                                     localDocumentManager.ReadConvertedDocument(
                                         language,
                                         Properties.Settings.Default.NotReadableFile
-                                        ) : 
+                                        ) :
                                     data.Result;
             });
         }
