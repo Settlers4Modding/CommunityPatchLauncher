@@ -79,6 +79,24 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The folder is not empty.
+        /// </summary>
+        public static string Default_FolderIsNotEmpty {
+            get {
+                return ResourceManager.GetString("Default_FolderIsNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected folder is not valid.
+        /// </summary>
+        public static string Default_FolderSelectionError {
+            get {
+                return ResourceManager.GetString("Default_FolderSelectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language:.
         /// </summary>
         public static string Default_LanguageLabel {
@@ -102,6 +120,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string Default_No {
             get {
                 return ResourceManager.GetString("Default_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected folder does not contain the Settlers 4 History Edition.
+        /// </summary>
+        public static string Default_NotTheSettlerFolder {
+            get {
+                return ResourceManager.GetString("Default_NotTheSettlerFolder", resourceCulture);
             }
         }
         

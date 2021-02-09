@@ -36,14 +36,14 @@
             </DockPanel>
             <DockPanel Margin="0,0,0,5" Style="{StaticResource SettingDockPanel}">
                 <TextBlock Style="{StaticResource SettingText}" Text="{x:Static p:Resources.WelcomWindow_GameFolder}"></TextBlock>
-                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}" Command="{Binding ManuelSelectGameFolder}"></Button>
-                <TextBox DockPanel.Dock="Left" x:Name="TB_GameFolder" Style="{StaticResource SettingTextBox}"  Text="{Binding GameFolder}"></TextBox>
+                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}" Command="{Binding SelectGameFolder}"></Button>
+                <TextBox IsReadOnly="True" DockPanel.Dock="Left" x:Name="TB_GameFolder" Style="{StaticResource SettingTextBox}"  Text="{Binding GameFolder}"></TextBox>
             </DockPanel>
             <Button Margin="0,0,0,15" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.WelcomeWindow_AutoDetect}" Command="{Binding AutoDetectGameFolder}"></Button>
             <DockPanel Style="{StaticResource SettingDockPanel}">
                 <TextBlock Style="{StaticResource SettingText}" Text="{x:Static p:Resources.SettingWindow_DownloadFolder}"></TextBlock>
-                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultButton}" Command="{Binding SelectFolder}" CommandParameter="{Binding ElementName=TB_DownloadFolder, Path=Text}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}"></Button>
-                <TextBox DockPanel.Dock="Left" x:Name="TB_DownloadFolder" Style="{StaticResource SettingTextBox}" HorizontalAlignment="Stretch" Text="{Binding DownloadFolder}"></TextBox>
+                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultButton}" Command="{Binding SelectDownloadFolder}" CommandParameter="{Binding ElementName=TB_DownloadFolder, Path=Text}" Content="{x:Static p:Resources.WelcomeWindow_ManuelSelection}"></Button>
+                <TextBox IsReadOnly="True" DockPanel.Dock="Left" x:Name="TB_DownloadFolder" Style="{StaticResource SettingTextBox}" HorizontalAlignment="Stretch" Text="{Binding DownloadFolder}"></TextBox>
             </DockPanel>
 
             <DockPanel Style="{StaticResource SettingDockPanel}">
@@ -67,7 +67,7 @@
         <StackPanel Grid.Row="1">
             <DockPanel LastChildFill="False">
                 <Button DockPanel.Dock="Left" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.Default_Abort}" Command="{Binding ResetSettingCommand}"></Button>
-                <Button DockPanel.Dock="Right"  Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.Default_Save}" Command="{Binding SaveSettingCommand}"></Button>
+                <Button DockPanel.Dock="Right" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.Default_Save}" Command="{Binding SaveSettingCommand}" CommandParameter="{Binding Text, ElementName=TB_DownloadFolder}"></Button>
             </DockPanel>
         </StackPanel>
     </Grid>

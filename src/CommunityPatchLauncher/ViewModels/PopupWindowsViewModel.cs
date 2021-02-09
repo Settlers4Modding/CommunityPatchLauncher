@@ -62,9 +62,16 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="parameter">The parameter for the popup window</param>
         public PopupWindowsViewModel(Window window, UserControl content, FontAwesomeIcon fontAwesomeIcon, object parameter) : this(window, content, fontAwesomeIcon, true, parameter)
         {
-
         }
 
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="window">The window this popup was opened in</param>
+        /// <param name="content">The content for the popup window</param>
+        /// <param name="fontAwesomeIcon">The icon to use for the title bar</param>
+        /// <param name="closeable">Is this closeable</param>
+        /// <param name="parameter">The parameter for the popup window</param>
         public PopupWindowsViewModel(Window window, UserControl content, FontAwesomeIcon fontAwesomeIcon, bool closeable, object parameter) : base(window)
         {
             TitleBarIcon = fontAwesomeIcon;

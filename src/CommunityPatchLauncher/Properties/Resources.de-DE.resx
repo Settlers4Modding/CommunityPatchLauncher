@@ -123,11 +123,17 @@
   <data name="Default_Abort" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="Default_FolderSelectionError" xml:space="preserve">
+    <value>Der ausgewählte Ordner ist nicht gültig</value>
+  </data>
   <data name="Default_LanguageLabel" xml:space="preserve">
     <value>Sprache:</value>
   </data>
   <data name="Default_No" xml:space="preserve">
     <value>Nein</value>
+  </data>
+  <data name="Default_NotTheSettlerFolder" xml:space="preserve">
+    <value>Dieser Ordner enthält keine installierte Version von Die Siedler 4 History Edition</value>
   </data>
   <data name="Default_Save" xml:space="preserve">
     <value>Speichern</value>
@@ -155,6 +161,9 @@
   </data>
   <data name="DocumentCacheNotice" xml:space="preserve">
     <value>Das Dokument wurde aus dem Cache geladen</value>
+  </data>
+  <data name="Download folder selection error" xml:space="preserve">
+    <value>Der Ordner ist nicht leer</value>
   </data>
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>

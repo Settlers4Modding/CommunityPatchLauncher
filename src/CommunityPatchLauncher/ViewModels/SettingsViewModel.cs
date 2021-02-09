@@ -2,10 +2,12 @@
 using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
+using CommunityPatchLauncher.Commands.Condition;
 using CommunityPatchLauncher.Commands.DataCommands;
 using CommunityPatchLauncher.Commands.Os;
 using CommunityPatchLauncher.Commands.Settings;
 using CommunityPatchLauncher.Enums;
+using CommunityPatchLauncher.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -61,12 +63,12 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// Command to select the game folder by hand
         /// </summary>
-        public IDataCommand ManuelSelectGameFolder { get; private set; }
+        public IDataCommand SelectGameFolder { get; private set; }
 
         /// <summary>
         /// Command to select the download folder
         /// </summary>
-        public IDataCommand SelectFolder { get; private set; }
+        public IDataCommand SelectDownloadFolder { get; private set; }
 
         /// <summary>
         /// All the selectable languages
@@ -238,6 +240,11 @@ namespace CommunityPatchLauncher.ViewModels
         private string downloadFolder;
 
         /// <summary>
+        /// Show a specific error message
+        /// </summary>
+        private IDataCommand showErrorMessage;
+
+        /// <summary>
         /// Create new instance of this class
         /// </summary>
         /// <param name="window">The parent window</param>
@@ -250,14 +257,29 @@ namespace CommunityPatchLauncher.ViewModels
             UpdateChannelModel updateChannels = new UpdateChannelModel();
             UpdateChannels = updateChannels.GetUpdateChannels();
 
+            showErrorMessage = new OpenCustomPopupWindowCommand(
+                window,
+                FontAwesome.WPF.FontAwesomeIcon.Exclamation,
+                Properties.Resources.Default_FolderSelectionError,
+                new InfoPopup()
+                );
             OpenSettingFolderCommand = new OpenFolderCommand(settingManager.SettingFolderPath);
             OpenDownloadFolderCommand = new OpenFolderCommand(DownloadFolder);
             OpenGameFolderCommand = new OpenFolderCommand(GameFolder);
             AutoDetectGameFolder = new InstallationFromRegistryCommand();
-            ManuelSelectGameFolder = new InstallationFromManuelSelectionCommand();
+            SelectGameFolder = new SelectFolderCommand(new SettlerFolderCondition());
             ResetSettingCommand = new ReloadObjectCommand(this);
             UpdateApplicationCommand = new UpdateApplicationCommand(settingManager, window, true);
-            SelectFolder = new SelectFolderCommand();
+            SelectDownloadFolder = new SelectFolderCommand(new EmptyFolderCondition());
+
+            SelectDownloadFolder.Error += (sender, data) =>
+            {
+                showErrorMessage.Execute(data.Message);
+            };
+            SelectGameFolder.Error += (sender, data) =>
+            {
+                showErrorMessage.Execute(data.Message);
+            };
 
             ResetAgreementCommand = new MultiCommand(new List<ICommand>()
             {
@@ -265,16 +287,22 @@ namespace CommunityPatchLauncher.ViewModels
                 new SaveSettingsCommand(false, settingManager),
                 new RestartApplicationCommand()
             });
+            ICommand moveFolderCommand = new MoveFolderCommand(
+                settingManager.GetValue<string>("DownloadFolder"),
+                new IsAvailablePatchCondition(),
+                new EmptyFolderCondition()
+                );
             SaveSettingCommand = new MultiCommand(new List<ICommand>()
             {
                 new SaveSettingsCommand(settingManager),
+                moveFolderCommand,
                 new SwitchGuiLanguage(settingManager),
                 new RefreshGuiLanguageCommand(window)
             });
 
-            SelectFolder.Executed += DownloadFolderSelected_Executed;
+            SelectDownloadFolder.Executed += DownloadFolderSelected_Executed;
             AutoDetectGameFolder.Executed += DetectGameFolder_Executed;
-            ManuelSelectGameFolder.Executed += DetectGameFolder_Executed;
+            SelectGameFolder.Executed += DetectGameFolder_Executed;
         }
 
         /// <summary>

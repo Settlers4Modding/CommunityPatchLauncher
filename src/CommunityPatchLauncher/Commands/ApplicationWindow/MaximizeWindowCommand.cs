@@ -51,7 +51,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
-            if (!CanExecute(parameter) )
+            if (!CanExecute(parameter))
             {
                 return;
             }
