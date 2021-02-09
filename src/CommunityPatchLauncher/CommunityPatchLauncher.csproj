@@ -398,7 +398,8 @@
     <PostBuildEvent>xcopy /Y /E /I "$(SolutionDir)src\CommunityLauncherPatcher\bin\$(ConfigurationName)\*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>IF EXIST "$(ProjectDir)$(OutDir)docs" RMDIR /S /Q "$(ProjectDir)$(OutDir)docs"
-xcopy /E /I "$(SolutionDir)docs" "$(ProjectDir)$(OutDir)docs"</PreBuildEvent>
+    <PreBuildEvent>IF EXIST "$(ProjectDir)$(OutDir)docs" RMDIR /S /Q "$(ProjectDir)$(OutDir)docs" 
+xcopy /E /I "$(SolutionDir)docs" "$(ProjectDir)$(OutDir)docs"
+copy /Y "$(SolutionDir)LICENSE" "$(ProjectDir)$(OutDir)docs\en-EN\License.md"</PreBuildEvent>
   </PropertyGroup>
 </Project>
