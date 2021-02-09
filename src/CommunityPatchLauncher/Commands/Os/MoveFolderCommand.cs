@@ -96,7 +96,11 @@ namespace CommunityPatchLauncher.Commands.Os
                     }
                 }
 
-                if (Directory.Exists(sourceFolder) && Directory.GetFiles(sourceFolder).Length == 0 && Directory.GetDirectories(sourceFolder).Length == 0)
+                if (
+                    Directory.Exists(sourceFolder)
+                    && Directory.GetFiles(sourceFolder).Length == 0 
+                    && Directory.GetDirectories(sourceFolder).Length == 0
+                    )
                 {
                     Directory.Delete(sourceFolder);
                 }
