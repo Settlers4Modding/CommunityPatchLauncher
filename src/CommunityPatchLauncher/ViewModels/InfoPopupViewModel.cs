@@ -14,7 +14,20 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// The text to show
         /// </summary>
-        public string DialogText { get; private set; }
+        public string DialogText
+        {
+            get => dialogText;
+            private set
+            {
+                dialogText = value;
+                RaisePropertyChanged("DialogText");
+            }
+        }
+
+        /// <summary>
+        /// Private text to show
+        /// </summary>
+        private string dialogText;
 
         /// <summary>
         /// The icon to show
@@ -43,7 +56,7 @@ namespace CommunityPatchLauncher.ViewModels
             private set
             {
                 iconBrush = value;
-                RaisePropertyChanged("IconColor");
+                RaisePropertyChanged("IconBrush");
             }
         }
         /// <summary>
