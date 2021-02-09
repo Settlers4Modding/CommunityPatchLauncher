@@ -1,6 +1,7 @@
 ﻿using CommunityPatchLauncherFramework.Settings.Manager;
 using Microsoft.Win32;
 using System.Collections.Generic;
+using System.IO;
 
 namespace CommunityPatchLauncher.Commands.Os
 {
@@ -36,11 +37,12 @@ namespace CommunityPatchLauncher.Commands.Os
             };
 
             string gameFolder = settingManager.GetValue<string>("GameFolder");
+            string editorPlusPath = gameFolder + Properties.Settings.Default.EditorBaseFolder + "S4EditorPlus.exe";
             string editorPath = gameFolder + Properties.Settings.Default.EditorBaseFolder + "S4Editor.exe";
             string editorPreBase = gameFolder + Properties.Settings.Default.EditorBaseFolder + "RunEditor";
 
             this.settingManager = settingManager;
-            programPath = editorPath;
+            programPath = File.Exists(editorPlusPath) ? editorPlusPath : editorPath;
             preFilePathBase = editorPreBase;
         }
 

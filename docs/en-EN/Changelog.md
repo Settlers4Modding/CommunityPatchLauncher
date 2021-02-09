@@ -27,6 +27,8 @@
   * Show a placeholder while loading
   * Show a generic file if offline or source not available and not cached
 * Adding new style for combo boxen
+* Add possibility to start the editor
+* Add possibility to start the texture changer
 * Using same method for selecting folders
 
 #### Installer
