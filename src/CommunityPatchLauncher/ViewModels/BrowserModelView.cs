@@ -116,7 +116,8 @@ namespace CommunityPatchLauncher.ViewModels
             }
 
             IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
-            return factory.GetDocumentManager(Properties.Settings.Default.FallbackLanguage, new MarkdownHtmlConvertStrategy());
+            fallbackManager = factory.GetDocumentManager(Properties.Settings.Default.FallbackLanguage, new MarkdownHtmlConvertStrategy());
+            return GetFallbackManager();
         }
     }
 }
