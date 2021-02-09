@@ -123,6 +123,12 @@
   <data name="Default_ComingSoon" xml:space="preserve">
     <value>Coming soon</value>
   </data>
+  <data name="Default_FolderIsNotEmpty" xml:space="preserve">
+    <value>The folder is not empty</value>
+  </data>
+  <data name="Default_FolderSelectionError" xml:space="preserve">
+    <value>The selected folder is not valid</value>
+  </data>
   <data name="Default_LanguageLabel" xml:space="preserve">
     <value>Language:</value>
   </data>
@@ -131,6 +137,9 @@
   </data>
   <data name="Default_No" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="Default_NotTheSettlerFolder" xml:space="preserve">
+    <value>The selected folder does not contain the Settlers 4 History Edition</value>
   </data>
   <data name="Default_Ok" xml:space="preserve">
     <value>Ok</value>
