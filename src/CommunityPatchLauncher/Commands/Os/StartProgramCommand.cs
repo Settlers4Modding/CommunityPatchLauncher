@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace CommunityPatchLauncher.Commands.Os
@@ -56,7 +57,14 @@ namespace CommunityPatchLauncher.Commands.Os
             FileInfo fileInfo = new FileInfo(pathToStart);
             startInfo.FileName = pathToStart;
             startInfo.WorkingDirectory = fileInfo.DirectoryName;
-            Process.Start(startInfo);
+            try
+            {
+                Process.Start(startInfo);
+            }
+            catch (Exception)
+            {
+                //Everything is fine, user just click on no for the uac
+            }
         }
     }
 }
