@@ -117,7 +117,10 @@
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="BindingData\WindowsSizeService.cs" />
     <Compile Include="Commands\Condition\BaseCondition.cs" />
+    <Compile Include="Commands\Condition\EmptyFolderCondition.cs" />
     <Compile Include="Commands\Condition\ICondition.cs" />
+    <Compile Include="Commands\Condition\IsAvailablePatchCondition.cs" />
+    <Compile Include="Commands\Condition\SettlerFolderCondition.cs" />
     <Compile Include="Commands\Condition\SpecificSettingSetCondition.cs" />
     <Compile Include="Commands\Os\StartEditorCommand.cs" />
     <Compile Include="Commands\Os\StartProgramCommand.cs" />
