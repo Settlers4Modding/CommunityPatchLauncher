@@ -69,7 +69,6 @@
                                 </ItemsControl>
                             </Button>
                         </StackPanel>
-                        
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Play_Group">
                             <ItemsControl Style="{StaticResource MainCategoryGrid}">
                                 <fa:FontAwesome Icon="Play" Style="{StaticResource MainCategoryFontAwesome}" />
