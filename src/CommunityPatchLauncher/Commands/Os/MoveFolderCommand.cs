@@ -19,6 +19,7 @@ namespace CommunityPatchLauncher.Commands.Os
         /// The condition to meet for the target folder
         /// </summary>
         private ICondition targetCondition;
+        private readonly bool overrideSourceCheck;
 
         /// <summary>
         /// Moves a Folder to a Folder
@@ -43,15 +44,47 @@ namespace CommunityPatchLauncher.Commands.Os
         /// <param name="sourceCondition">The source condition to meet</param>
         /// <param name="targetCondition">The target condition to meet</param>
         public MoveFolderCommand(string sourceFolder, ICondition sourceCondition, ICondition targetCondition)
+            : this(sourceFolder, sourceCondition, targetCondition, false)
+        {
+        }
+
+        /// <summary>
+        /// Moves a Folder to a Folder
+        /// </summary>
+        /// <param name="sourceFolder">The source</param>
+        /// <param name="sourceCondition">The source condition to meet</param>
+        /// <param name="targetCondition">The target condition to meet</param>
+        public MoveFolderCommand(
+            string sourceFolder,
+            ICondition sourceCondition,
+            ICondition targetCondition,
+            bool overrideSourceCheck
+            )
         {
             this.sourceFolder = sourceFolder;
             this.sourceCondition = sourceCondition;
             this.targetCondition = targetCondition;
+            this.overrideSourceCheck = overrideSourceCheck;
         }
 
         /// <inheritdoc/>
         public override bool CanExecute(object parameter)
         {
+            return CanExecute(parameter, false);
+        }
+
+        /// <summary>
+        /// Real function to check if can execute
+        /// </summary>
+        /// <param name="parameter">The parameter to use</param>
+        /// <param name="executing">Is in execute mode</param>
+        /// <returns>True if can be executed</returns>
+        private bool CanExecute(object parameter, bool executing)
+        {
+            if (!executing && overrideSourceCheck)
+            {
+                return true;
+            }
             if (parameter is string targetFolder)
             {
                 return Directory.Exists(sourceFolder) && Directory.Exists(targetFolder);
@@ -62,7 +95,7 @@ namespace CommunityPatchLauncher.Commands.Os
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
-            if (!CanExecute(parameter))
+            if (!CanExecute(parameter, true))
             {
                 return;
             }
