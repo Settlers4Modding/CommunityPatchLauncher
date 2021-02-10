@@ -204,6 +204,9 @@
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="MainWindow_SettlersConfig" xml:space="preserve">
+    <value>S4 HE Konfiguration</value>
+  </data>
   <data name="MainWindow_StartSettle" xml:space="preserve">
     <value>Siedeln</value>
   </data>

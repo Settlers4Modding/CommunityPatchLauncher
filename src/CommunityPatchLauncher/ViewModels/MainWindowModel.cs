@@ -75,6 +75,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand OpenEditorCommand { get; private set; }
 
         /// <summary>
+        /// Open the s4 config file
+        /// </summary>
+        public ICommand OpenSettlersConfigurationCommand { get; private set; }
+
+        /// <summary>
         /// Oopen the texture changer tool
         /// </summary>
         public ICommand OpenTextureChangerCommand { get; private set; }
@@ -140,6 +145,7 @@ namespace CommunityPatchLauncher.ViewModels
 
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 OpenEditorCommand = new StartEditorCommand(settingManager);
+                OpenSettlersConfigurationCommand = new StartSettlersConfigCommand(settingManager);
 
                 string gameFolder = settingManager.GetValue<string>("GameFolder");
                 string textureChange = gameFolder + "Texturenwechsler.bat";

@@ -112,6 +112,12 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Editor}"></TextBlock>
                                 </ItemsControl>
                             </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenSettlersConfigurationCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Cog" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SettlersConfig}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
                             <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="MapMarker" Style="{StaticResource SubCategoryFontAwesome}" />

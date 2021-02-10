@@ -290,12 +290,30 @@ namespace CommunityPatchLauncher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Editor/")]
-        public string EditorBaseFolder {
-            get {
+        public string EditorBaseFolder
+        {
+            get
+            {
                 return ((string)(this["EditorBaseFolder"]));
             }
-            set {
+            set
+            {
                 this["EditorBaseFolder"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Config/")]
+        public string ConfigBaseFolder
+        {
+            get
+            {
+                return ((string)(this["ConfigBaseFolder"]));
+            }
+            set
+            {
+                this["ConfigBaseFolder"] = value;
             }
         }
     }
