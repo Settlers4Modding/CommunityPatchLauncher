@@ -63,7 +63,6 @@ namespace CommunityPatchLauncher.Commands.Os
         }
 
         /// <inheritdoc/>
-        /// <inheritdoc/>
         public override void Execute(object parameter)
         {
             string language = settingManager.GetValue<string>("Language");
