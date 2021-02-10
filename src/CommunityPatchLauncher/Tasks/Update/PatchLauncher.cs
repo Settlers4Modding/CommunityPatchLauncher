@@ -1,9 +1,11 @@
 ﻿using CommunityPatchLauncherFramework.TaskPipeline.Tasks;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Security.AccessControl;
 
 namespace CommunityPatchLauncher.Tasks.Update
 {
@@ -69,14 +71,37 @@ namespace CommunityPatchLauncher.Tasks.Update
                 return false;
             }
 
+            bool hasWriteAccess = true;
+            try
+            {
+                DirectorySecurity security = Directory.GetAccessControl(applicationPath);
+                string testFile = applicationPath + "\\writeAccessTest.txt";
+                File.Create(testFile);
+                if (File.Exists(testFile))
+                {
+                    File.Delete(testFile);
+                }
+            }
+            catch (Exception)
+            {
+                hasWriteAccess = false;
+            }
+
             if (File.Exists(destinationFile))
             {
+                ProcessStartInfo info = new ProcessStartInfo(destinationFile);
+                
                 string arguments = "\"" + Assembly.GetExecutingAssembly().Location + "\" ";
                 arguments += Process.GetCurrentProcess().Id + " ";
                 arguments += "\"" + launcherUpdate + "\" ";
                 arguments += "\"" + applicationPath + "\" ";
                 arguments += "\"" + launcherAppName + "\"";
-                Process.Start(destinationFile, arguments);
+                info.Arguments = arguments;
+                if (!hasWriteAccess)
+                {
+                    info.Verb = "runas";
+                }
+                Process.Start(info);
             }
 
             return true;
