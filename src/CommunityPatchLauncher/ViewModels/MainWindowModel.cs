@@ -137,7 +137,6 @@ namespace CommunityPatchLauncher.ViewModels
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
 
-                OpenLicenseCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("License.md"));
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 OpenEditorCommand = new StartEditorCommand(settingManager);
 
