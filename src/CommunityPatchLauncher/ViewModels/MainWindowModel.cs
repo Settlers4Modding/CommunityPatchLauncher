@@ -1,4 +1,5 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
+using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.Os;
 using CommunityPatchLauncher.DataContainers;
@@ -9,6 +10,7 @@ using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncherFramework.Settings.Factories;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -112,32 +114,38 @@ namespace CommunityPatchLauncher.ViewModels
 
                 contentDock = panel;
 
-                OpenNewsCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("News.md", new RemoteDocumentManagerFactory(new TimeSpan(0, 30, 0))));
+                BrowserUserControl localBrowser = new BrowserUserControl(string.Empty);
+                ICommand openLocalBrowser = new MultiCommand(new List<ICommand>()
+                {
+                    new OpenControlToPanel(contentDock, localBrowser, false),
+                    new ChangeBrowserContentCommand(localBrowser)
+                });
+
+                BrowserUserControl remoteBrowser = new BrowserUserControl(string.Empty, new RemoteDocumentManagerFactory(new TimeSpan(0, 30, 0)));
+                ICommand openRemoteBrowser = new MultiCommand(new List<ICommand>()
+                {
+                    new OpenControlToPanel(contentDock, remoteBrowser, false),
+                    new ChangeBrowserContentCommand(remoteBrowser)
+                });
+
+                OpenNewsCommand = openRemoteBrowser;
+                OpenChangelogCommand = openLocalBrowser;
+                OpenDisclamerCommand = openLocalBrowser;
+                OpenAboutCommand = openLocalBrowser;
+                OpenLicenseCommand = openLocalBrowser;
+
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
-                OpenChangelogCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Changelog.md"));
-                OpenDisclamerCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("Agreement.md"));
-                OpenAboutCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("About.md"));
-                ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
-                OpenLicenseCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("License.md"));
-                object titleBarObject = currentWindow.FindName("TitleBar");
-                if (titleBarObject is TitleBarUseControl titleBar)
-                {
-                    titleBar.MouseDoubleClick += (sender, data) =>
-                    {
-                        MaximizeWindowCommand?.Execute(null);
-                        blockPositionTime = new TimeSpan(0, 0, 1);
-                    };
-                }
 
+                ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 OpenEditorCommand = new StartEditorCommand(settingManager);
 
                 string gameFolder = settingManager.GetValue<string>("GameFolder");
                 string textureChange = gameFolder + "Texturenwechsler.bat";
                 OpenTextureChangerCommand = new StartProgramCommand(textureChange);
 
-                OpenNewsCommand.Execute(null);
+                OpenNewsCommand.Execute("News.md");
             }
 
             ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);

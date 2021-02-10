@@ -19,7 +19,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CommunityPatchLauncher.ViewModels
@@ -235,27 +234,12 @@ namespace CommunityPatchLauncher.ViewModels
             });
 
             DependencyObject agreementDisplay = (DependencyObject)window.FindName("WB_Agreement");
-            if (agreementDisplay is WebBrowser browser)
+            if (agreementDisplay is BrowserUserControl browserControl)
             {
-                browser.PreviewKeyDown += (sender, eventArgs) =>
+                if (browserControl.DataContext is BrowserModelView modelView)
                 {
-                    eventArgs.Handled = eventArgs.Key == Key.F5;
-                };
-                browser.Navigating += (sender, eventArgs) =>
-                {
-                    if (eventArgs.Uri == null)
-                    {
-                        return;
-                    }
-                    string url = eventArgs.Uri.ToString();
-                    url = url.ToLower();
-                    if (url.StartsWith("http"))
-                    {
-                        eventArgs.Cancel = true;
-                        ICommand openLink = new OpenLinkCommand(url);
-                        openLink.Execute(null);
-                    }
-                };
+                    modelView.ChangeDocument("Agreement.md");
+                }
             }
 
             errorPopup = new OpenCustomPopupWindowCommand(

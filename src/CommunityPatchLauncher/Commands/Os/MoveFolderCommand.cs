@@ -98,7 +98,7 @@ namespace CommunityPatchLauncher.Commands.Os
 
                 if (
                     Directory.Exists(sourceFolder)
-                    && Directory.GetFiles(sourceFolder).Length == 0 
+                    && Directory.GetFiles(sourceFolder).Length == 0
                     && Directory.GetDirectories(sourceFolder).Length == 0
                     )
                 {

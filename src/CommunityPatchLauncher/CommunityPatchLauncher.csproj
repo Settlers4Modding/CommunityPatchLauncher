@@ -116,6 +116,7 @@
     <Compile Include="BindingData\Converter\StringToIntConverter.cs" />
     <Compile Include="BindingData\Patches.cs" />
     <Compile Include="BindingData\WindowsSizeService.cs" />
+    <Compile Include="Commands\ApplicationWindow\ChangeBrowserContentCommand.cs" />
     <Compile Include="Commands\Condition\BaseCondition.cs" />
     <Compile Include="Commands\Condition\EmptyFolderCondition.cs" />
     <Compile Include="Commands\Condition\ICondition.cs" />

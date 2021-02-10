@@ -6,12 +6,11 @@ using CommunityPatchLauncher.Commands.TaskCommands;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Documentation.Strategy;
 using CommunityPatchLauncher.Enums;
+using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncherFramework.Documentation.Factory;
 using CommunityPatchLauncherFramework.Documentation.Manager;
-using CommunityPatchLauncherFramework.Documentation.Strategy;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -127,22 +126,17 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private int progressValue;
 
-
         /// <summary>
-        /// The local manager factory to use
+        /// Parent user control
         /// </summary>
-        private readonly IDocumentManagerFactory localDocumentManagerFactory;
-
-        /// <summary>
-        /// The remote manager factory to use
-        /// </summary>
-        private readonly DocumentManager remoteDocumentManager;
+        private readonly UserControl parent;
 
         /// <summary>
         /// Create a new instance of this view model
         /// </summary>
-        public LaunchGameModelView(UserControl parent, Window mainWindow)
+        public LaunchGameModelView(UserControl parent, Window mainWindow) : base(mainWindow)
         {
+            this.parent = parent;
             IProgressCommand launchGameCommand = new LaunchGameCommand(settingManager);
             ICommand toggleCommand = new ToggleVisiblityCommand(parent, "PB_DownloadState");
             ICommand minimizeCommand = new MinimizeWindowCommand(
@@ -152,6 +146,15 @@ namespace CommunityPatchLauncher.ViewModels
                                                             "minimizeOnGameStart"
                                                             )
                                             );
+
+            BrowserModelView changelogModelView = GetChangelogView();
+            changelogModelView.ChangeDocumentProdiver(new RemoteDocumentManagerFactory(new TimeSpan(0, 60, 0)));
+
+            BrowserModelView patchInfoModelView = GetInfoView();
+            IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
+            DocumentManager patchInfoManager = factory.GetDocumentManager("en-EN", new MarkdownHtmlWithoutScrollStrategy());
+            patchInfoModelView.ShowLoading(false);
+            patchInfoModelView.ChangeDocumentProdiver(patchInfoManager);
 
             launchGameCommand.ProgressChanged += (sender, data) =>
             {
@@ -166,39 +169,7 @@ namespace CommunityPatchLauncher.ViewModels
             LaunchGameCommand = new MultiCommand(new List<ICommand>() {
                 toggleCommand,
                 launchGameCommand,
-
             });
-
-            IEnumerable<WebBrowser> browserObjects = FindVisualChildren<WebBrowser>((DependencyObject)parent.Content);
-            foreach (WebBrowser browser in browserObjects)
-            {
-                browser.PreviewKeyDown += (sender, eventArgs) =>
-                {
-                    eventArgs.Handled = eventArgs.Key == Key.F5;
-                };
-                browser.Navigating += (sender, eventArgs) =>
-                {
-                    if (eventArgs.Uri == null)
-                    {
-                        return;
-                    }
-                    string url = eventArgs.Uri.ToString();
-                    url = url.ToLower();
-                    if (url.StartsWith("http"))
-                    {
-                        eventArgs.Cancel = true;
-                        ICommand openLink = new OpenLinkCommand(url);
-                        openLink.Execute(null);
-                    }
-                };
-            }
-
-            localDocumentManagerFactory = new LocalDocumentManagerFactory();
-            IDocumentManagerFactory remoteDocumentManagerFactory = new RemoteDocumentManagerFactory();
-            remoteDocumentManager = remoteDocumentManagerFactory.GetDocumentManager(
-                Properties.Settings.Default.FallbackLanguage,
-                new MarkdownHtmlConvertStrategy()
-                );
         }
 
         /// <summary>
@@ -221,19 +192,7 @@ namespace CommunityPatchLauncher.ViewModels
                 Enum.TryParse(speedString, out newMode);
             }
             Speed = newMode;
-
-            DocumentManager scrollLessDocumentManager = localDocumentManagerFactory.GetDocumentManager(
-                Properties.Settings.Default.FallbackLanguage,
-                new MarkdownHtmlWithoutScrollStrategy()
-            );
-            string language = settingManager.GetValue<string>("Language");
-            if (language != null)
-            {
-                PatchDescription = scrollLessDocumentManager.ReadConvertedDocument(
-                language,
-                patchToUse.RealPatch.ToString() + ".md"
-            );
-            }
+            LoadPatchInformation(availablePatch);
         }
 
         /// <summary>
@@ -242,28 +201,56 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="availablePatch">Load the changelog for the following patch</param>
         private void LoadChangelog(Patch availablePatch)
         {
-            string language = settingManager.GetValue<string>("Language");
-
-            DocumentManager localDocumentManager = localDocumentManagerFactory.GetDocumentManager(
-                Properties.Settings.Default.FallbackLanguage,
-                new MarkdownHtmlConvertStrategy()
-                );
-            ChangelogContent = localDocumentManager.ReadConvertedDocument(
-                language,
-                Properties.Settings.Default.FileLoading
-                );
-
+            BrowserModelView modelView = GetChangelogView();
             string fileName = availablePatch.RealPatch + Properties.Settings.Default.PatchChangelogFileName;
-            Task<string> fileContent = remoteDocumentManager.ReadConvertedDocumentAsync(language, fileName);
-            fileContent.ContinueWith((data) =>
+            modelView.ChangeDocument(fileName);
+        }
+
+        /// <summary>
+        /// Load the patch information
+        /// </summary>
+        /// <param name="availablePatch">Current patch</param>
+        private void LoadPatchInformation(Patch availablePatch)
+        {
+            BrowserModelView modelView = GetInfoView();
+            string fileName = availablePatch.RealPatch.ToString() + ".md";
+            modelView.ChangeDocument(fileName);
+        }
+
+        /// <summary>
+        /// Get the changelog view
+        /// </summary>
+        /// <returns>The browser view</returns>
+        private BrowserModelView GetChangelogView()
+        {
+            return GetBrowserViewByName("Changelog");
+        }
+
+        /// <summary>
+        /// Get the info view
+        /// </summary>
+        /// <returns>The browser view</returns>
+        private BrowserModelView GetInfoView()
+        {
+            return GetBrowserViewByName("PatchInformation");
+        }
+
+        /// <summary>
+        /// Get the browser view by name
+        /// </summary>
+        /// <param name="name">The name of the browser to return</param>
+        /// <returns>The browser view</returns>
+        private BrowserModelView GetBrowserViewByName(string name)
+        {
+            object infoBrowser = parent.FindName(name);
+            if (infoBrowser is BrowserUserControl browserContent)
             {
-                ChangelogContent = data.Result == string.Empty ?
-                                    localDocumentManager.ReadConvertedDocument(
-                                        language,
-                                        Properties.Settings.Default.NotReadableFile
-                                        ) :
-                                    data.Result;
-            });
+                if (browserContent.DataContext is BrowserModelView modelView)
+                {
+                    return modelView;
+                }
+            }
+            return null;
         }
 
         /// <summary>

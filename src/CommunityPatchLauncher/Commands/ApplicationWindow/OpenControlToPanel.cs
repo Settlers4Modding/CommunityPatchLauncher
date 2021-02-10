@@ -22,14 +22,29 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
         protected readonly UserControl userControl;
 
         /// <summary>
+        /// Reload if possible
+        /// </summary>
+        private readonly bool reload;
+
+        /// <summary>
         /// Create a new instance of this class
         /// </summary>
         /// <param name="panelToUse">The panel to add the control to</param>
         /// <param name="userControl">The control to add</param>
-        public OpenControlToPanel(DockPanel panelToUse, UserControl userControl)
+        public OpenControlToPanel(DockPanel panelToUse, UserControl userControl) : this(panelToUse, userControl, true)
+        {
+        }
+
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="panelToUse">The panel to add the control to</param>
+        /// <param name="userControl">The control to add</param>
+        public OpenControlToPanel(DockPanel panelToUse, UserControl userControl, bool reload)
         {
             this.panelToUse = panelToUse;
             this.userControl = userControl;
+            this.reload = reload;
         }
 
         /// <inheritdoc/>
@@ -58,7 +73,7 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
                 panelToUse.Children.Remove(elementToRemove);
             }
 
-            if (userControl.DataContext is IViewModelReloadable reloadable)
+            if (reload && userControl.DataContext is IViewModelReloadable reloadable)
             {
                 reloadable.Reload();
             }
