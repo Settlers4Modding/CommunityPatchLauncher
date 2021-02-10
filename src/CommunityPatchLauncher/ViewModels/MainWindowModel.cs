@@ -136,20 +136,9 @@ namespace CommunityPatchLauncher.ViewModels
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
-<<<<<<< Updated upstream
-                OpenLicenseCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("License.md"));
-                object titleBarObject = currentWindow.FindName("TitleBar");
-                if (titleBarObject is TitleBarUseControl titleBar)
-                {
-                    titleBar.MouseDoubleClick += (sender, data) =>
-                    {
-                        MaximizeWindowCommand?.Execute(null);
-                    };
-                }
-=======
-                ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
->>>>>>> Stashed changes
 
+                OpenLicenseCommand = new OpenControlToPanel(contentDock, new BrowserUserControl("License.md"));
+                ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 OpenEditorCommand = new StartEditorCommand(settingManager);
 
                 string gameFolder = settingManager.GetValue<string>("GameFolder");
