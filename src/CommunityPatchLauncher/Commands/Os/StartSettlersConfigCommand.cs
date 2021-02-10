@@ -14,6 +14,10 @@ namespace CommunityPatchLauncher.Commands.Os
         /// </summary>
         private SettingManager settingManager;
 
+        /// <summary>
+        /// Starts the settlers 4 he configuration file
+        /// </summary>
+        /// <param name="settingManager"></param>
         public StartSettlersConfigCommand(SettingManager settingManager)
         {
             string gameFolder = settingManager.GetValue<string>("GameFolder");
