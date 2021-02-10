@@ -28,7 +28,7 @@
                 <fa:ImageAwesome Icon="Cogs" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
             <Button Command="{Binding MaximizeWindowCommand}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
-                <fa:ImageAwesome Icon="WindowMaximize" Style="{StaticResource TitleBarImageAwesome}" />
+                <fa:ImageAwesome Icon="{Binding MaximizeIcon, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TitleBarImageAwesome}" />
             </Button>
             <Button Command="{Binding MinimizeWindowCommand}" DockPanel.Dock="Right" Style="{StaticResource TitleBarButtonGray}">
                 <fa:ImageAwesome Icon="WindowMinimize" Style="{StaticResource TitleBarImageAwesome}" />
