@@ -91,6 +91,24 @@ namespace CommunityPatchLauncher.ViewModels
         }
 
         /// <summary>
+        /// The icon to use for maximizing
+        /// </summary>
+        public FontAwesomeIcon MaximizeIcon
+        {
+            get => maximizeIcon;
+            protected set
+            {
+                maximizeIcon = value;
+                RaisePropertyChanged("MaximizeIcon");
+            }
+        }
+
+        /// <summary>
+        /// Private access for maximize button
+        /// </summary>
+        private FontAwesomeIcon maximizeIcon;
+
+        /// <summary>
         /// The command used to change the window size
         /// </summary>
         private ICommand changeWindowSizeCommand;
@@ -187,6 +205,20 @@ namespace CommunityPatchLauncher.ViewModels
                     currentWindow.MouseDown += CurrentWindow_MouseDown;
                     currentWindow.MouseUp += CurrentWindow_MouseUp;
                     currentWindow.MouseMove += CurrentWindow_MouseMove;
+                    object titleBarObject = currentWindow.FindName("TitleBar");
+                    if (titleBarObject is TitleBarUseControl titleBar)
+                    {
+                        titleBar.MouseDoubleClick += (sender, data) =>
+                        {
+                            MaximizeWindowCommand?.Execute(null);
+                            blockPositionTime = new TimeSpan(0, 0, 1);
+                        };
+                    }
+                    currentWindow.SizeChanged += (sender, data) =>
+                    {
+                        MaximizeIcon = currentWindow.WindowState == WindowState.Maximized ? FontAwesomeIcon.WindowRestore : FontAwesomeIcon.WindowMaximize;
+                    };
+                    MaximizeIcon = FontAwesomeIcon.WindowMaximize;
                 }
 
                 SetDefaultWindowStyle();
