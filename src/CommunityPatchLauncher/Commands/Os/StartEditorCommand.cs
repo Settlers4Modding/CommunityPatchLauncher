@@ -75,7 +75,6 @@ namespace CommunityPatchLauncher.Commands.Os
                 base.Execute(realBasePath);
                 return;
             }
-
             base.Execute(parameter);
         }
 
@@ -85,7 +84,8 @@ namespace CommunityPatchLauncher.Commands.Os
         /// <returns>True if the key exist</returns>
         private bool RegistryKeyFilled()
         {
-            string editorSettings = Registry.GetValue(Properties.Settings.Default.EditorRegKey, "UserMapDir", "").ToString();
+            object setting = Registry.GetValue(Properties.Settings.Default.EditorRegKey, "UserMapDir", "");
+            string editorSettings = setting?.ToString();
             return !string.IsNullOrEmpty(editorSettings);
         }
     }
