@@ -290,7 +290,8 @@ namespace CommunityPatchLauncher.ViewModels
             ICommand moveFolderCommand = new MoveFolderCommand(
                 settingManager.GetValue<string>("DownloadFolder"),
                 new IsAvailablePatchCondition(),
-                new EmptyFolderCondition()
+                new EmptyFolderCondition(),
+                true
                 );
             SaveSettingCommand = new MultiCommand(new List<ICommand>()
             {
@@ -341,6 +342,9 @@ namespace CommunityPatchLauncher.ViewModels
                 languageCode = settingManager.GetValue<string>("Language");
                 GameFolder = settingManager.GetValue<string>("GameFolder");
                 DownloadFolder = settingManager.GetValue<string>("DownloadFolder");
+                string fallbackDownloadFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                fallbackDownloadFolder += "\\SIVCommunityPatchLauncher\\Downloads";
+                DownloadFolder = string.IsNullOrEmpty(DownloadFolder) ? fallbackDownloadFolder : DownloadFolder;
                 CheckForUpdateOnStartup = settingManager.GetValue<bool>("UpdateOnStartup");
                 MinimizeOnGameStart = settingManager.GetValue<bool>("minimizeOnGameStart");
             }
