@@ -143,7 +143,7 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
                 }
             }
 
-            returnData = addNotice ? "# " + cacheNotice + returnData : returnData;
+            returnData = addNotice && returnData != string.Empty ? "# " + cacheNotice + returnData : returnData;
             return returnData;
         }
     }

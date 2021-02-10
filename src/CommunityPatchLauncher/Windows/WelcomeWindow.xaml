@@ -47,7 +47,7 @@
                     <!-- <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" DockPanel.Dock="Left" Style="{StaticResource DefaultText}" Text="{x:Static p:Resources.WelcomeWindow_TextBox}"></TextBlock>-->
                 </DockPanel>
             </Border>
-            <WebBrowser Name="WB_Agreement" behavior:BrowserBehavior.Html="{Binding AgreementText, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"></WebBrowser>
+            <uC:BrowserUserControl x:Name="WB_Agreement" Grid.Row="2"></uC:BrowserUserControl>
             <Border Grid.Row="3" Style="{StaticResource DefaultBorder}" BorderThickness="0,2,0,0" BorderBrush="{StaticResource BrightSelectedColor}">
                 <StackPanel>
                     <CheckBox Margin="5,5,5,0" Style="{StaticResource DefaultCheckbox}" Content="{x:Static p:Resources.SettingWindow_CheckForUpdateOnStartup}" IsChecked="{Binding CheckForUpdateOnStartup}"></CheckBox>

@@ -44,13 +44,13 @@
                             </ItemsControl>
                         </Button>
                         <StackPanel Tag="SubGroup" x:Name="Home_Group">
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenNewsCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenNewsCommand}" CommandParameter="News.md">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="NewspaperOutline" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenChangelogCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenChangelogCommand}" CommandParameter="Changelog.md">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Bullhorn" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
@@ -132,7 +132,7 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Settings}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenDisclamerCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenDisclamerCommand}" CommandParameter="Agreement.md">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Bookmark" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Disclaimer}"></TextBlock>
@@ -150,13 +150,13 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Tools}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenAboutCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenAboutCommand}" CommandParameter="About.md">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Question" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_About}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenLicenseCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenLicenseCommand}" CommandParameter="License.md">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Certificate" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_License}"></TextBlock>

@@ -36,12 +36,12 @@ namespace CommunityPatchLauncher.ViewModels
         /// <summary>
         /// The document manager to use
         /// </summary>
-        private readonly DocumentManager documentManager;
+        private DocumentManager documentManager;
 
         /// <summary>
         /// The name of the document to show
         /// </summary>
-        private readonly string documentToShow;
+        private string documentToShow;
 
         /// <summary>
         /// Fallback manager to use
@@ -49,16 +49,19 @@ namespace CommunityPatchLauncher.ViewModels
         private DocumentManager fallbackManager;
 
         /// <summary>
+        /// Show loading placeholder
+        /// </summary>
+        private bool showLoading;
+
+        /// <summary>
         /// Create a new instance of this view model
         /// </summary>
         /// <param name="documentToShow"></param>
         public BrowserModelView(string documentToShow, UserControl control, IDocumentManagerFactory factoryToUse)
         {
-            documentManager = factoryToUse.GetDocumentManager(
-                Properties.Settings.Default.FallbackLanguage,
-                new MarkdownHtmlConvertStrategy()
-                );
-            this.documentToShow = documentToShow;
+            showLoading = true;
+            ChangeDocumentProdiver(factoryToUse);
+            this.documentToShow = documentToShow == string.Empty ? "NotReadable.md" : documentToShow;
 
             DependencyObject browserObject = (DependencyObject)control.FindName("WB_browser");
             if (browserObject is WebBrowser browser)
@@ -84,16 +87,50 @@ namespace CommunityPatchLauncher.ViewModels
                     {
                         string currentLanguage = settingManager.GetValue<string>("Language");
                         string target = url.Replace("about:", "");
-                        Task<string> contentData = documentManager?.ReadConvertedDocumentAsync(currentLanguage, target);
-                        contentData.ContinueWith((data) =>
-                        {
-                            ChangeBrowserData(data, currentLanguage);
-                        });
-
-                        BrowserContent = GetFallbackManager()?.ReadConvertedDocument(currentLanguage, "Loading.md");
+                        LoadNewContent(currentLanguage, target);
                     }
                 };
             }
+        }
+
+        /// <summary>
+        /// Show loading replacement
+        /// </summary>
+        /// <param name="newValue"></param>
+        public void ShowLoading(bool newValue)
+        {
+            showLoading = newValue;
+        }
+
+        /// <summary>
+        /// Change the document provider
+        /// </summary>
+        /// <param name="factoryToUse">The factory to use</param>
+        public void ChangeDocumentProdiver(IDocumentManagerFactory factoryToUse)
+        {
+            ChangeDocumentProdiver(factoryToUse.GetDocumentManager(
+                Properties.Settings.Default.FallbackLanguage,
+                new MarkdownHtmlConvertStrategy()
+                ));
+        }
+
+        /// <summary>
+        /// Change the document provider
+        /// </summary>
+        /// <param name="manager">The manager to use</param>
+        public void ChangeDocumentProdiver(DocumentManager manager)
+        {
+            documentManager = manager;
+        }
+
+        /// <summary>
+        /// Change the document to render
+        /// </summary>
+        /// <param name="newDocument">The new document to use</param>
+        public void ChangeDocument(string newDocument)
+        {
+            documentToShow = newDocument;
+            Reload();
         }
 
         /// <inheritdoc/>
@@ -105,15 +142,33 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 return;
             }
-            Task<string> contentData = documentManager?.ReadConvertedDocumentAsync(currentLanguage, documentToShow);
+            LoadNewContent(currentLanguage, documentToShow);
+        }
+
+        /// <summary>
+        /// Load the new content in the browser
+        /// </summary>
+        /// <param name="currentLanguage">The current language</param>
+        /// <param name="target">The current target</param>
+        private void LoadNewContent(string currentLanguage, string target)
+        {
+            Task<string> contentData = documentManager?.ReadConvertedDocumentAsync(currentLanguage, target);
             contentData.ContinueWith((data) =>
             {
                 ChangeBrowserData(data, currentLanguage);
             });
 
-            BrowserContent = GetFallbackManager()?.ReadConvertedDocument(currentLanguage, "Loading.md");
+            if (showLoading)
+            {
+                BrowserContent = GetFallbackManager()?.ReadConvertedDocument(currentLanguage, "Loading.md");
+            }
         }
 
+        /// <summary>
+        /// Change the browser data
+        /// </summary>
+        /// <param name="data">The data to use</param>
+        /// <param name="currentLanguage">The current language</param>
         private void ChangeBrowserData(Task<string> data, string currentLanguage)
         {
             BrowserContent = data.Result == string.Empty ?

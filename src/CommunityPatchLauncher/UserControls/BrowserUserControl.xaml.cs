@@ -11,6 +11,13 @@ namespace CommunityPatchLauncher.UserControls
     public partial class BrowserUserControl : UserControl
     {
         /// <summary>
+        /// Empty constructor to embedd the browser
+        /// </summary>
+        public BrowserUserControl() : this(string.Empty)
+        {
+        }
+
+        /// <summary>
         /// A user control containing a full size webbrowser to display content
         /// </summary>
         /// <param name="fileToOpen"></param>
