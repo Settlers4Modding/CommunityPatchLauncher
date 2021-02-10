@@ -47,7 +47,7 @@ namespace CommunityPatchLauncher.Commands.Settings
                 string gameFolder = manager.GetValue<string>("GameFolder");
                 string DownloadFolder = manager.GetValue<string>("DownloadFolder");
                 canSave &= File.Exists(gameFolder + "S4_Main.exe");
-                canSave &= Directory.Exists(DownloadFolder);
+                canSave &= DownloadFolder != string.Empty;
             }
             return canSave;
         }
