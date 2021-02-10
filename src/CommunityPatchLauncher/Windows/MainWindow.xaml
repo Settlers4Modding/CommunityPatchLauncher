@@ -100,6 +100,20 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Chat}"></TextBlock>
                                 </ItemsControl>
                             </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="MapMarker" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Maps}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                        </StackPanel>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Tools_Group">
+                            <ItemsControl Style="{StaticResource MainCategoryGrid}">
+                                <fa:FontAwesome Icon="Wrench" Style="{StaticResource MainCategoryFontAwesome}" />
+                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Tools}"></TextBlock>
+                            </ItemsControl>
+                        </Button>
+                        <StackPanel Visibility="Collapsed" Tag="SubGroup" x:Name="Tools_Group">
                             <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenTextureChangerCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Exchange" Style="{StaticResource SubCategoryFontAwesome}" />
@@ -116,12 +130,6 @@
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Cog" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SettlersConfig}"></TextBlock>
-                                </ItemsControl>
-                            </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
-                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
-                                    <fa:FontAwesome Icon="MapMarker" Style="{StaticResource SubCategoryFontAwesome}" />
-                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Maps}"></TextBlock>
                                 </ItemsControl>
                             </Button>
                         </StackPanel>
@@ -148,12 +156,6 @@
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Plug" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Mods}"></TextBlock>
-                                </ItemsControl>
-                            </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
-                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
-                                    <fa:FontAwesome Icon="Wrench" Style="{StaticResource SubCategoryFontAwesome}" />
-                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Tools}"></TextBlock>
                                 </ItemsControl>
                             </Button>
                             <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenAboutCommand}" CommandParameter="About.md">
