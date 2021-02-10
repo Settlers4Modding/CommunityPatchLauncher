@@ -236,6 +236,9 @@
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="MainWindow_SettlersConfig" xml:space="preserve">
+    <value>S4 HE Config</value>
+  </data>
   <data name="MainWindow_SocialMedia" xml:space="preserve">
     <value>Social Media</value>
   </data>

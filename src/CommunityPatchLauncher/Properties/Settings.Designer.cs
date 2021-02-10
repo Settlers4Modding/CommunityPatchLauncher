@@ -298,5 +298,17 @@ namespace CommunityPatchLauncher.Properties {
                 this["EditorBaseFolder"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Config/")]
+        public string ConfigBaseFolder {
+            get {
+                return ((string)(this["ConfigBaseFolder"]));
+            }
+            set {
+                this["ConfigBaseFolder"] = value;
+            }
+        }
     }
 }

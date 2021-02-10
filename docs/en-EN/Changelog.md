@@ -42,6 +42,7 @@
 * Fixed problem with maximized form
 * Report bug button working now
 * Added button for S4Editor
+* Added button for Settlers HE Configuration
 * Added button for texture change
 * Maximize/Minimize on menu bar double click
 

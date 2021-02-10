@@ -127,6 +127,7 @@
     <Compile Include="Commands\Os\StartEditorCommand.cs" />
     <Compile Include="Commands\Os\StartProgramCommand.cs" />
     <Compile Include="Commands\Os\MoveFolderCommand.cs" />
+    <Compile Include="Commands\Os\StartSettlersConfigCommand.cs" />
     <Compile Include="Commands\TaskCommands\DownloadAllPatchesCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenLinkCommand.cs" />
     <Compile Include="Commands\ApplicationWindow\OpenNewWindowCommand.cs" />
