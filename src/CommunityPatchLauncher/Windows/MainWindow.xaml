@@ -158,12 +158,6 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Mods}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
-                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
-                                    <fa:FontAwesome Icon="Wrench" Style="{StaticResource SubCategoryFontAwesome}" />
-                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Tools}"></TextBlock>
-                                </ItemsControl>
-                            </Button>
                             <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenAboutCommand}" CommandParameter="About.md">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Question" Style="{StaticResource SubCategoryFontAwesome}" />
