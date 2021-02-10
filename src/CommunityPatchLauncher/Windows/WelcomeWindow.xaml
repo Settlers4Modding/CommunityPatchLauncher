@@ -23,7 +23,7 @@
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <uC:TitleBarUseControl></uC:TitleBarUseControl>
+        <uC:TitleBarUseControl x:Name="TitleBar"></uC:TitleBarUseControl>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0"></RowDefinition>

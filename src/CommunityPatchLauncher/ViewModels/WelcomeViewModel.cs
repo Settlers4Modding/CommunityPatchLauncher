@@ -226,7 +226,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// Create a new instance of this class
         /// </summary>
         /// <param name="window">The window this view belongs to</param>
-        public WelcomeViewModel(Window window) : base(window)
+        public WelcomeViewModel(Window window) : base(window, true)
         {
             RefreshGuiCommand = new MultiCommand(new List<ICommand>()
             {

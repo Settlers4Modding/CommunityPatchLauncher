@@ -1,6 +1,7 @@
 ﻿using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.Os;
+using CommunityPatchLauncher.DataContainers;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.Settings.Factories;
@@ -95,7 +96,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// Create a new instance of this model
         /// </summary>
         /// <param name="window"></param>
-        public MainWindowModel(Window window) : base(window)
+        public MainWindowModel(Window window) : base(window, true)
         {
             IconVisible = false;
             updateSearched = false;
@@ -126,6 +127,7 @@ namespace CommunityPatchLauncher.ViewModels
                     titleBar.MouseDoubleClick += (sender, data) =>
                     {
                         MaximizeWindowCommand?.Execute(null);
+                        blockPositionTime = new TimeSpan(0, 0, 1);
                     };
                 }
 
