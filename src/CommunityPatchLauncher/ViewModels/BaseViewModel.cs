@@ -91,6 +91,24 @@ namespace CommunityPatchLauncher.ViewModels
         }
 
         /// <summary>
+        /// The icon to use for maximizing
+        /// </summary>
+        public FontAwesomeIcon MaximizeIcon
+        {
+            get => maximizeIcon;
+            protected set
+            {
+                maximizeIcon = value;
+                RaisePropertyChanged("MaximizeIcon");
+            }
+        }
+
+        /// <summary>
+        /// Private access for maximize button
+        /// </summary>
+        private FontAwesomeIcon maximizeIcon;
+
+        /// <summary>
         /// The command used to change the window size
         /// </summary>
         private ICommand changeWindowSizeCommand;
@@ -139,6 +157,11 @@ namespace CommunityPatchLauncher.ViewModels
         private Position lastMousePosition;
 
         /// <summary>
+        /// This will block getting the next position once
+        /// </summary>
+        protected TimeSpan blockPositionTime;
+
+        /// <summary>
         /// Create a new instance of this class without a attached window
         /// </summary>
         public BaseViewModel() : this(null)
@@ -150,8 +173,18 @@ namespace CommunityPatchLauncher.ViewModels
         /// Create a new instance of this class
         /// </summary>
         /// <param name="window">The window which uses this model</param>
-        public BaseViewModel(Window window)
+        public BaseViewModel(Window window) : this(window, false)
         {
+        }
+
+
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="window">The window which uses this model</param>
+        public BaseViewModel(Window window, bool addTrigger)
+        {
+            blockPositionTime = new TimeSpan(0);
             ISettingFactory settingFactory = new XmlSettingFactory();
             settingManager = settingFactory.GetSettingsManager();
 
@@ -167,9 +200,26 @@ namespace CommunityPatchLauncher.ViewModels
                 }
                 AddWindowResizeableCommand();
                 RefreshGuiCommand = new RefreshGuiLanguageCommand(currentWindow);
-                currentWindow.MouseDown += CurrentWindow_MouseDown;
-                currentWindow.MouseUp += CurrentWindow_MouseUp;
-                currentWindow.MouseMove += CurrentWindow_MouseMove;
+                if (addTrigger)
+                {
+                    currentWindow.MouseDown += CurrentWindow_MouseDown;
+                    currentWindow.MouseUp += CurrentWindow_MouseUp;
+                    currentWindow.MouseMove += CurrentWindow_MouseMove;
+                    object titleBarObject = currentWindow.FindName("TitleBar");
+                    if (titleBarObject is TitleBarUseControl titleBar)
+                    {
+                        titleBar.MouseDoubleClick += (sender, data) =>
+                        {
+                            MaximizeWindowCommand?.Execute(null);
+                            blockPositionTime = new TimeSpan(0, 0, 1);
+                        };
+                    }
+                    currentWindow.SizeChanged += (sender, data) =>
+                    {
+                        MaximizeIcon = currentWindow.WindowState == WindowState.Maximized ? FontAwesomeIcon.WindowRestore : FontAwesomeIcon.WindowMaximize;
+                    };
+                    MaximizeIcon = FontAwesomeIcon.WindowMaximize;
+                }
 
                 SetDefaultWindowStyle();
                 SwitchGuiLanguage();
@@ -251,12 +301,18 @@ namespace CommunityPatchLauncher.ViewModels
         /// <param name="e">The event arguments</param>
         private void CurrentWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            DateTime currentTime = DateTime.Now;
+            DateTime blockedUntil = currentTime - blockPositionTime;
+            if (blockedUntil < currentTime)
+            {
+                blockPositionTime = new TimeSpan(0);
+                return;
+            }
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 if (currentWindow.WindowState == WindowState.Maximized)
                 {
-
-                    lastMousePosition = new Position(e.GetPosition(currentWindow));
+                    lastMousePosition = new Position(Mouse.GetPosition(currentWindow));
                 }
                 currentWindow.DragMove();
             }
