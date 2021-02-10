@@ -101,7 +101,14 @@ namespace CommunityPatchLauncher.Tasks.Update
                 {
                     info.Verb = "runas";
                 }
-                Process.Start(info);
+                try
+                {
+                    Process.Start(info);
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
 
             return true;

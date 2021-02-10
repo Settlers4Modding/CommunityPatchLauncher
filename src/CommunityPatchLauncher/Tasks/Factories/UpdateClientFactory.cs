@@ -84,11 +84,11 @@ namespace CommunityPatchLauncher.Tasks.Factories
             tasks.Add(new GetGitHubVersion(repositoryOwner, repositoryName, releaseFilter, parentWindow));
             tasks.Add(new UpdatePopupTask(parentWindow, showIfLocalIsNewer));
             tasks.Add(new DownloadLauncherUpdate());
+            tasks.Add(new PatchLauncher(patchLauncher));
             if (updateBranch == UpdateBranchEnum.Develop)
             {
                 tasks.Add(new WriteCurrentVersionToSettings());
             }
-            tasks.Add(new PatchLauncher(patchLauncher));
             tasks.Add(new CloseApplicationTask(new CloseApplicationCommand()));
             return tasks;
         }
