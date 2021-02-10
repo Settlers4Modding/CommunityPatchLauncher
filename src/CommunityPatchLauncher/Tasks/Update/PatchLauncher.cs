@@ -79,7 +79,7 @@ namespace CommunityPatchLauncher.Tasks.Update
                 File.Create(testFile);
                 if (File.Exists(testFile))
                 {
-                    File.Create(testFile);
+                    File.Delete(testFile);
                 }
             }
             catch (Exception)
