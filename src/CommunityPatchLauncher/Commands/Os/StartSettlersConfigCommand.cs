@@ -4,6 +4,9 @@ using CommunityPatchLauncherFramework.Settings.Manager;
 
 namespace CommunityPatchLauncher.Commands.Os
 {
+    /// <summary>
+    /// starts the settlers 4 he configuration file
+    /// </summary>
     class StartSettlersConfigCommand : StartProgramCommand
     {
         /// <summary>
