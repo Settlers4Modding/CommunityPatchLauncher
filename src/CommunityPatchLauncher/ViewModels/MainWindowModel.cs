@@ -83,6 +83,14 @@ namespace CommunityPatchLauncher.ViewModels
         /// Oopen the texture changer tool
         /// </summary>
         public ICommand OpenTextureChangerCommand { get; private set; }
+        /// <summary>
+        /// Opens the MP Map Folder
+        /// </summary>
+        public ICommand OpenMPMapFolderCommand { get; private set; }
+        /// <summary>
+        /// Opens the Save Game Folder
+        /// </summary>
+        public ICommand OpenSavesFolderCommand { get; private set; }
 
         /// <summary>
         /// Open the launcher license
@@ -146,6 +154,11 @@ namespace CommunityPatchLauncher.ViewModels
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 OpenEditorCommand = new StartEditorCommand(settingManager);
                 OpenSettlersConfigurationCommand = new StartSettlersConfigCommand(settingManager);
+                OpenMPMapFolderCommand = new OpenFolderCommand(settingManager.GetValue<string>("GameFolder") + "/Map/User/");
+                OpenSavesFolderCommand = new OpenFolderCommand(Environment.GetFolderPath(
+                                                   Environment.SpecialFolder.MyDocuments)
+                                                   + "/TheSettlers4/Save/"
+                                                   );
 
                 string gameFolder = settingManager.GetValue<string>("GameFolder");
                 string textureChange = gameFolder + "Texturenwechsler.bat";

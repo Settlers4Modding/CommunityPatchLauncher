@@ -351,6 +351,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open Multiplayer Mapfolder ähnelt.
+        /// </summary>
+        public static string MainWindow_MPFolder {
+            get {
+                return ResourceManager.GetString("MainWindow_MPFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Multiplayer ähnelt.
         /// </summary>
         public static string MainWindow_Multiplayer {
@@ -401,6 +410,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string MainWindow_ReportIssue {
             get {
                 return ResourceManager.GetString("MainWindow_ReportIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open Savefolder ähnelt.
+        /// </summary>
+        public static string MainWindow_SaveFolder {
+            get {
+                return ResourceManager.GetString("MainWindow_SaveFolder", resourceCulture);
             }
         }
         

@@ -183,6 +183,9 @@
   <data name="MainWindow_Maps" xml:space="preserve">
     <value>Karten</value>
   </data>
+  <data name="MainWindow_MPFolder" xml:space="preserve">
+    <value>MP Mapordner öffnen</value>
+  </data>
   <data name="MainWindow_Multiplayer" xml:space="preserve">
     <value>Mehrspieler</value>
   </data>
@@ -200,6 +203,9 @@
   </data>
   <data name="MainWindow_ReportIssue" xml:space="preserve">
     <value>Fehler melden</value>
+  </data>
+  <data name="MainWindow_SaveFolder" xml:space="preserve">
+    <value>Spielständeordner öffnen</value>
   </data>
   <data name="MainWindow_Settings" xml:space="preserve">
     <value>Einstellungen</value>

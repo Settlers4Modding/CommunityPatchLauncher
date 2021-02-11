@@ -132,6 +132,12 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SettlersConfig}"></TextBlock>
                                 </ItemsControl>
                             </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenSavesFolderCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="FolderOpen" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SaveFolder}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
                         </StackPanel>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Help_Group">
                             <ItemsControl Style="{StaticResource MainCategoryGrid}">

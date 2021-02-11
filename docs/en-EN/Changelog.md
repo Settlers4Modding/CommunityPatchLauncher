@@ -35,6 +35,7 @@
 ### Main Window
 
 * Added Tools group and regrouped some buttons
+  * Added Open Savegames and Multiplayer Map Folder Button
 * Changelog button is working now
 * About button is working now
 * Disclaimer button is working now
