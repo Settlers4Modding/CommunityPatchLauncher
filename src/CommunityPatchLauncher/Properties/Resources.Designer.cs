@@ -378,6 +378,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open Multiplayer Map Folder ähnelt.
+        /// </summary>
+        public static string MainWindow_OpenMPMapFolder {
+            get {
+                return ResourceManager.GetString("MainWindow_OpenMPMapFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Play ähnelt.
         /// </summary>
         public static string MainWindow_Play {

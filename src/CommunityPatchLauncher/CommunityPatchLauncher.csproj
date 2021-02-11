@@ -222,6 +222,9 @@
     <Compile Include="UserControls\LaunchGameUserControl.xaml.cs">
       <DependentUpon>LaunchGameUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MapUserControl.xaml.cs">
+      <DependentUpon>MapUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PatchVersionSelectionUserControl.xaml.cs">
       <DependentUpon>PatchVersionSelectionUserControl.xaml</DependentUpon>
     </Compile>
@@ -251,6 +254,7 @@
     <Compile Include="ViewModels\BrowserModelView.cs" />
     <Compile Include="ViewModels\InfoPopupViewModel.cs" />
     <Compile Include="ViewModels\LaunchGameModelView.cs" />
+    <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\PatchVersionSelectionViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="ViewModels\PopupWindowsViewModel.cs" />
@@ -283,6 +287,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\LaunchGameUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MapUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

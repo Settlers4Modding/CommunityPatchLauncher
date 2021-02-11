@@ -100,7 +100,7 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Chat}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenMapCommand}" CommandParameter="MapInfo.md">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="MapMarker" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Maps}"></TextBlock>

@@ -224,6 +224,9 @@
   <data name="MainWindow_News" xml:space="preserve">
     <value>News</value>
   </data>
+  <data name="MainWindow_OpenMPMapFolder" xml:space="preserve">
+    <value>Open Multiplayer Map Folder</value>
+  </data>
   <data name="MainWindow_Play" xml:space="preserve">
     <value>Play</value>
   </data>
