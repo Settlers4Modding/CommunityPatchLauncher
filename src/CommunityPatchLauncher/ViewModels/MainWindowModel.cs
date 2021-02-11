@@ -155,7 +155,10 @@ namespace CommunityPatchLauncher.ViewModels
                 OpenEditorCommand = new StartEditorCommand(settingManager);
                 OpenSettlersConfigurationCommand = new StartSettlersConfigCommand(settingManager);
                 OpenMPMapFolderCommand = new OpenFolderCommand(settingManager.GetValue<string>("GameFolder") + "/Map/User/");
-                OpenSavesFolderCommand = new OpenFolderCommand(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/TheSettlers4/Save/");
+                OpenSavesFolderCommand = new OpenFolderCommand(Environment.GetFolderPath(
+                                                   Environment.SpecialFolder.MyDocuments)
+                                                   + "/TheSettlers4/Save/"
+                                                   );
 
                 string gameFolder = settingManager.GetValue<string>("GameFolder");
                 string textureChange = gameFolder + "Texturenwechsler.bat";
