@@ -8,9 +8,9 @@ Um nur Multiplayer Maps, oder Maps von bestimmten Mappern zu suchen eignet sich 
 
 
 ## Wie installiere ich neue Maps?
-**1:** Map downloaden
-**2.:** Format Prüfen: Nur Dateien vom Typ .map können vom Spiel erkannt werden.
-**3.:** Map im richtigen Ordner (\Map\User) ablegen. Um das Verzeichnis zu öffnen, bitte den Button unten clicken!
+1. Map downloaden
+2. Format Prüfen: Nur Dateien vom Typ .map können vom Spiel erkannt werden.
+3. Map im richtigen Ordner (\Map\User) ablegen. Um das Verzeichnis zu öffnen, bitte den Button unten clicken!
 
 ## Bitte vermeide diese häufigsten Fehler:
 * Im Multiplayer müssen alle Spieler die Map im richtigen Verzeichnis gespeichert haben. Maps werden in der S4 History Edition nicht automatisch geteilt.

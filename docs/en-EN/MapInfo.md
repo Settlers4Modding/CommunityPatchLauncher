@@ -8,9 +8,9 @@ To look for only specific maps such as multiplayer, you can use the [Mapsearch].
 
 
 ## How do I install new maps?
-**1:** Download the map
-**2.:** Check the format: Only files of type .map will work.
-**3.:** Save the map to the right folder (\Map\User). To open the folder, you can use the button below!
+1. Download the map
+2. Check the format: Only files of type .map will work.
+3. Save the map to the right folder (\Map\User). To open the folder, you can use the button below!
 
 ## Please avoid the most common mistakes:
 * For playing multiplayer with a new map, all players have to download the map and save it to the right folder. There is no automatic map sharing functionality in the Setters 4 History Edition.
