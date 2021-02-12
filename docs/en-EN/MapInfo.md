@@ -1,3 +1,5 @@
+[HeaderImage]: SiedlerMapSource.jpg
+Many thanks to the SiedlerMapSource-Team for letting us link to them here!
 
 ## Maps
 The Settlers 4 History Edition already offers a set of maps. However, after playing a while you will run out of new maps to play.

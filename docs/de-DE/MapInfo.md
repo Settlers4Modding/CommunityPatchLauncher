@@ -1,3 +1,5 @@
+[HeaderImage]: SiedlerMapSource.jpg
+Vielen Dank an das SiedlerMapSource Team, dass wir sie hier verlinken dürfen!
 
 ## Maps
 Die Siedler 4 History Edition bietet bereits einige Maps, allerdings geht die Abwechslung bei häufigem Spielen schnell aus.
