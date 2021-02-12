@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
 
 namespace CommunityPatchLauncher.Commands.Os
 {
@@ -35,15 +36,14 @@ namespace CommunityPatchLauncher.Commands.Os
                 "De",
                 "En"
             };
-
             string gameFolder = settingManager.GetValue<string>("GameFolder");
             string editorPlusPath = gameFolder + Properties.Settings.Default.EditorBaseFolder + "S4EditorPlus.exe";
+            string editorPlusPathDownload = gameFolder + Properties.Settings.Default.EditorBaseFolder + "S4Editor_203.exe";
             string editorPath = gameFolder + Properties.Settings.Default.EditorBaseFolder + "S4Editor.exe";
             string editorPreBase = gameFolder + Properties.Settings.Default.EditorBaseFolder + "RunEditor";
 
             this.settingManager = settingManager;
-            programPath = File.Exists(editorPlusPath) ? editorPlusPath : editorPath;
-            preFilePathBase = editorPreBase;
+            programPath = File.Exists(editorPlusPath) ? editorPlusPath : File.Exists(editorPlusPathDownload) ? editorPlusPathDownload : editorPath;
         }
 
         /// <summary>
@@ -65,6 +65,15 @@ namespace CommunityPatchLauncher.Commands.Os
         /// <inheritdoc/>
         public override void Execute(object parameter)
         {
+            string gameFolder = settingManager.GetValue<string>("GameFolder");
+            string editorPlusPath = gameFolder + Properties.Settings.Default.EditorBaseFolder + "S4EditorPlus.exe";
+            string editorPlusPathDownload = gameFolder + Properties.Settings.Default.EditorBaseFolder + "S4Editor_203.exe";
+            string editorPath = gameFolder + Properties.Settings.Default.EditorBaseFolder + "S4Editor.exe";
+            string editorPreBase = gameFolder + Properties.Settings.Default.EditorBaseFolder + "RunEditor";
+
+            programPath = File.Exists(editorPlusPath) ? editorPlusPath : File.Exists(editorPlusPathDownload) ? editorPlusPathDownload : editorPath;
+            preFilePathBase = editorPreBase;
+
             string language = settingManager.GetValue<string>("Language");
             string realCode = GetConvertedCode(language);
             realCode = allowedCodes.Contains(realCode) ? realCode : Properties.Settings.Default.FallbackLanguage;
