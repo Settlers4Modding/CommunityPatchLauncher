@@ -1,18 +1,20 @@
 ﻿using CommunityPatchLauncher.ViewModels;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace CommunityPatchLauncher.UserControls
 {
     /// <summary>
-    /// Interaktionslogik für MapUserControl.xaml
+    /// Interactionlogic for MapUserControl.xaml
     /// </summary>
     public partial class MapUserControl : UserControl
     {
-        public MapUserControl(Window window)
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        public MapUserControl()
         {
             InitializeComponent();
-            DataContext = new MapViewModel(window);
+            DataContext = new MapViewModel(this);
         }
     }
 }

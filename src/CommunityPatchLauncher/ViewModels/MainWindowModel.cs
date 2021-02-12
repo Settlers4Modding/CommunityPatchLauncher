@@ -149,7 +149,7 @@ namespace CommunityPatchLauncher.ViewModels
                 OpenAboutCommand = openLocalBrowser;
                 OpenLicenseCommand = openLocalBrowser;
 
-                OpenMapCommand = new OpenControlToPanel(contentDock, new MapUserControl(window));
+                OpenMapCommand = new OpenControlToPanel(contentDock, new MapUserControl());
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
