@@ -1,4 +1,5 @@
-# Maps
+
+## Maps
 The Settlers 4 History Edition already offers a set of maps. However, after playing a while you will run out of new maps to play.
 Fortunately, there is a Website where players upload their self-designed single- and multiplayer maps in a huge variety, free to use for everyone.
 
