@@ -56,7 +56,7 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <!--<Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Question" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_FAQ}"></TextBlock>
@@ -67,7 +67,7 @@
                                     <fa:FontAwesome Icon="ShareAlt" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SocialMedia}"></TextBlock>
                                 </ItemsControl>
-                            </Button>
+                            </Button>-->
                         </StackPanel>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Play_Group">
                             <ItemsControl Style="{StaticResource MainCategoryGrid}">
@@ -82,7 +82,7 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <!--<Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Wifi" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_PlayerSearch}"></TextBlock>
@@ -105,7 +105,7 @@
                                     <fa:FontAwesome Icon="MapMarker" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Maps}"></TextBlock>
                                 </ItemsControl>
-                            </Button>
+                            </Button>-->
                         </StackPanel>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Tools_Group">
                             <ItemsControl Style="{StaticResource MainCategoryGrid}">
@@ -158,12 +158,12 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Disclaimer}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <!--<Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Plug" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Mods}"></TextBlock>
                                 </ItemsControl>
-                            </Button>
+                            </Button>-->
                             <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenAboutCommand}" CommandParameter="About.md">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="Question" Style="{StaticResource SubCategoryFontAwesome}" />
@@ -186,7 +186,6 @@
                     </StackPanel>
                 </StackPanel>
             </Border>
-
             <DockPanel x:Name="DP_ContentDock" Grid.Column="1"></DockPanel>
         </Grid>
     </Grid>
