@@ -410,6 +410,8 @@
   <PropertyGroup>
     <PreBuildEvent>IF EXIST "$(ProjectDir)$(OutDir)docs" RMDIR /S /Q "$(ProjectDir)$(OutDir)docs" 
 xcopy /E /I "$(SolutionDir)docs" "$(ProjectDir)$(OutDir)docs"
+IF EXIST "$(ProjectDir)$(OutDir)assets" RMDIR /S /Q "$(ProjectDir)$(OutDir)assets" 
+xcopy /E /I "$(SolutionDir)assets" "$(ProjectDir)$(OutDir)assets"
 copy /Y "$(SolutionDir)LICENSE" "$(ProjectDir)$(OutDir)docs\en-EN\License.md"</PreBuildEvent>
   </PropertyGroup>
 </Project>

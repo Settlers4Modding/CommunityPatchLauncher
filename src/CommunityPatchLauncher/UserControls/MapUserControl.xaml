@@ -15,7 +15,18 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <uC:BrowserUserControl x:Name="WB_MapInfo" Grid.Row="0" Grid.Column="0" DockPanel.Dock="Top" Margin="0,0,0,72"></uC:BrowserUserControl>
-        <Button Margin="0,404,0,20" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.MainWindow_OpenMPMapFolder}" Command="{Binding OpenMulitplayerMapFolder}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <uC:BrowserUserControl x:Name="WB_MapInfo" Grid.ColumnSpan="3" DockPanel.Dock="Top" Margin="0,0,0,72"></uC:BrowserUserControl>
+        <DockPanel LastChildFill="False" Grid.Column="1" Grid.Row="1">
+            <Button DockPanel.Dock="Bottom" Margin="0,0,0,10" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.MainWindow_OpenMPMapFolder}" Command="{Binding OpenMulitplayerMapFolder}"/>
+        </DockPanel>
     </Grid>
 </UserControl>

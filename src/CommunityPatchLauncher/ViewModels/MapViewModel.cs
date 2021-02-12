@@ -2,9 +2,17 @@
 using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncher.Commands.Os;
 using System.Windows.Input;
+using System.Windows.Controls;
+using CommunityPatchLauncherFramework.Documentation.Factory;
+using CommunityPatchLauncher.Documentation.Factories;
+using CommunityPatchLauncherFramework.Documentation.Manager;
+using CommunityPatchLauncher.Documentation.Strategy;
 
 namespace CommunityPatchLauncher.ViewModels
 {
+    /// <summary>
+    /// View model for the map view user control
+    /// </summary>
     class MapViewModel : BaseViewModel
     {
         /// <summary>
@@ -12,13 +20,24 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         public ICommand OpenMulitplayerMapFolder { get; private set; }
 
-        public MapViewModel (Window window)
+        /// <summary>
+        /// Create a new instance of this class
+        /// </summary>
+        /// <param name="parent">The parent user control</param>
+        public MapViewModel(UserControl parent)
         {
-             DependencyObject mapinfoDisplay = (DependencyObject) window.FindName("WB_MapInfo");
+             DependencyObject mapinfoDisplay = (DependencyObject)parent.FindName("WB_MapInfo");
             if (mapinfoDisplay is BrowserUserControl browserControl)
             {
                 if (browserControl.DataContext is BrowserModelView modelView)
                 {
+                    IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
+                    DocumentManager manager = factory.GetDocumentManager(
+                        Properties.Settings.Default.FallbackLanguage,
+                        new MarkdownHtmlWithoutScrollStrategy()
+                        );
+                    modelView.ChangeDocumentProdiver(manager);
+                    modelView.ShowLoading(false);
                     modelView.ChangeDocument("MapInfo.md");
                 }
             }
