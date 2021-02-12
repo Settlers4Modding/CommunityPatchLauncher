@@ -31,12 +31,6 @@ namespace CommunityPatchLauncher.ViewModels
             {
                 if (browserControl.DataContext is BrowserModelView modelView)
                 {
-                    IDocumentManagerFactory factory = new LocalDocumentManagerFactory();
-                    DocumentManager manager = factory.GetDocumentManager(
-                        Properties.Settings.Default.FallbackLanguage,
-                        new MarkdownHtmlWithoutScrollStrategy()
-                        );
-                    modelView.ChangeDocumentProdiver(manager);
                     modelView.ShowLoading(false);
                     modelView.ChangeDocument("MapInfo.md");
                 }
