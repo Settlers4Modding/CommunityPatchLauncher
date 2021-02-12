@@ -1,4 +1,4 @@
-[HeaderImage]: SiedlerMapSource.jpg
+![HeaderImage](SiedlerMapSource.jpg)
 Many thanks to the SiedlerMapSource-Team for letting us link to them here!
 
 ## Maps
