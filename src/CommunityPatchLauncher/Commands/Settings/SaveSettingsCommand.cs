@@ -24,7 +24,6 @@ namespace CommunityPatchLauncher.Commands.Settings
         /// <param name="settingManager">The setting manager to use</param>
         public SaveSettingsCommand(SettingManager settingManager) : this(true, settingManager)
         {
-
         }
 
         /// <summary>

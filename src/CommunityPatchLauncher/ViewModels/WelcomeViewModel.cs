@@ -229,18 +229,9 @@ namespace CommunityPatchLauncher.ViewModels
         {
             RefreshGuiCommand = new MultiCommand(new List<ICommand>()
             {
-                new SaveSettingsCommand(settingManager),
+                new SaveSettingsCommand(false, settingManager),
                 new RefreshGuiLanguageCommand(currentWindow)
             });
-
-            DependencyObject agreementDisplay = (DependencyObject)window.FindName("WB_Agreement");
-            if (agreementDisplay is BrowserUserControl browserControl)
-            {
-                if (browserControl.DataContext is BrowserModelView modelView)
-                {
-                    modelView.ChangeDocument("Agreement.md");
-                }
-            }
 
             errorPopup = new OpenCustomPopupWindowCommand(
                              window,
@@ -265,7 +256,13 @@ namespace CommunityPatchLauncher.ViewModels
             RegexSearch.Executed += GameFolderChanged_Executed;
 
             Languages = new AvailableLanguages().GetAvailableLanguages();
-            string languageIsoCode = CultureInfo.CurrentUICulture.IetfLanguageTag;
+            if (settingManager == null)
+            {
+                return;
+            }
+
+            string loadedLanguage = settingManager.GetValue<string>("Language");
+            string languageIsoCode = loadedLanguage == null ? CultureInfo.CurrentUICulture.IetfLanguageTag : loadedLanguage;
             for (int i = 0; i < Languages.Count; i++)
             {
                 if (Languages[i].IsoCode == languageIsoCode)
@@ -275,9 +272,18 @@ namespace CommunityPatchLauncher.ViewModels
                 }
             }
 
-            if (settingManager == null)
+            if (loadedLanguage == null)
             {
-                return;
+                settingManager.AddValue("Language", languageIsoCode);
+                settingManager.SaveSettings();
+            }
+            DependencyObject agreementDisplay = (DependencyObject)window.FindName("WB_Agreement");
+            if (agreementDisplay is BrowserUserControl browserControl)
+            {
+                if (browserControl.DataContext is BrowserModelView modelView)
+                {
+                    modelView.ChangeDocument("Agreement.md");
+                }
             }
 
             string settingGameFolder = settingManager.GetValue<string>("GameFolder");
