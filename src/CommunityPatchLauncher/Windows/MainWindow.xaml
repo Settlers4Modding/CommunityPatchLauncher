@@ -1,0 +1,193 @@
+﻿<Window x:Class="CommunityPatchLauncher.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CommunityPatchLauncher"
+        xmlns:uC="clr-namespace:CommunityPatchLauncher.UserControls"
+        xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Width="1024" Height="768" MinWidth="800" MinHeight="600" Title="{x:Static p:Resources.MainWindow_Title}">
+    <!-- Style="{StaticResource WindowStyle}" -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CommunityPatchLauncher;component/Styles/DefaultStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="245*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <uC:TitleBarUseControl x:Name="TitleBar" Grid.ColumnSpan="3"></uC:TitleBarUseControl>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".9*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="0,0,1,0" Margin="0,-5,5,0" Style="{StaticResource DefaultBorder}">
+                <StackPanel Grid.Column="0">
+                    <Image Margin="0,5,0,0" MaxHeight="150" x:Name="Img_MainLogo" Source="../Assets/Images/CP_Logo1.png"></Image>
+                    <Border Style="{StaticResource DefaultBorder}" Opacity="0.4" BorderThickness="0, 2, 0, 0" Margin="0,5,0,5"></Border>
+                    <StackPanel Orientation="Vertical">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Home_Group">
+                            <ItemsControl Style="{StaticResource MainCategoryGrid}">
+                                <fa:FontAwesome Icon="Home" Style="{StaticResource MainCategoryFontAwesome}"></fa:FontAwesome>
+                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Home}"></TextBlock>
+                            </ItemsControl>
+                        </Button>
+                        <StackPanel Tag="SubGroup" x:Name="Home_Group">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenNewsCommand}" CommandParameter="News.md">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="NewspaperOutline" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_News}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenChangelogCommand}" CommandParameter="Changelog.md">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Bullhorn" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Question" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_FAQ}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="ShareAlt" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SocialMedia}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                        </StackPanel>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Play_Group">
+                            <ItemsControl Style="{StaticResource MainCategoryGrid}">
+                                <fa:FontAwesome Icon="Play" Style="{StaticResource MainCategoryFontAwesome}" />
+                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_StartSettle}"></TextBlock>
+                            </ItemsControl>
+                        </Button>
+                        <StackPanel Visibility="Collapsed" Tag="SubGroup" x:Name="Play_Group">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding LaunchGameCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Rocket" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Play}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Wifi" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_PlayerSearch}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Trophy" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Ranked}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Headphones" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Chat}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="MapMarker" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Maps}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                        </StackPanel>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Tools_Group">
+                            <ItemsControl Style="{StaticResource MainCategoryGrid}">
+                                <fa:FontAwesome Icon="Wrench" Style="{StaticResource MainCategoryFontAwesome}" />
+                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Tools}"></TextBlock>
+                            </ItemsControl>
+                        </Button>
+                        <StackPanel Visibility="Collapsed" Tag="SubGroup" x:Name="Tools_Group">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenTextureChangerCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Exchange" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_TextureChanger}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenEditorCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Edit" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Editor}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenSettlersConfigurationCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Cog" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SettlersConfig}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenSavesFolderCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="FolderOpen" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_SaveFolder}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                        </StackPanel>
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Help_Group">
+                            <ItemsControl Style="{StaticResource MainCategoryGrid}">
+                                <fa:FontAwesome Icon="Question" Style="{StaticResource MainCategoryFontAwesome}" />
+                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Help}"></TextBlock>
+                            </ItemsControl>
+                        </Button>
+                        <StackPanel Visibility="Collapsed" Tag="SubGroup" x:Name="Help_Group">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenSettingCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Cog" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Settings}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenDisclamerCommand}" CommandParameter="Agreement.md">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Bookmark" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Disclaimer}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Plug" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Mods}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenAboutCommand}" CommandParameter="About.md">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Question" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_About}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenLicenseCommand}" CommandParameter="License.md">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Certificate" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_License}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ReportIssueCommand}">
+                                <ItemsControl Style="{StaticResource SubCategoryGrid}">
+                                    <fa:FontAwesome Icon="Bug" Style="{StaticResource SubCategoryFontAwesome}" />
+                                    <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_ReportIssue}"></TextBlock>
+                                </ItemsControl>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <DockPanel x:Name="DP_ContentDock" Grid.Column="1"></DockPanel>
+        </Grid>
+    </Grid>
+</Window>

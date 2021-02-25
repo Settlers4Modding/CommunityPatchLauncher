@@ -1,0 +1,27 @@
+﻿html {
+    overflow:hidden;
+}
+body {
+    background-color: #232027;
+    color: Snow;
+}
+
+* {
+    font-family: "Segoe UI";
+}
+
+ul {
+    list-style-type: inherit;
+}
+
+a:link {
+    color: #00C9A6;
+}
+
+a:hover {
+    color: #00AFA5;
+}
+
+a:visited {
+    color: #98B0A9;
+}

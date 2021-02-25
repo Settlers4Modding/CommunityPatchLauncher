@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="CommunityPatchLauncher.UserControls.LaunchGameUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommunityPatchLauncher.UserControls"
+             xmlns:behavior="clr-namespace:CommunityPatchLauncher.BehaviorExtensions"
+             xmlns:conv="clr-namespace:CommunityPatchLauncher.BindingData.Converter"
+             xmlns:p = "clr-namespace:CommunityPatchLauncher.Properties"
+             xmlns:uC="clr-namespace:CommunityPatchLauncher.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CommunityPatchLauncher;component/Styles/DefaultStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="0,0,0,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="1.7*"></RowDefinition>
+                <RowDefinition Height="0.7*" MinHeight="80"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="0,0,0,5" HorizontalAlignment="Center" Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_Changelog}"></TextBlock>
+                    <Border Grid.Row="2" BorderThickness="2" BorderBrush="{StaticResource SelectedColor}">
+                        <uC:BrowserUserControl x:Name="Changelog"></uC:BrowserUserControl>
+                    </Border>
+                </Grid>
+            </DockPanel>
+            <uC:BrowserUserControl x:Name="PatchInformation" Grid.Row="0" Grid.Column="0" DockPanel.Dock="Top"></uC:BrowserUserControl>
+            <DockPanel Grid.Row="2" LastChildFill="False" Margin="0,0,5,0">
+                <StackPanel DockPanel.Dock="Bottom">
+                    <StackPanel Margin="0,5,0,5">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type RadioButton}">
+                                <Setter Property="GroupName" Value="Speed"/>
+                            </Style>
+                            <conv:GameSpeedConverter x:Key="GameSpeedConverter"></conv:GameSpeedConverter>
+                        </StackPanel.Resources>
+                        <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Normal}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_NormalSpeed}"></RadioButton>
+                        <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Fast}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_FastSpeed}"></RadioButton>
+                        <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Faster}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_VeryFastSpeed}"></RadioButton>
+                        <RadioButton IsChecked="{Binding Path=Speed, Converter={StaticResource GameSpeedConverter}, ConverterParameter=Testing}" Style="{StaticResource DefaultRadioButton}" Content="{x:Static p:Resources.PlayControl_TestingSpeed}"></RadioButton>
+                    </StackPanel>
+                    <ProgressBar Visibility="Collapsed" Margin="0,5,0,5" x:Name="PB_DownloadState" Style="{StaticResource DefaultProgressBar}" Value="{Binding ProgressValue}"></ProgressBar>
+                    <Button Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.PlayControl_Launch}" Command="{Binding LaunchGameCommand}">
+                        <Button.Resources>
+                            <conv:LaunchGameConverter x:Key="LaunchGameConverter"></conv:LaunchGameConverter>
+                        </Button.Resources>
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource LaunchGameConverter}">
+                                <Binding Path="Speed" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                <Binding Path="PatchToUse"/>
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</UserControl>
