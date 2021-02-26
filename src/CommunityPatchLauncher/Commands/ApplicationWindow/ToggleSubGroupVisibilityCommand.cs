@@ -45,7 +45,6 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
                 {
                     continue;
                 }
-                currentPanel.Visibility = Visibility.Collapsed;
             }
             if (element is StackPanel stackPanel)
             {
@@ -55,7 +54,6 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
                     stackPanel.Visibility = Visibility.Visible;
                     return;
                 }
-                stackPanel.Visibility = Visibility.Collapsed;
             }
         }
     }
