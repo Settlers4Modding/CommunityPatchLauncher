@@ -3,6 +3,7 @@ using CommunityPatchLauncher.BindingData.Container;
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.TaskCommands;
+using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.UserControls;
 using CommunityPatchLauncher.ViewModels.SpecialViews;
 using FontAwesome.WPF;
@@ -81,6 +82,7 @@ namespace CommunityPatchLauncher.ViewModels
         public override void Reload()
         {
             base.Reload();
+            OpenLaunchGameCommand.Execute(new Commands.DataContainer.PatchSelectionData(null, AvailablePatches.CommunityPatch));
             foreach (UIElement panel in panelToUse.Children)
             {
                 if (panel is UserControl control)

@@ -2,7 +2,6 @@
 using CommunityPatchLauncher.Commands;
 using CommunityPatchLauncher.Commands.ApplicationWindow;
 using CommunityPatchLauncher.Commands.Os;
-using CommunityPatchLauncher.DataContainers;
 using CommunityPatchLauncher.Documentation.Factories;
 using CommunityPatchLauncher.Enums;
 using CommunityPatchLauncher.Settings.Factories;
@@ -164,7 +163,7 @@ namespace CommunityPatchLauncher.ViewModels
                 string textureChange = gameFolder + "Texturenwechsler.bat";
                 OpenTextureChangerCommand = new StartProgramCommand(textureChange);
 
-                OpenNewsCommand.Execute("News.md");
+                LaunchGameCommand.Execute(null);
             }
 
             ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);
