@@ -197,6 +197,12 @@
   <data name="MainWindow_FAQ" xml:space="preserve">
     <value>FAQ</value>
   </data>
+  <data name="MainWindow_HDPatchButton" xml:space="preserve">
+    <value>HDPatchButton</value>
+  </data>
+  <data name="MainWindow_HDPatchCategory" xml:space="preserve">
+    <value>HDPatchCategory</value>
+  </data>
   <data name="MainWindow_Help" xml:space="preserve">
     <value>Help</value>
   </data>

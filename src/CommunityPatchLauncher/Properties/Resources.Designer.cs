@@ -297,6 +297,24 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die HDPatchButton ähnelt.
+        /// </summary>
+        public static string MainWindow_HDPatchButton {
+            get {
+                return ResourceManager.GetString("MainWindow_HDPatchButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die HDPatchCategory ähnelt.
+        /// </summary>
+        public static string MainWindow_HDPatchCategory {
+            get {
+                return ResourceManager.GetString("MainWindow_HDPatchCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Help ähnelt.
         /// </summary>
         public static string MainWindow_Help {
