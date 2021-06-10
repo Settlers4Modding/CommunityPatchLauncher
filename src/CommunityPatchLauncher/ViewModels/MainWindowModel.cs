@@ -80,6 +80,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand OpenEditorCommand { get; private set; }
 
         /// <summary>
+        /// Opens the Map View Model
+        /// </summary>
+        public ICommand OpenMapCommand { get; private set; }
+
+        /// <summary>
         /// Open the s4 config file
         /// </summary>
         public ICommand OpenSettlersConfigurationCommand { get; private set; }
@@ -88,10 +93,7 @@ namespace CommunityPatchLauncher.ViewModels
         /// Oopen the texture changer tool
         /// </summary>
         public ICommand OpenTextureChangerCommand { get; private set; }
-        /// <summary>
-        /// Opens the MP Map Folder
-        /// </summary>
-        public ICommand OpenMPMapFolderCommand { get; private set; }
+
         /// <summary>
         /// Opens the Save Game Folder
         /// </summary>
@@ -153,7 +155,7 @@ namespace CommunityPatchLauncher.ViewModels
                 OpenLicenseCommand = openLocalBrowser;
 
                 OpenHDPatchCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
-
+                OpenMapCommand = new OpenControlToPanel(contentDock, new MapUserControl());
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
                 ComingSoonCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
@@ -161,7 +163,6 @@ namespace CommunityPatchLauncher.ViewModels
                 ReportIssueCommand = new OpenLinkCommand(wpfSettings.GetValue<string>("ReportIssueLink"));
                 OpenEditorCommand = new StartEditorCommand(settingManager);
                 OpenSettlersConfigurationCommand = new StartSettlersConfigCommand(settingManager);
-                OpenMPMapFolderCommand = new OpenFolderCommand(settingManager.GetValue<string>("GameFolder") + "/Map/User/");
                 OpenSavesFolderCommand = new OpenFolderCommand(Environment.GetFolderPath(
                                                    Environment.SpecialFolder.MyDocuments)
                                                    + "/TheSettlers4/Save/"
