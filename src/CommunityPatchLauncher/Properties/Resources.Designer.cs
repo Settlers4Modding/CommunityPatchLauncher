@@ -297,6 +297,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die HD Patch ähnelt.
+        /// </summary>
+        public static string MainWindow_HDPatchCategory {
+            get {
+                return ResourceManager.GetString("MainWindow_HDPatchCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Help ähnelt.
         /// </summary>
         public static string MainWindow_Help {

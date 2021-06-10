@@ -30,6 +30,11 @@ namespace CommunityPatchLauncher.ViewModels
         public ICommand OpenNewsCommand { get; private set; }
 
         /// <summary>
+        /// Opens the HD Patch user controll
+        /// </summary>
+        public ICommand OpenHDPatchCommand { get; private set; }
+
+        /// <summary>
         /// The command used to open the changelog
         /// </summary>
         public ICommand OpenChangelogCommand { get; private set; }
@@ -149,6 +154,7 @@ namespace CommunityPatchLauncher.ViewModels
                 OpenAboutCommand = openLocalBrowser;
                 OpenLicenseCommand = openLocalBrowser;
 
+                OpenHDPatchCommand = new OpenControlToPanel(contentDock, new ComingSoonControl());
                 OpenMapCommand = new OpenControlToPanel(contentDock, new MapUserControl());
                 LaunchGameCommand = new OpenControlToPanel(contentDock, new PatchVersionSelectionUserControl(window));
                 OpenSettingCommand = new OpenControlToPanel(contentDock, new SettingsUserControl(currentWindow));
