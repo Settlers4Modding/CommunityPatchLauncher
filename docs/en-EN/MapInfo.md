@@ -6,7 +6,7 @@ The Settlers 4 History Edition already offers a set of maps. However, after play
 Fortunately, there is a Website where players upload their self-designed single- and multiplayer maps in a huge variety, free to use for everyone.
 
 ## Where can I find new maps?
-The most recent maps can be found here: https://www.siedler-maps.de/s4maps/search.htm.
+The most recent maps can be found here: https://www.siedler-maps.de/s4maps/index.htm.
 To look for only specific maps such as multiplayer, you can use the [Mapsearch].
 
 ## How do I install new maps?

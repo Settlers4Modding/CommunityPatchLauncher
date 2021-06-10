@@ -6,7 +6,7 @@ Die Siedler 4 History Edition bietet bereits einige Maps, allerdings geht die Ab
 Zum Glück gibt es eine Website, auf der Siedler Spieler ihre selbst designten Single- und Multiplayer Maps in riesiger Menge und Vielfalt zur Verfügung stellen.
 
 ## Wo finde ich zusätzliche Maps?
-Die neuesten Maps finden sich hier: https://www.siedler-maps.de/s4maps/search.htm.
+Die neuesten Maps finden sich hier: https://www.siedler-maps.de/s4maps/index.htm.
 Um nur Multiplayer Maps, oder Maps von bestimmten Mappern zu suchen eignet sich die [Mapsuche]
 
 ## Wie installiere ich neue Maps?
