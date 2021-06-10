@@ -297,6 +297,9 @@ Remote version: {remoteVersion}</value>
   <data name="SettingWindow_OpenSettingFolder" xml:space="preserve">
     <value>Einstellungen Ordner öffnen</value>
   </data>
+  <data name="SettingWindow_ReminderCheckOnStartup" xml:space="preserve">
+    <value>Lade die zuletzt verwendete Version beim starten des Launchers</value>
+  </data>
   <data name="SettingWindow_ResetAgreement" xml:space="preserve">
     <value>Vereinbarung zurücksetzten</value>
   </data>

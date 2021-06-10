@@ -58,6 +58,7 @@
             </DockPanel>
             <CheckBox Style="{StaticResource DefaultCheckbox}" Content="{x:Static p:Resources.SettingsWindow_MinimizeOnGameStart}" Margin="0,0,0,5" IsChecked="{Binding MinimizeOnGameStart}"></CheckBox>
             <CheckBox Style="{StaticResource DefaultCheckbox}" Content="{x:Static p:Resources.SettingWindow_CheckForUpdateOnStartup}" Margin="0,0,0,5" IsChecked="{Binding CheckForUpdateOnStartup}"></CheckBox>
+            <CheckBox Style="{StaticResource DefaultCheckbox}" Content="{x:Static p:Resources.SettingWindow_ReminderCheckOnStartup}" Margin="0,0,0,5" IsChecked="{Binding ReminderCheckOnStartup}"></CheckBox>
             <Button DockPanel.Dock="Left" Margin="0,0,0,5" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.Default_UpdateApplication}" Command="{Binding UpdateApplicationCommand}" CommandParameter="{Binding SelectedUpdateChannel}"></Button>
             <Button DockPanel.Dock="Left" Margin="0,0,0,5" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_OpenSettingFolder}" Command="{Binding OpenSettingFolderCommand}"></Button>
             <Button DockPanel.Dock="Left" Margin="0,0,0,5" Style="{StaticResource DefaultButton}" Content="{x:Static p:Resources.SettingWindow_OpenDownloadFolder}" Command="{Binding OpenDownloadFolderCommand}" CommandParameter="{Binding ElementName=TB_DownloadFolder, Path=Text}"></Button>

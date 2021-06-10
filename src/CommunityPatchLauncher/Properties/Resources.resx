@@ -337,6 +337,9 @@ Is your computer offline?</value>
   <data name="SettingWindow_OpenSettingFolder" xml:space="preserve">
     <value>Open setting folder</value>
   </data>
+  <data name="SettingWindow_ReminderCheckOnStartup" xml:space="preserve">
+    <value>Load the last used game-version on launcher-start</value>
+  </data>
   <data name="SettingWindow_ResetAgreement" xml:space="preserve">
     <value>Reset agreement</value>
   </data>

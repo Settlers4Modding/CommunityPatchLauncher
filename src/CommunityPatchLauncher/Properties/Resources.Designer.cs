@@ -707,6 +707,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Load the last used game-version on launcher-start ähnelt.
+        /// </summary>
+        public static string SettingWindow_ReminderCheckOnStartup {
+            get {
+                return ResourceManager.GetString("SettingWindow_ReminderCheckOnStartup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Reset agreement ähnelt.
         /// </summary>
         public static string SettingWindow_ResetAgreement {
