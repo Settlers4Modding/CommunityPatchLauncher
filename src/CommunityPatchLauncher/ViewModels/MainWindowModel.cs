@@ -202,6 +202,7 @@ namespace CommunityPatchLauncher.ViewModels
                     versionString = reader.ReadLine();
                 }
             }
+            versionString = versionString.Length > 0 && versionString[0] == 'v' ? versionString.Substring(1) : versionString;
             version = version == null ? versionString : "Unstable " + version;
             WindowTitle += " - Version " + version;
         }
