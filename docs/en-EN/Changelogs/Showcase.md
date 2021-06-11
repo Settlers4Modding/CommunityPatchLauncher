@@ -63,3 +63,5 @@
 [Back][back]
 
 [back]: Changelog.md
+
+[patchChangelogSource]: https://github.com/LitzeYT/Settlers4Patch
