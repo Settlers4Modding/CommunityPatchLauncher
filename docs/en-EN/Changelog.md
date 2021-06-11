@@ -20,5 +20,7 @@
 # Old Changelogs
 
 * [Version 0.0.1][v0.0.1]
+* [Showcase][showcase]
 
 [v0.0.1]: Changelogs/v0.0.1.md
+[showcase]: Changelogs/Showcase.md
