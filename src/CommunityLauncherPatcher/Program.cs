@@ -24,11 +24,21 @@ namespace CommunityLauncherPatcher
         private static StreamWriter writer;
 
         /// <summary>
+        /// The current username
+        /// </summary>
+        private static string username;
+
+        /// <summary>
         /// Main method
         /// </summary>
         /// <param name="args">Argument srequired for patching</param>
         static void Main(string[] args)
         {
+            string logFile = Path.GetTempPath();
+            logFile = Path.Combine(logFile, DateTime.Now.ToString("yyyyMMdd_HHmmss") + " _launcherUpdate.log");
+            writer = new StreamWriter(logFile);
+            username = Environment.UserName;
+
             if (args.Length != 5)
             {
                 LogLine("Seems like some parameters are wrong upgrade did not work, please restart the launcher");
@@ -39,10 +49,6 @@ namespace CommunityLauncherPatcher
 
             ignoreDeleteFilesStarts = new HashSet<string>();
             ignoreDeleteFilesStarts.Add("unins");
-
-            string logFile = Path.GetTempPath();
-            logFile = Path.Combine(logFile, DateTime.Now.ToString("yyyyMMdd_HHmmss") + " _launcherUpdate.log");
-            writer = new StreamWriter(logFile);
 
             string caller = args[0];
             string callerId = args[1];
@@ -216,6 +222,7 @@ namespace CommunityLauncherPatcher
             Console.WriteLine(logline);
             if (writeToFile && writer.BaseStream != null)
             {
+                logline = logline.Replace(username, "{USERNAME}");
                 writer?.WriteLine(logline);
             }
         }
