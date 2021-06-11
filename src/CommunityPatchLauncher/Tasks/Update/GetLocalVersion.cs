@@ -22,7 +22,17 @@ namespace CommunityPatchLauncher.Tasks.Update
                     versionString = reader.ReadLine();
                 }
             }
-            Version realVersion = new Version(versionString);
+            versionString = versionString.Length > 0 && versionString[0] == 'v' ? versionString.Substring(1) : versionString;
+            Version realVersion = new Version(0, 0, 0);
+            try
+            {
+                realVersion = new Version(versionString);
+            }
+            catch (Exception)
+            {
+                //Loading the version went badly wrong, whups
+            }
+            
             AddSetting("LocalVersion", realVersion);
             return true;
         }

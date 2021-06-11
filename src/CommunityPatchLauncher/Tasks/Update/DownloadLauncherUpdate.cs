@@ -27,11 +27,17 @@ namespace CommunityPatchLauncher.Tasks.Update
             }
             using (WebClient client = new WebClient())
             {
-                client.DownloadFile(latestArtifact.Artifacts[0].DownloadUri, downloadTarget);
+                Artifact artifactToDownload = latestArtifact.Artifacts.Find(
+                    artifact => artifact.Name.ToLower().EndsWith("communitypatchlauncher.zip") && artifact.Name.Contains(remoteVersion.ToString())
+                    );
+                if (artifactToDownload == null)
+                {
+                    return false;
+                }
+                client.DownloadFile(artifactToDownload.DownloadUri, downloadTarget);
             }
             AddSetting("LauncherUpdate", downloadTarget);
             return true;
         }
-
     }
 }
