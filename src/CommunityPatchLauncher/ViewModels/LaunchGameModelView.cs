@@ -184,7 +184,6 @@ namespace CommunityPatchLauncher.ViewModels
             }
             LoadChangelog(availablePatch);
             PatchToUse = availablePatch;
-            //settingManager.GetValue<string>("");
             currentSpeedPath = patchToUse.RealPatch.ToString() + "/Speed";
             string speedString = settingManager.GetValue<string>(currentSpeedPath);
             SpeedModes newMode = SpeedModes.Normal;

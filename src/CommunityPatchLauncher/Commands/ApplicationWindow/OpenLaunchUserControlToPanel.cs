@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using CommunityPatchLauncherFramework.Settings.Manager;
 
 namespace CommunityPatchLauncher.Commands.ApplicationWindow
 {
@@ -51,6 +52,8 @@ namespace CommunityPatchLauncher.Commands.ApplicationWindow
                     button.IsChecked = valueToSet;
                 }
                 launchGameUserControl.SetPatch(data.Patch);
+                string StringPatch = data.Patch.ToString();
+                settingManager.AddValue("RemindPatch", StringPatch);
             }
         }
     }

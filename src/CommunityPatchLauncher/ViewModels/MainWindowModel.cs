@@ -171,8 +171,6 @@ namespace CommunityPatchLauncher.ViewModels
                 string gameFolder = settingManager.GetValue<string>("GameFolder");
                 string textureChange = gameFolder + "Texturenwechsler.bat";
                 OpenTextureChangerCommand = new StartProgramCommand(textureChange);
-
-                OpenNewsCommand.Execute("News.md");
             }
 
             ChangeGroupVisiblity = new ToggleSubGroupVisibilityCommand(currentWindow);
@@ -185,7 +183,26 @@ namespace CommunityPatchLauncher.ViewModels
                 updateSearched = true;
                 CheckForUpdateIfNeeded(window);
             };
+
+            SetFirstuC(window);
         }
+        /// <summary>
+        /// Sets the first user control when starting main window
+        /// </summary>
+        private void SetFirstuC(Window window)
+        {
+            if (settingManager.ExistsValue("ReminderFunction") == false) settingManager.AddValue("ReminderFunction", true);
+            if (settingManager.GetValue<bool>("ReminderFunction") == true)
+            {
+                if (settingManager.ExistsValue("RemindPatch") == false) settingManager.AddValue("RemindPatch", "CommunityPatch");
+                //new LaunchGameModelView(contentDock, window).SetPatch(Enum.TryParse<Patch>(settingManager.GetValue<string>("RemindPatch")));
+            }
+            else
+            {
+                OpenNewsCommand.Execute("News.md");
+            }
+        }
+
 
         /// <summary>
         /// Add the version to the window title

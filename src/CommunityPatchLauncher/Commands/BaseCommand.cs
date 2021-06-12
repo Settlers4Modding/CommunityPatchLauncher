@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using CommunityPatchLauncherFramework.Settings.Manager;
 
 namespace CommunityPatchLauncher.Commands
 {
@@ -17,6 +18,11 @@ namespace CommunityPatchLauncher.Commands
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
+
+        /// <summary>
+        /// The setting manager to use
+        /// </summary>
+        protected SettingManager settingManager;
 
         /// <summary>
         /// Raise a event that the can execute did change

@@ -139,5 +139,15 @@ namespace CommunityPatchLauncherFramework.Settings.Manager
             settingsLoaded = false;
             return writer.WriteSettings(settings, SettingFilePath);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public bool ExistsValue(string key)
+        {
+            SettingPair pair = GetValue(key);
+            return pair != null;
+        }
     }
 }

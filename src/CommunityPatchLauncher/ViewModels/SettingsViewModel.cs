@@ -110,7 +110,24 @@ namespace CommunityPatchLauncher.ViewModels
         /// </summary>
         private int selectedIndex;
 
-        //MinimizeGameOnStartup
+        /// <summary>
+        /// Public accessor if we should remind the last started game on launcher start
+        /// </summary>
+        public bool ReminderCheckOnStartup
+        {
+            get => reminderCheckOnStartup;
+            set
+            {
+                reminderCheckOnStartup = value;
+                settingManager.AddValue("ReminderFunction", reminderCheckOnStartup);
+                RaisePropertyChanged("ReminderFunction");
+            }
+        }
+
+        /// <summary>
+        /// Private accessor if we should remind the last started game on launcher start
+        /// </summary>
+        private bool reminderCheckOnStartup;
 
         /// <summary>
         /// Public accessor if we should minimize the launcher on start
@@ -347,6 +364,7 @@ namespace CommunityPatchLauncher.ViewModels
                 DownloadFolder = string.IsNullOrEmpty(DownloadFolder) ? fallbackDownloadFolder : DownloadFolder;
                 CheckForUpdateOnStartup = settingManager.GetValue<bool>("UpdateOnStartup");
                 MinimizeOnGameStart = settingManager.GetValue<bool>("minimizeOnGameStart");
+                ReminderCheckOnStartup = settingManager.GetValue<bool>("ReminderFunction");
             }
             for (int i = 0; i < SelectableLanguages.Count; i++)
             {
