@@ -1,6 +1,7 @@
 ﻿using Markdig;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace CommunityPatchLauncherFramework.Documentation.Strategy
 {
@@ -9,12 +10,19 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
     /// </summary>
     public class MarkdownHtmlConvertStrategy : IDocumentConvertStrategy
     {
+        protected const string IMAGE_REGEX = "<img.*src=\\\"([\\w\\.\\/]+)\\\".*\\/>";//<img.*(src=\\\\\"[\\w\\.\\/] +\\\").*\\/>
+
         /// <inheritdoc/>
         public string GetConverted(string rawData)
         {
-            return GetHtml(rawData);
+            string html = GetHtml(rawData);
+            return DoPostProcessingSteps(html);
         }
 
+        /// <summary>
+        /// Get the link to the css file
+        /// </summary>
+        /// <returns>The string to the css file</returns>
         protected virtual string GetCssLink()
         {
             string applicationPath = Assembly.GetExecutingAssembly().Location;
@@ -26,6 +34,48 @@ namespace CommunityPatchLauncherFramework.Documentation.Strategy
             cssPath += "Styles/DefaultBrowserStyle.css";
 
             return "<link rel='stylesheet' type='text/css' href='" + cssPath + "'>";
+        }
+
+        /// <summary>
+        /// Do some post processing steps for the html data
+        /// </summary>
+        /// <param name="html">The current html</param>
+        /// <returns>The string with all the changes</returns>
+        protected virtual string DoPostProcessingSteps(string html)
+        {
+            return ReplaceLocalImagePaths(html);
+        }
+
+        /// <summary>
+        /// Replace the local image paths with static ones
+        /// </summary>
+        /// <param name="html">The html to work on</param>
+        /// <returns>The changed img paths</returns>
+        protected virtual string ReplaceLocalImagePaths(string html)
+        {
+            Regex regex = new Regex(IMAGE_REGEX);
+            MatchCollection matches =  regex.Matches(html);
+            string baseFolder = Assembly.GetExecutingAssembly().Location;
+            FileInfo baseFolderInfo = new FileInfo(baseFolder);
+            string baseImagePath = Path.Combine(baseFolderInfo.DirectoryName, "Assets");
+            foreach (Match match in matches)
+            {
+                if (match.Groups.Count == 2)
+                {
+                    Group group = match.Groups[1];
+                    string currentPath = group.Value;
+                    if (currentPath.ToLower().StartsWith("http"))
+                    {
+                        continue;
+                    }
+                    string newPath = Path.Combine(baseImagePath, currentPath);
+                    string baseReplace = match.Groups[0].Value;
+                    string realReplace = baseReplace.Replace(currentPath, newPath);
+                    html = html.Replace(baseReplace, realReplace);
+                }
+            }
+
+            return html;
         }
 
         protected virtual string GetHtml(string rawData)

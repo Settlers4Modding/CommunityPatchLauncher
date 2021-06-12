@@ -14,6 +14,10 @@ ul {
     list-style-type: inherit;
 }
 
+img {
+    width: 100%;
+}
+
 a:link {
     color: #00C9A6;
 }

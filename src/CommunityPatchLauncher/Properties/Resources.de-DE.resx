@@ -192,6 +192,9 @@
   <data name="MainWindow_News" xml:space="preserve">
     <value>Neuigkeiten</value>
   </data>
+  <data name="MainWindow_OpenMPMapFolder" xml:space="preserve">
+    <value>Öffne User Map Ordner</value>
+  </data>
   <data name="MainWindow_Play" xml:space="preserve">
     <value>Spielen</value>
   </data>

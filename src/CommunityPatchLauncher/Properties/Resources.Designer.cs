@@ -297,6 +297,15 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die HD Patch ähnelt.
+        /// </summary>
+        public static string MainWindow_HDPatchCategory {
+            get {
+                return ResourceManager.GetString("MainWindow_HDPatchCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Help ähnelt.
         /// </summary>
         public static string MainWindow_Help {
@@ -351,15 +360,6 @@ namespace CommunityPatchLauncher.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Open Multiplayer Mapfolder ähnelt.
-        /// </summary>
-        public static string MainWindow_MPFolder {
-            get {
-                return ResourceManager.GetString("MainWindow_MPFolder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Multiplayer ähnelt.
         /// </summary>
         public static string MainWindow_Multiplayer {
@@ -374,6 +374,15 @@ namespace CommunityPatchLauncher.Properties {
         public static string MainWindow_News {
             get {
                 return ResourceManager.GetString("MainWindow_News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open User Map Folder ähnelt.
+        /// </summary>
+        public static string MainWindow_OpenMPMapFolder {
+            get {
+                return ResourceManager.GetString("MainWindow_OpenMPMapFolder", resourceCulture);
             }
         }
         

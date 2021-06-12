@@ -197,6 +197,9 @@
   <data name="MainWindow_FAQ" xml:space="preserve">
     <value>FAQ</value>
   </data>
+  <data name="MainWindow_HDPatchCategory" xml:space="preserve">
+    <value>HD Patch</value>
+  </data>
   <data name="MainWindow_Help" xml:space="preserve">
     <value>Help</value>
   </data>
@@ -215,14 +218,14 @@
   <data name="MainWindow_Mods" xml:space="preserve">
     <value>Mods</value>
   </data>
-  <data name="MainWindow_MPFolder" xml:space="preserve">
-    <value>Open Multiplayer Mapfolder</value>
-  </data>
   <data name="MainWindow_Multiplayer" xml:space="preserve">
     <value>Multiplayer</value>
   </data>
   <data name="MainWindow_News" xml:space="preserve">
     <value>News</value>
+  </data>
+  <data name="MainWindow_OpenMPMapFolder" xml:space="preserve">
+    <value>Open User Map Folder</value>
   </data>
   <data name="MainWindow_Play" xml:space="preserve">
     <value>Play</value>

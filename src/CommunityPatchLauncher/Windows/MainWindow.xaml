@@ -37,6 +37,12 @@
                     <Image Margin="0,5,0,0" MaxHeight="150" x:Name="Img_MainLogo" Source="../Assets/Images/CP_Logo1.png"></Image>
                     <Border Style="{StaticResource DefaultBorder}" Opacity="0.4" BorderThickness="0, 2, 0, 0" Margin="0,5,0,5"></Border>
                     <StackPanel Orientation="Vertical">
+                        <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <ItemsControl Style="{StaticResource MainCategoryGrid}">
+                                <fa:FontAwesome Icon="Codepen" Style="{StaticResource MainCategoryFontAwesome}"></fa:FontAwesome>
+                                <TextBlock Style="{StaticResource MainCategoryString}" Text="{x:Static p:Resources.MainWindow_HDPatchCategory}"></TextBlock>
+                            </ItemsControl>
+                        </Button>
                         <Button Style="{StaticResource CategoryButton}" Command="{Binding ChangeGroupVisiblity}" CommandParameter="Home_Group">
                             <ItemsControl Style="{StaticResource MainCategoryGrid}">
                                 <fa:FontAwesome Icon="Home" Style="{StaticResource MainCategoryFontAwesome}"></fa:FontAwesome>
@@ -100,7 +106,7 @@
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Chat}"></TextBlock>
                                 </ItemsControl>
                             </Button>
-                            <Button Style="{StaticResource CategoryButton}" Command="{Binding ComingSoonCommand}">
+                            <Button Style="{StaticResource CategoryButton}" Command="{Binding OpenMapCommand}" CommandParameter="MapInfo.md">
                                 <ItemsControl Style="{StaticResource SubCategoryGrid}">
                                     <fa:FontAwesome Icon="MapMarker" Style="{StaticResource SubCategoryFontAwesome}" />
                                     <TextBlock Style="{StaticResource SubCategoryString}" Text="{x:Static p:Resources.MainWindow_Maps}"></TextBlock>
