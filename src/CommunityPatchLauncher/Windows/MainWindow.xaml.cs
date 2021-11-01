@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.IO;
 using CommunityPatchLauncherFramework.Settings.Manager;
 using Microsoft.Win32;
+using System.Windows.Controls;
 
 namespace CommunityPatchLauncher.Windows
 {
@@ -40,19 +41,23 @@ namespace CommunityPatchLauncher.Windows
         #region Downloader
         private void UpgradetoSettlersUnited(object sender, RoutedEventArgs e)
         {
-            UpgradetoSettlersUnited();
-
+            Task upgradeTask = UpgradetoSettlersUnited();
+            if (sender is Button button)
+            {
+                button.IsEnabled = false;
+                upgradeTask.ContinueWith(_ => Dispatcher.Invoke(() => button.IsEnabled = true));
+            }
         }
-        private async void UpgradetoSettlersUnited()
+        private async Task UpgradetoSettlersUnited()
         {
             await ZipInstallerAsync();
             string URI = "https://files.settlers-united.com/Settlers-United.exe";
-            DownloadFileAsync(URI, "SettlersUnitedSetup.exe", "Upgrade auf Settlers United (Beta)", true);
+            DownloadFileAsync(URI, "SettlersUnitedSetup.exe", Properties.Resources.Setters_United_Beta, true);
         }
         private void DownloadFileAsync(string URI, string File, string Name, bool SettlersUnited = false)
         {
             DownlaodPanel.Visibility = Visibility.Visible;
-            DownlaodLabel.Content = "Herunterladen des Updates..." + "\n" + Name;
+            DownlaodLabel.Content = Properties.Resources.Download_United_Update + Environment.NewLine + Name;
 
             try
             {
@@ -81,8 +86,22 @@ namespace CommunityPatchLauncher.Windows
 
                 Verb = "runas"
             };
-            Process.Start(startInfo);
-            Environment.Exit(0);
+            try
+            {
+                Process.Start(startInfo);
+                Environment.Exit(0);
+            }
+            catch (Exception)
+            {
+                DownlaodLabel.Content = Properties.Resources.Download_United_Aborted;
+            }
+            finally
+            {
+                if (sender is Button button)
+                {
+                    button.IsEnabled = true;
+                }
+            }
         }
 
         private void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)

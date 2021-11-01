@@ -47,16 +47,14 @@
                            x:Name="Img_MainLogo"
                            Source="../Assets/Images/CP_Logo1.png"></Image>
                     
-                    <Button Content="Upgrade to Settlers United (Beta)"
+                    <Button Content="{x:Static p:Resources.Setters_United_Beta}"
+                            Style="{StaticResource DefaultButton}"
                             Click="UpgradetoSettlersUnited"
                             VerticalAlignment="Top"
                             Height="25"
                             Margin="0,0,0,0" />
                     <TextBlock Margin="5"
-                               Foreground="LightGoldenrodYellow">Hinweis: Bitte vorher auf History Edition  <LineBreak /> 
-                        patchen. Der Community Balance Patch  <LineBreak />  
-                       kann anschließend in Settlers United  <LineBreak />
-                        (im Spiel selbst) wieder aktiviert werden</TextBlock>
+                               Foreground="LightGoldenrodYellow" Text="{x:Static p:Resources.Upgrade_Note}" TextWrapping="Wrap"/>
                     <Border Style="{StaticResource DefaultBorder}"
                             Opacity="0.4"
                             BorderThickness="0, 2, 0, 0"
@@ -325,6 +323,7 @@
                            VerticalAlignment="Center"
                            HorizontalContentAlignment="Center" />
                     <ProgressBar x:Name="ProgressBar"
+                                 Style="{StaticResource DefaultProgressBar}"
                                  Margin="10"
                                  Height="30"
                                  Value="0"

@@ -179,6 +179,12 @@
   <data name="DocumentCacheNotice" xml:space="preserve">
     <value>The Document was loaded from cache</value>
   </data>
+  <data name="Download_United_Aborted" xml:space="preserve">
+    <value>Download or installation was aborted by user!</value>
+  </data>
+  <data name="Download_United_Update" xml:space="preserve">
+    <value>Download the update ...</value>
+  </data>
   <data name="MainWindow_About" xml:space="preserve">
     <value>About</value>
   </data>
@@ -319,6 +325,9 @@ Is your computer offline?</value>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Enter window width</value>
   </data>
+  <data name="Setters_United_Beta" xml:space="preserve">
+    <value>Upgrade to Settlers United (Beta)</value>
+  </data>
   <data name="SettingsWindow_MinimizeOnGameStart" xml:space="preserve">
     <value>Minimize launcher on game start</value>
   </data>
@@ -342,6 +351,10 @@ Is your computer offline?</value>
   </data>
   <data name="SettingWindow_ResetAgreement" xml:space="preserve">
     <value>Reset agreement</value>
+  </data>
+  <data name="Upgrade_Note" xml:space="preserve">
+    <value>Note: Please patch to History Edition first.
+The Community Balance Patch can be reactivated in Settlers United (in the game itself) afterwards.</value>
   </data>
   <data name="WelcomeWindow_Agree" xml:space="preserve">
     <value>I did read the agreement</value>
