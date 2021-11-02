@@ -71,5 +71,14 @@
     <Setting Name="EditorBaseFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">Editor/</Value>
     </Setting>
+    <Setting Name="ConfigBaseFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Config/</Value>
+    </Setting>
+    <Setting Name="SettlersUnitedDownloadName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SettlersUnitedSetup.exe</Value>
+    </Setting>
+    <Setting Name="SettlersUnitedDownloadUri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://files.settlers-united.com/Settlers-United.exe</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

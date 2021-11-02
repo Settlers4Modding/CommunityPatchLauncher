@@ -50,20 +50,21 @@ namespace CommunityPatchLauncher.Windows
         private async Task UpgradetoSettlersUnited()
         {
             await ZipInstallerAsync();
-            string uri = "https://files.settlers-united.com/Settlers-United.exe";
-            var filename = GetDownloadedFileName();
-            DownloadFileAsync(uri, filename, Properties.Resources.Setters_United_Beta, true);
+            DownloadFileAsync(
+                Properties.Settings.Default.SettlersUnitedDownloadUri,
+                GetDownloadedFileName()
+                );
         }
 
         private string GetDownloadedFileName()
         {
-            return Path.Combine(Path.GetTempPath(), "SettlersUnitedSetup.exe");
+            return Path.Combine(Path.GetTempPath(), Properties.Settings.Default.SettlersUnitedDownloadName);
         }
 
-        private void DownloadFileAsync(string URI, string File, string Name, bool SettlersUnited = false)
+        private void DownloadFileAsync(string uri, string file)
         {
             DownlaodPanel.Visibility = Visibility.Visible;
-            DownlaodLabel.Content = Properties.Resources.Download_United_Update + Environment.NewLine + Name;
+            DownlaodLabel.Content = Properties.Resources.Download_United_Update + Environment.NewLine + Properties.Resources.Setters_United_Beta;
 
             try
             {
@@ -71,7 +72,7 @@ namespace CommunityPatchLauncher.Windows
                 {
                     wc.DownloadProgressChanged += DownloadProgressChanged;
                     wc.DownloadFileCompleted += DownloadFileEventCompletedUnited;
-                    wc.DownloadFileAsync(new Uri(URI), File);
+                    wc.DownloadFileAsync(new Uri(uri), file);
                 }
             }
             catch (Exception)
