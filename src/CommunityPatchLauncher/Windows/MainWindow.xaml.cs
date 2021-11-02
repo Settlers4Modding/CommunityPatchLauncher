@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Net;
 using System.Windows;
 
-using CommunityPatchLauncher.ViewModels;
 using System.IO.Compression;
 using System.Threading.Tasks;
 using System.IO;
@@ -51,13 +50,21 @@ namespace CommunityPatchLauncher.Windows
         private async Task UpgradetoSettlersUnited()
         {
             await ZipInstallerAsync();
-            string URI = "https://files.settlers-united.com/Settlers-United.exe";
-            DownloadFileAsync(URI, "SettlersUnitedSetup.exe", Properties.Resources.Setters_United_Beta, true);
+            DownloadFileAsync(
+                Properties.Settings.Default.SettlersUnitedDownloadUri,
+                GetDownloadedFileName()
+                );
         }
-        private void DownloadFileAsync(string URI, string File, string Name, bool SettlersUnited = false)
+
+        private string GetDownloadedFileName()
+        {
+            return Path.Combine(Path.GetTempPath(), Properties.Settings.Default.SettlersUnitedDownloadName);
+        }
+
+        private void DownloadFileAsync(string uri, string file)
         {
             DownlaodPanel.Visibility = Visibility.Visible;
-            DownlaodLabel.Content = Properties.Resources.Download_United_Update + Environment.NewLine + Name;
+            DownlaodLabel.Content = Properties.Resources.Download_United_Update + Environment.NewLine + Properties.Resources.Setters_United_Beta;
 
             try
             {
@@ -65,7 +72,7 @@ namespace CommunityPatchLauncher.Windows
                 {
                     wc.DownloadProgressChanged += DownloadProgressChanged;
                     wc.DownloadFileCompleted += DownloadFileEventCompletedUnited;
-                    wc.DownloadFileAsync(new Uri(URI), File);
+                    wc.DownloadFileAsync(new Uri(uri), file);
                 }
             }
             catch (Exception)
@@ -78,12 +85,9 @@ namespace CommunityPatchLauncher.Windows
 
         private void DownloadFileEventCompletedUnited(object sender, AsyncCompletedEventArgs e)
         {
-            //ToDo Install first HE!!! @Leonards05 | Pumpline#5578
-            
             var startInfo = new ProcessStartInfo
             {
-                FileName = "SettlersUnitedSetup.exe",
-
+                FileName = GetDownloadedFileName(),
                 Verb = "runas"
             };
             try
@@ -117,7 +121,7 @@ namespace CommunityPatchLauncher.Windows
         {
             string zipFilePath = @"assets\HistoryEdition.zip";
 
-        string InstallPath = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Ubisoft\Launcher\Installs\11785", "InstallDir", null);
+            string InstallPath = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Ubisoft\Launcher\Installs\11785", "InstallDir", null);
 
             using (ZipArchive archive = await Task.Run(() => ZipFile.OpenRead(zipFilePath)))
             {
@@ -132,7 +136,7 @@ namespace CommunityPatchLauncher.Windows
                     }
                     try
                     {
-                         if (entry.FullName.EndsWith(@".map", StringComparison.OrdinalIgnoreCase))
+                        if (entry.FullName.EndsWith(@".map", StringComparison.OrdinalIgnoreCase))
                         {
                             if (!File.Exists(InstallPath + completeFileName))
                             {
@@ -152,31 +156,31 @@ namespace CommunityPatchLauncher.Windows
                         }
                         else
                         {
-                                if (!entry.FullName.EndsWith(@"/", StringComparison.OrdinalIgnoreCase))
+                            if (!entry.FullName.EndsWith(@"/", StringComparison.OrdinalIgnoreCase))
+                            {
+                                await Task.Run(() =>
                                 {
-                                    await Task.Run(() =>
+                                    try
                                     {
-                                        try
-                                        {
-                                            entry.ExtractToFile(completeFileName, true);
-                                        }
-                                        catch
-                                        {
-                                                MessageBox.Show("Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                                                Environment.Exit(0);
-                                        }
-                                    });
-                                }
-                                }
-                            
+                                        entry.ExtractToFile(completeFileName, true);
+                                    }
+                                    catch
+                                    {
+                                        MessageBox.Show("Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                        Environment.Exit(0);
+                                    }
+                                });
+                            }
+                        }
+
                     }
                     catch (Exception)
                     {
                     }
                 }
             }
-            }
-
-            #endregion
         }
+
+        #endregion
+    }
 }
