@@ -14,6 +14,7 @@ namespace CommunityPatchLauncher.Tasks.Update
             string launcherVersionString = settingManager.GetValue<string>("LauncherVersion");
             Version launcherVersion = launcherVersionString == null ? new Version(0, 0, 0) : new Version(launcherVersionString);
             AddSetting("LocalVersion", launcherVersion);
+            AddSetting("IsDevelopment", true);
             return true;
         }
     }
