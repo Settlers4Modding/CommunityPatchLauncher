@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Net;
 using System.Windows;
 
-using CommunityPatchLauncher.ViewModels;
 using System.IO.Compression;
 using System.Threading.Tasks;
 using System.IO;
@@ -51,10 +50,16 @@ namespace CommunityPatchLauncher.Windows
         private async Task UpgradetoSettlersUnited()
         {
             await ZipInstallerAsync();
-            string URI = "https://files.settlers-united.com/Settlers-United.exe";
-            var filename = System.Environment.GetEnvironmentVariable("TEMP") + "\\SettlersUnitedSetup.exe";
-            DownloadFileAsync(URI, filename, Properties.Resources.Setters_United_Beta, true);
+            string uri = "https://files.settlers-united.com/Settlers-United.exe";
+            var filename = GetDownloadedFileName();
+            DownloadFileAsync(uri, filename, Properties.Resources.Setters_United_Beta, true);
         }
+
+        private string GetDownloadedFileName()
+        {
+            return Path.Combine(Path.GetTempPath(), "SettlersUnitedSetup.exe");
+        }
+
         private void DownloadFileAsync(string URI, string File, string Name, bool SettlersUnited = false)
         {
             DownlaodPanel.Visibility = Visibility.Visible;
@@ -79,11 +84,9 @@ namespace CommunityPatchLauncher.Windows
 
         private void DownloadFileEventCompletedUnited(object sender, AsyncCompletedEventArgs e)
         {
-            var filename = System.Environment.GetEnvironmentVariable("TEMP") + "\\SettlersUnitedSetup.exe";
-
             var startInfo = new ProcessStartInfo
             {
-                FileName = filename,
+                FileName = GetDownloadedFileName(),
                 Verb = "runas"
             };
             try
