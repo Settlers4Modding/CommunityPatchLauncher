@@ -12,7 +12,7 @@ namespace CommunityPatchLauncher.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -298,7 +298,7 @@ namespace CommunityPatchLauncher.Properties {
                 this["EditorBaseFolder"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Config/")]
@@ -308,6 +308,30 @@ namespace CommunityPatchLauncher.Properties {
             }
             set {
                 this["ConfigBaseFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SettlersUnitedSetup.exe")]
+        public string SettlersUnitedDownloadName {
+            get {
+                return ((string)(this["SettlersUnitedDownloadName"]));
+            }
+            set {
+                this["SettlersUnitedDownloadName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://files.settlers-united.com/Settlers-United.exe")]
+        public string SettlersUnitedDownloadUri {
+            get {
+                return ((string)(this["SettlersUnitedDownloadUri"]));
+            }
+            set {
+                this["SettlersUnitedDownloadUri"] = value;
             }
         }
     }

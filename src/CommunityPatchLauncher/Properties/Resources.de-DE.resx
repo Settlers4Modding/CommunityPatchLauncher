@@ -165,6 +165,12 @@
   <data name="Download folder selection error" xml:space="preserve">
     <value>Der Ordner ist nicht leer</value>
   </data>
+  <data name="Download_United_Aborted" xml:space="preserve">
+    <value>Der Download oder die installation wurde durch den Bnutzer abgebrochen</value>
+  </data>
+  <data name="Download_United_Update" xml:space="preserve">
+    <value>Herunterladen des Updates...</value>
+  </data>
   <data name="en-EN" xml:space="preserve">
     <value>Englisch</value>
   </data>
@@ -279,6 +285,9 @@ Remote version: {remoteVersion}</value>
   <data name="ResizeWindow_WidthTooltip" xml:space="preserve">
     <value>Fenster breite eintragen</value>
   </data>
+  <data name="Setters_United_Beta" xml:space="preserve">
+    <value>Upgrade auf Settlers United (Beta)</value>
+  </data>
   <data name="SettingsWindow_MinimizeOnGameStart" xml:space="preserve">
     <value>Launcher beim Spielstart minimieren</value>
   </data>
@@ -302,6 +311,9 @@ Remote version: {remoteVersion}</value>
   </data>
   <data name="SettingWindow_ResetAgreement" xml:space="preserve">
     <value>Vereinbarung zurücksetzten</value>
+  </data>
+  <data name="Upgrade_Note" xml:space="preserve">
+    <value>Hinweis: Bitte vorher auf History Edition patchen. Der Community Balance Patch kann anschließend in Settlers United (im Spiel selbst) wieder aktiviert werden</value>
   </data>
   <data name="WelcomeWindow_Agree" xml:space="preserve">
     <value>Ich habe die Vereinbarung gelesen</value>
